@@ -1,0 +1,16 @@
+loaded 38 attacked cells, 38 boxes
+
+CSVs:
+  results/cora_membership_summary.csv   19 rows
+  results/cora_membership_detailed.csv   133 rows
+  results/citeseer_membership_summary.csv   19 rows
+  results/citeseer_membership_detailed.csv   133 rows
+
+figures:
+  results/figures/cora_membership_by_method.png
+  results/figures/citeseer_membership_by_method.png
+
+writeup:
+  results/MEMBERSHIP_RESULTS.md
+
+[manifest] recorded step step05_aggregate: Compiled 4 CSVs, 2 figures and the writeup from 38 attacked cells

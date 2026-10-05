@@ -1,0 +1,157 @@
+{
+  "pipeline": "membership_inference",
+  "steps": [
+    {
+      "step": "step01_split",
+      "summary": "Built uniform-random 20% member/non-member split for 2 datasets (seed 42)",
+      "timestamp": "2026-09-30 00:17:51",
+      "inputs": [
+        "cora.npz",
+        "citeseer.npz"
+      ],
+      "outputs": [
+        "artifacts/splits/cora_split.npz",
+        "artifacts/splits/citeseer_split.npz"
+      ],
+      "numbers": {
+        "cora_members": 2166,
+        "citeseer_members": 2662
+      },
+      "notes": "Non-members (V_out) and their edges are removed; V_in is the members' induced subgraph. Split is uniform-random and shared by every reduction method, so members/non-members are identical across GCond, FGC, UGC, GOREN, KRON and the control."
+    },
+    {
+      "step": "step02_reduce",
+      "summary": "Reduced V_in into 6 training graphs across 1 methods and 2 datasets",
+      "timestamp": "2026-09-30 13:20:48",
+      "inputs": [
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "artifacts/reduced/cora_gcond_r0.013.npz",
+        "artifacts/reduced/cora_gcond_r0.026.npz",
+        "artifacts/reduced/cora_gcond_r0.052.npz",
+        "artifacts/reduced/citeseer_gcond_r0.013.npz",
+        "artifacts/reduced/citeseer_gcond_r0.026.npz",
+        "artifacts/reduced/citeseer_gcond_r0.052.npz"
+      ],
+      "numbers": {
+        "cora_gcond_r0.013": 28,
+        "cora_gcond_r0.026": 56,
+        "cora_gcond_r0.052": 112,
+        "citeseer_gcond_r0.013": 34,
+        "citeseer_gcond_r0.026": 69,
+        "citeseer_gcond_r0.052": 138
+      },
+      "notes": "One reduced graph per cell; step03 trains 3 boxes on each. control=V_in un-reduced; GCond condenses to synthetic nodes (serve on row-normalised features); UGC augments features with the V_in adjacency (serve augments to V_in width); GOREN has bl and goren edge-weight variants."
+    },
+    {
+      "step": "step03_blackbox",
+      "summary": "Trained 18 boxes (6 cells x 3 seeds) and served posteriors on the original graph",
+      "timestamp": "2026-09-30 13:45:38",
+      "inputs": [
+        "artifacts/reduced/*.npz",
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "artifacts/posteriors/citeseer_gcond_r0.013_seed0.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.013_seed1.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.013_seed2.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.026_seed0.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.026_seed1.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.026_seed2.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.052_seed0.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.052_seed1.npy",
+        "artifacts/posteriors/citeseer_gcond_r0.052_seed2.npy",
+        "artifacts/posteriors/cora_gcond_r0.013_seed0.npy",
+        "artifacts/posteriors/cora_gcond_r0.013_seed1.npy",
+        "artifacts/posteriors/cora_gcond_r0.013_seed2.npy",
+        "artifacts/posteriors/cora_gcond_r0.026_seed0.npy",
+        "artifacts/posteriors/cora_gcond_r0.026_seed1.npy",
+        "artifacts/posteriors/cora_gcond_r0.026_seed2.npy",
+        "artifacts/posteriors/cora_gcond_r0.052_seed0.npy",
+        "artifacts/posteriors/cora_gcond_r0.052_seed1.npy",
+        "artifacts/posteriors/cora_gcond_r0.052_seed2.npy"
+      ],
+      "numbers": {
+        "boxes": 18,
+        "cells": 6
+      },
+      "notes": "Uniform 3-layer GCN across all methods, trained on the reduced graph and served on the original graph. member_acc/nonmember_acc gap is a leakage sanity signal (members typically higher)."
+    },
+    {
+      "step": "step04_attack",
+      "summary": "Ran threshold + cross-dataset shadow membership attacks against 38 cells, 3 seeds each",
+      "timestamp": "2026-09-30 13:45:50",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "results/attacks/citeseer_control_whole.json",
+        "results/attacks/citeseer_fgc_r0.05.json",
+        "results/attacks/citeseer_fgc_r0.1.json",
+        "results/attacks/citeseer_fgc_r0.3.json",
+        "results/attacks/citeseer_gcond_r0.013.json",
+        "results/attacks/citeseer_gcond_r0.026.json",
+        "results/attacks/citeseer_gcond_r0.052.json",
+        "results/attacks/citeseer_goren_r0.3_bl.json",
+        "results/attacks/citeseer_goren_r0.3_goren.json",
+        "results/attacks/citeseer_goren_r0.5_bl.json",
+        "results/attacks/citeseer_goren_r0.5_goren.json",
+        "results/attacks/citeseer_goren_r0.7_bl.json",
+        "results/attacks/citeseer_goren_r0.7_goren.json",
+        "results/attacks/citeseer_kron_r0.3.json",
+        "results/attacks/citeseer_kron_r0.5.json",
+        "results/attacks/citeseer_kron_r0.7.json",
+        "results/attacks/citeseer_ugc_r0.3.json",
+        "results/attacks/citeseer_ugc_r0.5.json",
+        "results/attacks/citeseer_ugc_r0.7.json",
+        "results/attacks/cora_control_whole.json",
+        "results/attacks/cora_fgc_r0.05.json",
+        "results/attacks/cora_fgc_r0.1.json",
+        "results/attacks/cora_fgc_r0.3.json",
+        "results/attacks/cora_gcond_r0.013.json",
+        "results/attacks/cora_gcond_r0.026.json",
+        "results/attacks/cora_gcond_r0.052.json",
+        "results/attacks/cora_goren_r0.3_bl.json",
+        "results/attacks/cora_goren_r0.3_goren.json",
+        "results/attacks/cora_goren_r0.5_bl.json",
+        "results/attacks/cora_goren_r0.5_goren.json",
+        "results/attacks/cora_goren_r0.7_bl.json",
+        "results/attacks/cora_goren_r0.7_goren.json",
+        "results/attacks/cora_kron_r0.3.json",
+        "results/attacks/cora_kron_r0.5.json",
+        "results/attacks/cora_kron_r0.7.json",
+        "results/attacks/cora_ugc_r0.3.json",
+        "results/attacks/cora_ugc_r0.5.json",
+        "results/attacks/cora_ugc_r0.7.json"
+      ],
+      "numbers": {
+        "cells": 38
+      },
+      "notes": "AUC separates members (V_in) from non-members (V_out); 0.5 = no leakage. Threshold attacks are unsupervised; shadow_mlp trains on the other dataset at the same cell. Features are dimension-agnostic scalar summaries so the shadow transfers across datasets."
+    },
+    {
+      "step": "step05_aggregate",
+      "summary": "Compiled 4 CSVs, 2 figures and the writeup from 38 attacked cells",
+      "timestamp": "2026-09-30 13:45:51",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step03_boxes.json"
+      ],
+      "outputs": [
+        "results/cora_membership_summary.csv",
+        "results/cora_membership_detailed.csv",
+        "results/citeseer_membership_summary.csv",
+        "results/citeseer_membership_detailed.csv",
+        "results/figures/cora_membership_by_method.png",
+        "results/figures/citeseer_membership_by_method.png",
+        "results/MEMBERSHIP_RESULTS.md"
+      ],
+      "numbers": {
+        "cells": 38
+      },
+      "notes": "Membership AUC per method/ratio vs the no-reduction control."
+    }
+  ]
+}

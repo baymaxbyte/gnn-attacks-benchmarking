@@ -1,0 +1,14 @@
+6 cells, 18 box trainings to run (3 seeds each), 6 workers
+
+cell                          k_tr      serve  mem acc  non acc     gap
+----------------------------------------------------------------------------
+citeseer_gcond_r0.013           34 plain_norm   66.38%   67.42%  -1.04
+citeseer_gcond_r0.026           69 plain_norm   54.91%   54.64%  +0.27
+citeseer_gcond_r0.052          138 plain_norm   17.44%   16.39%  +1.05
+cora_gcond_r0.013               28 plain_norm   58.80%   61.62%  -2.82
+cora_gcond_r0.026               56 plain_norm   56.20%   58.61%  -2.41
+cora_gcond_r0.052              112 plain_norm   59.13%   61.99%  -2.86
+
+[manifest] recorded step step03_blackbox: Trained 18 boxes (6 cells x 3 seeds) and served posteriors on the original graph
+
+total 7.8 min
