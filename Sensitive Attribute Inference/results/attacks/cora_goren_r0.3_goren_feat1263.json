@@ -1,0 +1,34 @@
+{
+  "cell": "cora_goren_r0.3_goren",
+  "dataset": "cora",
+  "feat_idx": 1263,
+  "n_seeds": 3,
+  "auc_mean": 0.751599505542958,
+  "auc_std": 0.004175242648158878,
+  "accuracy_mean": 0.7304283604135894,
+  "majority_baseline": 0.638109305760709,
+  "pos_rate": 0.361890694239291,
+  "per_seed": [
+    {
+      "auc": 0.7479556405895693,
+      "accuracy": 0.7230428360413589,
+      "majority_baseline": 0.638109305760709,
+      "n_test": 1354,
+      "pos_rate": 0.361890694239291
+    },
+    {
+      "auc": 0.7493976757369614,
+      "accuracy": 0.7385524372230429,
+      "majority_baseline": 0.638109305760709,
+      "n_test": 1354,
+      "pos_rate": 0.361890694239291
+    },
+    {
+      "auc": 0.7574452003023433,
+      "accuracy": 0.7296898079763663,
+      "majority_baseline": 0.638109305760709,
+      "n_test": 1354,
+      "pos_rate": 0.361890694239291
+    }
+  ]
+}

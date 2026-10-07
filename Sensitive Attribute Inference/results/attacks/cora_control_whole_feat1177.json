@@ -1,0 +1,34 @@
+{
+  "cell": "cora_control_whole",
+  "dataset": "cora",
+  "feat_idx": 1177,
+  "n_seeds": 3,
+  "auc_mean": 0.5333880510708988,
+  "auc_std": 0.00803694773867212,
+  "accuracy_mean": 0.5945347119645495,
+  "majority_baseline": 0.6004431314623337,
+  "pos_rate": 0.3995568685376662,
+  "per_seed": [
+    {
+      "auc": 0.5398730881948376,
+      "accuracy": 0.5960118168389956,
+      "majority_baseline": 0.6004431314623337,
+      "n_test": 1354,
+      "pos_rate": 0.3995568685376662
+    },
+    {
+      "auc": 0.5382292824776675,
+      "accuracy": 0.5878877400295421,
+      "majority_baseline": 0.6004431314623337,
+      "n_test": 1354,
+      "pos_rate": 0.3995568685376662
+    },
+    {
+      "auc": 0.5220617825401914,
+      "accuracy": 0.5997045790251108,
+      "majority_baseline": 0.6004431314623337,
+      "n_test": 1354,
+      "pos_rate": 0.3995568685376662
+    }
+  ]
+}

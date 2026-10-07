@@ -1,0 +1,34 @@
+{
+  "cell": "citeseer_ugc_r0.7",
+  "dataset": "citeseer",
+  "feat_idx": 65,
+  "n_seeds": 3,
+  "auc_mean": 0.8687559194246974,
+  "auc_std": 0.011398153162782395,
+  "accuracy_mean": 0.8818108974358975,
+  "majority_baseline": 0.7986778846153846,
+  "pos_rate": 0.2013221153846154,
+  "per_seed": [
+    {
+      "auc": 0.878889974506699,
+      "accuracy": 0.8810096153846154,
+      "majority_baseline": 0.7986778846153846,
+      "n_test": 1664,
+      "pos_rate": 0.2013221153846154
+    },
+    {
+      "auc": 0.852832900957964,
+      "accuracy": 0.8756009615384616,
+      "majority_baseline": 0.7986778846153846,
+      "n_test": 1664,
+      "pos_rate": 0.2013221153846154
+    },
+    {
+      "auc": 0.8745448828094291,
+      "accuracy": 0.8888221153846154,
+      "majority_baseline": 0.7986778846153846,
+      "n_test": 1664,
+      "pos_rate": 0.2013221153846154
+    }
+  ]
+}

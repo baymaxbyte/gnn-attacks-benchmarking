@@ -1,0 +1,34 @@
+{
+  "cell": "citeseer_goren_r0.3_goren",
+  "dataset": "citeseer",
+  "feat_idx": 729,
+  "n_seeds": 3,
+  "auc_mean": 0.7477161988255828,
+  "auc_std": 0.005475956471299963,
+  "accuracy_mean": 0.8062900641025642,
+  "majority_baseline": 0.8040865384615384,
+  "pos_rate": 0.19591346153846154,
+  "per_seed": [
+    {
+      "auc": 0.7473738388034518,
+      "accuracy": 0.8064903846153846,
+      "majority_baseline": 0.8040865384615384,
+      "n_test": 1664,
+      "pos_rate": 0.19591346153846154
+    },
+    {
+      "auc": 0.7545874714572613,
+      "accuracy": 0.8028846153846154,
+      "majority_baseline": 0.8040865384615384,
+      "n_test": 1664,
+      "pos_rate": 0.19591346153846154
+    },
+    {
+      "auc": 0.7411872862160354,
+      "accuracy": 0.8094951923076923,
+      "majority_baseline": 0.8040865384615384,
+      "n_test": 1664,
+      "pos_rate": 0.19591346153846154
+    }
+  ]
+}
