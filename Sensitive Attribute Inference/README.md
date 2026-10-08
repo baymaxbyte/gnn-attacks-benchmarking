@@ -53,6 +53,31 @@ choice:
 | cora | 1177 (40%), 1263 (36%), 507 (25%) |
 | citeseer | 2568 (21%), 65 (20%), 729 (20%) |
 
+### The German variant (real sensitive attribute) — [`german/`](german/)
+
+Cora/Citeseer stand-ins leak roughly the same regardless of the reduction. To test the
+attack against a *genuine* protected attribute, [`german/`](german/) runs the identical
+pipeline on the **German credit graph** (1000 nodes, 27 features, 2 classes), whose
+sensitive attribute **Gender** is a real feature column (index 0, Female=1). See
+[`german/README.md`](german/README.md) and `german/results/`.
+
+Here leakage is *not* flat — it varies strongly with the reduction, and condensation
+is the worst offender:
+
+| cell | Gender AUC | |
+|---|---|---|
+| control (no reduction) | 0.72 | gender already recoverable |
+| GCond (all ratios) | 0.83–0.86 | **highest**, above control, despite the worst task accuracy |
+| KRON 0.3 / 0.5 / 0.7 | 0.62 / 0.73 / 0.82 | climbs as more nodes are removed |
+| GOREN | 0.69–0.77 | around / above control |
+| FGC | 0.58–0.65 | below control |
+| UGC r0.7 | 0.54 | only cell near chance |
+
+The box barely beats German's 70% majority baseline on the credit label, yet Gender
+leaks strongly — and GCond's extreme condensation *concentrates* the sensitive signal
+rather than removing it, reinforcing the headline finding. (`german/` ships its own
+`build_german.py`, artifacts and results; it is self-contained.)
+
 ## Quick start
 
 ```bash

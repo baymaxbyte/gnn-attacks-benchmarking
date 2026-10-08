@@ -1,0 +1,34 @@
+{
+  "cell": "german_goren_r0.7_bl",
+  "dataset": "german",
+  "feat_idx": 0,
+  "n_seeds": 3,
+  "auc_mean": 0.6925541530310113,
+  "auc_std": 0.015859122192290933,
+  "accuracy_mean": 0.6893333333333334,
+  "majority_baseline": 0.69,
+  "pos_rate": 0.31,
+  "per_seed": [
+    {
+      "auc": 0.7109677419354838,
+      "accuracy": 0.702,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.6944366526414212,
+      "accuracy": 0.694,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.672258064516129,
+      "accuracy": 0.672,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    }
+  ]
+}

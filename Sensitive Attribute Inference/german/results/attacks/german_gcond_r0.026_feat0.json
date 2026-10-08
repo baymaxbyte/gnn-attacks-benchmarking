@@ -1,0 +1,34 @@
+{
+  "cell": "german_gcond_r0.026",
+  "dataset": "german",
+  "feat_idx": 0,
+  "n_seeds": 3,
+  "auc_mean": 0.8523671497584541,
+  "auc_std": 0.00686045207822116,
+  "accuracy_mean": 0.8066666666666666,
+  "majority_baseline": 0.69,
+  "pos_rate": 0.31,
+  "per_seed": [
+    {
+      "auc": 0.8450116877045349,
+      "accuracy": 0.804,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.8615240766713417,
+      "accuracy": 0.81,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.8505656848994858,
+      "accuracy": 0.806,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "cell": "german_control_whole",
+  "dataset": "german",
+  "feat_idx": 0,
+  "n_seeds": 3,
+  "auc_mean": 0.7150631136044882,
+  "auc_std": 0.016484038822465293,
+  "accuracy_mean": 0.7186666666666666,
+  "majority_baseline": 0.69,
+  "pos_rate": 0.31,
+  "per_seed": [
+    {
+      "auc": 0.7382515194015896,
+      "accuracy": 0.746,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.7055446470313229,
+      "accuracy": 0.71,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.7013931743805517,
+      "accuracy": 0.7,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "cell": "german_fgc_r0.3",
+  "dataset": "german",
+  "feat_idx": 0,
+  "n_seeds": 3,
+  "auc_mean": 0.6446626149290946,
+  "auc_std": 0.02076994051448207,
+  "accuracy_mean": 0.7073333333333333,
+  "majority_baseline": 0.69,
+  "pos_rate": 0.31,
+  "per_seed": [
+    {
+      "auc": 0.6599158485273493,
+      "accuracy": 0.712,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.6587751285647498,
+      "accuracy": 0.708,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    },
+    {
+      "auc": 0.6152968676951847,
+      "accuracy": 0.702,
+      "majority_baseline": 0.69,
+      "n_test": 500,
+      "pos_rate": 0.31
+    }
+  ]
+}

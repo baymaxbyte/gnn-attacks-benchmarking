@@ -1,0 +1,579 @@
+{
+  "target_seeds": [
+    0,
+    1,
+    2
+  ],
+  "boxes": [
+    {
+      "tag": "german_control_whole",
+      "seed": 0,
+      "box_acc": 71.9,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 12.3
+    },
+    {
+      "tag": "german_control_whole",
+      "seed": 1,
+      "box_acc": 72.6,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 12.3
+    },
+    {
+      "tag": "german_control_whole",
+      "seed": 2,
+      "box_acc": 72.7,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 12.2
+    },
+    {
+      "tag": "german_fgc_r0.05",
+      "seed": 0,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.4
+    },
+    {
+      "tag": "german_fgc_r0.05",
+      "seed": 1,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.4
+    },
+    {
+      "tag": "german_fgc_r0.05",
+      "seed": 2,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.4
+    },
+    {
+      "tag": "german_fgc_r0.1",
+      "seed": 0,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.8
+    },
+    {
+      "tag": "german_fgc_r0.1",
+      "seed": 1,
+      "box_acc": 66.4,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.8
+    },
+    {
+      "tag": "german_fgc_r0.1",
+      "seed": 2,
+      "box_acc": 68.3,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 0.8
+    },
+    {
+      "tag": "german_fgc_r0.3",
+      "seed": 0,
+      "box_acc": 69.2,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 1.5
+    },
+    {
+      "tag": "german_fgc_r0.3",
+      "seed": 1,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 1.5
+    },
+    {
+      "tag": "german_fgc_r0.3",
+      "seed": 2,
+      "box_acc": 66.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 1.5
+    },
+    {
+      "tag": "german_gcond_r0.013",
+      "seed": 0,
+      "box_acc": 52.4,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.4
+    },
+    {
+      "tag": "german_gcond_r0.013",
+      "seed": 1,
+      "box_acc": 55.4,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.3
+    },
+    {
+      "tag": "german_gcond_r0.013",
+      "seed": 2,
+      "box_acc": 43.0,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.3
+    },
+    {
+      "tag": "german_gcond_r0.026",
+      "seed": 0,
+      "box_acc": 52.9,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.5
+    },
+    {
+      "tag": "german_gcond_r0.026",
+      "seed": 1,
+      "box_acc": 55.5,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.5
+    },
+    {
+      "tag": "german_gcond_r0.026",
+      "seed": 2,
+      "box_acc": 51.2,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 0.5
+    },
+    {
+      "tag": "german_gcond_r0.052",
+      "seed": 0,
+      "box_acc": 62.5,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 1.0
+    },
+    {
+      "tag": "german_gcond_r0.052",
+      "seed": 1,
+      "box_acc": 62.4,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 1.0
+    },
+    {
+      "tag": "german_gcond_r0.052",
+      "seed": 2,
+      "box_acc": 61.0,
+      "serve": "plain_norm",
+      "features": [
+        0
+      ],
+      "seconds": 1.0
+    },
+    {
+      "tag": "german_goren_r0.3_bl",
+      "seed": 0,
+      "box_acc": 70.1,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.0
+    },
+    {
+      "tag": "german_goren_r0.3_bl",
+      "seed": 1,
+      "box_acc": 69.3,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.1
+    },
+    {
+      "tag": "german_goren_r0.3_bl",
+      "seed": 2,
+      "box_acc": 68.7,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.1
+    },
+    {
+      "tag": "german_goren_r0.3_goren",
+      "seed": 0,
+      "box_acc": 70.3,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.3
+    },
+    {
+      "tag": "german_goren_r0.3_goren",
+      "seed": 1,
+      "box_acc": 67.1,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.3
+    },
+    {
+      "tag": "german_goren_r0.3_goren",
+      "seed": 2,
+      "box_acc": 71.1,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 8.3
+    },
+    {
+      "tag": "german_goren_r0.5_bl",
+      "seed": 0,
+      "box_acc": 67.6,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.6
+    },
+    {
+      "tag": "german_goren_r0.5_bl",
+      "seed": 1,
+      "box_acc": 67.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.7
+    },
+    {
+      "tag": "german_goren_r0.5_bl",
+      "seed": 2,
+      "box_acc": 67.8,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.6
+    },
+    {
+      "tag": "german_goren_r0.5_goren",
+      "seed": 0,
+      "box_acc": 70.2,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.7
+    },
+    {
+      "tag": "german_goren_r0.5_goren",
+      "seed": 1,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.7
+    },
+    {
+      "tag": "german_goren_r0.5_goren",
+      "seed": 2,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 5.7
+    },
+    {
+      "tag": "german_goren_r0.7_bl",
+      "seed": 0,
+      "box_acc": 68.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.4
+    },
+    {
+      "tag": "german_goren_r0.7_bl",
+      "seed": 1,
+      "box_acc": 68.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.4
+    },
+    {
+      "tag": "german_goren_r0.7_bl",
+      "seed": 2,
+      "box_acc": 68.6,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.4
+    },
+    {
+      "tag": "german_goren_r0.7_goren",
+      "seed": 0,
+      "box_acc": 70.0,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.4
+    },
+    {
+      "tag": "german_goren_r0.7_goren",
+      "seed": 1,
+      "box_acc": 69.8,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.4
+    },
+    {
+      "tag": "german_goren_r0.7_goren",
+      "seed": 2,
+      "box_acc": 69.8,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 3.5
+    },
+    {
+      "tag": "german_kron_r0.3",
+      "seed": 0,
+      "box_acc": 70.6,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 175.1
+    },
+    {
+      "tag": "german_kron_r0.3",
+      "seed": 1,
+      "box_acc": 70.8,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 174.9
+    },
+    {
+      "tag": "german_kron_r0.3",
+      "seed": 2,
+      "box_acc": 70.9,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 175.2
+    },
+    {
+      "tag": "german_kron_r0.5",
+      "seed": 0,
+      "box_acc": 68.7,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 155.6
+    },
+    {
+      "tag": "german_kron_r0.5",
+      "seed": 1,
+      "box_acc": 68.3,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 155.8
+    },
+    {
+      "tag": "german_kron_r0.5",
+      "seed": 2,
+      "box_acc": 67.9,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 155.5
+    },
+    {
+      "tag": "german_kron_r0.7",
+      "seed": 0,
+      "box_acc": 61.4,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 25.0
+    },
+    {
+      "tag": "german_kron_r0.7",
+      "seed": 1,
+      "box_acc": 62.6,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 25.4
+    },
+    {
+      "tag": "german_kron_r0.7",
+      "seed": 2,
+      "box_acc": 60.9,
+      "serve": "plain",
+      "features": [
+        0
+      ],
+      "seconds": 25.1
+    },
+    {
+      "tag": "german_ugc_r0.3",
+      "seed": 0,
+      "box_acc": 67.8,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 13.1
+    },
+    {
+      "tag": "german_ugc_r0.3",
+      "seed": 1,
+      "box_acc": 69.4,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 13.1
+    },
+    {
+      "tag": "german_ugc_r0.3",
+      "seed": 2,
+      "box_acc": 68.9,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 13.0
+    },
+    {
+      "tag": "german_ugc_r0.5",
+      "seed": 0,
+      "box_acc": 67.3,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 12.1
+    },
+    {
+      "tag": "german_ugc_r0.5",
+      "seed": 1,
+      "box_acc": 65.8,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 12.2
+    },
+    {
+      "tag": "german_ugc_r0.5",
+      "seed": 2,
+      "box_acc": 66.9,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 12.2
+    },
+    {
+      "tag": "german_ugc_r0.7",
+      "seed": 0,
+      "box_acc": 70.0,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 9.1
+    },
+    {
+      "tag": "german_ugc_r0.7",
+      "seed": 1,
+      "box_acc": 70.0,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 9.0
+    },
+    {
+      "tag": "german_ugc_r0.7",
+      "seed": 2,
+      "box_acc": 70.0,
+      "serve": "ugc_aug",
+      "features": [
+        0
+      ],
+      "seconds": 9.1
+    }
+  ]
+}

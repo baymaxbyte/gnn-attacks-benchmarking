@@ -1,0 +1,126 @@
+{
+  "pipeline": "sensitive_attribute_inference",
+  "steps": [
+    {
+      "step": "step01_reduce",
+      "summary": "Reduced the whole german graph into 19 training graphs across 6 methods",
+      "timestamp": "2026-10-08 15:00:00",
+      "inputs": [
+        "german.npz"
+      ],
+      "outputs": [
+        "artifacts/reduced/german_control_whole.npz",
+        "artifacts/reduced/german_kron_r0.3.npz",
+        "artifacts/reduced/german_kron_r0.5.npz",
+        "artifacts/reduced/german_kron_r0.7.npz",
+        "artifacts/reduced/german_ugc_r0.3.npz",
+        "artifacts/reduced/german_ugc_r0.5.npz",
+        "artifacts/reduced/german_ugc_r0.7.npz",
+        "artifacts/reduced/german_fgc_r0.3.npz",
+        "artifacts/reduced/german_fgc_r0.1.npz",
+        "artifacts/reduced/german_fgc_r0.05.npz",
+        "artifacts/reduced/german_goren_r0.3_bl.npz",
+        "artifacts/reduced/german_goren_r0.3_goren.npz",
+        "artifacts/reduced/german_goren_r0.5_bl.npz",
+        "artifacts/reduced/german_goren_r0.5_goren.npz",
+        "artifacts/reduced/german_goren_r0.7_bl.npz",
+        "artifacts/reduced/german_goren_r0.7_goren.npz",
+        "artifacts/reduced/german_gcond_r0.013.npz",
+        "artifacts/reduced/german_gcond_r0.026.npz",
+        "artifacts/reduced/german_gcond_r0.052.npz"
+      ],
+      "numbers": {
+        "german_control_whole": 1000,
+        "german_kron_r0.3": 700,
+        "german_kron_r0.5": 500,
+        "german_kron_r0.7": 300,
+        "german_ugc_r0.3": 694,
+        "german_ugc_r0.5": 504,
+        "german_ugc_r0.7": 302,
+        "german_fgc_r0.3": 300,
+        "german_fgc_r0.1": 100,
+        "german_fgc_r0.05": 50,
+        "german_goren_r0.3_bl": 700,
+        "german_goren_r0.3_goren": 700,
+        "german_goren_r0.5_bl": 500,
+        "german_goren_r0.5_goren": 500,
+        "german_goren_r0.7_bl": 301,
+        "german_goren_r0.7_goren": 301,
+        "german_gcond_r0.013": 13,
+        "german_gcond_r0.026": 26,
+        "german_gcond_r0.052": 52
+      },
+      "notes": "No member/non-member split: the box trains on a reduction of the FULL graph. One reduced graph per cell; step02 trains 3 boxes and runs the two-world sensitive-attribute probe. Run in three invocations (control/kron/ugc/fgc, then goren, then gcond); gcond and goren used their own interpreters via GCOND_HOME / GRAPHCOARSENING_HOME."
+    },
+    {
+      "step": "step02_probe",
+      "summary": "Trained 57 boxes and saved two-world Z = [p0||p1] for 19 cells x 3 seeds x 1 sensitive feature(s)",
+      "timestamp": "2026-10-08 15:03:03",
+      "inputs": [
+        "artifacts/reduced/*.npz",
+        "german.npz"
+      ],
+      "outputs": [
+        "artifacts/Z/*.npy"
+      ],
+      "numbers": {
+        "boxes": 57,
+        "cells": 19
+      },
+      "notes": "Two-world probe: sensitive column (Gender, idx 0) forced to 0 then 1, served on the original graph; Z_u = [p0||p1] (n, 2C). box_acc is a node-classification sanity check, not the attack metric."
+    },
+    {
+      "step": "step03_attack",
+      "summary": "Ran the sensitive-attribute MLP attack on 19 (cell, feature) pairs, 3 seeds each",
+      "timestamp": "2026-10-08 15:06:40",
+      "inputs": [
+        "artifacts/Z/*.npy",
+        "german.npz"
+      ],
+      "outputs": [
+        "results/attacks/german_control_whole_feat0.json",
+        "results/attacks/german_fgc_r0.05_feat0.json",
+        "results/attacks/german_fgc_r0.1_feat0.json",
+        "results/attacks/german_fgc_r0.3_feat0.json",
+        "results/attacks/german_gcond_r0.013_feat0.json",
+        "results/attacks/german_gcond_r0.026_feat0.json",
+        "results/attacks/german_gcond_r0.052_feat0.json",
+        "results/attacks/german_goren_r0.3_bl_feat0.json",
+        "results/attacks/german_goren_r0.3_goren_feat0.json",
+        "results/attacks/german_goren_r0.5_bl_feat0.json",
+        "results/attacks/german_goren_r0.5_goren_feat0.json",
+        "results/attacks/german_goren_r0.7_bl_feat0.json",
+        "results/attacks/german_goren_r0.7_goren_feat0.json",
+        "results/attacks/german_kron_r0.3_feat0.json",
+        "results/attacks/german_kron_r0.5_feat0.json",
+        "results/attacks/german_kron_r0.7_feat0.json",
+        "results/attacks/german_ugc_r0.3_feat0.json",
+        "results/attacks/german_ugc_r0.5_feat0.json",
+        "results/attacks/german_ugc_r0.7_feat0.json"
+      ],
+      "numbers": {
+        "pairs": 19
+      },
+      "notes": "AUC recovers the sensitive bit from Z=[p0||p1] via a stratified same-dataset node split. 0.5 = no leakage; accuracy is reported against the majority-class baseline since the bit is imbalanced."
+    },
+    {
+      "step": "step04_aggregate",
+      "summary": "Compiled 2 CSVs, 1 figures and the writeup from 19 (cell, feature) attack results",
+      "timestamp": "2026-10-08 15:07:49",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step02_boxes.json"
+      ],
+      "outputs": [
+        "results/german_sia_detailed.csv",
+        "results/german_sia_summary.csv",
+        "results/figures/german_sia.png",
+        "results/SENSITIVE_RESULTS.md"
+      ],
+      "numbers": {
+        "pairs": 19
+      },
+      "notes": "Sensitive-attribute AUC per method/ratio/feature vs the control."
+    }
+  ]
+}
