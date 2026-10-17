@@ -45,6 +45,14 @@ the `V_out` rows.
 
 AUC 0.5 = no leakage.
 
+**Shadow source (sensitivity check).** By default the shadow-MLP is trained on the
+*coarsened* same-cell graph of the other dataset. `whole_shadow_mlp.py` re-runs just
+that attack with the shadow instead drawn from the *whole* (uncoarsened `control`)
+graph and writes `results/<ds>_membership_shadow_compare.csv`. Swapping a coarsened
+shadow for a whole-graph one barely moves the attack — mean |Δ AUC| ≈ 0.01 (max ≈
+0.04), and membership stays near chance either way — so the leakage numbers are not
+an artifact of training the attacker on reduced data.
+
 ## Quick start
 
 ```bash
@@ -106,6 +114,7 @@ difference is attributable to the reduction rather than the architecture.
 results/MEMBERSHIP_RESULTS.md          generated writeup
 results/<ds>_membership_summary.csv    one row per cell: AUCs + acc gap
 results/<ds>_membership_detailed.csv   one row per (cell, attack)
+results/<ds>_membership_shadow_compare.csv  coarsened vs whole-graph shadow (shadow-MLP)
 results/attacks/                       raw per-cell JSON (per-seed AUCs)
 results/figures/                       membership AUC vs reduction, per dataset
 results/step03_boxes.json              per-box member/non-member accuracies
@@ -134,6 +143,7 @@ single-threaded processes (`--workers`).
 ```
 config.py  common.py  data.py  splits.py  blackbox.py
 step01_split.py .. step05_aggregate.py       the five stages
+whole_shadow_mlp.py                          optional whole-graph-shadow sensitivity check
 reductions/
   base.py                 the reduced-graph contract + helpers
   control.py kron.py ugc.py fgc.py goren.py gcond.py   per-method adapters
