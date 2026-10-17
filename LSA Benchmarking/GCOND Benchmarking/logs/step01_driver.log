@@ -1,0 +1,34 @@
+
+>>> condensing cora r=0.25
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=cora --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 3.1 min   synthetic nodes=35
+    (GCond's own internal eval: test=0.8073 +-0.0069)
+
+>>> condensing cora r=0.5
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=cora --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 6.5 min   synthetic nodes=70
+    (GCond's own internal eval: test=0.8170 +-0.0037)
+
+>>> condensing cora r=1.0
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=cora --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 37.0 min   synthetic nodes=140
+    (GCond's own internal eval: test=0.8120 +-0.0113)
+
+>>> condensing citeseer r=0.25
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=citeseer --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 4.4 min   synthetic nodes=30
+    (GCond's own internal eval: test=0.7110 +-0.0067)
+
+>>> condensing citeseer r=0.5
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=citeseer --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 10.3 min   synthetic nodes=60
+    (GCond's own internal eval: test=0.7207 +-0.0040)
+
+>>> condensing citeseer r=1.0
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=citeseer --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 35.7 min   synthetic nodes=120
+    (GCond's own internal eval: test=0.7160 +-0.0008)
+
+[manifest] recorded step 01_condense_gcond: Re-ran GCond condensation for 6 (dataset, r) pairs using the authors' run_main.sh hyperparameters
+
+total 96.9 min

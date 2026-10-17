@@ -1,0 +1,590 @@
+{
+  "repeats": 5,
+  "canonical_seed": 0,
+  "boxes": [
+    {
+      "dataset": "cora",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.74074074074073,
+      "test_acc_std": 0.2456759103966977,
+      "test_acc_runs": [
+        88.7037,
+        89.0741,
+        88.8889,
+        88.7037,
+        88.3333
+      ],
+      "best_val_mean": 87.01107025146484,
+      "tag": "cora_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_whole.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2584,
+        "mean_max_posterior": 0.917997419834137,
+        "canonical_test_acc": 88.70370370370371
+      },
+      "seconds": 71.2
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 1896,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.85185185185186,
+      "test_acc_std": 0.531581484978047,
+      "test_acc_runs": [
+        88.1481,
+        88.5185,
+        87.2222,
+        87.2222,
+        88.1481
+      ],
+      "best_val_mean": 87.34317421913147,
+      "coarse": {
+        "trainable_supernodes": 1273,
+        "coarse_edges": 3910,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.4282700421940928,
+        "edge_weight_mean": 1.1007672548294067,
+        "edge_weight_max": 9.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.3_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2583,
+        "mean_max_posterior": 0.9110657572746277,
+        "canonical_test_acc": 88.14814814814815
+      },
+      "seconds": 56.2
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 1896,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.25925925925925,
+      "test_acc_std": 0.5158662324882989,
+      "test_acc_runs": [
+        86.4815,
+        87.4074,
+        87.7778,
+        86.8519,
+        87.7778
+      ],
+      "best_val_mean": 86.67896628379822,
+      "coarse": {
+        "trainable_supernodes": 1273,
+        "coarse_edges": 3910,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.4282700421940928,
+        "edge_weight_mean": 1.008195161819458,
+        "edge_weight_max": 6.312871932983398,
+        "edge_weight_zeros": 1294
+      },
+      "tag": "cora_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.3_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2581,
+        "mean_max_posterior": 0.9209355711936951,
+        "canonical_test_acc": 86.48148148148148
+      },
+      "seconds": 55.8
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 1354,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.33333333333334,
+      "test_acc_std": 0.3434673516850248,
+      "test_acc_runs": [
+        87.037,
+        87.4074,
+        87.037,
+        87.963,
+        87.2222
+      ],
+      "best_val_mean": 87.85977840423584,
+      "coarse": {
+        "trainable_supernodes": 1053,
+        "coarse_edges": 2900,
+        "max_supernode_size": 10,
+        "mean_supernode_size": 2.0,
+        "edge_weight_mean": 1.3189655542373657,
+        "edge_weight_max": 10.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.5_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2580,
+        "mean_max_posterior": 0.9236636161804199,
+        "canonical_test_acc": 87.03703703703704
+      },
+      "seconds": 44.4
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 1354,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.81481481481481,
+      "test_acc_std": 0.7715802465185033,
+      "test_acc_runs": [
+        85.5556,
+        86.4815,
+        87.4074,
+        86.8519,
+        87.7778
+      ],
+      "best_val_mean": 86.19926333427429,
+      "coarse": {
+        "trainable_supernodes": 1053,
+        "coarse_edges": 2900,
+        "max_supernode_size": 10,
+        "mean_supernode_size": 2.0,
+        "edge_weight_mean": 0.710419774055481,
+        "edge_weight_max": 4.042856216430664,
+        "edge_weight_zeros": 1212
+      },
+      "tag": "cora_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.5_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2579,
+        "mean_max_posterior": 0.9271920919418335,
+        "canonical_test_acc": 85.55555555555556
+      },
+      "seconds": 44.7
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 814,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.22222222222221,
+      "test_acc_std": 1.2614360271056635,
+      "test_acc_runs": [
+        86.1111,
+        86.2963,
+        86.2963,
+        88.1481,
+        89.2593
+      ],
+      "best_val_mean": 85.64575672149658,
+      "coarse": {
+        "trainable_supernodes": 721,
+        "coarse_edges": 1985,
+        "max_supernode_size": 43,
+        "mean_supernode_size": 3.326781326781327,
+        "edge_weight_mean": 1.6221662759780884,
+        "edge_weight_max": 25.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.7_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2583,
+        "mean_max_posterior": 0.9268668293952942,
+        "canonical_test_acc": 86.11111111111111
+      },
+      "seconds": 35.8
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 814,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.70370370370371,
+      "test_acc_std": 0.30089031128281174,
+      "test_acc_runs": [
+        87.7778,
+        88.1481,
+        87.5926,
+        87.7778,
+        87.2222
+      ],
+      "best_val_mean": 86.0516619682312,
+      "coarse": {
+        "trainable_supernodes": 721,
+        "coarse_edges": 1985,
+        "max_supernode_size": 43,
+        "mean_supernode_size": 3.326781326781327,
+        "edge_weight_mean": 0.6049128174781799,
+        "edge_weight_max": 3.692746162414551,
+        "edge_weight_zeros": 2094
+      },
+      "tag": "cora_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.7_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2583,
+        "mean_max_posterior": 0.9010908007621765,
+        "canonical_test_acc": 87.77777777777777
+      },
+      "seconds": 35.9
+    },
+    {
+      "dataset": "citeseer",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.24096385542168,
+      "test_acc_std": 0.4107886053309006,
+      "test_acc_runs": [
+        75.0,
+        75.4518,
+        74.6988,
+        75.9036,
+        75.1506
+      ],
+      "best_val_mean": 75.04504561424255,
+      "tag": "citeseer_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_whole.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3001,
+        "mean_max_posterior": 0.7333448529243469,
+        "canonical_test_acc": 75.0
+      },
+      "seconds": 95.1
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 2330,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.45180722891567,
+      "test_acc_std": 0.6389519107107342,
+      "test_acc_runs": [
+        74.5482,
+        76.506,
+        75.6024,
+        75.4518,
+        75.1506
+      ],
+      "best_val_mean": 74.17417168617249,
+      "coarse": {
+        "trainable_supernodes": 1543,
+        "coarse_edges": 2936,
+        "max_supernode_size": 17,
+        "mean_supernode_size": 1.4278969957081544,
+        "edge_weight_mean": 1.1314713954925537,
+        "edge_weight_max": 15.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "citeseer_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.3_bl.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3003,
+        "mean_max_posterior": 0.7008546590805054,
+        "canonical_test_acc": 74.54819277108435
+      },
+      "seconds": 84.4
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 2330,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.15060240963855,
+      "test_acc_std": 0.6318125591386442,
+      "test_acc_runs": [
+        74.247,
+        75.4518,
+        75.753,
+        74.5482,
+        75.753
+      ],
+      "best_val_mean": 74.65465307235718,
+      "coarse": {
+        "trainable_supernodes": 1543,
+        "coarse_edges": 2936,
+        "max_supernode_size": 17,
+        "mean_supernode_size": 1.4278969957081544,
+        "edge_weight_mean": 0.6251755952835083,
+        "edge_weight_max": 1.2561239004135132,
+        "edge_weight_zeros": 1446
+      },
+      "tag": "citeseer_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.3_goren.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3000,
+        "mean_max_posterior": 0.6403735280036926,
+        "canonical_test_acc": 74.24698795180723
+      },
+      "seconds": 81.3
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 1664,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 74.6987951807229,
+      "test_acc_std": 0.3927230364579929,
+      "test_acc_runs": [
+        74.8494,
+        74.0964,
+        75.3012,
+        74.5482,
+        74.6988
+      ],
+      "best_val_mean": 74.0240216255188,
+      "coarse": {
+        "trainable_supernodes": 1270,
+        "coarse_edges": 1967,
+        "max_supernode_size": 17,
+        "mean_supernode_size": 1.9993990384615385,
+        "edge_weight_mean": 1.3599389791488647,
+        "edge_weight_max": 29.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "citeseer_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.5_bl.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3007,
+        "mean_max_posterior": 0.7095230221748352,
+        "canonical_test_acc": 74.84939759036145
+      },
+      "seconds": 71.4
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 1664,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.06024096385542,
+      "test_acc_std": 0.518212365484495,
+      "test_acc_runs": [
+        75.0,
+        74.8494,
+        74.247,
+        75.753,
+        75.4518
+      ],
+      "best_val_mean": 74.56456303596497,
+      "coarse": {
+        "trainable_supernodes": 1270,
+        "coarse_edges": 1967,
+        "max_supernode_size": 17,
+        "mean_supernode_size": 1.9993990384615385,
+        "edge_weight_mean": 0.6379796862602234,
+        "edge_weight_max": 1.9703234434127808,
+        "edge_weight_zeros": 572
+      },
+      "tag": "citeseer_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.5_goren.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3001,
+        "mean_max_posterior": 0.7028338313102722,
+        "canonical_test_acc": 75.0
+      },
+      "seconds": 67.3
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 1000,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 74.42771084337349,
+      "test_acc_std": 1.1164911441476286,
+      "test_acc_runs": [
+        73.3434,
+        74.5482,
+        73.6446,
+        76.506,
+        74.0964
+      ],
+      "best_val_mean": 74.29429173469543,
+      "coarse": {
+        "trainable_supernodes": 856,
+        "coarse_edges": 1044,
+        "max_supernode_size": 63,
+        "mean_supernode_size": 3.327,
+        "edge_weight_mean": 1.784482717514038,
+        "edge_weight_max": 31.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "citeseer_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.7_bl.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3003,
+        "mean_max_posterior": 0.6110079884529114,
+        "canonical_test_acc": 73.3433734939759
+      },
+      "seconds": 58.3
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 1000,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.18072289156626,
+      "test_acc_std": 0.6694611677979754,
+      "test_acc_runs": [
+        75.9036,
+        75.3012,
+        73.9458,
+        75.6024,
+        75.1506
+      ],
+      "best_val_mean": 74.98498439788818,
+      "coarse": {
+        "trainable_supernodes": 856,
+        "coarse_edges": 1044,
+        "max_supernode_size": 63,
+        "mean_supernode_size": 3.327,
+        "edge_weight_mean": 0.265044629573822,
+        "edge_weight_max": 1.4927973747253418,
+        "edge_weight_zeros": 1094
+      },
+      "tag": "citeseer_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_0.7_goren.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3001,
+        "mean_max_posterior": 0.8241187930107117,
+        "canonical_test_acc": 75.90361445783132
+      },
+      "seconds": 53.0
+    }
+  ]
+}

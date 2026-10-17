@@ -1,0 +1,148 @@
+{
+  "pipeline": "fgc_leakage",
+  "steps": [
+    {
+      "step": "step01_coarsen",
+      "summary": "FGC-with-sparsity coarsenings for 6 (dataset, r) settings; beta selected per setting from the notebook grid",
+      "timestamp": "2026-09-23 20:23:32",
+      "inputs": [
+        "data/dataset/original/ind.{cora,citeseer}.*",
+        "kumar23a.pdf (Table 4 targets)",
+        "Node_classification_FGC_with_sparsity.ipynb (solver, beta grid)"
+      ],
+      "outputs": [
+        "artifacts/coarsened/fgc_cora_r0.3.npz",
+        "artifacts/coarsened/fgc_cora_r0.1.npz",
+        "artifacts/coarsened/fgc_cora_r0.05.npz",
+        "artifacts/coarsened/fgc_citeseer_r0.3.npz",
+        "artifacts/coarsened/fgc_citeseer_r0.1.npz",
+        "artifacts/coarsened/fgc_citeseer_r0.05.npz"
+      ],
+      "numbers": {
+        "settings": 6,
+        "beta_candidates": 5,
+        "cora_0.3_beta": 0.001,
+        "cora_0.1_beta": 0.001,
+        "cora_0.05_beta": 0.001,
+        "citeseer_0.3_beta": 0.01,
+        "citeseer_0.1_beta": 0.01,
+        "citeseer_0.05_beta": 0.001
+      },
+      "notes": "lam=0.001 alpha=1 gamma=0.001 from the notebook driver that calls get_accuracy; the paper's Appendix B values are scale-incompatible with this solver's step. beta unpublished, selected per setting."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built and validated 8 FGC black boxes; 4/8 inside gate, largest Mode A deviation 15.13 points",
+      "timestamp": "2026-09-23 20:23:57",
+      "inputs": [
+        "artifacts/coarsened/*.npz",
+        "data/dataset/original/ind.{cora,citeseer}.*",
+        "kumar23a.pdf (Table 4, Table 6)"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole_orig.npy",
+        "artifacts/posteriors/cora_0.3_orig.npy",
+        "artifacts/posteriors/cora_0.3_lift.npy",
+        "artifacts/posteriors/cora_0.1_orig.npy",
+        "artifacts/posteriors/cora_0.1_lift.npy",
+        "artifacts/posteriors/cora_0.05_orig.npy",
+        "artifacts/posteriors/cora_0.05_lift.npy",
+        "artifacts/posteriors/citeseer_whole_orig.npy",
+        "artifacts/posteriors/citeseer_0.3_orig.npy",
+        "artifacts/posteriors/citeseer_0.3_lift.npy",
+        "artifacts/posteriors/citeseer_0.1_orig.npy",
+        "artifacts/posteriors/citeseer_0.1_lift.npy",
+        "artifacts/posteriors/citeseer_0.05_orig.npy",
+        "artifacts/posteriors/citeseer_0.05_lift.npy"
+      ],
+      "numbers": {
+        "boxes": 8,
+        "endpoints": 14,
+        "repeats": 10,
+        "gate_failures": 4,
+        "max_mode_a_deviation": 15.13,
+        "cora_whole_modeA": 97.01,
+        "cora_0.3_modeA": 85.89,
+        "cora_0.1_modeA": 81.21,
+        "cora_0.05_modeA": 68.08,
+        "citeseer_whole_modeA": 93.21,
+        "citeseer_0.3_modeA": 73.33,
+        "citeseer_0.1_modeA": 72.5,
+        "citeseer_0.05_modeA": 65.01,
+        "cora_0.3_modeB": 58.54,
+        "cora_0.1_modeB": 46.67,
+        "cora_0.05_modeB": 33.89,
+        "citeseer_0.3_modeB": 41.41,
+        "citeseer_0.1_modeB": 51.78,
+        "citeseer_0.05_modeB": 39.81
+      },
+      "notes": "Accuracy is in-sample over all n nodes, reproducing the paper's protocol. Served with model.eval(); the notebook never calls it and therefore predicts with dropout active."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 2 datasets and built 8 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-09-23 21:06:45",
+      "inputs": [
+        "artifacts/posteriors/*_orig.npy",
+        "data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [],
+      "numbers": {},
+      "notes": "g mirrors the FGC target (hidden 64, 60 epochs, lr 0.01, wd 0.0001) but is graph-free, per the link-stealing paper. Adversary holds ORIGINAL uncoarsened attributes and a random 10% of labels. Pair seed 1 matches the GCond benchmark, so both benchmarks attack identical pairs with identical splits."
+    },
+    {
+      "step": "step04_attacks",
+      "summary": "Ran all 8 attacks + link-prediction baseline against 8 FGC black-box configurations (2 directions x 4 settings), 5 runs each",
+      "timestamp": "2026-09-23 21:11:11",
+      "inputs": [
+        "data/attack_dataset/*_fgc_*.json (via ATTACK_HOME)"
+      ],
+      "outputs": [
+        "results/attacks/cora_fgc_whole__citeseer_fgc_whole__fgc_A_whole.json",
+        "results/attacks/cora_fgc_0.3__citeseer_fgc_0.3__fgc_A_0.3.json",
+        "results/attacks/cora_fgc_0.1__citeseer_fgc_0.1__fgc_A_0.1.json",
+        "results/attacks/cora_fgc_0.05__citeseer_fgc_0.05__fgc_A_0.05.json",
+        "results/attacks/citeseer_fgc_whole__cora_fgc_whole__fgc_B_whole.json",
+        "results/attacks/citeseer_fgc_0.3__cora_fgc_0.3__fgc_B_0.3.json",
+        "results/attacks/citeseer_fgc_0.1__cora_fgc_0.1__fgc_B_0.1.json",
+        "results/attacks/citeseer_fgc_0.05__cora_fgc_0.05__fgc_B_0.05.json"
+      ],
+      "numbers": {
+        "configurations": 8,
+        "attack_runs": 5
+      },
+      "notes": "Attack model per He et al. USENIX Security 2021: MLP 3x32, dropout, 50 epochs, Adam lr 1e-3, batch 128. Shadow target is the other dataset at the same reduction setting. Attacks 0 and 2 are unsupervised and run once."
+    },
+    {
+      "step": "step05_aggregate",
+      "summary": "Compiled 4 CSVs, 8 figures and the writeup from 8 attack configurations",
+      "timestamp": "2026-09-23 21:29:45",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step02_validation.json"
+      ],
+      "outputs": [
+        "results/cora_attacks_detailed.csv",
+        "results/cora_attacks_summary.csv",
+        "results/citeseer_attacks_detailed.csv",
+        "results/citeseer_attacks_summary.csv",
+        "results/figures/cora_auc_vs_setting.png",
+        "results/figures/cora_per_run_auc.png",
+        "results/figures/cora_attack0_metrics.png",
+        "results/figures/cora_utility_vs_leakage.png",
+        "results/figures/citeseer_auc_vs_setting.png",
+        "results/figures/citeseer_per_run_auc.png",
+        "results/figures/citeseer_attack0_metrics.png",
+        "results/figures/citeseer_utility_vs_leakage.png",
+        "results/FGC_RESULTS.md"
+      ],
+      "numbers": {
+        "csvs": 4,
+        "figures": 8,
+        "configurations": 8
+      },
+      "notes": "detailed = one row per run; summary = averaged per (setting, attack) with auc_delta_vs_whole. Column names match the GCond benchmark's summary CSV so the two concatenate."
+    }
+  ]
+}

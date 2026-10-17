@@ -1,0 +1,113 @@
+{
+  "method": "variation_neighborhoods",
+  "K": 10,
+  "ratio_means": "fraction of nodes REMOVED",
+  "split": {
+    "scheme": "paper",
+    "seed": 0
+  },
+  "settings": [
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "n": 2708,
+      "target_k": 1896,
+      "k": 1896,
+      "coarse_edges": 3910,
+      "achieved_ratio": 0.2998522895125554,
+      "trainable_supernodes": 1273,
+      "max_supernode_size": 9,
+      "mean_supernode_size": 1.4282700421940928,
+      "singleton_supernodes": 1403,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "n": 2708,
+      "target_k": 1354,
+      "k": 1354,
+      "coarse_edges": 2900,
+      "achieved_ratio": 0.5,
+      "trainable_supernodes": 1053,
+      "max_supernode_size": 10,
+      "mean_supernode_size": 2.0,
+      "singleton_supernodes": 580,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "n": 2708,
+      "target_k": 812,
+      "k": 814,
+      "coarse_edges": 1985,
+      "achieved_ratio": 0.6994091580502215,
+      "trainable_supernodes": 721,
+      "max_supernode_size": 43,
+      "mean_supernode_size": 3.326781326781327,
+      "singleton_supernodes": 44,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "n": 3327,
+      "target_k": 2329,
+      "k": 2330,
+      "coarse_edges": 2936,
+      "achieved_ratio": 0.29966937180643227,
+      "trainable_supernodes": 1543,
+      "max_supernode_size": 17,
+      "mean_supernode_size": 1.4278969957081544,
+      "singleton_supernodes": 1805,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.5,
+      "n": 3327,
+      "target_k": 1664,
+      "k": 1664,
+      "coarse_edges": 1967,
+      "achieved_ratio": 0.4998497144574692,
+      "trainable_supernodes": 1270,
+      "max_supernode_size": 17,
+      "mean_supernode_size": 1.9993990384615385,
+      "singleton_supernodes": 669,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.7,
+      "n": 3327,
+      "target_k": 998,
+      "k": 1000,
+      "coarse_edges": 1044,
+      "achieved_ratio": 0.699428914938383,
+      "trainable_supernodes": 856,
+      "max_supernode_size": 63,
+      "mean_supernode_size": 3.327,
+      "singleton_supernodes": 156,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": true
+      }
+    }
+  ]
+}

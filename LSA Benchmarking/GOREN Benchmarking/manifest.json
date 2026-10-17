@@ -1,0 +1,176 @@
+{
+  "pipeline": "goren_leakage",
+  "steps": [
+    {
+      "step": "step01_coarsen",
+      "summary": "Loukas variation_neighborhoods coarsenings for 6 (dataset, r) settings, supplying the coarse topology GOREN relearns weights on",
+      "timestamp": "2026-09-24 22:28:34",
+      "inputs": [
+        "attack/data/dataset/original/ind.{cora,citeseer}.*",
+        "variation_neighborhoods via graph_coarsening (GOREN repo)"
+      ],
+      "outputs": [
+        "artifacts/coarsened/goren_cora_ratio0.3.npz",
+        "artifacts/coarsened/goren_cora_ratio0.5.npz",
+        "artifacts/coarsened/goren_cora_ratio0.7.npz",
+        "artifacts/coarsened/goren_citeseer_ratio0.3.npz",
+        "artifacts/coarsened/goren_citeseer_ratio0.5.npz",
+        "artifacts/coarsened/goren_citeseer_ratio0.7.npz",
+        "results/step01_coarsening.json"
+      ],
+      "numbers": {
+        "settings": 6,
+        "cora_0.3_k": 1896,
+        "cora_0.5_k": 1354,
+        "cora_0.7_k": 814,
+        "citeseer_0.3_k": 2330,
+        "citeseer_0.5_k": 1664,
+        "citeseer_0.7_k": 1000
+      },
+      "notes": "r is the fraction of nodes REMOVED. Baseline edge weights are A_c = C A C^T; GOREN replaces these in step 02. Cora and Citeseer are disconnected, so the variation cost divides by (nc-1) and emits divide-by-zero warnings on singleton subgraphs; the coarsening is unaffected and hits its target ratio."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built 14 GOREN black boxes: bl and goren edge weights across 3 ratios plus no-coarsening controls",
+      "timestamp": "2026-09-24 22:49:29",
+      "inputs": [
+        "artifacts/coarsened/*.npz",
+        "artifacts/coarsened/goren_w_*.npy"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole.npy",
+        "artifacts/posteriors/cora_0.3_bl.npy",
+        "artifacts/posteriors/cora_0.3_goren.npy",
+        "artifacts/posteriors/cora_0.5_bl.npy",
+        "artifacts/posteriors/cora_0.5_goren.npy",
+        "artifacts/posteriors/cora_0.7_bl.npy",
+        "artifacts/posteriors/cora_0.7_goren.npy",
+        "artifacts/posteriors/citeseer_whole.npy",
+        "artifacts/posteriors/citeseer_0.3_bl.npy",
+        "artifacts/posteriors/citeseer_0.3_goren.npy",
+        "artifacts/posteriors/citeseer_0.5_bl.npy",
+        "artifacts/posteriors/citeseer_0.5_goren.npy",
+        "artifacts/posteriors/citeseer_0.7_bl.npy",
+        "artifacts/posteriors/citeseer_0.7_goren.npy"
+      ],
+      "numbers": {
+        "boxes": 14,
+        "repeats": 5,
+        "cora_whole": 88.74,
+        "cora_0.3_bl": 87.85,
+        "cora_0.3_goren": 87.26,
+        "cora_0.5_bl": 87.33,
+        "cora_0.5_goren": 86.81,
+        "cora_0.7_bl": 87.22,
+        "cora_0.7_goren": 87.7,
+        "citeseer_whole": 75.24,
+        "citeseer_0.3_bl": 75.45,
+        "citeseer_0.3_goren": 75.15,
+        "citeseer_0.5_bl": 74.7,
+        "citeseer_0.5_goren": 75.06,
+        "citeseer_0.7_bl": 74.43,
+        "citeseer_0.7_goren": 75.18
+      },
+      "notes": "No published accuracy exists for GOREN on any dataset -- the paper evaluates only spectrally -- so this stage reports rather than gates. bl and goren differ in exactly one vector, the coarse edge weights. Classifier is the UGC benchmark's, which already consumes edge weights."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 2 datasets and built 14 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-09-24 23:15:38",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "attack/data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "attack/data/pred/cora_ggoren_pred.pkl",
+        "attack/data/pred/citeseer_ggoren_pred.pkl"
+      ],
+      "numbers": {
+        "g_cora": {
+          "n_known": 270,
+          "n_nodes": 2708,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6284,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 1433,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        },
+        "g_citeseer": {
+          "n_known": 332,
+          "n_nodes": 3327,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6464,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 3703,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        }
+      },
+      "notes": "g mirrors the target's hyperparameters but is graph-free and runs on the original features. The adversary cannot tell a bl box from a goren box. Pair seed 1 matches the GCond, FGC and UGC benchmarks, so all four attack identical pairs."
+    },
+    {
+      "step": "step04_attacks",
+      "summary": "Ran all 8 attacks + link-prediction baseline against 14 GOREN black-box configurations (2 directions x 7 settings), 5 runs each",
+      "timestamp": "2026-09-24 23:21:05",
+      "inputs": [
+        "attack/data/attack_dataset/*_goren_*.json"
+      ],
+      "outputs": [
+        "results/attacks/cora_goren_whole__citeseer_goren_whole__goren_A_whole.json",
+        "results/attacks/cora_goren_0.3_bl__citeseer_goren_0.3_bl__goren_A_0.3_bl.json",
+        "results/attacks/cora_goren_0.3_goren__citeseer_goren_0.3_goren__goren_A_0.3_goren.json",
+        "results/attacks/cora_goren_0.5_bl__citeseer_goren_0.5_bl__goren_A_0.5_bl.json",
+        "results/attacks/cora_goren_0.5_goren__citeseer_goren_0.5_goren__goren_A_0.5_goren.json",
+        "results/attacks/cora_goren_0.7_bl__citeseer_goren_0.7_bl__goren_A_0.7_bl.json",
+        "results/attacks/cora_goren_0.7_goren__citeseer_goren_0.7_goren__goren_A_0.7_goren.json",
+        "results/attacks/citeseer_goren_whole__cora_goren_whole__goren_B_whole.json",
+        "results/attacks/citeseer_goren_0.3_bl__cora_goren_0.3_bl__goren_B_0.3_bl.json",
+        "results/attacks/citeseer_goren_0.3_goren__cora_goren_0.3_goren__goren_B_0.3_goren.json",
+        "results/attacks/citeseer_goren_0.5_bl__cora_goren_0.5_bl__goren_B_0.5_bl.json",
+        "results/attacks/citeseer_goren_0.5_goren__cora_goren_0.5_goren__goren_B_0.5_goren.json",
+        "results/attacks/citeseer_goren_0.7_bl__cora_goren_0.7_bl__goren_B_0.7_bl.json",
+        "results/attacks/citeseer_goren_0.7_goren__cora_goren_0.7_goren__goren_B_0.7_goren.json"
+      ],
+      "numbers": {
+        "configurations": 14,
+        "attack_runs": 5
+      },
+      "notes": "Attack model per He et al. USENIX Security 2021. bl and goren boxes at the same ratio differ only in the coarse edge weights their target was trained on. Attacks 0 and 2 are unsupervised and run once."
+    },
+    {
+      "step": "step05_aggregate",
+      "summary": "Compiled 4 CSVs, 6 figures and the writeup from 14 attack configurations",
+      "timestamp": "2026-09-24 23:54:50",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step02_validation.json",
+        "results/step02a_goren_weights.json"
+      ],
+      "outputs": [
+        "results/cora_attacks_detailed.csv",
+        "results/cora_attacks_summary.csv",
+        "results/citeseer_attacks_detailed.csv",
+        "results/citeseer_attacks_summary.csv",
+        "results/figures/cora_bl_vs_goren.png",
+        "results/figures/cora_auc_vs_setting.png",
+        "results/figures/cora_fidelity_vs_leakage.png",
+        "results/figures/citeseer_bl_vs_goren.png",
+        "results/figures/citeseer_auc_vs_setting.png",
+        "results/figures/citeseer_fidelity_vs_leakage.png",
+        "results/GOREN_RESULTS.md"
+      ],
+      "numbers": {
+        "csvs": 4,
+        "figures": 6,
+        "configurations": 14
+      },
+      "notes": "summary CSVs carry auc_delta_vs_whole and auc_goren_minus_bl. Column names match the GCond, FGC and UGC benchmarks."
+    }
+  ]
+}

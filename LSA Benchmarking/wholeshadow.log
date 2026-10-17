@@ -1,0 +1,108 @@
+2026-10-17 21:45:42  ======================================================================
+2026-10-17 21:45:42  run_wholeshadow  methods=fgc,gcond,goren,kron,ugc  runs=5
+2026-10-17 21:45:42  ----- fgc (FGC Benchmarking) -----
+2026-10-17 21:45:46    built cora_fgc_0.3
+2026-10-17 21:45:50    built cora_fgc_0.1
+2026-10-17 21:45:54    built cora_fgc_0.05
+2026-10-17 21:46:01    built citeseer_fgc_0.3
+2026-10-17 21:46:08    built citeseer_fgc_0.1
+2026-10-17 21:46:15    built citeseer_fgc_0.05
+2026-10-17 21:46:15    skip cora whole (exists)
+2026-10-17 21:47:23    attacked cora/0.3  shadow=citeseer_whole  69s
+2026-10-17 21:48:33    attacked cora/0.1  shadow=citeseer_whole  70s
+2026-10-17 21:49:43    attacked cora/0.05  shadow=citeseer_whole  70s
+2026-10-17 21:50:52    attacked citeseer/whole  shadow=cora_whole  69s
+2026-10-17 21:51:58    attacked citeseer/0.3  shadow=cora_whole  66s
+2026-10-17 21:53:04    attacked citeseer/0.1  shadow=cora_whole  65s
+2026-10-17 21:54:10    attacked citeseer/0.05  shadow=cora_whole  66s
+2026-10-17 21:54:10    cleaned 24 attack_dataset files
+2026-10-17 21:54:10    fgc done in 8.5 min
+2026-10-17 21:54:10  ----- gcond (GCOND Benchmarking) -----
+2026-10-17 21:54:15    built cora_gc_whole
+2026-10-17 21:54:19    built cora_gc_0.25
+2026-10-17 21:54:23    built cora_gc_0.5
+2026-10-17 21:54:27    built cora_gc_1.0
+2026-10-17 21:54:34    built citeseer_gc_whole
+2026-10-17 21:54:41    built citeseer_gc_0.25
+2026-10-17 21:54:48    built citeseer_gc_0.5
+2026-10-17 21:54:54    built citeseer_gc_1.0
+2026-10-17 21:56:03    attacked cora/whole  shadow=citeseer_whole  69s
+2026-10-17 21:57:16    attacked cora/0.25  shadow=citeseer_whole  72s
+2026-10-17 21:58:25    attacked cora/0.5  shadow=citeseer_whole  69s
+2026-10-17 21:59:36    attacked cora/1.0  shadow=citeseer_whole  71s
+2026-10-17 22:00:44    attacked citeseer/whole  shadow=cora_whole  68s
+2026-10-17 22:01:50    attacked citeseer/0.25  shadow=cora_whole  66s
+2026-10-17 22:02:56    attacked citeseer/0.5  shadow=cora_whole  66s
+2026-10-17 22:04:01    attacked citeseer/1.0  shadow=cora_whole  65s
+2026-10-17 22:04:01    cleaned 24 attack_dataset files
+2026-10-17 22:04:01    gcond done in 9.8 min
+2026-10-17 22:04:01  ----- goren (GOREN Benchmarking) -----
+2026-10-17 22:04:05    built cora_goren_whole
+2026-10-17 22:04:09    built cora_goren_0.3_bl
+2026-10-17 22:04:13    built cora_goren_0.3_goren
+2026-10-17 22:04:17    built cora_goren_0.5_bl
+2026-10-17 22:04:21    built cora_goren_0.5_goren
+2026-10-17 22:04:24    built cora_goren_0.7_bl
+2026-10-17 22:04:28    built cora_goren_0.7_goren
+2026-10-17 22:04:35    built citeseer_goren_whole
+2026-10-17 22:04:42    built citeseer_goren_0.3_bl
+2026-10-17 22:04:48    built citeseer_goren_0.3_goren
+2026-10-17 22:04:55    built citeseer_goren_0.5_bl
+2026-10-17 22:05:02    built citeseer_goren_0.5_goren
+2026-10-17 22:05:09    built citeseer_goren_0.7_bl
+2026-10-17 22:05:16    built citeseer_goren_0.7_goren
+2026-10-17 22:06:24    attacked cora/whole  shadow=citeseer_whole  68s
+2026-10-17 22:07:34    attacked cora/0.3_bl  shadow=citeseer_whole  70s
+2026-10-17 22:08:41    attacked cora/0.3_goren  shadow=citeseer_whole  67s
+2026-10-17 22:09:52    attacked cora/0.5_bl  shadow=citeseer_whole  71s
+2026-10-17 22:10:59    attacked cora/0.5_goren  shadow=citeseer_whole  67s
+2026-10-17 22:12:08    attacked cora/0.7_bl  shadow=citeseer_whole  68s
+2026-10-17 22:13:15    attacked cora/0.7_goren  shadow=citeseer_whole  67s
+2026-10-17 22:14:21    attacked citeseer/whole  shadow=cora_whole  66s
+2026-10-17 22:15:30    attacked citeseer/0.3_bl  shadow=cora_whole  69s
+2026-10-17 22:16:35    attacked citeseer/0.3_goren  shadow=cora_whole  65s
+2026-10-17 22:17:40    attacked citeseer/0.5_bl  shadow=cora_whole  66s
+2026-10-17 22:18:46    attacked citeseer/0.5_goren  shadow=cora_whole  66s
+2026-10-17 22:19:52    attacked citeseer/0.7_bl  shadow=cora_whole  66s
+2026-10-17 22:20:58    attacked citeseer/0.7_goren  shadow=cora_whole  66s
+2026-10-17 22:20:58    cleaned 42 attack_dataset files
+2026-10-17 22:20:58    goren done in 17.0 min
+2026-10-17 22:20:58  ----- kron (KRON Benchmarking) -----
+2026-10-17 22:21:03    built cora_kron_whole
+2026-10-17 22:21:07    built cora_kron_0.3
+2026-10-17 22:21:11    built cora_kron_0.5
+2026-10-17 22:21:15    built cora_kron_0.7
+2026-10-17 22:21:22    built citeseer_kron_whole
+2026-10-17 22:21:29    built citeseer_kron_0.3
+2026-10-17 22:21:35    built citeseer_kron_0.5
+2026-10-17 22:21:42    built citeseer_kron_0.7
+2026-10-17 22:22:50    attacked cora/whole  shadow=citeseer_whole  68s
+2026-10-17 22:24:01    attacked cora/0.3  shadow=citeseer_whole  71s
+2026-10-17 22:25:14    attacked cora/0.5  shadow=citeseer_whole  73s
+2026-10-17 22:26:20    attacked cora/0.7  shadow=citeseer_whole  66s
+2026-10-17 22:27:27    attacked citeseer/whole  shadow=cora_whole  67s
+2026-10-17 22:28:34    attacked citeseer/0.3  shadow=cora_whole  67s
+2026-10-17 22:29:43    attacked citeseer/0.5  shadow=cora_whole  69s
+2026-10-17 22:30:51    attacked citeseer/0.7  shadow=cora_whole  68s
+2026-10-17 22:30:51    cleaned 24 attack_dataset files
+2026-10-17 22:30:51    kron done in 9.9 min
+2026-10-17 22:30:51  ----- ugc (UGC Benchmarking) -----
+2026-10-17 22:30:57    built cora_ugc_whole
+2026-10-17 22:31:01    built cora_ugc_30
+2026-10-17 22:31:04    built cora_ugc_50
+2026-10-17 22:31:08    built cora_ugc_70
+2026-10-17 22:31:15    built citeseer_ugc_whole
+2026-10-17 22:31:22    built citeseer_ugc_30
+2026-10-17 22:31:28    built citeseer_ugc_50
+2026-10-17 22:31:35    built citeseer_ugc_70
+2026-10-17 22:32:43    attacked cora/whole  shadow=citeseer_whole  68s
+2026-10-17 22:33:52    attacked cora/30  shadow=citeseer_whole  69s
+2026-10-17 22:35:02    attacked cora/50  shadow=citeseer_whole  70s
+2026-10-17 22:36:10    attacked cora/70  shadow=citeseer_whole  69s
+2026-10-17 22:37:17    attacked citeseer/whole  shadow=cora_whole  66s
+2026-10-17 22:38:24    attacked citeseer/30  shadow=cora_whole  67s
+2026-10-17 22:39:34    attacked citeseer/50  shadow=cora_whole  70s
+2026-10-17 22:40:39    attacked citeseer/70  shadow=cora_whole  66s
+2026-10-17 22:40:39    cleaned 24 attack_dataset files
+2026-10-17 22:40:39    ugc done in 9.8 min
+2026-10-17 22:40:39  ALL DONE

@@ -1,0 +1,150 @@
+target=cora_goren_0.5_goren  attack training = 5278 pairs, testing = 5278 pairs (2639 linked / 2639 unlinked), train_fraction=0.5
+shadow=citeseer_goren_0.5_goren  (its attack dataset is used unsplit)
+attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+
+====================================================================
+Attack-0   K = (x,x,x)
+====================================================================
+  selected metric : correlation
+  AUC             : 0.9137
+  K-means (K=2)   : precision=0.8285  recall=0.9045  f1=0.8649
+  Table 5, AUC per Correlation distance level:
+    0.00-0.01  n=2354   pos=2018   AUC=0.6118
+    0.01-0.02  n=67     pos=51     AUC=0.5221
+    0.02-0.03  n=47     pos=38     AUC=0.7836
+    0.03-0.04  n=34     pos=24     AUC=0.5875
+
+====================================================================
+Attack-1   K = (x,x,Y)
+====================================================================
+  training data   : 9104 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=9104  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8991 +/- 0.0042
+  accuracy        : 0.8457 +/- 0.0033
+  precision/recall/f1 : 0.8480 / 0.8426 / 0.8452
+
+====================================================================
+Attack-2   K = (Y,x,x)
+====================================================================
+  selected metric : target_correlation
+  AUC             : 0.9137
+  K-means (K=2)   : precision=0.8285  recall=0.9045  f1=0.8649
+
+====================================================================
+Attack-3   K = (x,Y,x)
+====================================================================
+  training data   : 5278 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    features=40  train=5278  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 40
+  AUC             : 0.9244 +/- 0.0003
+  accuracy        : 0.8727 +/- 0.0015
+  precision/recall/f1 : 0.8404 / 0.9202 / 0.8785
+
+====================================================================
+Attack-4   K = (x,Y,Y)
+====================================================================
+  training data   : 14382 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=14382  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8757 +/- 0.0042
+  accuracy        : 0.8509 +/- 0.0023
+  precision/recall/f1 : 0.8430 / 0.8624 / 0.8526
+
+====================================================================
+Attack-5   K = (Y,x,Y)
+====================================================================
+  training data   : 9104 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=9104  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9327 +/- 0.0007
+  accuracy        : 0.8585 +/- 0.0049
+  precision/recall/f1 : 0.8606 / 0.8559 / 0.8580
+
+====================================================================
+Attack-6   K = (Y,Y,x)
+====================================================================
+  training data   : 5278 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    features=88  train=5278  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 88
+  AUC             : 0.9422 +/- 0.0006
+  accuracy        : 0.8789 +/- 0.0008
+  precision/recall/f1 : 0.8607 / 0.9043 / 0.8819
+
+====================================================================
+Attack-7   K = (Y,Y,Y)
+====================================================================
+  training data   : 14382 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=14382  test=5278
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9315 +/- 0.0006
+  accuracy        : 0.8664 +/- 0.0022
+  precision/recall/f1 : 0.8489 / 0.8917 / 0.8697
+
+====================================================================
+Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+====================================================================
+    partial graph: 2639 edges over 2212 nodes
+  features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+  AUC             : 0.6329 +/- 0.0001
+  precision/recall/f1 : 0.5078 / 0.8195 / 0.6217
+
+====================================================================
+SUMMARY   target=cora_goren_0.5_goren   shadow=citeseer_goren_0.5_goren
+====================================================================
+  attack   K=(F,A*,D)    AUC       std      runs  
+  Attack-0  (x,x,x)       0.9137    -        1     
+  Attack-1  (x,x,Y)       0.8991    0.0042   5     
+  Attack-2  (Y,x,x)       0.9137    -        1     
+  Attack-3  (x,Y,x)       0.9244    0.0003   5     
+  Attack-4  (x,Y,Y)       0.8757    0.0042   5     
+  Attack-5  (Y,x,Y)       0.9327    0.0007   5     
+  Attack-6  (Y,Y,x)       0.9422    0.0006   5     
+  Attack-7  (Y,Y,Y)       0.9315    0.0006   5     
+  link-pred (baseline)    0.6329    0.0001   5     
+
+  8/8 attacks beat the link-prediction baseline
+
+[saved] /Users/chitraansh.pandey/Downloads/GNN DP/Benchmarking/GOREN benchmarking/results/attacks/cora_goren_0.5_goren__citeseer_goren_0.5_goren__goren_A_0.5_goren.json
+
+===== STDERR =====
+/Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/lib/python3.9/site-packages/scipy/spatial/distance.py:647: RuntimeWarning: invalid value encountered in scalar divide
+  dist = 1.0 - uv / math.sqrt(uu * vv)
+/Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/lib/python3.9/site-packages/scipy/spatial/distance.py:647: RuntimeWarning: invalid value encountered in scalar divide
+  dist = 1.0 - uv / math.sqrt(uu * vv)

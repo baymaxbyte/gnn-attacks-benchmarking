@@ -1,0 +1,137 @@
+{
+  "repeats": 5,
+  "rows": [
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "beta": 0.001,
+      "paper_target": 85.79,
+      "notebook": {
+        "mean": 86.01181683899557,
+        "std": 0.1538601673264369,
+        "purity": 61.89069423929099,
+        "nonempty": 594,
+        "max_size": 81,
+        "coarse_edges": 3799
+      },
+      "paper_variant": {
+        "mean": 83.72230428360413,
+        "std": 0.3314446923532797,
+        "purity": 59.37961595273264,
+        "nonempty": 585,
+        "max_size": 39,
+        "coarse_edges": 4151
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "beta": 0.001,
+      "paper_target": 81.46,
+      "notebook": {
+        "mean": 81.4549483013294,
+        "std": 0.5951651290371011,
+        "purity": 54.28360413589365,
+        "nonempty": 250,
+        "max_size": 72,
+        "coarse_edges": 3005
+      },
+      "paper_variant": {
+        "mean": 78.50073855243723,
+        "std": 0.47658096912560133,
+        "purity": 51.994091580502214,
+        "nonempty": 241,
+        "max_size": 72,
+        "coarse_edges": 2913
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "beta": 0.001,
+      "paper_target": 80.01,
+      "notebook": {
+        "mean": 68.72968980797637,
+        "std": 0.9940048818589349,
+        "purity": 48.85524372230428,
+        "nonempty": 131,
+        "max_size": 89,
+        "coarse_edges": 2196
+      },
+      "paper_variant": {
+        "mean": 59.46085672082718,
+        "std": 0.3952463267432668,
+        "purity": 49.70457902511078,
+        "nonempty": 130,
+        "max_size": 154,
+        "coarse_edges": 1856
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "beta": 0.01,
+      "paper_target": 74.64,
+      "notebook": {
+        "mean": 73.38142470694319,
+        "std": 0.32683564097548934,
+        "purity": 44.093778178539225,
+        "nonempty": 368,
+        "max_size": 1622,
+        "coarse_edges": 622
+      },
+      "paper_variant": {
+        "mean": 73.35136759843704,
+        "std": 0.42617545836528015,
+        "purity": 39.13435527502254,
+        "nonempty": 414,
+        "max_size": 2311,
+        "coarse_edges": 618
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.1,
+      "beta": 0.01,
+      "paper_target": 73.36,
+      "notebook": {
+        "mean": 72.5278028253682,
+        "std": 0.37105619145202134,
+        "purity": 56.627592425608654,
+        "nonempty": 321,
+        "max_size": 118,
+        "coarse_edges": 2656
+      },
+      "paper_variant": {
+        "mean": 72.44364292155095,
+        "std": 0.16175081511360073,
+        "purity": 54.97445145776976,
+        "nonempty": 307,
+        "max_size": 93,
+        "coarse_edges": 2628
+      }
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.05,
+      "beta": 0.001,
+      "paper_target": 71.02,
+      "notebook": {
+        "mean": 65.07965133754132,
+        "std": 0.7552412996472193,
+        "purity": 50.13525698827773,
+        "nonempty": 163,
+        "max_size": 184,
+        "coarse_edges": 2075
+      },
+      "paper_variant": {
+        "mean": 69.40186354072738,
+        "std": 0.27808917357908924,
+        "purity": 47.37000300571085,
+        "nonempty": 152,
+        "max_size": 316,
+        "coarse_edges": 1527
+      }
+    }
+  ]
+}

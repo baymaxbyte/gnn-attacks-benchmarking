@@ -1,0 +1,17 @@
+dataset,setting,attack,knowledge,auc_coarsened_shadow,auc_whole_shadow,delta_whole_minus_coarsened
+citeseer,whole,attack-1,x/x/Y,0.966477,0.966477,0.0
+citeseer,whole,attack-4,x/Y/Y,0.972043,0.972043,0.0
+citeseer,whole,attack-5,Y/x/Y,0.96526,0.96526,0.0
+citeseer,whole,attack-7,Y/Y/Y,0.976613,0.976613,0.0
+citeseer,0.25,attack-1,x/x/Y,0.972542,0.917029,-0.055513
+citeseer,0.25,attack-4,x/Y/Y,0.975104,0.967995,-0.007109
+citeseer,0.25,attack-5,Y/x/Y,0.973315,0.94797,-0.025345
+citeseer,0.25,attack-7,Y/Y/Y,0.979334,0.972931,-0.006403
+citeseer,0.5,attack-1,x/x/Y,0.973666,0.945233,-0.028433
+citeseer,0.5,attack-4,x/Y/Y,0.975284,0.968347,-0.006937
+citeseer,0.5,attack-5,Y/x/Y,0.974235,0.957764,-0.016471
+citeseer,0.5,attack-7,Y/Y/Y,0.979797,0.975214,-0.004583
+citeseer,1.0,attack-1,x/x/Y,0.941447,0.962804,0.021357
+citeseer,1.0,attack-4,x/Y/Y,0.954915,0.966328,0.011413
+citeseer,1.0,attack-5,Y/x/Y,0.957841,0.962221,0.00438
+citeseer,1.0,attack-7,Y/Y/Y,0.96802,0.972578,0.004558

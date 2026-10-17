@@ -1,0 +1,406 @@
+{
+  "purity": [
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "k": 812,
+      "purity": 58.67799113737075,
+      "random_purity": 48.57459379615953,
+      "mode_a": 85.13663220088625,
+      "mode_b": 54.59379615952732,
+      "mode_b_frac_of_ceiling": 0.930396475770925
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "k": 270,
+      "purity": 52.47415066469719,
+      "random_purity": 36.46971935007385,
+      "mode_a": 81.74298375184638,
+      "mode_b": 44.6344165435746,
+      "mode_b_frac_of_ceiling": 0.850598170302604
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "k": 135,
+      "purity": 50.59084194977843,
+      "random_purity": 33.079763663220085,
+      "mode_a": 65.7496307237814,
+      "mode_b": 36.25553914327917,
+      "mode_b_frac_of_ceiling": 0.7166423357664234
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "k": 998,
+      "purity": 63.0297565374211,
+      "random_purity": 48.46408175533513,
+      "mode_a": 75.38623384430417,
+      "mode_b": 59.993988578298776,
+      "mode_b_frac_of_ceiling": 0.9518359561278017
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.1,
+      "k": 332,
+      "purity": 56.02645025548543,
+      "random_purity": 35.677787796813945,
+      "mode_a": 72.8644424406372,
+      "mode_b": 50.42380522993688,
+      "mode_b_frac_of_ceiling": 0.8999999999999999
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.05,
+      "k": 166,
+      "purity": 46.979260595130754,
+      "random_purity": 30.30958821761346,
+      "mode_a": 69.52509768560263,
+      "mode_b": 39.0892696122633,
+      "mode_b_frac_of_ceiling": 0.8320537428023032
+    }
+  ],
+  "coverage": [
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "original": [
+        351,
+        217,
+        418,
+        818,
+        426,
+        298,
+        180
+      ],
+      "Y_c": [
+        70,
+        32,
+        98,
+        206,
+        96,
+        56,
+        33
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "original": [
+        351,
+        217,
+        418,
+        818,
+        426,
+        298,
+        180
+      ],
+      "Y_c": [
+        40,
+        22,
+        54,
+        76,
+        32,
+        19,
+        13
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "original": [
+        351,
+        217,
+        418,
+        818,
+        426,
+        298,
+        180
+      ],
+      "Y_c": [
+        17,
+        5,
+        19,
+        45,
+        21,
+        15,
+        6
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.3,
+      "original": [
+        264,
+        590,
+        668,
+        701,
+        596,
+        508
+      ],
+      "Y_c": [
+        48,
+        140,
+        190,
+        171,
+        123,
+        117
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.1,
+      "original": [
+        264,
+        590,
+        668,
+        701,
+        596,
+        508
+      ],
+      "Y_c": [
+        20,
+        57,
+        91,
+        53,
+        55,
+        27
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    },
+    {
+      "dataset": "citeseer",
+      "r": 0.05,
+      "original": [
+        264,
+        590,
+        668,
+        701,
+        596,
+        508
+      ],
+      "Y_c": [
+        4,
+        34,
+        40,
+        38,
+        21,
+        16
+      ],
+      "missing_classes": [],
+      "unreachable_nodes": 0
+    }
+  ],
+  "seeds": [
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "seed": 1,
+      "purity": 50.59084194977843,
+      "nonempty": 128,
+      "max_size": 131,
+      "coarse_edges": 2010,
+      "mode_a_mean": 65.9231905465288,
+      "mode_a_std": 2.611741136482496
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "seed": 2,
+      "purity": 50.258493353028065,
+      "nonempty": 129,
+      "max_size": 125,
+      "coarse_edges": 1970,
+      "mode_a_mean": 71.66174298375184,
+      "mode_a_std": 0.771990460421759
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "seed": 3,
+      "purity": 49.77843426883309,
+      "nonempty": 132,
+      "max_size": 143,
+      "coarse_edges": 2019,
+      "mode_a_mean": 71.10044313146233,
+      "mode_a_std": 1.5596576834018092
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "seed": 7,
+      "purity": 47.156573116691284,
+      "nonempty": 131,
+      "max_size": 182,
+      "coarse_edges": 1760,
+      "mode_a_mean": 69.85228951255539,
+      "mode_a_std": 2.6776574847897976
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "seed": 42,
+      "purity": 53.028064992614475,
+      "nonempty": 130,
+      "max_size": 173,
+      "coarse_edges": 1943,
+      "mode_a_mean": 67.74741506646971,
+      "mode_a_std": 1.095848566676007
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "seed": 1,
+      "purity": 52.47415066469719,
+      "nonempty": 256,
+      "max_size": 99,
+      "coarse_edges": 3049,
+      "mode_a_mean": 82.06056129985228,
+      "mode_a_std": 0.44521910998822867
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "seed": 2,
+      "purity": 52.06794682422452,
+      "nonempty": 246,
+      "max_size": 101,
+      "coarse_edges": 2901,
+      "mode_a_mean": 77.82127031019203,
+      "mode_a_std": 0.6177407286950197
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "seed": 3,
+      "purity": 53.43426883308715,
+      "nonempty": 244,
+      "max_size": 97,
+      "coarse_edges": 2949,
+      "mode_a_mean": 80.34711964549483,
+      "mode_a_std": 0.8415609768534201
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "seed": 7,
+      "purity": 52.806499261447556,
+      "nonempty": 250,
+      "max_size": 86,
+      "coarse_edges": 2939,
+      "mode_a_mean": 77.63663220088627,
+      "mode_a_std": 0.4477845314984969
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "seed": 42,
+      "purity": 51.29246676514032,
+      "nonempty": 252,
+      "max_size": 121,
+      "coarse_edges": 2943,
+      "mode_a_mean": 73.67799113737075,
+      "mode_a_std": 0.3443587363921681
+    }
+  ],
+  "iterations": [
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "iters": 25,
+      "purity": 49.556868537666176,
+      "nonempty": 130,
+      "max_size": 162,
+      "coarse_edges": 2056,
+      "mode_a_mean": 66.56573116691285,
+      "mode_a_std": 1.978245480661608
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "iters": 50,
+      "purity": 50.59084194977843,
+      "nonempty": 128,
+      "max_size": 131,
+      "coarse_edges": 2010,
+      "mode_a_mean": 65.9231905465288,
+      "mode_a_std": 2.611741136482496
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "iters": 100,
+      "purity": 47.52584933530281,
+      "nonempty": 130,
+      "max_size": 179,
+      "coarse_edges": 1957,
+      "mode_a_mean": 66.73559822747416,
+      "mode_a_std": 1.598654712633452
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "iters": 200,
+      "purity": 47.784342688330874,
+      "nonempty": 126,
+      "max_size": 110,
+      "coarse_edges": 1966,
+      "mode_a_mean": 68.75923190546528,
+      "mode_a_std": 1.5497287085910258
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "iters": 25,
+      "purity": 52.73264401772526,
+      "nonempty": 253,
+      "max_size": 84,
+      "coarse_edges": 3107,
+      "mode_a_mean": 77.2821270310192,
+      "mode_a_std": 0.24650397737486562
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "iters": 50,
+      "purity": 52.47415066469719,
+      "nonempty": 256,
+      "max_size": 99,
+      "coarse_edges": 3049,
+      "mode_a_mean": 82.06056129985228,
+      "mode_a_std": 0.44521910998822867
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "iters": 100,
+      "purity": 50.7754800590842,
+      "nonempty": 242,
+      "max_size": 93,
+      "coarse_edges": 2852,
+      "mode_a_mean": 79.61595273264402,
+      "mode_a_std": 0.5758814974776351
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "iters": 200,
+      "purity": 49.51994091580502,
+      "nonempty": 240,
+      "max_size": 69,
+      "coarse_edges": 2863,
+      "mode_a_mean": 76.89069423929098,
+      "mode_a_std": 0.5134931549710101
+    }
+  ]
+}

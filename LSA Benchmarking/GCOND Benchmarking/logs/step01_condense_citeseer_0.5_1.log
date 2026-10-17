@@ -1,0 +1,39 @@
+Namespace(gpu_id=0, dataset='citeseer', dis_metric='ours', epochs=600, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=0.5, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (120, 120)
+#edges in adj_train: 16.0
+adj_syn: (60, 60) feat_syn: torch.Size([60, 3703])
+Epoch 0, loss_avg: 1.7745743195215862
+Epoch 50, loss_avg: 0.31040798156361143
+Epoch 100, loss_avg: 0.23780923957083316
+Epoch 150, loss_avg: 0.2266074132492473
+Epoch 200, loss_avg: 0.2266865422285873
+Epoch 250, loss_avg: 0.22591036454996483
+Epoch 300, loss_avg: 0.2227017411444373
+Epoch 350, loss_avg: 0.2246369676043603
+Epoch 400, loss_avg: 0.23172008818906495
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.4911 accuracy= 0.9250
+Test set results: loss= 1.1150 accuracy= 0.7180
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.5909 accuracy= 0.9250
+Test set results: loss= 1.2429 accuracy= 0.7150
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.4181 accuracy= 0.9167
+Test set results: loss= 1.0426 accuracy= 0.7260
+Train/Test Mean Accuracy: [array([0.92222222, 0.71966667]), array([0.00392837, 0.0046428 ])]
+Epoch 450, loss_avg: 0.21444645237245064
+Epoch 500, loss_avg: 0.217205872606889
+Epoch 550, loss_avg: 0.21767277543533567
+Epoch 600, loss_avg: 0.21454462501278398
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.4510 accuracy= 0.9333
+Test set results: loss= 1.0781 accuracy= 0.7230
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.3323 accuracy= 0.9000
+Test set results: loss= 0.9639 accuracy= 0.7240
+[saved] saved_repro/{adj,feat,label}_citeseer_0.5_1.pt  adj=(60, 60) feat=(60, 3703)
+Train set results: loss= 0.4067 accuracy= 0.9250
+Test set results: loss= 1.0310 accuracy= 0.7150
+Train/Test Mean Accuracy: [array([0.91944444, 0.72066667]), array([0.01416394, 0.00402768])]
+
+===== STDERR =====

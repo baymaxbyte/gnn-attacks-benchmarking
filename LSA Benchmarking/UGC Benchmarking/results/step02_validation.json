@@ -1,0 +1,361 @@
+{
+  "repeats": 5,
+  "gate_tolerance": 2.0,
+  "canonical_seed": 0,
+  "alpha": {
+    "cora": 0.19,
+    "citeseer": 0.26
+  },
+  "boxes": [
+    {
+      "dataset": "cora",
+      "ratio": null,
+      "alpha": 0.19,
+      "k": null,
+      "bin_width": null,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.66666666666666,
+      "test_acc_std": 0.33945005147821505,
+      "test_acc_runs": [
+        88.3333,
+        89.2593,
+        88.7037,
+        88.3333,
+        88.7037
+      ],
+      "best_val_mean": 86.7527687549591,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_whole.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2583,
+        "mean_max_posterior": 0.9162326455116272,
+        "canonical_test_acc": 88.33333333333333
+      },
+      "seconds": 101.8
+    },
+    {
+      "dataset": "cora",
+      "ratio": 30,
+      "alpha": 0.19,
+      "k": 1896,
+      "bin_width": 0.00185394287109375,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.81481481481481,
+      "test_acc_std": 0.4444444444444459,
+      "test_acc_runs": [
+        86.1111,
+        87.2222,
+        86.4815,
+        87.037,
+        87.2222
+      ],
+      "best_val_mean": 83.98524165153503,
+      "paper_mean": 86.3,
+      "delta_vs_paper": 0.5148148148148124,
+      "coarse": {
+        "k": 1899,
+        "coarse_edges": 5510,
+        "achieved_ratio": 0.2987444608567208,
+        "trainable_supernodes": 1312,
+        "max_supernode_size": 6,
+        "mean_supernode_size": 1.426013708114624,
+        "singleton_supernodes": 1293
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_30.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2588,
+        "mean_max_posterior": 0.9181062579154968,
+        "canonical_test_acc": 86.11111111111111
+      },
+      "seconds": 92.1
+    },
+    {
+      "dataset": "cora",
+      "ratio": 50,
+      "alpha": 0.19,
+      "k": 1354,
+      "bin_width": 0.0041713714599609375,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.18518518518519,
+      "test_acc_std": 0.30089031128281524,
+      "test_acc_runs": [
+        86.4815,
+        86.4815,
+        85.7407,
+        85.9259,
+        86.2963
+      ],
+      "best_val_mean": 84.35424327850342,
+      "paper_mean": 86.3,
+      "delta_vs_paper": -0.11481481481480671,
+      "coarse": {
+        "k": 1356,
+        "coarse_edges": 5507,
+        "achieved_ratio": 0.4992614475627769,
+        "trainable_supernodes": 1006,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.997050166130066,
+        "singleton_supernodes": 676
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_50.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2578,
+        "mean_max_posterior": 0.9103513360023499,
+        "canonical_test_acc": 86.48148148148148
+      },
+      "seconds": 84.3
+    },
+    {
+      "dataset": "cora",
+      "ratio": 70,
+      "alpha": 0.19,
+      "k": 812,
+      "bin_width": 0.009775000777111648,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 80.37037037037037,
+      "test_acc_std": 0.6197481678030197,
+      "test_acc_runs": [
+        79.6296,
+        79.6296,
+        80.7407,
+        80.7407,
+        81.1111
+      ],
+      "best_val_mean": 78.15498232841492,
+      "paper_mean": 84.63,
+      "delta_vs_paper": -4.259629629629629,
+      "coarse": {
+        "k": 807,
+        "coarse_edges": 5355,
+        "achieved_ratio": 0.7019940915805022,
+        "trainable_supernodes": 673,
+        "max_supernode_size": 14,
+        "mean_supernode_size": 3.355638265609741,
+        "singleton_supernodes": 265
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_70.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2579,
+        "mean_max_posterior": 0.9039616584777832,
+        "canonical_test_acc": 79.62962962962963
+      },
+      "seconds": 76.1
+    },
+    {
+      "dataset": "citeseer",
+      "ratio": null,
+      "alpha": 0.26,
+      "k": null,
+      "bin_width": null,
+      "feature_dim_augmented": 7030,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 75.24096385542168,
+      "test_acc_std": 0.568312116388949,
+      "test_acc_runs": [
+        76.0542,
+        74.5482,
+        75.753,
+        74.8494,
+        75.0
+      ],
+      "best_val_mean": 74.92492437362671,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_whole.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3006,
+        "mean_max_posterior": 0.7672185301780701,
+        "canonical_test_acc": 76.05421686746988
+      },
+      "seconds": 129.0
+    },
+    {
+      "dataset": "citeseer",
+      "ratio": 30,
+      "alpha": 0.26,
+      "k": 2329,
+      "bin_width": 0.0019308643510343995,
+      "feature_dim_augmented": 7030,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 73.73493975903614,
+      "test_acc_std": 0.3101093415959931,
+      "test_acc_runs": [
+        74.0964,
+        73.7952,
+        73.9458,
+        73.6446,
+        73.1928
+      ],
+      "best_val_mean": 71.80180072784424,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 2329,
+        "coarse_edges": 4903,
+        "achieved_ratio": 0.2999699428914938,
+        "trainable_supernodes": 1585,
+        "max_supernode_size": 5,
+        "mean_supernode_size": 1.428510069847107,
+        "singleton_supernodes": 1588
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_30.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3004,
+        "mean_max_posterior": 0.6808398962020874,
+        "canonical_test_acc": 74.09638554216868
+      },
+      "seconds": 119.4
+    },
+    {
+      "dataset": "citeseer",
+      "ratio": 50,
+      "alpha": 0.26,
+      "k": 1664,
+      "bin_width": 0.004344444789827399,
+      "feature_dim_augmented": 7030,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 70.48192771084338,
+      "test_acc_std": 0.6999367493145925,
+      "test_acc_runs": [
+        70.6325,
+        70.6325,
+        71.0843,
+        70.9337,
+        69.1265
+      ],
+      "best_val_mean": 69.39939975738525,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 1661,
+        "coarse_edges": 4966,
+        "achieved_ratio": 0.500751427712654,
+        "trainable_supernodes": 1261,
+        "max_supernode_size": 10,
+        "mean_supernode_size": 2.0030102729797363,
+        "singleton_supernodes": 766
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_50.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3004,
+        "mean_max_posterior": 0.7646218538284302,
+        "canonical_test_acc": 70.63253012048193
+      },
+      "seconds": 109.9
+    },
+    {
+      "dataset": "citeseer",
+      "ratio": 70,
+      "alpha": 0.26,
+      "k": 998,
+      "bin_width": 0.00951363581680198,
+      "feature_dim_augmented": 7030,
+      "split": {
+        "scheme": "paper",
+        "train": 1997,
+        "val": 666,
+        "test": 664
+      },
+      "test_acc_mean": 67.31927710843374,
+      "test_acc_std": 1.1858445593391287,
+      "test_acc_runs": [
+        68.5241,
+        67.9217,
+        68.3735,
+        65.9639,
+        65.8133
+      ],
+      "best_val_mean": 66.39639854431152,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 1001,
+        "coarse_edges": 4838,
+        "achieved_ratio": 0.6991283438533213,
+        "trainable_supernodes": 847,
+        "max_supernode_size": 15,
+        "mean_supernode_size": 3.323676347732544,
+        "singleton_supernodes": 279
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/citeseer_70.npy",
+        "shape": [
+          3327,
+          6
+        ],
+        "distinct_rows": 3000,
+        "mean_max_posterior": 0.6023096442222595,
+        "canonical_test_acc": 68.52409638554217
+      },
+      "seconds": 98.8
+    }
+  ]
+}

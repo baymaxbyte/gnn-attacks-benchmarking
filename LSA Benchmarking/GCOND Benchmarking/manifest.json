@@ -1,0 +1,268 @@
+{
+  "pipeline": "coarsen_leakage",
+  "steps": [
+    {
+      "step": "00_scaffold",
+      "summary": "Pipeline scaffold, artifact conventions, corrected threat model recorded",
+      "timestamp": "2026-09-23 12:53:01",
+      "inputs": [
+        "Benchmarking/lsa_paper/lsa (imported, not copied)"
+      ],
+      "outputs": [
+        "Benchmarking/coarsen_leakage/README.md",
+        "Benchmarking/coarsen_leakage/common.py",
+        "Benchmarking/coarsen_leakage/manifest.json"
+      ],
+      "numbers": {
+        "cora_nodes": 2708,
+        "cora_edges": 5278,
+        "cora_features": 1433,
+        "cora_classes": 7
+      },
+      "notes": "Threat model corrected: coarsening is INTERNAL to the black box. Adversary queries original node ids, holds original 1433-dim attributes as F, and attacks ORIGINAL Cora edges. The earlier ugc_cora_r50 / gcond_cora_r0.5_eps* runs in lsa_paper/result attacked the COARSE graph instead and are not the headline. Coarse graphs are saved in lsa_paper's external npz format so downstream stages need no new code."
+    },
+    {
+      "step": "01_condense_gcond",
+      "summary": "Re-ran GCond condensation for 6 (dataset, r) pairs using the authors' run_main.sh hyperparameters",
+      "timestamp": "2026-09-23 15:05:23",
+      "inputs": [
+        "GCond/GCond-main/train_gcond_transduct.py",
+        "GCond/GCond-main/scripts/run_main.sh (hyperparameters)"
+      ],
+      "outputs": [
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_cora_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_cora_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_cora_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_cora_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_cora_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_cora_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_cora_1.0_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_cora_1.0_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_cora_1.0_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_citeseer_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_citeseer_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_citeseer_0.25_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_citeseer_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_citeseer_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_citeseer_0.5_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/adj_citeseer_1.0_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/feat_citeseer_1.0_1.pt",
+        "Benchmarking/coarsen_leakage/artifacts/condensed/label_citeseer_1.0_1.pt"
+      ],
+      "numbers": {
+        "cora_r0.25": {
+          "paper_r": "1.3%",
+          "nodes": 35,
+          "seconds": 183.4,
+          "gcond_internal_test_mean": 0.8073,
+          "gcond_internal_test_std": 0.0069
+        },
+        "cora_r0.5": {
+          "paper_r": "2.6%",
+          "nodes": 70,
+          "seconds": 388.7,
+          "gcond_internal_test_mean": 0.817,
+          "gcond_internal_test_std": 0.0037
+        },
+        "cora_r1.0": {
+          "paper_r": "5.2%",
+          "nodes": 140,
+          "seconds": 2221.5,
+          "gcond_internal_test_mean": 0.812,
+          "gcond_internal_test_std": 0.0113
+        },
+        "citeseer_r0.25": {
+          "paper_r": "0.9%",
+          "nodes": 30,
+          "seconds": 261.2,
+          "gcond_internal_test_mean": 0.711,
+          "gcond_internal_test_std": 0.0067
+        },
+        "citeseer_r0.5": {
+          "paper_r": "1.8%",
+          "nodes": 60,
+          "seconds": 617.4,
+          "gcond_internal_test_mean": 0.7207,
+          "gcond_internal_test_std": 0.004
+        },
+        "citeseer_r1.0": {
+          "paper_r": "3.6%",
+          "nodes": 120,
+          "seconds": 2140.9,
+          "gcond_internal_test_mean": 0.716,
+          "gcond_internal_test_std": 0.0008
+        }
+      },
+      "notes": "Condensation config verbatim from the authors' scripts/run_main.sh: nlayers=2, sgc=1, lr_feat=1e-4, lr_adj=1e-4, seed=1, epochs=600. The paper gives only search ranges, never the chosen values. gcond_internal_* is GCond's own evaluation, recorded for reference only; the black box re-evaluates in step 02 with the paper's evaluation spec (2-layer GCN, 256 hidden, dropout 0, weight decay 5e-4, 600 epochs, 10 repeats). Authors' saved_ours/ bundle deliberately NOT used."
+    },
+    {
+      "step": "02_blackbox_gcond",
+      "summary": "Built and validated 8 GCond black boxes against Table 2; largest deviation 2.12 points",
+      "timestamp": "2026-09-23 15:28:13",
+      "inputs": [
+        "Benchmarking/coarsen_leakage/artifacts/condensed/*.pt",
+        "GCond/GCond-main/models/gcn.py",
+        "2110.07580v4.cleaned.pdf (Appendix A.2 evaluation spec)"
+      ],
+      "outputs": [
+        "Benchmarking/lsa_paper/data/pred/cora_gcondbb_whole_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/cora_gcondbb_0.25_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/cora_gcondbb_0.5_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/cora_gcondbb_1.0_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/citeseer_gcondbb_whole_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/citeseer_gcondbb_0.25_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/citeseer_gcondbb_0.5_pred.pkl",
+        "Benchmarking/lsa_paper/data/pred/citeseer_gcondbb_1.0_pred.pkl",
+        "Benchmarking/coarsen_leakage/results/step02_validation.json"
+      ],
+      "numbers": {
+        "cora_whole": {
+          "ours_mean": 80.99,
+          "ours_std": 0.29,
+          "paper_mean": 81.2,
+          "delta": -0.21,
+          "train_nodes": 2708
+        },
+        "cora_0.25": {
+          "ours_mean": 80.37,
+          "ours_std": 0.59,
+          "paper_mean": 79.8,
+          "delta": 0.57,
+          "train_nodes": 35
+        },
+        "cora_0.5": {
+          "ours_mean": 80.89,
+          "ours_std": 0.5,
+          "paper_mean": 80.1,
+          "delta": 0.79,
+          "train_nodes": 70
+        },
+        "cora_1.0": {
+          "ours_mean": 80.13,
+          "ours_std": 0.5,
+          "paper_mean": 79.3,
+          "delta": 0.83,
+          "train_nodes": 140
+        },
+        "citeseer_whole": {
+          "ours_mean": 71.98,
+          "ours_std": 0.28,
+          "paper_mean": 71.7,
+          "delta": 0.28,
+          "train_nodes": 3327
+        },
+        "citeseer_0.25": {
+          "ours_mean": 69.85,
+          "ours_std": 0.52,
+          "paper_mean": 70.5,
+          "delta": -0.65,
+          "train_nodes": 30
+        },
+        "citeseer_0.5": {
+          "ours_mean": 70.89,
+          "ours_std": 0.51,
+          "paper_mean": 70.6,
+          "delta": 0.29,
+          "train_nodes": 60
+        },
+        "citeseer_1.0": {
+          "ours_mean": 71.92,
+          "ours_std": 0.35,
+          "paper_mean": 69.8,
+          "delta": 2.12,
+          "train_nodes": 120
+        }
+      },
+      "notes": "Black box = condensed graph as TRAINING SET only; at query time the trained GCN propagates over the ORIGINAL adjacency (GCond's transductive protocol). No epsilon thresholding: A' is used as the continuous learned matrix. GCN.forward returns log_softmax, so served posteriors are exponentiated and renormalised. Served model is run 0 of the 10 repeats. Verified deeprobust Cora == Planetoid Cora (identical adjacency, same node ordering, 5278 undirected edges), so served posteriors index directly into lsa_paper's attack dataset."
+    },
+    {
+      "step": "03_attacker_setup",
+      "summary": "Trained the adversary's reference model g for 2 datasets and built 8 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-09-23 15:56:33",
+      "inputs": [
+        "Benchmarking/lsa_paper/data/pred/*_gcondbb_*_pred.pkl",
+        "Benchmarking/lsa_paper/data/dataset/original/"
+      ],
+      "outputs": [
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_whole_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_whole_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_whole_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.25_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.25_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.25_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.5_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.5_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_0.5_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_1.0_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_1.0_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/cora_gc_1.0_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_whole_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_whole_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_whole_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.25_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.25_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.25_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.5_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.5_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_0.5_attack_test.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_1.0_attack_all.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_1.0_attack_train.json",
+        "Benchmarking/lsa_paper/data/attack_dataset/citeseer_gc_1.0_attack_test.json"
+      ],
+      "numbers": {},
+      "notes": "g mirrors the target per the link-stealing paper: graph-free MLP (GCond's GCN with identity adjacency), 2 weight layers, 256 hidden, dropout 0.0, weight decay 0.0005, 600 epochs, lr 0.01. Trained on a random 10% of labels (seed 123) -- MORE than the defender's public split. One g per dataset, reused across all four settings, so the black box is the only thing that varies. Attack datasets use pair seed 1 for every setting, giving identical pairs and identical 50/50 splits throughout. d(F) uses RAW binary attributes; g trains on L1-normalised ones -- both verified identical between the deeprobust and Planetoid loaders."
+    },
+    {
+      "step": "04_attacks_gcond",
+      "summary": "Ran all 8 attacks + link-prediction baseline against 8 black-box configurations (2 directions x 4 settings), 5 runs each",
+      "timestamp": "2026-09-23 16:07:07",
+      "inputs": [
+        "Benchmarking/lsa_paper/data/attack_dataset/*_gc_*.json"
+      ],
+      "outputs": [
+        "Benchmarking/coarsen_leakage/results/attacks/cora_gc_whole__citeseer_gc_whole__gcond_A_whole.json",
+        "Benchmarking/coarsen_leakage/results/attacks/cora_gc_0.25__citeseer_gc_0.25__gcond_A_0.25.json",
+        "Benchmarking/coarsen_leakage/results/attacks/cora_gc_0.5__citeseer_gc_0.5__gcond_A_0.5.json",
+        "Benchmarking/coarsen_leakage/results/attacks/cora_gc_1.0__citeseer_gc_1.0__gcond_A_1.0.json",
+        "Benchmarking/coarsen_leakage/results/attacks/citeseer_gc_whole__cora_gc_whole__gcond_B_whole.json",
+        "Benchmarking/coarsen_leakage/results/attacks/citeseer_gc_0.25__cora_gc_0.25__gcond_B_0.25.json",
+        "Benchmarking/coarsen_leakage/results/attacks/citeseer_gc_0.5__cora_gc_0.5__gcond_B_0.5.json",
+        "Benchmarking/coarsen_leakage/results/attacks/citeseer_gc_1.0__cora_gc_1.0__gcond_B_1.0.json"
+      ],
+      "numbers": {
+        "configurations": 8,
+        "attack_runs": 5
+      },
+      "notes": "Attack model per the link-stealing paper: MLP 3 hidden layers x 32, dropout 0.5, 50 epochs, Adam lr 0.001, batch 128. Attacks 0 and 2 unsupervised, reported once. Shadow target model is the other dataset's black box at the SAME condensation setting, per the paper's same-architecture default. Ground truth is ORIGINAL edges throughout. Identical pairs/splits/g/attack-model across settings, so only the served posteriors vary."
+    },
+    {
+      "step": "05_aggregate_gcond",
+      "summary": "Compiled per-dataset detailed (per-run) and summary (5-run average) CSVs plus 8 plots",
+      "timestamp": "2026-09-23 17:19:21",
+      "inputs": [
+        "Benchmarking/coarsen_leakage/results/attacks/*.json",
+        "Benchmarking/coarsen_leakage/results/step02_validation.json"
+      ],
+      "outputs": [
+        "results/cora_attacks_detailed.csv",
+        "results/cora_attacks_summary.csv",
+        "results/citeseer_attacks_detailed.csv",
+        "results/citeseer_attacks_summary.csv",
+        "results/GCOND_RESULTS.md",
+        "results/figures/cora_auc_vs_setting.png",
+        "results/figures/cora_per_run_auc.png",
+        "results/figures/cora_unsup_attack0_metrics.png",
+        "results/figures/cora_unsup_attack2_families.png",
+        "results/figures/citeseer_auc_vs_setting.png",
+        "results/figures/citeseer_per_run_auc.png",
+        "results/figures/citeseer_unsup_attack0_metrics.png",
+        "results/figures/citeseer_unsup_attack2_families.png"
+      ],
+      "numbers": {
+        "csvs": 4,
+        "figures": 8
+      },
+      "notes": "detailed = one row per run; summary = averaged over runs."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "pipeline": "ugc_leakage",
+  "steps": [
+    {
+      "step": "step01_coarsen",
+      "summary": "UGC LSH coarsenings for 6 (dataset, ratio) settings; bin widths calibrated, alpha fixed per dataset",
+      "timestamp": "2026-09-24 00:44:19",
+      "inputs": [
+        "attack/data/dataset/original/ind.{cora,citeseer}.*",
+        "UGC paper Table 6 (alpha), Table 9 (accuracy targets)"
+      ],
+      "outputs": [
+        "artifacts/coarsened/ugc_cora_ratio30.npz",
+        "artifacts/coarsened/ugc_cora_ratio50.npz",
+        "artifacts/coarsened/ugc_cora_ratio70.npz",
+        "artifacts/coarsened/ugc_citeseer_ratio30.npz",
+        "artifacts/coarsened/ugc_citeseer_ratio50.npz",
+        "artifacts/coarsened/ugc_citeseer_ratio70.npz",
+        "results/step01_calibration.json"
+      ],
+      "numbers": {
+        "settings": 6,
+        "cora_30_k": 1899,
+        "cora_50_k": 1356,
+        "cora_70_k": 807,
+        "citeseer_30_k": 2329,
+        "citeseer_50_k": 1661,
+        "citeseer_70_k": 1001,
+        "cora_30_bin_width": 0.001854,
+        "cora_50_bin_width": 0.004171,
+        "cora_70_bin_width": 0.009775,
+        "citeseer_30_bin_width": 0.001931,
+        "citeseer_50_bin_width": 0.004344,
+        "citeseer_70_bin_width": 0.009514
+      },
+      "notes": "ratio is the percent of nodes REMOVED. The authors shipped bin widths only for ratio 50 and not for citeseer, so five of six settings are calibrated here with the BinWidthFinder search. That search cannot satisfy its own precision test and would loop forever, so we cap the iterations and keep the closest bin width."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built and validated 8 UGC black boxes; 2/3 gated boxes inside tolerance, largest deviation 4.26 points",
+      "timestamp": "2026-09-24 00:47:39",
+      "inputs": [
+        "artifacts/coarsened/*.npz",
+        "UGC paper Table 8 (model), Table 9 (targets)"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole.npy",
+        "artifacts/posteriors/cora_30.npy",
+        "artifacts/posteriors/cora_50.npy",
+        "artifacts/posteriors/cora_70.npy",
+        "artifacts/posteriors/citeseer_whole.npy",
+        "artifacts/posteriors/citeseer_30.npy",
+        "artifacts/posteriors/citeseer_50.npy",
+        "artifacts/posteriors/citeseer_70.npy"
+      ],
+      "numbers": {
+        "boxes": 8,
+        "repeats": 5,
+        "gate_failures": 1,
+        "max_deviation": 4.26,
+        "cora_whole": 88.67,
+        "cora_30": 86.81,
+        "cora_50": 86.19,
+        "cora_70": 80.37,
+        "citeseer_whole": 75.24,
+        "citeseer_30": 73.73,
+        "citeseer_50": 70.48,
+        "citeseer_70": 67.32
+      },
+      "notes": "Held-out 60/20/20 accuracy with best-validation weight selection. Features are the augmented [(1-alpha)X | alpha*A] at both training and inference, so the graph reaches the model twice. Citeseer has no published UGC accuracy, so those four boxes are ungated."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 2 datasets and built 8 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-09-24 00:54:37",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "attack/data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "attack/data/pred/cora_gugc_pred.pkl",
+        "attack/data/pred/citeseer_gugc_pred.pkl"
+      ],
+      "numbers": {
+        "g_cora": {
+          "n_known": 270,
+          "n_nodes": 2708,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6284,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 1433,
+          "target_input_dim": 4141,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005,
+          "dropout": 0.5
+        },
+        "g_citeseer": {
+          "n_known": 332,
+          "n_nodes": 3327,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6464,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 3703,
+          "target_input_dim": 7030,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005,
+          "dropout": 0.5
+        }
+      },
+      "notes": "g mirrors the UGC target's hyperparameters (hidden 64, 500 epochs, lr 0.003, wd 0.0005) but is graph-free and runs on the ORIGINAL feature matrix: the adversary cannot see the augmented [(1-alpha)X | alpha*A] the box consumes. Pair seed 1 matches the GCond and FGC benchmarks, so all three attack identical pairs with identical splits."
+    },
+    {
+      "step": "step04_attacks",
+      "summary": "Ran all 8 attacks + link-prediction baseline against 8 UGC black-box configurations (2 directions x 4 settings), 5 runs each",
+      "timestamp": "2026-09-24 01:13:33",
+      "inputs": [
+        "attack/data/attack_dataset/*_ugc_*.json"
+      ],
+      "outputs": [
+        "results/attacks/cora_ugc_whole__citeseer_ugc_whole__ugc_A_whole.json",
+        "results/attacks/cora_ugc_30__citeseer_ugc_30__ugc_A_30.json",
+        "results/attacks/cora_ugc_50__citeseer_ugc_50__ugc_A_50.json",
+        "results/attacks/cora_ugc_70__citeseer_ugc_70__ugc_A_70.json",
+        "results/attacks/citeseer_ugc_whole__cora_ugc_whole__ugc_B_whole.json",
+        "results/attacks/citeseer_ugc_30__cora_ugc_30__ugc_B_30.json",
+        "results/attacks/citeseer_ugc_50__cora_ugc_50__ugc_B_50.json",
+        "results/attacks/citeseer_ugc_70__cora_ugc_70__ugc_B_70.json"
+      ],
+      "numbers": {
+        "configurations": 8,
+        "attack_runs": 5
+      },
+      "notes": "Attack model per He et al. USENIX Security 2021. Shadow target is the other dataset at the same coarsening ratio. Attacks 0 and 2 are unsupervised and run once."
+    },
+    {
+      "step": "step05_aggregate",
+      "summary": "Compiled 4 CSVs, 6 figures and the writeup from 8 attack configurations",
+      "timestamp": "2026-09-24 01:28:25",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step02_validation.json"
+      ],
+      "outputs": [
+        "results/cora_attacks_detailed.csv",
+        "results/cora_attacks_summary.csv",
+        "results/citeseer_attacks_detailed.csv",
+        "results/citeseer_attacks_summary.csv",
+        "results/figures/cora_auc_vs_setting.png",
+        "results/figures/cora_attack0_metrics.png",
+        "results/figures/cora_utility_vs_leakage.png",
+        "results/figures/citeseer_auc_vs_setting.png",
+        "results/figures/citeseer_attack0_metrics.png",
+        "results/figures/citeseer_utility_vs_leakage.png",
+        "results/UGC_RESULTS.md"
+      ],
+      "numbers": {
+        "csvs": 4,
+        "figures": 6,
+        "configurations": 8
+      },
+      "notes": "Column names match the GCond and FGC benchmarks so all three summary CSVs concatenate."
+    }
+  ]
+}
