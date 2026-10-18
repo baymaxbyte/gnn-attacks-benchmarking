@@ -102,7 +102,7 @@ Every stage appends its inputs, outputs and headline numbers to `manifest.json`.
 | target seeds | 3 per cell |
 | inference | over the original graph; features per method (`plain` / `plain_norm` / `ugc_aug`) |
 | threshold attacks | confidence, entropy, loss, correctness (AUC each) |
-| shadow attack | MLP (32), trained on the other dataset at the same cell, balanced |
+| shadow attack | Link-Stealing attack MLP (3×32 ReLU + dropout 0.5 → 2, Adam, 50 epochs) on 8 posterior-summary features, trained on the other dataset at the same cell, balanced |
 | scoring | AUC separating members (V_in) from non-members (V_out) |
 
 The uniform classifier is held fixed across methods on purpose, so any leakage

@@ -4,7 +4,7 @@
     {
       "step": "step01_split",
       "summary": "Built uniform-random 20% member/non-member split for 2 datasets (seed 42)",
-      "timestamp": "2026-09-30 00:17:51",
+      "timestamp": "2026-10-18 15:13:44",
       "inputs": [
         "cora.npz",
         "citeseer.npz"
@@ -81,7 +81,7 @@
     {
       "step": "step04_attack",
       "summary": "Ran threshold + cross-dataset shadow membership attacks against 38 cells, 3 seeds each",
-      "timestamp": "2026-09-30 13:45:50",
+      "timestamp": "2026-10-18 15:23:17",
       "inputs": [
         "artifacts/posteriors/*.npy",
         "artifacts/splits/*_split.npz"
@@ -134,7 +134,7 @@
     {
       "step": "step05_aggregate",
       "summary": "Compiled 4 CSVs, 2 figures and the writeup from 38 attacked cells",
-      "timestamp": "2026-09-30 13:45:51",
+      "timestamp": "2026-10-18 15:15:01",
       "inputs": [
         "results/attacks/*.json",
         "results/step03_boxes.json"
