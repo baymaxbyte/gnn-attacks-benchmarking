@@ -50,6 +50,54 @@ Does reducing the training graph lower a GNN's node membership leakage? Each dat
 | gcond | 0.026 | 69 | +0.27 | 0.5014 | 0.5115 |
 | gcond | 0.052 | 138 | +1.05 | 0.5131 | 0.5033 |
 
+## chameleon
+
+| method | ratio | k | acc gap | best threshold AUC | shadow AUC |
+|---|---|---|---|---|---|
+| control | whole | 1822 | +13.77 | 0.6003 | 0.5924 |
+| kron | 0.3 | 1275 | +5.21 | 0.5379 | 0.5309 |
+| kron | 0.5 | 911 | +4.54 | 0.5227 | 0.5231 |
+| kron | 0.7 | 547 | +0.42 | 0.5050 | 0.5156 |
+| ugc | 0.3 | 1281 | +12.37 | 0.5704 | 0.5706 |
+| ugc | 0.5 | 909 | +10.56 | 0.5695 | 0.5347 |
+| ugc | 0.7 | 546 | +6.03 | 0.5466 | 0.5001 |
+| fgc | 0.05 | 48 | +2.39 | 0.5120 | 0.5025 |
+| fgc | 0.1 | 84 | +3.16 | 0.5158 | 0.5028 |
+| fgc | 0.3 | 200 | +3.17 | 0.5277 | 0.5064 |
+| goren | 0.3/bl | 1276 | +10.69 | 0.5675 | 0.5555 |
+| goren | 0.3/goren | 1276 | +4.94 | 0.5549 | 0.5295 |
+| goren | 0.5/bl | 911 | +8.77 | 0.5484 | 0.5425 |
+| goren | 0.5/goren | 911 | +3.61 | 0.5375 | 0.5165 |
+| goren | 0.7/bl | 547 | +6.16 | 0.5435 | 0.5362 |
+| goren | 0.7/goren | 547 | +5.02 | 0.5412 | 0.5282 |
+| gcond | 0.013 | 23 | +2.67 | 0.5137 | 0.5033 |
+| gcond | 0.026 | 47 | +2.85 | 0.5142 | 0.5073 |
+| gcond | 0.052 | 94 | +2.74 | 0.5168 | 0.4977 |
+
+## squirrel
+
+| method | ratio | k | acc gap | best threshold AUC | shadow AUC |
+|---|---|---|---|---|---|
+| control | whole | 4161 | +11.39 | 0.5885 | 0.5853 |
+| kron | 0.3 | 2913 | +3.19 | 0.5291 | 0.5107 |
+| kron | 0.5 | 2080 | +2.32 | 0.5117 | 0.5158 |
+| kron | 0.7 | 1248 | +1.16 | 0.5058 | 0.5045 |
+| ugc | 0.3 | 2912 | +6.22 | 0.5475 | 0.5404 |
+| ugc | 0.5 | 2076 | +2.29 | 0.5232 | 0.5130 |
+| ugc | 0.7 | 1242 | +0.76 | 0.5086 | 0.4862 |
+| fgc | 0.05 | 19 | -0.88 | 0.5068 | 0.5027 |
+| fgc | 0.1 | 182 | +0.16 | 0.5087 | 0.5054 |
+| fgc | 0.3 | 325 | +0.47 | 0.5221 | 0.5054 |
+| goren | 0.3/bl | 2913 | +7.71 | 0.5572 | 0.5388 |
+| goren | 0.3/goren | 2913 | +3.63 | 0.5279 | 0.5215 |
+| goren | 0.5/bl | 2081 | +5.55 | 0.5426 | 0.5348 |
+| goren | 0.5/goren | 2081 | +3.32 | 0.5293 | 0.5145 |
+| goren | 0.7/bl | 1249 | +5.18 | 0.5445 | 0.5200 |
+| goren | 0.7/goren | 1249 | +3.36 | 0.5327 | 0.5100 |
+| gcond | 0.013 | 54 | +2.70 | 0.5146 | 0.5018 |
+| gcond | 0.026 | 108 | +2.49 | 0.5150 | 0.5034 |
+| gcond | 0.052 | 216 | -0.64 | 0.5112 | 0.4979 |
+
 ## Reading it
 
 - **control** is the reference leakage of a plain GNN on V_in.
@@ -61,3 +109,7 @@ Does reducing the training graph lower a GNN's node membership leakage? Each dat
 ![cora_membership_by_method.png](figures/cora_membership_by_method.png)
 
 ![citeseer_membership_by_method.png](figures/citeseer_membership_by_method.png)
+
+![chameleon_membership_by_method.png](figures/chameleon_membership_by_method.png)
+
+![squirrel_membership_by_method.png](figures/squirrel_membership_by_method.png)

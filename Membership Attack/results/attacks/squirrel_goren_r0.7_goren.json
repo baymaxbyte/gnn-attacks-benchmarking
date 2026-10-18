@@ -1,0 +1,63 @@
+{
+  "tag": "squirrel_goren_r0.7_goren",
+  "shadow_tag": "chameleon_goren_r0.7_goren",
+  "n_seeds": 3,
+  "aucs": {
+    "thr_confidence": {
+      "mean": 0.5079624443088755,
+      "std": 0.0030996991724090615
+    },
+    "thr_neg_entropy": {
+      "mean": 0.5046866045514208,
+      "std": 0.0022271487282256195
+    },
+    "thr_p_true": {
+      "mean": 0.5327186126978845,
+      "std": 0.00189911092055253
+    },
+    "thr_neg_loss": {
+      "mean": 0.5327186126978845,
+      "std": 0.00189911092055253
+    },
+    "thr_correct": {
+      "mean": 0.5167849429069689,
+      "std": 0.002970451962794503
+    },
+    "shadow_mlp": {
+      "mean": 0.5100051069454458,
+      "std": 0.006998531369809497
+    },
+    "best_threshold": {
+      "mean": 0.5327186126978845
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 0,
+      "thr_confidence": 0.5054574991218828,
+      "thr_neg_entropy": 0.5023748451740522,
+      "thr_p_true": 0.5340172249644131,
+      "thr_neg_loss": 0.5340172249644131,
+      "thr_correct": 0.5155827694895827,
+      "shadow_mlp": 0.5041341994343076
+    },
+    {
+      "seed": 1,
+      "thr_confidence": 0.512330384707818,
+      "thr_neg_entropy": 0.5076950806943596,
+      "thr_p_true": 0.5300333453496755,
+      "thr_neg_loss": 0.5300333453496755,
+      "thr_correct": 0.5139001349527665,
+      "shadow_mlp": 0.5060399450945594
+    },
+    {
+      "seed": 2,
+      "thr_confidence": 0.5060994490969256,
+      "thr_neg_entropy": 0.5039898877858503,
+      "thr_p_true": 0.5341052677795648,
+      "thr_neg_loss": 0.5341052677795648,
+      "thr_correct": 0.5208719242785572,
+      "shadow_mlp": 0.5198411763074704
+    }
+  ]
+}

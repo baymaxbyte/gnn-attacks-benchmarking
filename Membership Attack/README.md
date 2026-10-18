@@ -38,20 +38,22 @@ the `V_out` rows.
 **The attacks** (per node, from its posterior):
 - **threshold** (unsupervised): rank nodes by confidence, entropy, loss, or
   correctness — members tend to score higher.
-- **shadow-MLP** (supervised): an MLP trained on the *other* dataset at the same
-  cell (where membership is known) and transferred to the target. This is the
-  "attack classifier" — it consumes a single node's posterior features and predicts
-  member / non-member.
+- **shadow-MLP** (supervised): the Link-Stealing attack MLP (3×32 + dropout 0.5),
+  trained on the *paired other* dataset at the same cell (where membership is known)
+  and transferred to the target. It consumes a node's 8 posterior-summary features
+  and predicts member / non-member.
 
 AUC 0.5 = no leakage.
 
-**Shadow source (sensitivity check).** By default the shadow-MLP is trained on the
-*coarsened* same-cell graph of the other dataset. `whole_shadow_mlp.py` re-runs just
-that attack with the shadow instead drawn from the *whole* (uncoarsened `control`)
-graph and writes `results/<ds>_membership_shadow_compare.csv`. Swapping a coarsened
-shadow for a whole-graph one barely moves the attack — mean |Δ AUC| ≈ 0.01 (max ≈
-0.04), and membership stays near chance either way — so the leakage numbers are not
-an artifact of training the attacker on reduced data.
+**Shadow-source sensitivity.** By default the shadow-MLP trains on the *coarsened*
+same-cell graph of the paired dataset. `whole_shadow_mlp.py` re-runs just that attack
+with the shadow instead drawn from the *whole* (uncoarsened `control`) graph and writes
+`results/<ds>_membership_shadow_compare.csv`; across all four datasets the whole-vs-
+coarsened shadow barely changes the attack (mean |Δ AUC| ≈ 0.01). `shadow_attacker_fit.py`
+reports the attacker's own train / held-out-shadow-test accuracy
+(`results/<ds>_shadow_attacker_fit.csv`) — near chance everywhere, i.e. the attacker
+barely fits even its own shadow, so the near-chance target AUCs are a weak-signal
+result rather than a transfer failure.
 
 ## Quick start
 
@@ -78,7 +80,27 @@ steps 03-05 reproduce the results without re-running the (slow, external) reduct
 | GOREN | Loukas coarsening, counts (`bl`) or learned (`goren`) weights | 0.3 / 0.5 / 0.7 × {bl, goren} |
 | GCond | gradient-matching condensation to synthetic nodes | 0.013 / 0.026 / 0.052 kept |
 
-38 cells per run (19 per dataset × 2), each trained with 3 seeds.
+76 cells per run (19 per dataset × 4: cora, citeseer, chameleon, squirrel), each trained with 3 seeds.
+
+## Datasets
+
+Four node-classification graphs, each split once (seed 42) into 80% members (`V_in`)
+and 20% non-members. The shadow attack pairs datasets **cross-domain**, so it must
+transfer across different class counts — which is why the per-node attack features are
+dimension-agnostic (see `attacks/features.py`).
+
+| dataset | nodes | features | classes | edges | members (V_in) | shadow |
+|---|---|---|---|---|---|---|
+| cora | 2708 | 1433 | 7 | 5278 | 2166 | citeseer |
+| citeseer | 3327 | 3703 | 6 | 4552 | 2662 | cora |
+| chameleon | 2277 | 2325 | 5 | 31371 | 1822 | squirrel |
+| squirrel | 5201 | 2089 | 5 | 198353 | 4161 | chameleon |
+
+cora/citeseer are the Planetoid citation graphs; chameleon/squirrel are the
+WikipediaNetwork heterophily graphs (geom-gcn preprocessed), assembled from PyG by
+`prepare_datasets.py`. The heterophily graphs are far denser (squirrel ~198k edges vs
+cora's ~5k), which makes the external GCond/GOREN reductions on them substantially
+slower.
 
 ## Stages
 
@@ -102,7 +124,7 @@ Every stage appends its inputs, outputs and headline numbers to `manifest.json`.
 | target seeds | 3 per cell |
 | inference | over the original graph; features per method (`plain` / `plain_norm` / `ugc_aug`) |
 | threshold attacks | confidence, entropy, loss, correctness (AUC each) |
-| shadow attack | Link-Stealing attack MLP (3×32 ReLU + dropout 0.5 → 2, Adam, 50 epochs) on 8 posterior-summary features, trained on the other dataset at the same cell, balanced |
+| shadow attack | Link-Stealing attack MLP (3×32 ReLU + dropout 0.5 → 2, Adam, 50 epochs) on 8 posterior-summary features, trained on the paired other dataset at the same cell, balanced (pairs: cora↔citeseer, chameleon↔squirrel) |
 | scoring | AUC separating members (V_in) from non-members (V_out) |
 
 The uniform classifier is held fixed across methods on purpose, so any leakage
@@ -114,7 +136,8 @@ difference is attributable to the reduction rather than the architecture.
 results/MEMBERSHIP_RESULTS.md          generated writeup
 results/<ds>_membership_summary.csv    one row per cell: AUCs + acc gap
 results/<ds>_membership_detailed.csv   one row per (cell, attack)
-results/<ds>_membership_shadow_compare.csv  coarsened vs whole-graph shadow (shadow-MLP)
+results/<ds>_membership_shadow_compare.csv  shadow-MLP: coarsened vs whole-graph shadow
+results/<ds>_shadow_attacker_fit.csv   shadow-MLP attacker train / held-out-shadow-test accuracy
 results/attacks/                       raw per-cell JSON (per-seed AUCs)
 results/figures/                       membership AUC vs reduction, per dataset
 results/step03_boxes.json              per-box member/non-member accuracies
@@ -127,6 +150,9 @@ manifest.json                          every step, its inputs, outputs, numbers
 ## Dependencies
 
 `requirements.txt`: torch, torch-geometric, numpy, scipy, scikit-learn, matplotlib.
+`prepare_datasets.py` pulls chameleon/squirrel via torch-geometric's WikipediaNetwork
+(internet needed on first build; the assembled `.npz` are then cached in-folder, and
+cora/citeseer/chameleon/squirrel `.npz` are shipped).
 
 **Stage 2 has two external dependencies, needed only to re-run the reductions:**
 GCond's condensation and GOREN's Loukas coarsening run under their own checkouts'
@@ -143,7 +169,6 @@ single-threaded processes (`--workers`).
 ```
 config.py  common.py  data.py  splits.py  blackbox.py
 step01_split.py .. step05_aggregate.py       the five stages
-whole_shadow_mlp.py                          optional whole-graph-shadow sensitivity check
 reductions/
   base.py                 the reduced-graph contract + helpers
   control.py kron.py ugc.py fgc.py goren.py gcond.py   per-method adapters
@@ -152,7 +177,9 @@ attacks/
   features.py             dimension-agnostic per-node features
   threshold.py            unsupervised threshold attacks
   shadow_clf.py           supervised shadow MLP (the attack classifier)
-cora.npz  citeseer.npz    whole graphs (all nodes, full adjacency + features + labels)
+whole_shadow_mlp.py  shadow_attacker_fit.py   shadow-source / attacker-fit sensitivity checks
+cora.npz citeseer.npz chameleon.npz squirrel.npz   whole graphs (all nodes, full adjacency + features + labels)
+prepare_datasets.py       assemble chameleon/squirrel npz from PyG (WikipediaNetwork, geom-gcn)
 artifacts/  results/  logs/  manifest.json
 ```
 
@@ -163,6 +190,10 @@ artifacts/  results/  logs/  manifest.json
   (Dörfler & Bullo, arXiv 1102.2950). Each method's solver under `reductions/` is our
   own reimplementation / adaptation to reduce an arbitrary subgraph.
 - **Membership inference** follows the node-level MIA setting of He et al. (arXiv
-  2102.05429) and Olatunji et al. (arXiv 2101.06570).
+  2102.05429) and Olatunji et al. (arXiv 2101.06570). The shadow-MLP architecture is
+  the attack model of the Link-Stealing paper (He et al., USENIX Security 2021).
+- **Datasets**: cora, citeseer (Planetoid; Yang et al., ICML 2016); chameleon,
+  squirrel (WikipediaNetwork, geom-gcn preprocessed; Rozemberczki et al. 2021 / Pei
+  et al., ICLR 2020).
 
 Please cite those papers, not this benchmark.

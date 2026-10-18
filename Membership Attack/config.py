@@ -20,8 +20,9 @@ MANIFEST = os.path.join(HERE, "manifest.json")
 
 PYTHON = os.path.abspath(os.environ.get("MIA_PYTHON", sys.executable))
 
-DATASETS = ("cora", "citeseer")
-SHADOW_OF = {"cora": "citeseer", "citeseer": "cora"}   # cross-dataset shadow
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
+SHADOW_OF = {"cora": "citeseer", "citeseer": "cora",
+             "chameleon": "squirrel", "squirrel": "chameleon"}   # cross-dataset shadow
 
 # Inductive member / non-member split.
 HOLDOUT_FRACTION = 0.20        # fraction of nodes that become non-members (V_out)

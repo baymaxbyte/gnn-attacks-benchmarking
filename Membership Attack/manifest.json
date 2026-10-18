@@ -3,90 +3,100 @@
   "steps": [
     {
       "step": "step01_split",
-      "summary": "Built uniform-random 20% member/non-member split for 2 datasets (seed 42)",
-      "timestamp": "2026-10-18 15:13:44",
+      "summary": "Built uniform-random 20% member/non-member split for 4 datasets (seed 42)",
+      "timestamp": "2026-10-18 16:02:43",
       "inputs": [
         "cora.npz",
-        "citeseer.npz"
+        "citeseer.npz",
+        "chameleon.npz",
+        "squirrel.npz"
       ],
       "outputs": [
         "artifacts/splits/cora_split.npz",
-        "artifacts/splits/citeseer_split.npz"
+        "artifacts/splits/citeseer_split.npz",
+        "artifacts/splits/chameleon_split.npz",
+        "artifacts/splits/squirrel_split.npz"
       ],
       "numbers": {
         "cora_members": 2166,
-        "citeseer_members": 2662
+        "citeseer_members": 2662,
+        "chameleon_members": 1822,
+        "squirrel_members": 4161
       },
       "notes": "Non-members (V_out) and their edges are removed; V_in is the members' induced subgraph. Split is uniform-random and shared by every reduction method, so members/non-members are identical across GCond, FGC, UGC, GOREN, KRON and the control."
     },
     {
       "step": "step02_reduce",
-      "summary": "Reduced V_in into 6 training graphs across 1 methods and 2 datasets",
-      "timestamp": "2026-09-30 13:20:48",
+      "summary": "Reduced V_in into 3 training graphs across 1 methods and 1 datasets",
+      "timestamp": "2026-10-19 00:15:02",
       "inputs": [
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
-        "artifacts/reduced/cora_gcond_r0.013.npz",
-        "artifacts/reduced/cora_gcond_r0.026.npz",
-        "artifacts/reduced/cora_gcond_r0.052.npz",
-        "artifacts/reduced/citeseer_gcond_r0.013.npz",
-        "artifacts/reduced/citeseer_gcond_r0.026.npz",
-        "artifacts/reduced/citeseer_gcond_r0.052.npz"
+        "artifacts/reduced/squirrel_gcond_r0.013.npz",
+        "artifacts/reduced/squirrel_gcond_r0.026.npz",
+        "artifacts/reduced/squirrel_gcond_r0.052.npz"
       ],
       "numbers": {
-        "cora_gcond_r0.013": 28,
-        "cora_gcond_r0.026": 56,
-        "cora_gcond_r0.052": 112,
-        "citeseer_gcond_r0.013": 34,
-        "citeseer_gcond_r0.026": 69,
-        "citeseer_gcond_r0.052": 138
+        "squirrel_gcond_r0.013": 54,
+        "squirrel_gcond_r0.026": 108,
+        "squirrel_gcond_r0.052": 216
       },
       "notes": "One reduced graph per cell; step03 trains 3 boxes on each. control=V_in un-reduced; GCond condenses to synthetic nodes (serve on row-normalised features); UGC augments features with the V_in adjacency (serve augments to V_in width); GOREN has bl and goren edge-weight variants."
     },
     {
       "step": "step03_blackbox",
-      "summary": "Trained 18 boxes (6 cells x 3 seeds) and served posteriors on the original graph",
-      "timestamp": "2026-09-30 13:45:38",
+      "summary": "Trained 9 boxes (3 cells x 3 seeds) and served posteriors on the original graph",
+      "timestamp": "2026-10-19 00:20:20",
       "inputs": [
         "artifacts/reduced/*.npz",
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
-        "artifacts/posteriors/citeseer_gcond_r0.013_seed0.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.013_seed1.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.013_seed2.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.026_seed0.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.026_seed1.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.026_seed2.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.052_seed0.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.052_seed1.npy",
-        "artifacts/posteriors/citeseer_gcond_r0.052_seed2.npy",
-        "artifacts/posteriors/cora_gcond_r0.013_seed0.npy",
-        "artifacts/posteriors/cora_gcond_r0.013_seed1.npy",
-        "artifacts/posteriors/cora_gcond_r0.013_seed2.npy",
-        "artifacts/posteriors/cora_gcond_r0.026_seed0.npy",
-        "artifacts/posteriors/cora_gcond_r0.026_seed1.npy",
-        "artifacts/posteriors/cora_gcond_r0.026_seed2.npy",
-        "artifacts/posteriors/cora_gcond_r0.052_seed0.npy",
-        "artifacts/posteriors/cora_gcond_r0.052_seed1.npy",
-        "artifacts/posteriors/cora_gcond_r0.052_seed2.npy"
+        "artifacts/posteriors/squirrel_gcond_r0.013_seed0.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.013_seed1.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.013_seed2.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.026_seed0.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.026_seed1.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.026_seed2.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.052_seed0.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.052_seed1.npy",
+        "artifacts/posteriors/squirrel_gcond_r0.052_seed2.npy"
       ],
       "numbers": {
-        "boxes": 18,
-        "cells": 6
+        "boxes": 9,
+        "cells": 3
       },
       "notes": "Uniform 3-layer GCN across all methods, trained on the reduced graph and served on the original graph. member_acc/nonmember_acc gap is a leakage sanity signal (members typically higher)."
     },
     {
       "step": "step04_attack",
-      "summary": "Ran threshold + cross-dataset shadow membership attacks against 38 cells, 3 seeds each",
-      "timestamp": "2026-10-18 15:23:17",
+      "summary": "Ran threshold + cross-dataset shadow membership attacks against 76 cells, 3 seeds each",
+      "timestamp": "2026-10-19 00:21:38",
       "inputs": [
         "artifacts/posteriors/*.npy",
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
+        "results/attacks/chameleon_control_whole.json",
+        "results/attacks/chameleon_fgc_r0.05.json",
+        "results/attacks/chameleon_fgc_r0.1.json",
+        "results/attacks/chameleon_fgc_r0.3.json",
+        "results/attacks/chameleon_gcond_r0.013.json",
+        "results/attacks/chameleon_gcond_r0.026.json",
+        "results/attacks/chameleon_gcond_r0.052.json",
+        "results/attacks/chameleon_goren_r0.3_bl.json",
+        "results/attacks/chameleon_goren_r0.3_goren.json",
+        "results/attacks/chameleon_goren_r0.5_bl.json",
+        "results/attacks/chameleon_goren_r0.5_goren.json",
+        "results/attacks/chameleon_goren_r0.7_bl.json",
+        "results/attacks/chameleon_goren_r0.7_goren.json",
+        "results/attacks/chameleon_kron_r0.3.json",
+        "results/attacks/chameleon_kron_r0.5.json",
+        "results/attacks/chameleon_kron_r0.7.json",
+        "results/attacks/chameleon_ugc_r0.3.json",
+        "results/attacks/chameleon_ugc_r0.5.json",
+        "results/attacks/chameleon_ugc_r0.7.json",
         "results/attacks/citeseer_control_whole.json",
         "results/attacks/citeseer_fgc_r0.05.json",
         "results/attacks/citeseer_fgc_r0.1.json",
@@ -124,17 +134,36 @@
         "results/attacks/cora_kron_r0.7.json",
         "results/attacks/cora_ugc_r0.3.json",
         "results/attacks/cora_ugc_r0.5.json",
-        "results/attacks/cora_ugc_r0.7.json"
+        "results/attacks/cora_ugc_r0.7.json",
+        "results/attacks/squirrel_control_whole.json",
+        "results/attacks/squirrel_fgc_r0.05.json",
+        "results/attacks/squirrel_fgc_r0.1.json",
+        "results/attacks/squirrel_fgc_r0.3.json",
+        "results/attacks/squirrel_gcond_r0.013.json",
+        "results/attacks/squirrel_gcond_r0.026.json",
+        "results/attacks/squirrel_gcond_r0.052.json",
+        "results/attacks/squirrel_goren_r0.3_bl.json",
+        "results/attacks/squirrel_goren_r0.3_goren.json",
+        "results/attacks/squirrel_goren_r0.5_bl.json",
+        "results/attacks/squirrel_goren_r0.5_goren.json",
+        "results/attacks/squirrel_goren_r0.7_bl.json",
+        "results/attacks/squirrel_goren_r0.7_goren.json",
+        "results/attacks/squirrel_kron_r0.3.json",
+        "results/attacks/squirrel_kron_r0.5.json",
+        "results/attacks/squirrel_kron_r0.7.json",
+        "results/attacks/squirrel_ugc_r0.3.json",
+        "results/attacks/squirrel_ugc_r0.5.json",
+        "results/attacks/squirrel_ugc_r0.7.json"
       ],
       "numbers": {
-        "cells": 38
+        "cells": 76
       },
       "notes": "AUC separates members (V_in) from non-members (V_out); 0.5 = no leakage. Threshold attacks are unsupervised; shadow_mlp trains on the other dataset at the same cell. Features are dimension-agnostic scalar summaries so the shadow transfers across datasets."
     },
     {
       "step": "step05_aggregate",
-      "summary": "Compiled 4 CSVs, 2 figures and the writeup from 38 attacked cells",
-      "timestamp": "2026-10-18 15:15:01",
+      "summary": "Compiled 8 CSVs, 4 figures and the writeup from 76 attacked cells",
+      "timestamp": "2026-10-19 00:21:55",
       "inputs": [
         "results/attacks/*.json",
         "results/step03_boxes.json"
@@ -144,12 +173,18 @@
         "results/cora_membership_detailed.csv",
         "results/citeseer_membership_summary.csv",
         "results/citeseer_membership_detailed.csv",
+        "results/chameleon_membership_summary.csv",
+        "results/chameleon_membership_detailed.csv",
+        "results/squirrel_membership_summary.csv",
+        "results/squirrel_membership_detailed.csv",
         "results/figures/cora_membership_by_method.png",
         "results/figures/citeseer_membership_by_method.png",
+        "results/figures/chameleon_membership_by_method.png",
+        "results/figures/squirrel_membership_by_method.png",
         "results/MEMBERSHIP_RESULTS.md"
       ],
       "numbers": {
-        "cells": 38
+        "cells": 76
       },
       "notes": "Membership AUC per method/ratio vs the no-reduction control."
     }

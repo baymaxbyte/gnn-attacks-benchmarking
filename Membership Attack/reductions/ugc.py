@@ -14,7 +14,7 @@ from . import _ugc_solver as U
 from . import base
 
 RATIOS = [0.3, 0.5, 0.7]          # fraction removed, keep 70/50/30% -- as in UGC bench
-ALPHA = {"cora": 0.19, "citeseer": 0.26}
+ALPHA = {"cora": 0.19, "citeseer": 0.26, "chameleon": 0.2, "squirrel": 0.2}
 
 
 def reduce(dataset, vin_adj, vin_feat, vin_labels, n_classes, ratio,
