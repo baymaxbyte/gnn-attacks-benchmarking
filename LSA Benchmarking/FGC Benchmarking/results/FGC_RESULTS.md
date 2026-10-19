@@ -56,18 +56,53 @@ Black-box utility for the same settings:
 | 0.1 | 332 / 321 | 72.50 ± 0.40 | 73.36 | -0.86 |
 | 0.05 | 166 / 163 | 65.01 ± 0.76 | 71.02 | -6.01 |
 
-## Compared with the GCond benchmark
+## Target chameleon, shadow cora
 
-Both benchmarks attack identical node pairs with identical 50/50 splits (shared pair seed 1) using the same attack code, so mean AUCs are directly comparable. Reduction axes differ: GCond synthesises 35-140 nodes, FGC merges into 135-998 supernodes.
+| attack | F/A*/D' | whole | 0.3 | 0.1 | 0.05 | delta |
+|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.7188 | 0.7473 | 0.7944 | 0.5014 | -0.2174 |
+| attack-1 | x/x/Y | 0.6311 | 0.7674 | 0.8543 | 0.7867 | +0.1555 |
+| attack-2 | Y/x/x | 0.7188 | 0.7473 | 0.7944 | 0.5014 | -0.2174 |
+| attack-3 | x/Y/x | 0.8926 | 0.9464 | 0.9648 | 0.8715 | -0.0211 |
+| attack-4 | x/Y/Y | 0.7280 | 0.8220 | 0.8677 | 0.8133 | +0.0854 |
+| attack-5 | Y/x/Y | 0.6424 | 0.7658 | 0.8574 | 0.8004 | +0.1580 |
+| attack-6 | Y/Y/x | 0.8933 | 0.9470 | 0.9592 | 0.8801 | -0.0132 |
+| attack-7 | Y/Y/Y | 0.7512 | 0.8283 | 0.8633 | 0.8251 | +0.0739 |
+| link-pred | – | 0.8574 | 0.8574 | 0.8574 | 0.8574 | +0.0000 |
+| **mean of 8** | | **0.7470** | **0.8214** | **0.8694** | **0.7475** | **+0.0005** |
 
-| benchmark | target | weakest reduction | strongest reduction | change |
+Black-box utility for the same settings:
+
+| setting | supernodes (nominal / used) | accuracy | paper | delta |
 |---|---|---|---|---|
-| FGC | cora | 0.9252 (whole) | 0.9154 (0.05) | -0.0098 |
-| GCond | cora | 0.9390 (whole) | 0.9502 (1.0) | +0.0112 |
-| FGC | citeseer | 0.9405 (whole) | 0.9455 (0.05) | +0.0051 |
-| GCond | citeseer | 0.9704 (whole) | 0.9601 (1.0) | -0.0103 |
+| whole | 2277 / 2277 | 76.13 ± 0.63 | – | – |
+| 0.3 | 683 / 2 | 30.50 ± 5.91 | – | – |
+| 0.1 | 227 / 76 | 30.23 ± 2.32 | – | – |
+| 0.05 | 113 / 7 | 20.16 ± 0.00 | – | – |
 
-Both are noise-level and the sign is inconsistent across datasets in both, which is what you expect if the amount of reduction is simply not the operative variable. The mechanism is the same in both: inference runs over the original adjacency, so the edge signal the attacks exploit is re-injected at query time no matter how small the training graph was.
+## Target squirrel, shadow cora
+
+| attack | F/A*/D' | whole | 0.3 | 0.1 | 0.05 | delta |
+|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6452 | 0.8476 | 0.7652 | 0.5631 | -0.0821 |
+| attack-1 | x/x/Y | 0.7051 | 0.5817 | 0.7567 | 0.9024 | +0.1974 |
+| attack-2 | Y/x/x | 0.6452 | 0.8476 | 0.7652 | 0.5631 | -0.0821 |
+| attack-3 | x/Y/x | 0.8979 | 0.9623 | 0.9643 | 0.9504 | +0.0525 |
+| attack-4 | x/Y/Y | 0.7291 | 0.6709 | 0.8213 | 0.9061 | +0.1770 |
+| attack-5 | Y/x/Y | 0.6220 | 0.6155 | 0.7476 | 0.9114 | +0.2894 |
+| attack-6 | Y/Y/x | 0.8958 | 0.9549 | 0.9589 | 0.9465 | +0.0508 |
+| attack-7 | Y/Y/Y | 0.6808 | 0.7229 | 0.8372 | 0.8969 | +0.2161 |
+| link-pred | – | 0.8825 | 0.8825 | 0.8825 | 0.8825 | +0.0000 |
+| **mean of 8** | | **0.7276** | **0.7754** | **0.8271** | **0.8300** | **+0.1024** |
+
+Black-box utility for the same settings:
+
+| setting | supernodes (nominal / used) | accuracy | paper | delta |
+|---|---|---|---|---|
+| whole | 5201 / 5201 | 57.10 ± 0.81 | – | – |
+| 0.3 | 1560 / 185 | 24.62 ± 1.56 | – | – |
+| 0.1 | 520 / 55 | 23.71 ± 0.20 | – | – |
+| 0.05 | 260 / 4 | 25.12 ± 0.85 | – | – |
 
 ## Attack setup
 
@@ -100,6 +135,22 @@ Both are noise-level and the sign is inconsistent across datasets in both, which
 ![citeseer_attack0_metrics.png](figures/citeseer_attack0_metrics.png)
 
 ![citeseer_utility_vs_leakage.png](figures/citeseer_utility_vs_leakage.png)
+
+![chameleon_auc_vs_setting.png](figures/chameleon_auc_vs_setting.png)
+
+![chameleon_per_run_auc.png](figures/chameleon_per_run_auc.png)
+
+![chameleon_attack0_metrics.png](figures/chameleon_attack0_metrics.png)
+
+![chameleon_utility_vs_leakage.png](figures/chameleon_utility_vs_leakage.png)
+
+![squirrel_auc_vs_setting.png](figures/squirrel_auc_vs_setting.png)
+
+![squirrel_per_run_auc.png](figures/squirrel_per_run_auc.png)
+
+![squirrel_attack0_metrics.png](figures/squirrel_attack0_metrics.png)
+
+![squirrel_utility_vs_leakage.png](figures/squirrel_utility_vs_leakage.png)
 
 ## Reproduction notes
 

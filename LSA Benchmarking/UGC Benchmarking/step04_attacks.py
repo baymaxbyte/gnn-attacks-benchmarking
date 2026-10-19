@@ -22,7 +22,8 @@ os.environ.update(K.single_thread_env())
 import config as C
 
 SETTINGS = ["whole"] + [str(r) for r in C.RATIOS]
-DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora")}
+DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora"),
+              "C": ("chameleon", "squirrel"), "D": ("squirrel", "chameleon")}
 RESULTS = os.path.join(C.RESULTS, "attacks")
 SET_TAG = "ugc"
 

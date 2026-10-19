@@ -47,29 +47,59 @@ Schur-complement edge weights. She holds the original node attributes, knows a r
 GCN runs over the original graph with unit weights, so each reduced box differs from
 its own un-reduced control only in the graph it was trained on.
 
+## Datasets and attack directions
+
+Runs on **four** datasets — the two homophilous citation graphs plus two
+heterophilous Wikipedia graphs added later:
+
+| dataset | family | nodes | undirected edges | classes |
+|---|---|---|---|---|
+| cora | citation (Planetoid) | 2708 | 5278 | 7 |
+| citeseer | citation (Planetoid) | 3327 | 4552 | 6 |
+| chameleon | Wikipedia (heterophilous) | 2277 | 31371 | 5 |
+| squirrel | Wikipedia (heterophilous) | 5201 | 198353 | 5 |
+
+Attacks run in four target→shadow directions (shadow = the other dataset in the
+same family, at the same setting):
+
+| direction | target → shadow |
+|---|---|
+| A | cora → citeseer |
+| B | citeseer → cora |
+| C | chameleon → squirrel |
+| D | squirrel → chameleon |
+
+The dense graphs cap positive pairs at 10 000 (`MAX_POS`) so the attack datasets
+stay tractable; cora/citeseer (< 10 000 edges) are unaffected and reproduce exactly.
+Kron reduction is a deterministic linear solve, so chameleon and squirrel need no
+extra configuration.
+
 ## Quick start
 
 ```bash
 python config.py                      # check dependencies
+python run_benchmark.py               # whole pipeline, all four datasets, directions A–D
 ```
 
-Then stage by stage:
+`run_benchmark.py` prepares all four datasets and attacks `--directions A,B,C,D` by
+default (pass `--directions A,B` for cora/citeseer only; `--skip_reduce`/`--force`
+control stage 1). Or stage by stage:
 
 ```bash
 python step01_reduce.py               # Kron reduction at r = 0.3, 0.5, 0.7
-python step02_blackbox.py             # train + evaluate the 8 black boxes
+python step02_blackbox.py             # train + evaluate the black boxes
 python step03_attacker.py             # reference model g + attack datasets
-python step04_attacks.py              # 8 attacks per box
+python step04_attacks.py --directions A,B,C,D   # 8 attacks per box
 python step05_aggregate.py            # CSVs, figures, writeup
 ```
 
 `r` is the fraction of nodes **removed**.
 
-| r | Cora nodes kept | Citeseer nodes kept |
-|---|---|---|
-| 0.3 | 1896 | 2329 |
-| 0.5 | 1354 | 1664 |
-| 0.7 | 812 | 998 |
+| r | Cora kept | Citeseer kept | chameleon kept | squirrel kept |
+|---|---|---|---|---|
+| 0.3 | 1896 | 2329 | 1594 | 3641 |
+| 0.5 | 1354 | 1664 | 1139 | 2601 |
+| 0.7 | 812 | 998 | 684 | 1561 |
 
 ## Stages
 

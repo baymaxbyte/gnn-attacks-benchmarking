@@ -21,6 +21,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 def load_adjacency(datapath, dataset):
     """Adjacency only, built the same way data.py does: binary, symmetric, no loops."""
+    ext = os.path.join(datapath, f"{dataset}.npz")
+    if os.path.exists(ext):
+        # External whole-graph schema (chameleon, squirrel). Build the adjacency
+        # byte-for-byte as data.py._load_external so the coarse topology matches
+        # the node ordering the posteriors and attack pairs use.
+        z = np.load(ext, allow_pickle=False)
+        n = int(z["n_nodes"])
+        ei = z["edge_index"]
+        A = sp.coo_matrix((np.ones(ei.shape[1], dtype=float), (ei[0], ei[1])),
+                          shape=(n, n)).tocsr()
+        A.data[:] = 1.0
+        A = A.maximum(A.T)
+        A = A.tolil()
+        A.setdiag(0)
+        A = sp.csr_matrix(A)
+        A.eliminate_zeros()
+        return A
     with open(os.path.join(datapath, f"ind.{dataset}.graph"), "rb") as f:
         graph = pkl.load(f, encoding="latin1")
     A = sp.csr_matrix(nx.adjacency_matrix(nx.from_dict_of_lists(graph)), dtype=float)

@@ -36,18 +36,56 @@ Each reduced box is trained on the reduced graph and evaluated on the original g
 | link-pred | – | 0.6130 | 0.6130 | 0.6130 | 0.6130 |
 | **mean of 8** | | **0.9543** | **0.9573** | **0.9621** | **0.9618** |
 
+## Target chameleon, shadow cora
+
+| attack | F/A*/D' | whole | 0.3 | 0.5 | 0.7 |
+|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6892 | 0.7058 | 0.7232 | 0.6435 |
+| attack-1 | x/x/Y | 0.7040 | 0.6447 | 0.6221 | 0.6437 |
+| attack-2 | Y/x/x | 0.6892 | 0.7058 | 0.7232 | 0.6435 |
+| attack-3 | x/Y/x | 0.8747 | 0.8812 | 0.9167 | 0.9414 |
+| attack-4 | x/Y/Y | 0.7430 | 0.6909 | 0.7120 | 0.7034 |
+| attack-5 | Y/x/Y | 0.6947 | 0.6619 | 0.5743 | 0.5921 |
+| attack-6 | Y/Y/x | 0.8820 | 0.8819 | 0.9109 | 0.9406 |
+| attack-7 | Y/Y/Y | 0.7586 | 0.7098 | 0.6840 | 0.7028 |
+| link-pred | – | 0.8574 | 0.8574 | 0.8574 | 0.8574 |
+| **mean of 8** | | **0.7544** | **0.7353** | **0.7333** | **0.7264** |
+
+## Target squirrel, shadow cora
+
+| attack | F/A*/D' | whole | 0.3 | 0.5 | 0.7 |
+|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6462 | 0.6034 | 0.5491 | 0.5315 |
+| attack-1 | x/x/Y | 0.7870 | 0.6873 | 0.5060 | 0.5912 |
+| attack-2 | Y/x/x | 0.6462 | 0.6034 | 0.5491 | 0.5315 |
+| attack-3 | x/Y/x | 0.9147 | 0.9180 | 0.8927 | 0.9121 |
+| attack-4 | x/Y/Y | 0.8185 | 0.7623 | 0.6026 | 0.6875 |
+| attack-5 | Y/x/Y | 0.7015 | 0.6249 | 0.4459 | 0.4914 |
+| attack-6 | Y/Y/x | 0.9140 | 0.9169 | 0.8891 | 0.9042 |
+| attack-7 | Y/Y/Y | 0.7905 | 0.7258 | 0.6073 | 0.6756 |
+| link-pred | – | 0.8825 | 0.8825 | 0.8825 | 0.8825 |
+| **mean of 8** | | **0.7773** | **0.7302** | **0.6302** | **0.6656** |
+
 ## Reduction effect (mean AUC over the 8 attacks vs the control)
 
 | setting | box acc | mean attack AUC | AUC vs control |
 |---|---|---|---|
-| cora whole | 88.74 | 0.9262 | control |
-| cora 0.3 | 86.81 | 0.9339 | +0.0077 |
-| cora 0.5 | 88.00 | 0.9343 | +0.0081 |
-| cora 0.7 | 85.22 | 0.9312 | +0.0050 |
-| citeseer whole | 75.24 | 0.9543 | control |
-| citeseer 0.3 | 74.85 | 0.9573 | +0.0030 |
-| citeseer 0.5 | 72.32 | 0.9621 | +0.0078 |
-| citeseer 0.7 | 71.23 | 0.9618 | +0.0075 |
+| cora whole | – | 0.9262 | control |
+| cora 0.3 | – | 0.9339 | +0.0077 |
+| cora 0.5 | – | 0.9343 | +0.0081 |
+| cora 0.7 | – | 0.9312 | +0.0050 |
+| citeseer whole | – | 0.9543 | control |
+| citeseer 0.3 | – | 0.9573 | +0.0030 |
+| citeseer 0.5 | – | 0.9621 | +0.0078 |
+| citeseer 0.7 | – | 0.9618 | +0.0075 |
+| chameleon whole | – | 0.7544 | control |
+| chameleon 0.3 | – | 0.7353 | -0.0191 |
+| chameleon 0.5 | – | 0.7333 | -0.0211 |
+| chameleon 0.7 | – | 0.7264 | -0.0280 |
+| squirrel whole | 46.78 | 0.7773 | control |
+| squirrel 0.3 | 40.63 | 0.7302 | -0.0471 |
+| squirrel 0.5 | 34.87 | 0.6302 | -0.1471 |
+| squirrel 0.7 | 29.59 | 0.6656 | -0.1117 |
 
 ## Attack setup
 
@@ -85,6 +123,14 @@ Each reduced box is trained on the reduced graph and evaluated on the original g
 ![citeseer_auc_vs_reduction.png](figures/citeseer_auc_vs_reduction.png)
 
 ![citeseer_auc_vs_setting.png](figures/citeseer_auc_vs_setting.png)
+
+![chameleon_auc_vs_reduction.png](figures/chameleon_auc_vs_reduction.png)
+
+![chameleon_auc_vs_setting.png](figures/chameleon_auc_vs_setting.png)
+
+![squirrel_auc_vs_reduction.png](figures/squirrel_auc_vs_reduction.png)
+
+![squirrel_auc_vs_setting.png](figures/squirrel_auc_vs_setting.png)
 
 ## Notes
 

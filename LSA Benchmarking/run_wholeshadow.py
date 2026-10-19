@@ -34,8 +34,12 @@ SPECS = {
     "ugc":   dict(dir="UGC Benchmarking",   set_tag="ugc",   bb="ugcbb",   g="gugc",
                   settings=["whole", "30", "50", "70"]),
 }
-DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora")}
-DATASETS = ("cora", "citeseer")
+DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora"),
+              "C": ("chameleon", "squirrel"), "D": ("squirrel", "chameleon")}
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
+# Dense graphs cap positive pairs so the attack datasets stay tractable; matches
+# each benchmark's step03 MAX_POS. cora/citeseer (< cap) build uncapped.
+MAX_POS = {"chameleon": 10000, "squirrel": 10000}
 
 _logf = open(os.path.join(HERE, "wholeshadow.log"), "a")
 
@@ -68,6 +72,8 @@ def build_datasets(spec, attack_dir):
                    "--target_pred", f"{ds}_{bb}_{setting}_pred.pkl",
                    "--reference_pred", f"{ds}_{g}_pred.pkl",
                    "--name", name, "--seed", "1"]
+            if ds in MAX_POS:
+                cmd += ["--max_pos", str(MAX_POS[ds])]
             rc, out, err = _run(cmd, attack_dir)
             if rc:
                 log(f"  BUILD FAIL {name}: {err[-600:]}")

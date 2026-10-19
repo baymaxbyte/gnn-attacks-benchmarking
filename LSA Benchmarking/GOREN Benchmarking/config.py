@@ -35,7 +35,7 @@ _repo_py = os.path.join(GOREN_HOME, ".venv", "bin", "python3")
 COARSEN_PYTHON = os.path.abspath(os.environ.get(
     "GOREN_COARSEN_PYTHON", _repo_py if os.path.exists(_repo_py) else sys.executable))
 
-DATASETS = ("cora", "citeseer")
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
 
 # r is the fraction of nodes REMOVED; the coarse graph keeps about n*(1-r).
 RATIOS = (0.3, 0.5, 0.7)
@@ -63,6 +63,9 @@ def check(verbose=True):
 
     say(f"  HERE          {HERE}")
     for ds in DATASETS:
+        if os.path.exists(os.path.join(DATA, f"{ds}.npz")):
+            say(f"  {ds:9s}     external npz")
+            continue
         missing = [s for s in _PICKLES
                    if not os.path.exists(os.path.join(DATA, f"ind.{ds}.{s}"))]
         if missing:

@@ -1,0 +1,17 @@
+dataset,setting,attack,knowledge,auc_coarsened_shadow,auc_whole_shadow,delta_whole_minus_coarsened
+chameleon,whole,attack-1,x/x/Y,0.653301,0.653301,0.0
+chameleon,whole,attack-4,x/Y/Y,0.748195,0.748195,0.0
+chameleon,whole,attack-5,Y/x/Y,0.65962,0.65962,0.0
+chameleon,whole,attack-7,Y/Y/Y,0.768406,0.768406,0.0
+chameleon,30,attack-1,x/x/Y,0.717832,0.713945,-0.003887
+chameleon,30,attack-4,x/Y/Y,0.761898,0.740252,-0.021646
+chameleon,30,attack-5,Y/x/Y,0.703117,0.714652,0.011535
+chameleon,30,attack-7,Y/Y/Y,0.778875,0.766325,-0.01255
+chameleon,50,attack-1,x/x/Y,0.656012,0.657214,0.001202
+chameleon,50,attack-4,x/Y/Y,0.730928,0.717365,-0.013563
+chameleon,50,attack-5,Y/x/Y,0.652121,0.659468,0.007347
+chameleon,50,attack-7,Y/Y/Y,0.720799,0.744367,0.023568
+chameleon,70,attack-1,x/x/Y,0.545692,0.696546,0.150854
+chameleon,70,attack-4,x/Y/Y,0.566954,0.763469,0.196515
+chameleon,70,attack-5,Y/x/Y,0.556124,0.700865,0.144741
+chameleon,70,attack-7,Y/Y/Y,0.582737,0.78974,0.207003

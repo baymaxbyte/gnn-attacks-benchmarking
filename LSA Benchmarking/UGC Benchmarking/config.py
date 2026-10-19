@@ -25,11 +25,12 @@ MANIFEST = os.path.join(HERE, "manifest.json")
 # Absolute, because the attack scripts run with cwd=ATTACK_HOME.
 PYTHON = os.path.abspath(os.environ.get("UGC_PYTHON", sys.executable))
 
-DATASETS = ("cora", "citeseer")
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
 
 # Heterophily factor alpha, paper Table 6 and run.sh. One value per dataset, held
-# fixed across all coarsening ratios.
-ALPHA = {"cora": 0.19, "citeseer": 0.26}
+# fixed across all coarsening ratios. chameleon/squirrel have no paper-tuned alpha,
+# so they use a mid-range 0.2 (UGC needs an alpha per dataset or it KeyErrors).
+ALPHA = {"cora": 0.19, "citeseer": 0.26, "chameleon": 0.2, "squirrel": 0.2}
 
 # --ratio is the percentage of nodes REMOVED: Find_Binwidth computes
 # ratio = 1 - k/n, so k = n*(1 - ratio/100).
@@ -57,6 +58,11 @@ def check(verbose=True):
 
     say(f"  HERE          {HERE}")
     for ds in DATASETS:
+        # datasets without Planetoid pickles ship as an external {ds}.npz
+        # (chameleon, squirrel); skip the pickle check for them.
+        if os.path.exists(os.path.join(DATA, f"{ds}.npz")):
+            say(f"  {ds:9s}     external npz, alpha={ALPHA[ds]}")
+            continue
         missing = [s for s in _PICKLES
                    if not os.path.exists(os.path.join(DATA, f"ind.{ds}.{s}"))]
         if missing:

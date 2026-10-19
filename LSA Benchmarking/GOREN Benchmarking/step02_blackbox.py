@@ -121,9 +121,17 @@ def main():
               f"{p['canonical_test_acc']:>7.2f}")
 
     path = os.path.join(C.RESULTS, "step02_validation.json")
+    # Merge so per-dataset --only runs are additive: keep boxes for datasets we did
+    # not touch, replace the ones we just rebuilt. Keeps cora/citeseer box columns
+    # in step05 when chameleon/squirrel are added in a separate run.
+    boxes = rows
+    if os.path.exists(path):
+        done = {x["dataset"] for x in rows}
+        boxes = [b for b in json.load(open(path)).get("boxes", [])
+                 if b["dataset"] not in done] + rows
     with open(path, "w") as f:
         json.dump({"repeats": args.repeats, "canonical_seed": CANONICAL_SEED,
-                   "boxes": rows}, f, indent=2, default=str)
+                   "boxes": boxes}, f, indent=2, default=str)
 
     K.record(
         "step02_blackbox",

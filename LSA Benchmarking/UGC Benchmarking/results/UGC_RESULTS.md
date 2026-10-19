@@ -52,18 +52,53 @@ Black-box utility, held-out test accuracy on a 60/20/20 split:
 | 50 | 1664 | 0.004344 | 70.48 ± 0.70 | – | – |
 | 70 | 998 | 0.009514 | 67.32 ± 1.19 | – | – |
 
-## Compared with the GCond and FGC benchmarks
+## Target chameleon, shadow cora (alpha = 0.2)
 
-All three benchmarks attack identical node pairs with identical 50/50 splits under the same pair seed, using the same attack code, so the mean AUCs are directly comparable. The reduction axes differ: GCond synthesises 35-140 nodes, FGC merges into 135-998 supernodes, UGC hashes into 812-2329.
+| attack | F/A*/D' | whole | 30 | 50 | 70 | delta |
+|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6506 | 0.7059 | 0.7234 | 0.7190 | +0.0684 |
+| attack-1 | x/x/Y | 0.6533 | 0.7178 | 0.6560 | 0.5457 | -0.1076 |
+| attack-2 | Y/x/x | 0.6506 | 0.7059 | 0.7234 | 0.7190 | +0.0684 |
+| attack-3 | x/Y/x | 0.8974 | 0.8962 | 0.9036 | 0.9349 | +0.0375 |
+| attack-4 | x/Y/Y | 0.7482 | 0.7619 | 0.7309 | 0.5670 | -0.1812 |
+| attack-5 | Y/x/Y | 0.6596 | 0.7031 | 0.6521 | 0.5561 | -0.1035 |
+| attack-6 | Y/Y/x | 0.8918 | 0.8979 | 0.9030 | 0.9380 | +0.0462 |
+| attack-7 | Y/Y/Y | 0.7684 | 0.7789 | 0.7208 | 0.5827 | -0.1857 |
+| link-pred | – | 0.8574 | 0.8574 | 0.8574 | 0.8574 | +0.0000 |
+| **mean of 8** | | **0.7400** | **0.7710** | **0.7517** | **0.6953** | **-0.0447** |
 
-| benchmark | target | no reduction | strongest reduction | change |
-|---|---|---|---|---|
-| FGC | citeseer | 0.9405 (whole) | 0.9455 (0.05) | +0.0051 |
-| GCond | citeseer | 0.9704 (whole) | 0.9601 (1.0) | -0.0103 |
-| UGC | citeseer | 0.9575 (whole) | 0.9485 (70) | -0.0089 |
-| FGC | cora | 0.9252 (whole) | 0.9154 (0.05) | -0.0098 |
-| GCond | cora | 0.9390 (whole) | 0.9502 (1.0) | +0.0112 |
-| UGC | cora | 0.9304 (whole) | 0.9119 (70) | -0.0185 |
+Black-box utility, held-out test accuracy on a 60/20/20 split:
+
+| ratio | supernodes | bin width | test accuracy | paper | delta |
+|---|---|---|---|---|---|
+| whole | 2277 | – | 65.05 ± 1.73 | – | – |
+| 30 | 1594 | 0.005279 | 60.66 ± 1.00 | – | – |
+| 50 | 1138 | 0.011879 | 50.62 ± 0.21 | – | – |
+| 70 | 683 | 0.03125 | 47.18 ± 1.15 | – | – |
+
+## Target squirrel, shadow cora (alpha = 0.2)
+
+| attack | F/A*/D' | whole | 30 | 50 | 70 | delta |
+|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6552 | 0.6367 | 0.6296 | 0.6166 | -0.0386 |
+| attack-1 | x/x/Y | 0.7424 | 0.7697 | 0.7566 | 0.5327 | -0.2097 |
+| attack-2 | Y/x/x | 0.6552 | 0.6367 | 0.6296 | 0.6166 | -0.0386 |
+| attack-3 | x/Y/x | 0.9145 | 0.9126 | 0.9418 | 0.9658 | +0.0513 |
+| attack-4 | x/Y/Y | 0.7794 | 0.7972 | 0.7731 | 0.7035 | -0.0758 |
+| attack-5 | Y/x/Y | 0.7087 | 0.7181 | 0.6415 | 0.5137 | -0.1950 |
+| attack-6 | Y/Y/x | 0.9106 | 0.9076 | 0.9346 | 0.9587 | +0.0481 |
+| attack-7 | Y/Y/Y | 0.7680 | 0.7866 | 0.7239 | 0.6783 | -0.0898 |
+| link-pred | – | 0.8825 | 0.8825 | 0.8825 | 0.8825 | +0.0000 |
+| **mean of 8** | | **0.7667** | **0.7707** | **0.7538** | **0.6983** | **-0.0685** |
+
+Black-box utility, held-out test accuracy on a 60/20/20 split:
+
+| ratio | supernodes | bin width | test accuracy | paper | delta |
+|---|---|---|---|---|---|
+| whole | 5201 | – | 47.26 ± 0.24 | – | – |
+| 30 | 3641 | 0.004171 | 41.91 ± 0.96 | – | – |
+| 50 | 2600 | 0.009514 | 35.70 ± 0.84 | – | – |
+| 70 | 1560 | 0.021994 | 28.88 ± 1.29 | – | – |
 
 ## Attack setup
 
@@ -104,6 +139,18 @@ All three benchmarks attack identical node pairs with identical 50/50 splits und
 ![citeseer_attack0_metrics.png](figures/citeseer_attack0_metrics.png)
 
 ![citeseer_utility_vs_leakage.png](figures/citeseer_utility_vs_leakage.png)
+
+![chameleon_auc_vs_setting.png](figures/chameleon_auc_vs_setting.png)
+
+![chameleon_attack0_metrics.png](figures/chameleon_attack0_metrics.png)
+
+![chameleon_utility_vs_leakage.png](figures/chameleon_utility_vs_leakage.png)
+
+![squirrel_auc_vs_setting.png](figures/squirrel_auc_vs_setting.png)
+
+![squirrel_attack0_metrics.png](figures/squirrel_attack0_metrics.png)
+
+![squirrel_utility_vs_leakage.png](figures/squirrel_utility_vs_leakage.png)
 
 ## Reproduction notes
 

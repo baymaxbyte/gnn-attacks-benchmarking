@@ -1,0 +1,110 @@
+2026-10-19 18:08:28  ======================================================================
+2026-10-19 18:08:28  run_wholeshadow  methods=fgc,gcond,goren,kron,ugc  runs=5
+2026-10-19 18:08:28  ----- fgc (FGC Benchmarking) -----
+2026-10-19 18:08:28    skip cora whole (exists)
+2026-10-19 18:08:28    skip cora 0.3 (exists)
+2026-10-19 18:08:28    skip cora 0.1 (exists)
+2026-10-19 18:08:28    skip cora 0.05 (exists)
+2026-10-19 18:08:28    skip citeseer whole (exists)
+2026-10-19 18:08:28    skip citeseer 0.3 (exists)
+2026-10-19 18:08:28    skip citeseer 0.1 (exists)
+2026-10-19 18:08:28    skip citeseer 0.05 (exists)
+2026-10-19 18:10:31    attacked chameleon/whole  shadow=squirrel_whole  122s
+2026-10-19 18:12:37    attacked chameleon/0.3  shadow=squirrel_whole  126s
+2026-10-19 18:14:47    attacked chameleon/0.1  shadow=squirrel_whole  130s
+2026-10-19 18:16:56    attacked chameleon/0.05  shadow=squirrel_whole  129s
+2026-10-19 18:19:04    attacked squirrel/whole  shadow=chameleon_whole  129s
+2026-10-19 18:21:13    attacked squirrel/0.3  shadow=chameleon_whole  129s
+2026-10-19 18:23:22    attacked squirrel/0.1  shadow=chameleon_whole  129s
+2026-10-19 18:25:35    attacked squirrel/0.05  shadow=chameleon_whole  134s
+2026-10-19 18:25:35    cleaned 48 attack_dataset files
+2026-10-19 18:25:35    fgc done in 17.1 min
+2026-10-19 18:25:35  ----- gcond (GCOND Benchmarking) -----
+2026-10-19 18:25:35    skip cora whole (exists)
+2026-10-19 18:25:35    skip cora 0.25 (exists)
+2026-10-19 18:25:35    skip cora 0.5 (exists)
+2026-10-19 18:25:35    skip cora 1.0 (exists)
+2026-10-19 18:25:35    skip citeseer whole (exists)
+2026-10-19 18:25:35    skip citeseer 0.25 (exists)
+2026-10-19 18:25:35    skip citeseer 0.5 (exists)
+2026-10-19 18:25:35    skip citeseer 1.0 (exists)
+2026-10-19 18:27:41    attacked chameleon/whole  shadow=squirrel_whole  125s
+2026-10-19 18:29:47    attacked chameleon/0.25  shadow=squirrel_whole  126s
+2026-10-19 18:31:55    attacked chameleon/0.5  shadow=squirrel_whole  128s
+2026-10-19 18:34:02    attacked chameleon/1.0  shadow=squirrel_whole  127s
+2026-10-19 18:36:10    attacked squirrel/whole  shadow=chameleon_whole  128s
+2026-10-19 18:38:19    attacked squirrel/0.25  shadow=chameleon_whole  129s
+2026-10-19 18:40:28    attacked squirrel/0.5  shadow=chameleon_whole  129s
+2026-10-19 18:42:36    attacked squirrel/1.0  shadow=chameleon_whole  128s
+2026-10-19 18:42:36    cleaned 48 attack_dataset files
+2026-10-19 18:42:36    gcond done in 17.0 min
+2026-10-19 18:42:36  ----- goren (GOREN Benchmarking) -----
+2026-10-19 18:42:36    skip cora whole (exists)
+2026-10-19 18:42:36    skip cora 0.3_bl (exists)
+2026-10-19 18:42:36    skip cora 0.3_goren (exists)
+2026-10-19 18:42:36    skip cora 0.5_bl (exists)
+2026-10-19 18:42:36    skip cora 0.5_goren (exists)
+2026-10-19 18:42:36    skip cora 0.7_bl (exists)
+2026-10-19 18:42:36    skip cora 0.7_goren (exists)
+2026-10-19 18:42:36    skip citeseer whole (exists)
+2026-10-19 18:42:36    skip citeseer 0.3_bl (exists)
+2026-10-19 18:42:36    skip citeseer 0.3_goren (exists)
+2026-10-19 18:42:36    skip citeseer 0.5_bl (exists)
+2026-10-19 18:42:36    skip citeseer 0.5_goren (exists)
+2026-10-19 18:42:36    skip citeseer 0.7_bl (exists)
+2026-10-19 18:42:36    skip citeseer 0.7_goren (exists)
+2026-10-19 18:44:43    attacked chameleon/whole  shadow=squirrel_whole  127s
+2026-10-19 18:46:50    attacked chameleon/0.3_bl  shadow=squirrel_whole  126s
+2026-10-19 18:49:26    attacked chameleon/0.3_goren  shadow=squirrel_whole  156s
+2026-10-19 18:52:43    attacked chameleon/0.5_bl  shadow=squirrel_whole  197s
+2026-10-19 18:54:55    attacked chameleon/0.5_goren  shadow=squirrel_whole  132s
+2026-10-19 18:57:03    attacked chameleon/0.7_bl  shadow=squirrel_whole  128s
+2026-10-19 19:00:53    attacked chameleon/0.7_goren  shadow=squirrel_whole  230s
+2026-10-19 20:13:50    attacked squirrel/whole  shadow=chameleon_whole  4377s
+2026-10-19 20:15:59    attacked squirrel/0.3_bl  shadow=chameleon_whole  129s
+2026-10-19 20:18:07    attacked squirrel/0.3_goren  shadow=chameleon_whole  128s
+2026-10-19 20:20:15    attacked squirrel/0.5_bl  shadow=chameleon_whole  128s
+2026-10-19 20:22:24    attacked squirrel/0.5_goren  shadow=chameleon_whole  129s
+2026-10-19 20:24:32    attacked squirrel/0.7_bl  shadow=chameleon_whole  128s
+2026-10-19 20:26:40    attacked squirrel/0.7_goren  shadow=chameleon_whole  128s
+2026-10-19 20:26:41    cleaned 84 attack_dataset files
+2026-10-19 20:26:41    goren done in 104.1 min
+2026-10-19 20:26:41  ----- kron (KRON Benchmarking) -----
+2026-10-19 20:26:41    skip cora whole (exists)
+2026-10-19 20:26:41    skip cora 0.3 (exists)
+2026-10-19 20:26:41    skip cora 0.5 (exists)
+2026-10-19 20:26:41    skip cora 0.7 (exists)
+2026-10-19 20:26:41    skip citeseer whole (exists)
+2026-10-19 20:26:41    skip citeseer 0.3 (exists)
+2026-10-19 20:26:41    skip citeseer 0.5 (exists)
+2026-10-19 20:26:41    skip citeseer 0.7 (exists)
+2026-10-19 20:28:47    attacked chameleon/whole  shadow=squirrel_whole  127s
+2026-10-19 20:30:54    attacked chameleon/0.3  shadow=squirrel_whole  126s
+2026-10-19 20:33:01    attacked chameleon/0.5  shadow=squirrel_whole  128s
+2026-10-19 20:35:09    attacked chameleon/0.7  shadow=squirrel_whole  128s
+2026-10-19 20:37:18    attacked squirrel/whole  shadow=chameleon_whole  129s
+2026-10-19 20:39:29    attacked squirrel/0.3  shadow=chameleon_whole  131s
+2026-10-19 20:41:37    attacked squirrel/0.5  shadow=chameleon_whole  129s
+2026-10-19 20:43:45    attacked squirrel/0.7  shadow=chameleon_whole  128s
+2026-10-19 20:43:45    cleaned 48 attack_dataset files
+2026-10-19 20:43:45    kron done in 17.1 min
+2026-10-19 20:43:45  ----- ugc (UGC Benchmarking) -----
+2026-10-19 20:43:45    skip cora whole (exists)
+2026-10-19 20:43:45    skip cora 30 (exists)
+2026-10-19 20:43:45    skip cora 50 (exists)
+2026-10-19 20:43:45    skip cora 70 (exists)
+2026-10-19 20:43:45    skip citeseer whole (exists)
+2026-10-19 20:43:45    skip citeseer 30 (exists)
+2026-10-19 20:43:45    skip citeseer 50 (exists)
+2026-10-19 20:43:45    skip citeseer 70 (exists)
+2026-10-19 20:46:05    attacked chameleon/whole  shadow=squirrel_whole  139s
+2026-10-19 20:48:11    attacked chameleon/30  shadow=squirrel_whole  126s
+2026-10-19 20:50:18    attacked chameleon/50  shadow=squirrel_whole  128s
+2026-10-19 20:52:26    attacked chameleon/70  shadow=squirrel_whole  128s
+2026-10-19 20:54:34    attacked squirrel/whole  shadow=chameleon_whole  128s
+2026-10-19 20:56:43    attacked squirrel/30  shadow=chameleon_whole  129s
+2026-10-19 20:58:52    attacked squirrel/50  shadow=chameleon_whole  129s
+2026-10-19 21:01:02    attacked squirrel/70  shadow=chameleon_whole  130s
+2026-10-19 21:01:02    cleaned 48 attack_dataset files
+2026-10-19 21:01:02    ugc done in 17.3 min
+2026-10-19 21:01:02  ALL DONE

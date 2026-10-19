@@ -39,12 +39,13 @@ def _probe(job):
     for s in range(SELECT_REPEATS):
         bb.build(run_seed=s)
         accs.append(bb.accuracy("orig") * 100)
-    paper = B.PAPER_ACC[(ds, r)][0]
+    paper = B.PAPER_ACC[(ds, r)][0] if (ds, r) in B.PAPER_ACC else None
     mean = float(np.mean(accs))
     return {
         "dataset": ds, "r": r, "beta": beta, "k": bb.k,
         "mode_a_mean": mean, "mode_a_std": float(np.std(accs)),
-        "paper_mean": paper, "abs_delta": abs(mean - paper),
+        "paper_mean": paper,
+        "abs_delta": (abs(mean - paper) if paper is not None else None),
         "nonempty_supernodes": cg["nonempty_supernodes"],
         "mean_nonempty_size": cg["mean_nonempty_size"],
         "max_supernode_size": cg["max_supernode_size"],
@@ -86,6 +87,11 @@ def main():
 
     t0 = time.perf_counter()
     if args.beta is None:
+        # Sweep the whole beta grid for EVERY setting. Selection criterion depends
+        # on whether the setting has a paper target: cora/citeseer minimise the gap
+        # to the paper's Table 4 accuracy (reproduction); chameleon/squirrel have no
+        # paper number, so they pick the beta with the highest Mode-A (original-
+        # graph) accuracy -- a single, principled rule applied to the full sweep.
         jobs = [(ds, r, b) for ds, r in grid for b in BETA_GRID]
         print(f"beta search: {len(jobs)} coarsenings x {SELECT_REPEATS} GNN runs, "
               f"{args.workers} workers\n")
@@ -96,17 +102,27 @@ def main():
               f"{'|delta|':>8s} {'nonemp':>7s} {'meansz':>7s} {'c_edges':>8s} {'sec':>5s}")
         print("-" * 92)
         for p in probes:
+            paper_s = (f"{p['paper_mean']:7.2f}" if p["paper_mean"] is not None
+                       else f"{'n/a':>7s}")
+            delta_s = (f"{p['abs_delta']:8.2f}" if p["abs_delta"] is not None
+                       else f"{'-':>8s}")
             print(f"{p['dataset']:9s} {p['r']:>5} {p['beta']:>7g} "
-                  f"{p['mode_a_mean']:6.2f}+/-{p['mode_a_std']:5.2f} {p['paper_mean']:7.2f} "
-                  f"{p['abs_delta']:8.2f} {p['nonempty_supernodes']:7d} "
+                  f"{p['mode_a_mean']:6.2f}+/-{p['mode_a_std']:5.2f} {paper_s} "
+                  f"{delta_s} {p['nonempty_supernodes']:7d} "
                   f"{p['mean_nonempty_size']:7.1f} {p['coarse_edges']:8d} {p['seconds']:5.1f}")
 
-        best = {}
+        best, criterion = {}, {}
         for ds, r in grid:
             cands = [p for p in probes if p["dataset"] == ds and p["r"] == r]
-            best[(ds, r)] = min(cands, key=lambda p: p["abs_delta"])
+            if (ds, r) in B.PAPER_ACC:
+                best[(ds, r)] = min(cands, key=lambda p: p["abs_delta"])
+                criterion[f"{ds}_{r}"] = "min_abs_delta_vs_paper"
+            else:
+                best[(ds, r)] = max(cands, key=lambda p: p["mode_a_mean"])
+                criterion[f"{ds}_{r}"] = "max_mode_a"
         with open(os.path.join(C.RESULTS, "step01_beta_search.json"), "w") as f:
             json.dump({"grid": list(BETA_GRID), "repeats": SELECT_REPEATS,
+                       "selection_criterion": criterion,
                        "probes": probes,
                        "selected": {f"{ds}_{r}": best[(ds, r)] for ds, r in grid}},
                       f, indent=2)
@@ -121,8 +137,13 @@ def main():
         path, stats = _save(ds, r, beta)
         outputs.append(K.rel(path))
         stats_all[f"{ds}_{r}"] = dict(stats, beta=beta)
-        d = best[(ds, r)].get("abs_delta")
-        extra = f"  |delta vs paper| = {d:.2f}" if d is not None else ""
+        b_ = best[(ds, r)]
+        if b_.get("abs_delta") is not None:
+            extra = f"  |delta vs paper| = {b_['abs_delta']:.2f}"
+        elif b_.get("mode_a_mean") is not None:
+            extra = f"  mode-A = {b_['mode_a_mean']:.2f} (highest; no paper target)"
+        else:
+            extra = ""
         print(f"  {ds:9s} r={r:<5} beta={beta:<7g} k={stats['k']:4d} "
               f"nonempty={stats['nonempty_supernodes']:4d} "
               f"mean_size={stats['mean_nonempty_size']:5.1f} "

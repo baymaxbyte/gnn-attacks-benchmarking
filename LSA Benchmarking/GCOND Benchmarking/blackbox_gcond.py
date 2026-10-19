@@ -138,7 +138,7 @@ class GCondBlackBox:
         return {
             "dataset": self.dataset,
             "setting": self.setting,
-            "paper_r": PAPER_R[self.dataset][self.setting],
+            "paper_r": PAPER_R.get(self.dataset, {}).get(self.setting, "n/a"),
             "n_train_nodes": (self.n_nodes if self.setting == "whole"
                               else int(self.training_set()[0].shape[0])),
             "acc_mean": round(float(accs.mean() * 100), 2),

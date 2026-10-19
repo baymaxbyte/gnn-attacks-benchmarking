@@ -217,6 +217,186 @@
       "box": "B3",
       "posterior_file": "citeseer_gcondbb_1.0_pred.pkl",
       "n_served": 3327
+    },
+    {
+      "dataset": "squirrel",
+      "setting": "whole",
+      "paper_r": "n/a",
+      "n_train_nodes": 5201,
+      "acc_mean": 34.58,
+      "acc_std": 0.32,
+      "acc_runs": [
+        35.02,
+        34.46,
+        34.27
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B0",
+      "posterior_file": "squirrel_gcondbb_whole_pred.pkl",
+      "n_served": 5201
+    },
+    {
+      "dataset": "squirrel",
+      "setting": "0.25",
+      "paper_r": "n/a",
+      "n_train_nodes": 129,
+      "acc_mean": 26.66,
+      "acc_std": 0.57,
+      "acc_runs": [
+        27.08,
+        27.04,
+        25.86
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B1",
+      "posterior_file": "squirrel_gcondbb_0.25_pred.pkl",
+      "n_served": 5201
+    },
+    {
+      "dataset": "squirrel",
+      "setting": "0.5",
+      "paper_r": "n/a",
+      "n_train_nodes": 259,
+      "acc_mean": 24.83,
+      "acc_std": 0.71,
+      "acc_runs": [
+        24.87,
+        25.67,
+        23.94
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B2",
+      "posterior_file": "squirrel_gcondbb_0.5_pred.pkl",
+      "n_served": 5201
+    },
+    {
+      "dataset": "squirrel",
+      "setting": "1.0",
+      "paper_r": "n/a",
+      "n_train_nodes": 519,
+      "acc_mean": 23.01,
+      "acc_std": 1.53,
+      "acc_runs": [
+        25.04,
+        22.64,
+        21.34
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B3",
+      "posterior_file": "squirrel_gcondbb_1.0_pred.pkl",
+      "n_served": 5201
+    },
+    {
+      "dataset": "chameleon",
+      "setting": "whole",
+      "paper_r": "n/a",
+      "n_train_nodes": 2277,
+      "acc_mean": 54.67,
+      "acc_std": 0.27,
+      "acc_runs": [
+        54.61,
+        54.72,
+        54.99,
+        54.23,
+        54.5,
+        54.72,
+        54.88,
+        54.77,
+        55.05,
+        54.23
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B0",
+      "posterior_file": "chameleon_gcondbb_whole_pred.pkl",
+      "n_served": 2277
+    },
+    {
+      "dataset": "chameleon",
+      "setting": "0.25",
+      "paper_r": "n/a",
+      "n_train_nodes": 56,
+      "acc_mean": 37.83,
+      "acc_std": 1.11,
+      "acc_runs": [
+        37.71,
+        40.23,
+        38.25,
+        37.71,
+        37.49,
+        37.43,
+        36.72,
+        38.09,
+        35.89,
+        38.8
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B1",
+      "posterior_file": "chameleon_gcondbb_0.25_pred.pkl",
+      "n_served": 2277
+    },
+    {
+      "dataset": "chameleon",
+      "setting": "0.5",
+      "paper_r": "n/a",
+      "n_train_nodes": 113,
+      "acc_mean": 36.48,
+      "acc_std": 2.31,
+      "acc_runs": [
+        37.76,
+        33.81,
+        36.06,
+        38.25,
+        38.25,
+        32.44,
+        38.14,
+        40.12,
+        34.14,
+        35.84
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B2",
+      "posterior_file": "chameleon_gcondbb_0.5_pred.pkl",
+      "n_served": 2277
+    },
+    {
+      "dataset": "chameleon",
+      "setting": "1.0",
+      "paper_r": "n/a",
+      "n_train_nodes": 227,
+      "acc_mean": 38.95,
+      "acc_std": 3.13,
+      "acc_runs": [
+        40.45,
+        41.0,
+        36.83,
+        36.22,
+        42.7,
+        39.74,
+        41.33,
+        40.45,
+        31.39,
+        39.41
+      ],
+      "paper_mean": null,
+      "paper_std": null,
+      "delta": null,
+      "box": "B3",
+      "posterior_file": "chameleon_gcondbb_1.0_pred.pkl",
+      "n_served": 2277
     }
   ]
 }

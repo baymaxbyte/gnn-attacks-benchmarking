@@ -31,35 +31,73 @@ only for the attacks that assume attribute knowledge.
 Each run produces one black box per reduction setting, one adversary per dataset,
 and 8 attack scores plus a link-prediction baseline per setting.
 
+## Datasets and attack directions
+
+Runs on **four** datasets — the two homophilous citation graphs plus two
+heterophilous Wikipedia graphs added later:
+
+| dataset | family | nodes | undirected edges | classes |
+|---|---|---|---|---|
+| cora | citation (Planetoid) | 2708 | 5278 | 7 |
+| citeseer | citation (Planetoid) | 3327 | 4552 | 6 |
+| chameleon | Wikipedia (heterophilous) | 2277 | 31371 | 5 |
+| squirrel | Wikipedia (heterophilous) | 5201 | 198353 | 5 |
+
+Attacks run in four target→shadow directions (shadow = the other dataset in the
+same family, at the same setting):
+
+| direction | target → shadow |
+|---|---|
+| A | cora → citeseer |
+| B | citeseer → cora |
+| C | chameleon → squirrel |
+| D | squirrel → chameleon |
+
+The dense graphs cap positive pairs at 10 000 (`MAX_POS`) so the attack datasets
+stay tractable; cora/citeseer (< 10 000 edges) are unaffected and reproduce exactly.
+
+**Condensation budget (standard).** A single `CONDENSE_EPOCHS = 600` is used for
+every dataset — the paper's value and the one the cora/citeseer Table 2 gate uses.
+GCond is a CUDA method; on CPU the dense chameleon/squirrel condensations are slow
+(squirrel r=1.0 ≈ hours), so run stage 1 on a GPU host where possible. chameleon and
+squirrel have no published target, so their boxes are reported, not gated.
+
 ## Quick start
 
 ```bash
-python config.py                                               # check dependencies
-python run_benchmark.py --dataset cora --shadow citeseer --r 0.5
+python config.py                      # check dependencies
+python run_benchmark.py               # all four datasets, directions A–D
 ```
 
-Reverse direction: `--dataset citeseer --shadow cora`.
+`run_benchmark.py` condenses/boxes/attacks `--datasets cora,citeseer,chameleon,squirrel`
+across `--ratios 0.25,0.5,1.0` and `--directions A,B,C,D` by default (e.g.
+`--datasets chameleon,squirrel --directions C,D` for the heterophilous pair only).
+It points `GCOND_HOME`/`GCOND_PYTHON` at `../../../../GCond/GCond-main` unless you
+export them.
 
-`--r` is GCond's CLI reduction rate: a fraction of the dataset's **labeling
-rate**, so `0.25 / 0.5 / 1.0` are the paper's three settings.
+`--r`/`--ratios` is GCond's CLI reduction rate: a fraction of the dataset's
+**labeling rate**, so `0.25 / 0.5 / 1.0` are the paper's three settings.
 
-| `--r` | Cora | Citeseer |
-|---|---|---|
-| 0.25 | 1.3% → 35 nodes | 0.9% → 30 nodes |
-| 0.5 | 2.6% → 70 nodes | 1.8% → 60 nodes |
-| 1.0 | 5.2% → 140 nodes | 3.6% → 120 nodes |
+| `--r` | Cora | Citeseer | chameleon | squirrel |
+|---|---|---|---|---|
+| 0.25 | 35 nodes | 30 | 56 | 129 |
+| 0.5 | 70 nodes | 60 | 113 | 259 |
+| 1.0 | 140 nodes | 120 | 227 | 519 |
 
 | Flag | Effect |
 |---|---|
+| `--datasets` | which datasets to condense/box/attack (default all four) |
+| `--ratios` | condensation rates (default `0.25,0.5,1.0`) |
+| `--directions` | attack directions (default `A,B,C,D`) |
 | `--no_whole` | skip the no-condensation control (not recommended) |
 | `--skip_condense` | reuse condensed graphs already in `artifacts/condensed/` |
 | `--skip_attacks` | stop after the validation gate |
-| `--repeats N` | black-box evaluation repeats (default 10) |
+| `--repeats N` | black-box evaluation repeats (default 10; squirrel is slow — try 3) |
 | `--runs N` | attack-model repeats (default 5) |
 | `--no_clustering` | skip the K-means figures, which re-read the attack JSONL |
 | `--force` | recompute instead of reusing artifacts |
 | `--device` | `cpu` or `cuda` |
-| `--gate_tolerance` | accuracy points of deviation from the paper allowed |
+| `--gate_tolerance` | accuracy points of deviation from the paper allowed (paperless datasets are not gated) |
 
 ## Stages
 

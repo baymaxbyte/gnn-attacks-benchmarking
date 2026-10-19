@@ -39,31 +39,60 @@ variant she is querying. She holds the original node attributes, knows a random 
 labels, and is scored on recovering **original** edges. At inference the trained GCN
 runs over the original graph with unit weights.
 
+## Datasets and attack directions
+
+Runs on **four** datasets — the two homophilous citation graphs plus two
+heterophilous Wikipedia graphs added later:
+
+| dataset | family | nodes | undirected edges | classes |
+|---|---|---|---|---|
+| cora | citation (Planetoid) | 2708 | 5278 | 7 |
+| citeseer | citation (Planetoid) | 3327 | 4552 | 6 |
+| chameleon | Wikipedia (heterophilous) | 2277 | 31371 | 5 |
+| squirrel | Wikipedia (heterophilous) | 5201 | 198353 | 5 |
+
+Attacks run in four target→shadow directions (shadow = the other dataset in the
+same family, at the same setting):
+
+| direction | target → shadow |
+|---|---|
+| A | cora → citeseer |
+| B | citeseer → cora |
+| C | chameleon → squirrel |
+| D | squirrel → chameleon |
+
+The dense graphs cap positive pairs at 10 000 (`MAX_POS`) so the attack datasets
+stay tractable; cora/citeseer (< 10 000 edges) are unaffected and reproduce exactly.
+On the dense heterophilous chameleon/squirrel, GOREN's **Eigenerror reduction is
+strongly negative** — it makes those coarsenings a *worse* spectral fit than the
+baseline weights — which is itself a reported finding (see `GOREN_RESULTS.md`).
+
 ## Quick start
 
 ```bash
 python config.py                      # check dependencies
-python run_benchmark.py               # whole pipeline, both datasets
+python run_benchmark.py               # whole pipeline, all four datasets, directions A–D
 ```
 
-Or stage by stage:
+`run_benchmark.py` prepares all four datasets and attacks `--directions A,B,C,D` by
+default (pass `--directions A,B` for cora/citeseer only). Or stage by stage:
 
 ```bash
 python step01_coarsen.py              # Loukas coarsening at r = 0.3, 0.5, 0.7
 python step02a_goren_weights.py       # train GOREN's GIN, produce learned weights
-python step02_blackbox.py             # train + evaluate the 14 black boxes
+python step02_blackbox.py             # train + evaluate the black boxes (bl + goren)
 python step03_attacker.py             # reference model g + attack datasets
-python step04_attacks.py              # 8 attacks per box
+python step04_attacks.py --directions A,B,C,D   # 8 attacks per box
 python step05_aggregate.py            # CSVs, figures, writeup
 ```
 
 `r` is the fraction of nodes **removed**.
 
-| r | Cora supernodes | Citeseer supernodes |
-|---|---|---|
-| 0.3 | 1896 | 2330 |
-| 0.5 | 1354 | 1664 |
-| 0.7 | 814 | 1000 |
+| r | Cora | Citeseer | chameleon | squirrel |
+|---|---|---|---|---|
+| 0.3 | 1896 | 2330 | 1594 | 3641 |
+| 0.5 | 1354 | 1664 | 1139 | 2601 |
+| 0.7 | 814 | 1000 | 684 | 1561 |
 
 ## Stages
 

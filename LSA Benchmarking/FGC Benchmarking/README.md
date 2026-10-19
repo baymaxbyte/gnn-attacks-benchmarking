@@ -30,31 +30,65 @@ on recovering **original** edges.
 At inference the trained GCN runs over the original adjacency, which is FGC's own
 evaluation protocol: the coarse graph shapes the weights but never the serving path.
 
+## Datasets and attack directions
+
+Runs on **four** datasets — the two homophilous citation graphs plus two
+heterophilous Wikipedia graphs added later:
+
+| dataset | family | nodes | undirected edges | classes |
+|---|---|---|---|---|
+| cora | citation (Planetoid) | 2708 | 5278 | 7 |
+| citeseer | citation (Planetoid) | 3327 | 4552 | 6 |
+| chameleon | Wikipedia (heterophilous) | 2277 | 31371 | 5 |
+| squirrel | Wikipedia (heterophilous) | 5201 | 198353 | 5 |
+
+Attacks run in four target→shadow directions (shadow = the other dataset in the
+same family, at the same setting):
+
+| direction | target → shadow |
+|---|---|
+| A | cora → citeseer |
+| B | citeseer → cora |
+| C | chameleon → squirrel |
+| D | squirrel → chameleon |
+
+The dense graphs cap positive pairs at 10 000 (`MAX_POS`) so the attack datasets
+stay tractable; cora/citeseer (< 10 000 edges) are unaffected and reproduce exactly.
+
+**`beta` selection (standard).** `step01` sweeps the grid {0.001, 0.01, 0.1, 1, 10}
+for every setting and selects by one rule: datasets with a published target
+(cora/citeseer) take the beta closest to the paper's Table 4 accuracy; the paperless
+chameleon/squirrel take the beta with the **highest Mode-A (original-graph)
+accuracy**. On these dense heterophilous graphs FGC's coarsening degenerates
+(≈2 supernodes at every beta) — the attack scores the original-graph posteriors, so
+the AUCs are valid regardless.
+
 ## Quick start
 
 ```bash
 python config.py                      # check dependencies
-python run_benchmark.py               # whole pipeline, both datasets
+python run_benchmark.py               # whole pipeline, all four datasets, directions A–D
 ```
 
-Or stage by stage:
+`run_benchmark.py` prepares all four datasets and attacks `--directions A,B,C,D` by
+default (pass `--directions A,B` for cora/citeseer only). Or stage by stage:
 
 ```bash
-python step01_coarsen.py              # coarsen at r = 0.3, 0.1, 0.05
-python step02_blackbox.py             # train + validate the 8 black boxes
+python step01_coarsen.py              # beta sweep + coarsen at r = 0.3, 0.1, 0.05
+python step02_blackbox.py             # train + validate the black boxes
 python step03_attacker.py             # reference model g + attack datasets
-python step04_attacks.py              # 8 attacks per box
+python step04_attacks.py --directions A,B,C,D   # 8 attacks per box
 python step05_aggregate.py            # CSVs, figures, writeup
 ```
 
 `r` is the fraction of nodes **kept**, so the coarse graph has `k = int(n*r)`
 supernodes.
 
-| r | Cora | Citeseer |
-|---|---|---|
-| 0.3 | 812 supernodes | 998 |
-| 0.1 | 270 | 332 |
-| 0.05 | 135 | 166 |
+| r | Cora | Citeseer | chameleon | squirrel |
+|---|---|---|---|---|
+| 0.3 | 812 supernodes | 998 | degenerate (~2) | degenerate (~2) |
+| 0.1 | 270 | 332 | degenerate (~2) | degenerate (~2) |
+| 0.05 | 135 | 166 | degenerate (~2) | degenerate (~2) |
 
 ## Stages
 

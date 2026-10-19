@@ -24,15 +24,33 @@ GRID = [
     ("citeseer", "0.25", "0.9%", 30),
     ("citeseer", "0.5", "1.8%", 60),
     ("citeseer", "1.0", "3.6%", 120),
+    # chameleon / squirrel: whole-graph external npz, condensed via GCond's
+    # patched get_dataset. No paper target and the synthetic count follows the
+    # 10% stratified train split (expect left None).
+    ("chameleon", "0.25", "n/a", None),
+    ("chameleon", "0.5", "n/a", None),
+    ("chameleon", "1.0", "n/a", None),
+    ("squirrel", "0.25", "n/a", None),
+    ("squirrel", "0.5", "n/a", None),
+    ("squirrel", "1.0", "n/a", None),
 ]
 
 AUTHOR_ARGS = ["--nlayers=2", "--sgc=1", "--lr_feat=1e-4", "--lr_adj=1e-4",
-               "--seed=1", "--epochs=600"]
+               "--seed=1"]
+
+# One condensation budget for EVERY dataset -- the paper's value, the same one the
+# cora/citeseer Table 2 validation gate uses. It is applied uniformly so the
+# condensed-box accuracies are comparable across datasets (a per-dataset budget
+# would make them a measurement of the budget, not of GCond). GCond is a GPU
+# method; on CPU the larger graphs (squirrel's r=1.0 has 519 synthetic nodes) are
+# slow at this budget -- run stage 1 on a GPU host, or override with --epochs for a
+# smoke test only (never for reported numbers).
+CONDENSE_EPOCHS = 600
 
 SEED = 1
 
 
-def condense(dataset, r, expect_nodes, force=False):
+def condense(dataset, r, expect_nodes, force=False, epochs=CONDENSE_EPOCHS):
     tag = f"{dataset}_{r}_{SEED}"
     dest = {k: os.path.join(CONDENSED, f"{k}_{tag}.pt")
             for k in ("adj", "feat", "label")}
@@ -41,7 +59,8 @@ def condense(dataset, r, expect_nodes, force=False):
         return dest, None
 
     cmd = [GCOND_PY, "-W", "ignore", "-u", "train_gcond_transduct.py",
-           f"--dataset={dataset}", f"--r={r}", "--save=1", *AUTHOR_ARGS]
+           f"--dataset={dataset}", f"--r={r}", "--save=1", *AUTHOR_ARGS,
+           f"--epochs={epochs}"]
     print(f"\n>>> condensing {dataset} r={r}\n    {' '.join(cmd)}", flush=True)
     t0 = time.time()
     p = subprocess.run(cmd, cwd=GCOND, capture_output=True, text=True)
@@ -72,7 +91,8 @@ def condense(dataset, r, expect_nodes, force=False):
     import torch
     A = torch.load(dest["adj"], map_location="cpu", weights_only=False)
     n = A.shape[0]
-    flag = "" if n == expect_nodes else f"  !! expected {expect_nodes}"
+    flag = "" if (expect_nodes is None or n == expect_nodes) \
+        else f"  !! expected {expect_nodes}"
     print(f"    done in {dur/60:.1f} min   synthetic nodes={n}{flag}")
     if acc:
         print(f"    (GCond's own internal eval: test="
@@ -85,6 +105,10 @@ def main():
     ap = argparse.ArgumentParser(description="Re-run GCond condensation")
     ap.add_argument("--only", default=None, help="restrict to one dataset")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--epochs", type=int, default=CONDENSE_EPOCHS,
+                    help=f"condensation epochs; benchmark standard is "
+                         f"{CONDENSE_EPOCHS} for every dataset. Lower only for "
+                         f"smoke tests, never for reported numbers.")
     args = ap.parse_args()
 
     C.ensure_dirs()
@@ -94,7 +118,8 @@ def main():
     numbers, outputs = {}, []
     t0 = time.time()
     for dataset, r, paper_r, expect in grid:
-        dest, info = condense(dataset, r, expect, force=args.force)
+        dest, info = condense(dataset, r, expect, force=args.force,
+                              epochs=args.epochs)
         outputs += [C.rel(p) for p in dest.values()]
         if info:
             numbers[f"{dataset}_r{r}"] = dict(paper_r=paper_r, **info)

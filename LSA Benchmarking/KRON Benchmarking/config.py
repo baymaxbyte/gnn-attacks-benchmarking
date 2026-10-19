@@ -21,7 +21,7 @@ MANIFEST = os.path.join(HERE, "manifest.json")
 
 PYTHON = os.path.abspath(os.environ.get("KRON_PYTHON", sys.executable))
 
-DATASETS = ("cora", "citeseer")
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
 
 # r is the fraction of nodes REMOVED, matching the GOREN and UGC conventions: the
 # reduced graph keeps about n*(1-r) nodes. keep = 0.7 / 0.5 / 0.3.
@@ -46,6 +46,9 @@ def check(verbose=True):
     say(f"  HERE          {HERE}")
     _pickles = ("x", "y", "tx", "ty", "allx", "ally", "graph", "test.index")
     for ds in DATASETS:
+        if os.path.exists(os.path.join(DATA, f"{ds}.npz")):
+            say(f"  {ds:9s}     external npz")
+            continue
         missing = [s for s in _pickles
                    if not os.path.exists(os.path.join(DATA, f"ind.{ds}.{s}"))]
         if missing:

@@ -69,6 +69,11 @@ def main():
               f"{time.perf_counter() - t1:4.0f}")
 
     path = os.path.join(C.RESULTS, "step02a_goren_weights.json")
+    # Merge so per-dataset --only runs are additive: chameleon/squirrel join the
+    # existing cora/citeseer entries instead of clobbering them, so step05 keeps
+    # every dataset's Eigenerror. Re-running a dataset overwrites just its keys.
+    if os.path.exists(path):
+        merged = json.load(open(path)); merged.update(out); out = merged
     with open(path, "w") as f:
         json.dump(out, f, indent=2, default=str)
 

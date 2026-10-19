@@ -3,74 +3,62 @@
   "steps": [
     {
       "step": "step01_reduce",
-      "summary": "Kron-reduced 6 (dataset, r) settings by Schur complement, eliminating the lowest-degree interior nodes",
-      "timestamp": "2026-09-29 16:26:41",
+      "summary": "Kron-reduced 3 (dataset, r) settings by Schur complement, eliminating the lowest-degree interior nodes",
+      "timestamp": "2026-10-19 01:44:08",
       "inputs": [
         "attack/data/dataset/original/ind.{cora,citeseer}.*"
       ],
       "outputs": [
-        "artifacts/reduced/kron_cora_r0.3.npz",
-        "artifacts/reduced/kron_cora_r0.5.npz",
-        "artifacts/reduced/kron_cora_r0.7.npz",
-        "artifacts/reduced/kron_citeseer_r0.3.npz",
-        "artifacts/reduced/kron_citeseer_r0.5.npz",
-        "artifacts/reduced/kron_citeseer_r0.7.npz",
+        "artifacts/reduced/kron_squirrel_r0.3.npz",
+        "artifacts/reduced/kron_squirrel_r0.5.npz",
+        "artifacts/reduced/kron_squirrel_r0.7.npz",
         "results/step01_reduction.json"
       ],
       "numbers": {
-        "settings": 6,
-        "cora_0.3_k": 1896,
-        "cora_0.5_k": 1354,
-        "cora_0.7_k": 812,
-        "citeseer_0.3_k": 2329,
-        "citeseer_0.5_k": 1664,
-        "citeseer_0.7_k": 998
+        "settings": 3,
+        "squirrel_0.3_k": 3641,
+        "squirrel_0.5_k": 2600,
+        "squirrel_0.7_k": 1560
       },
       "notes": "r is the fraction of nodes REMOVED; the boundary set keeps the highest-degree n*(1-r) nodes, one per connected component minimum. Kept nodes are ORIGINAL nodes with their own features and labels, so nothing is aggregated. Reduced edge weights are Schur-complement conductances; on these tree-like citation graphs the reduction is sparser than the original (leaf pruning dominates fill-in). max|L_red @ 1| ~ 1e-14 confirms the reduced matrix is a valid Laplacian, as the paper proves."
     },
     {
       "step": "step02_blackbox",
-      "summary": "Built 8 KRON black boxes across 3 reduction ratios plus no-reduction controls",
-      "timestamp": "2026-09-29 16:36:49",
+      "summary": "Built 4 KRON black boxes across 3 reduction ratios plus no-reduction controls",
+      "timestamp": "2026-10-19 02:31:03",
       "inputs": [
         "artifacts/reduced/kron_*.npz"
       ],
       "outputs": [
         "results/step02_validation.json",
-        "artifacts/posteriors/cora_whole.npy",
-        "artifacts/posteriors/cora_0.3.npy",
-        "artifacts/posteriors/cora_0.5.npy",
-        "artifacts/posteriors/cora_0.7.npy",
-        "artifacts/posteriors/citeseer_whole.npy",
-        "artifacts/posteriors/citeseer_0.3.npy",
-        "artifacts/posteriors/citeseer_0.5.npy",
-        "artifacts/posteriors/citeseer_0.7.npy"
+        "artifacts/posteriors/squirrel_whole.npy",
+        "artifacts/posteriors/squirrel_0.3.npy",
+        "artifacts/posteriors/squirrel_0.5.npy",
+        "artifacts/posteriors/squirrel_0.7.npy"
       ],
       "numbers": {
-        "boxes": 8,
-        "repeats": 5,
-        "cora_whole": 88.74,
-        "cora_0.3": 86.81,
-        "cora_0.5": 88.0,
-        "cora_0.7": 85.22,
-        "citeseer_whole": 75.24,
-        "citeseer_0.3": 74.85,
-        "citeseer_0.5": 72.32,
-        "citeseer_0.7": 71.23
+        "boxes": 4,
+        "repeats": 1,
+        "squirrel_whole": 46.78,
+        "squirrel_0.3": 40.63,
+        "squirrel_0.5": 34.87,
+        "squirrel_0.7": 29.59
       },
       "notes": "No published accuracy exists for Kron reduction on any dataset -- the paper is spectral/resistive on electrical networks -- so this stage reports rather than gates. Each box trains on the reduced graph and is evaluated on the original graph, so the only difference from its control is the training graph. Classifier is the UGC benchmark's, which already consumes edge weights."
     },
     {
       "step": "step03_attacker",
-      "summary": "Trained the adversary's reference model g for 2 datasets and built 8 attack datasets on ORIGINAL edges",
-      "timestamp": "2026-09-29 16:43:11",
+      "summary": "Trained the adversary's reference model g for 4 datasets and built 16 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-10-19 02:38:01",
       "inputs": [
         "artifacts/posteriors/*.npy",
         "attack/data/dataset/original/ind.{cora,citeseer}.*"
       ],
       "outputs": [
         "attack/data/pred/cora_gkron_pred.pkl",
-        "attack/data/pred/citeseer_gkron_pred.pkl"
+        "attack/data/pred/citeseer_gkron_pred.pkl",
+        "attack/data/pred/chameleon_gkron_pred.pkl",
+        "attack/data/pred/squirrel_gkron_pred.pkl"
       ],
       "numbers": {
         "g_cora": {
@@ -96,6 +84,30 @@
           "epochs": 500,
           "lr": 0.003,
           "weight_decay": 0.0005
+        },
+        "g_chameleon": {
+          "n_known": 227,
+          "n_nodes": 2277,
+          "acc_known": 0.9604,
+          "acc_heldout": 0.4102,
+          "graphfree_pairs_checked": 25,
+          "input_dim": 2325,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        },
+        "g_squirrel": {
+          "n_known": 520,
+          "n_nodes": 5201,
+          "acc_known": 0.9865,
+          "acc_heldout": 0.295,
+          "graphfree_pairs_checked": 25,
+          "input_dim": 2089,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
         }
       },
       "notes": "g mirrors the target's hyperparameters but is graph-free and runs on the original features. The adversary cannot tell a reduced box from the control. Pair seed 1 matches the GCond, FGC, UGC and GOREN benchmarks, so all five attack identical pairs."
@@ -103,19 +115,19 @@
     {
       "step": "step04_attacks",
       "summary": "Ran all 8 attacks + link-prediction baseline against 8 KRON black-box configurations (2 directions x 4 settings), 5 runs each",
-      "timestamp": "2026-09-29 16:49:50",
+      "timestamp": "2026-10-19 02:45:43",
       "inputs": [
         "attack/data/attack_dataset/*_kron_*.json"
       ],
       "outputs": [
-        "results/attacks/cora_kron_whole__citeseer_kron_whole__kron_A_whole.json",
-        "results/attacks/cora_kron_0.3__citeseer_kron_0.3__kron_A_0.3.json",
-        "results/attacks/cora_kron_0.5__citeseer_kron_0.5__kron_A_0.5.json",
-        "results/attacks/cora_kron_0.7__citeseer_kron_0.7__kron_A_0.7.json",
-        "results/attacks/citeseer_kron_whole__cora_kron_whole__kron_B_whole.json",
-        "results/attacks/citeseer_kron_0.3__cora_kron_0.3__kron_B_0.3.json",
-        "results/attacks/citeseer_kron_0.5__cora_kron_0.5__kron_B_0.5.json",
-        "results/attacks/citeseer_kron_0.7__cora_kron_0.7__kron_B_0.7.json"
+        "results/attacks/chameleon_kron_whole__squirrel_kron_whole__kron_C_whole.json",
+        "results/attacks/chameleon_kron_0.3__squirrel_kron_0.3__kron_C_0.3.json",
+        "results/attacks/chameleon_kron_0.5__squirrel_kron_0.5__kron_C_0.5.json",
+        "results/attacks/chameleon_kron_0.7__squirrel_kron_0.7__kron_C_0.7.json",
+        "results/attacks/squirrel_kron_whole__chameleon_kron_whole__kron_D_whole.json",
+        "results/attacks/squirrel_kron_0.3__chameleon_kron_0.3__kron_D_0.3.json",
+        "results/attacks/squirrel_kron_0.5__chameleon_kron_0.5__kron_D_0.5.json",
+        "results/attacks/squirrel_kron_0.7__chameleon_kron_0.7__kron_D_0.7.json"
       ],
       "numbers": {
         "configurations": 8,
@@ -125,8 +137,8 @@
     },
     {
       "step": "step05_aggregate",
-      "summary": "Compiled 4 CSVs, 4 figures and the writeup from 8 attack configurations",
-      "timestamp": "2026-09-29 16:53:05",
+      "summary": "Compiled 8 CSVs, 8 figures and the writeup from 16 attack configurations",
+      "timestamp": "2026-10-19 02:49:41",
       "inputs": [
         "results/attacks/*.json",
         "results/step02_validation.json"
@@ -136,16 +148,24 @@
         "results/cora_attacks_summary.csv",
         "results/citeseer_attacks_detailed.csv",
         "results/citeseer_attacks_summary.csv",
+        "results/chameleon_attacks_detailed.csv",
+        "results/chameleon_attacks_summary.csv",
+        "results/squirrel_attacks_detailed.csv",
+        "results/squirrel_attacks_summary.csv",
         "results/figures/cora_auc_vs_reduction.png",
         "results/figures/cora_auc_vs_setting.png",
         "results/figures/citeseer_auc_vs_reduction.png",
         "results/figures/citeseer_auc_vs_setting.png",
+        "results/figures/chameleon_auc_vs_reduction.png",
+        "results/figures/chameleon_auc_vs_setting.png",
+        "results/figures/squirrel_auc_vs_reduction.png",
+        "results/figures/squirrel_auc_vs_setting.png",
         "results/KRON_RESULTS.md"
       ],
       "numbers": {
-        "csvs": 4,
-        "figures": 4,
-        "configurations": 8
+        "csvs": 8,
+        "figures": 8,
+        "configurations": 16
       },
       "notes": "summary CSVs carry auc_delta_vs_whole. Column names match the GCond, FGC, UGC and GOREN benchmarks so all five concatenate on identical node pairs."
     }

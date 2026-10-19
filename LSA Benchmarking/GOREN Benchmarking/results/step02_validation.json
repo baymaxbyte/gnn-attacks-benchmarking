@@ -1,5 +1,5 @@
 {
-  "repeats": 5,
+  "repeats": 1,
   "canonical_seed": 0,
   "boxes": [
     {
@@ -585,6 +585,562 @@
         "canonical_test_acc": 75.90361445783132
       },
       "seconds": 53.0
+    },
+    {
+      "dataset": "chameleon",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 65.93406593406593,
+      "test_acc_std": 1.1206636293610521,
+      "test_acc_runs": [
+        66.8132,
+        67.6923,
+        65.0549,
+        64.8352,
+        65.2747
+      ],
+      "best_val_mean": 63.16483736038208,
+      "tag": "chameleon_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_whole.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2121,
+        "mean_max_posterior": 0.6876255869865417,
+        "canonical_test_acc": 66.8131868131868
+      },
+      "seconds": 159.5
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 1594,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 52.703296703296715,
+      "test_acc_std": 0.8943731845879442,
+      "test_acc_runs": [
+        52.7473,
+        52.0879,
+        54.2857,
+        52.7473,
+        51.6484
+      ],
+      "best_val_mean": 54.417585134506226,
+      "coarse": {
+        "trainable_supernodes": 963,
+        "coarse_edges": 11768,
+        "max_supernode_size": 135,
+        "mean_supernode_size": 1.4284818067754077,
+        "edge_weight_mean": 1.9037219285964966,
+        "edge_weight_max": 561.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "chameleon_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.3_bl.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2122,
+        "mean_max_posterior": 0.6109741926193237,
+        "canonical_test_acc": 52.74725274725275
+      },
+      "seconds": 113.8
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 1594,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 49.494505494505496,
+      "test_acc_std": 1.1411652734722777,
+      "test_acc_runs": [
+        49.011,
+        51.4286,
+        50.1099,
+        48.5714,
+        48.3516
+      ],
+      "best_val_mean": 47.560439705848694,
+      "coarse": {
+        "trainable_supernodes": 963,
+        "coarse_edges": 11768,
+        "max_supernode_size": 135,
+        "mean_supernode_size": 1.4284818067754077,
+        "edge_weight_mean": 0.021938620135188103,
+        "edge_weight_max": 26.47972297668457,
+        "edge_weight_zeros": 23194
+      },
+      "tag": "chameleon_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.3_goren.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2117,
+        "mean_max_posterior": 0.6151920557022095,
+        "canonical_test_acc": 49.01098901098901
+      },
+      "seconds": 114.0
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 1139,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 45.934065934065934,
+      "test_acc_std": 0.46101487831654847,
+      "test_acc_runs": [
+        45.4945,
+        45.7143,
+        45.4945,
+        46.5934,
+        46.3736
+      ],
+      "best_val_mean": 43.428571820259094,
+      "coarse": {
+        "trainable_supernodes": 707,
+        "coarse_edges": 5612,
+        "max_supernode_size": 146,
+        "mean_supernode_size": 1.9991220368744513,
+        "edge_weight_mean": 3.7173912525177,
+        "edge_weight_max": 2862.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "chameleon_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.5_bl.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2113,
+        "mean_max_posterior": 0.6932860016822815,
+        "canonical_test_acc": 45.494505494505496
+      },
+      "seconds": 94.3
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 1139,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 45.89010989010988,
+      "test_acc_std": 1.3288981501389847,
+      "test_acc_runs": [
+        47.2527,
+        47.033,
+        45.7143,
+        43.5165,
+        45.9341
+      ],
+      "best_val_mean": 43.69230806827545,
+      "coarse": {
+        "trainable_supernodes": 707,
+        "coarse_edges": 5612,
+        "max_supernode_size": 146,
+        "mean_supernode_size": 1.9991220368744513,
+        "edge_weight_mean": 0.6912261247634888,
+        "edge_weight_max": 112.65548706054688,
+        "edge_weight_zeros": 9826
+      },
+      "tag": "chameleon_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.5_goren.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2118,
+        "mean_max_posterior": 0.4414573609828949,
+        "canonical_test_acc": 47.25274725274725
+      },
+      "seconds": 94.8
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 684,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 41.05494505494506,
+      "test_acc_std": 1.7046786311793671,
+      "test_acc_runs": [
+        41.0989,
+        43.7363,
+        41.5385,
+        38.4615,
+        40.4396
+      ],
+      "best_val_mean": 40.307692885398865,
+      "coarse": {
+        "trainable_supernodes": 458,
+        "coarse_edges": 2455,
+        "max_supernode_size": 164,
+        "mean_supernode_size": 3.3289473684210527,
+        "edge_weight_mean": 8.207738876342773,
+        "edge_weight_max": 2862.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "chameleon_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.7_bl.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2119,
+        "mean_max_posterior": 0.5006393194198608,
+        "canonical_test_acc": 41.098901098901095
+      },
+      "seconds": 80.7
+    },
+    {
+      "dataset": "chameleon",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 684,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 43.956043956043956,
+      "test_acc_std": 1.3404791808331353,
+      "test_acc_runs": [
+        43.0769,
+        41.7582,
+        44.6154,
+        45.0549,
+        45.2747
+      ],
+      "best_val_mean": 42.72527515888214,
+      "coarse": {
+        "trainable_supernodes": 458,
+        "coarse_edges": 2455,
+        "max_supernode_size": 164,
+        "mean_supernode_size": 3.3289473684210527,
+        "edge_weight_mean": 1.8912805318832397,
+        "edge_weight_max": 22.08527183532715,
+        "edge_weight_zeros": 3284
+      },
+      "tag": "chameleon_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_0.7_goren.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2118,
+        "mean_max_posterior": 0.38651642203330994,
+        "canonical_test_acc": 43.07692307692308
+      },
+      "seconds": 80.3
+    },
+    {
+      "dataset": "squirrel",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 46.78194044188281,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        46.7819
+      ],
+      "best_val_mean": 47.78846204280853,
+      "tag": "squirrel_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_whole.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5186,
+        "mean_max_posterior": 0.5003318786621094,
+        "canonical_test_acc": 46.78194044188281
+      },
+      "seconds": 268.3
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 3641,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 38.328530259366,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        38.3285
+      ],
+      "best_val_mean": 41.05769097805023,
+      "coarse": {
+        "trainable_supernodes": 2196,
+        "coarse_edges": 30895,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 1.428453721505081,
+        "edge_weight_mean": 3.8986244201660156,
+        "edge_weight_max": 16535.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "squirrel_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.3_bl.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5185,
+        "mean_max_posterior": 0.5277614593505859,
+        "canonical_test_acc": 38.328530259366
+      },
+      "seconds": 121.9
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 3641,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 29.875120076849182,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        29.8751
+      ],
+      "best_val_mean": 31.826922297477722,
+      "coarse": {
+        "trainable_supernodes": 2196,
+        "coarse_edges": 30895,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 1.428453721505081,
+        "edge_weight_mean": 8.613850513938814e-05,
+        "edge_weight_max": 0.4711921811103821,
+        "edge_weight_zeros": 61764
+      },
+      "tag": "squirrel_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.3_goren.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5123,
+        "mean_max_posterior": 0.275250643491745,
+        "canonical_test_acc": 29.875120076849182
+      },
+      "seconds": 122.3
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 2601,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 34.293948126801155,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        34.2939
+      ],
+      "best_val_mean": 36.44230663776398,
+      "coarse": {
+        "trainable_supernodes": 1641,
+        "coarse_edges": 19578,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 1.999615532487505,
+        "edge_weight_mean": 6.038104057312012,
+        "edge_weight_max": 16535.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "squirrel_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.5_bl.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5186,
+        "mean_max_posterior": 0.6570894122123718,
+        "canonical_test_acc": 34.293948126801155
+      },
+      "seconds": 108.2
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 2601,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 30.067243035542745,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        30.0672
+      ],
+      "best_val_mean": 31.05769157409668,
+      "coarse": {
+        "trainable_supernodes": 1641,
+        "coarse_edges": 19578,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 1.999615532487505,
+        "edge_weight_mean": 0.00020054845663253218,
+        "edge_weight_max": 0.576971709728241,
+        "edge_weight_zeros": 39130
+      },
+      "tag": "squirrel_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.5_goren.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5173,
+        "mean_max_posterior": 0.5119873285293579,
+        "canonical_test_acc": 30.067243035542745
+      },
+      "seconds": 107.1
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 1561,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 32.75696445725264,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        32.757
+      ],
+      "best_val_mean": 34.32692289352417,
+      "coarse": {
+        "trainable_supernodes": 1104,
+        "coarse_edges": 10204,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 3.3318385650224216,
+        "edge_weight_mean": 11.427577018737793,
+        "edge_weight_max": 16535.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "squirrel_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.7_bl.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5186,
+        "mean_max_posterior": 0.5547688603401184,
+        "canonical_test_acc": 32.75696445725264
+      },
+      "seconds": 98.0
+    },
+    {
+      "dataset": "squirrel",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 1561,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 30.835734870317005,
+      "test_acc_std": 0.0,
+      "test_acc_runs": [
+        30.8357
+      ],
+      "best_val_mean": 31.63461685180664,
+      "coarse": {
+        "trainable_supernodes": 1104,
+        "coarse_edges": 10204,
+        "max_supernode_size": 567,
+        "mean_supernode_size": 3.3318385650224216,
+        "edge_weight_mean": 0.15618737041950226,
+        "edge_weight_max": 18.161666870117188,
+        "edge_weight_zeros": 19638
+      },
+      "tag": "squirrel_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_0.7_goren.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5174,
+        "mean_max_posterior": 0.39213600754737854,
+        "canonical_test_acc": 30.835734870317005
+      },
+      "seconds": 98.1
     }
   ]
 }

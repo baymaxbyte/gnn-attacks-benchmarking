@@ -1,0 +1,12 @@
+
+>>> condensing chameleon r=0.25
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+    done in 2.5 min   synthetic nodes=56
+
+>>> condensing chameleon r=0.5
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+    done in 7.2 min   synthetic nodes=113
+
+>>> condensing chameleon r=1.0
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+expected artifact missing: /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/saved_repro/adj_chameleon_1.0_1.pt

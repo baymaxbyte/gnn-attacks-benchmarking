@@ -356,6 +356,340 @@
         "canonical_test_acc": 68.52409638554217
       },
       "seconds": 98.8
+    },
+    {
+      "dataset": "chameleon",
+      "ratio": null,
+      "alpha": 0.2,
+      "k": null,
+      "bin_width": null,
+      "feature_dim_augmented": 4602,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 65.05494505494505,
+      "test_acc_std": 1.7305511811014995,
+      "test_acc_runs": [
+        64.1758,
+        67.4725,
+        63.5165
+      ],
+      "best_val_mean": 63.66300582885742,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_whole.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2120,
+        "mean_max_posterior": 0.6815065741539001,
+        "canonical_test_acc": 64.17582417582418
+      },
+      "seconds": 101.8
+    },
+    {
+      "dataset": "chameleon",
+      "ratio": 30,
+      "alpha": 0.2,
+      "k": 1594,
+      "bin_width": 0.0052793920040130615,
+      "feature_dim_augmented": 4602,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 60.659340659340664,
+      "test_acc_std": 0.9991341902553731,
+      "test_acc_runs": [
+        59.3407,
+        60.8791,
+        61.7582
+      ],
+      "best_val_mean": 58.02198052406311,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 1594,
+        "coarse_edges": 28525,
+        "achieved_ratio": 0.29995608256477824,
+        "trainable_supernodes": 1081,
+        "max_supernode_size": 21,
+        "mean_supernode_size": 1.4284818172454834,
+        "singleton_supernodes": 1152
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_30.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2119,
+        "mean_max_posterior": 0.6828308701515198,
+        "canonical_test_acc": 59.34065934065934
+      },
+      "seconds": 94.5
+    },
+    {
+      "dataset": "chameleon",
+      "ratio": 50,
+      "alpha": 0.2,
+      "k": 1138,
+      "bin_width": 0.011878632009029388,
+      "feature_dim_augmented": 4602,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 50.62271062271062,
+      "test_acc_std": 0.20721077836968352,
+      "test_acc_runs": [
+        50.3297,
+        50.7692,
+        50.7692
+      ],
+      "best_val_mean": 45.86080610752106,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 1145,
+        "coarse_edges": 26577,
+        "achieved_ratio": 0.49714536671058407,
+        "trainable_supernodes": 837,
+        "max_supernode_size": 21,
+        "mean_supernode_size": 1.9886462688446045,
+        "singleton_supernodes": 609
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_50.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2120,
+        "mean_max_posterior": 0.6681827902793884,
+        "canonical_test_acc": 50.32967032967033
+      },
+      "seconds": 89.1
+    },
+    {
+      "dataset": "chameleon",
+      "ratio": 70,
+      "alpha": 0.2,
+      "k": 683,
+      "bin_width": 0.03125,
+      "feature_dim_augmented": 4602,
+      "split": {
+        "scheme": "paper",
+        "train": 1367,
+        "val": 455,
+        "test": 455
+      },
+      "test_acc_mean": 47.17948717948718,
+      "test_acc_std": 1.1537007874009972,
+      "test_acc_runs": [
+        46.1538,
+        48.7912,
+        46.5934
+      ],
+      "best_val_mean": 40.87912142276764,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 691,
+        "coarse_edges": 23764,
+        "achieved_ratio": 0.6965305226174792,
+        "trainable_supernodes": 561,
+        "max_supernode_size": 28,
+        "mean_supernode_size": 3.29522442817688,
+        "singleton_supernodes": 239
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/chameleon_70.npy",
+        "shape": [
+          2277,
+          5
+        ],
+        "distinct_rows": 2117,
+        "mean_max_posterior": 0.6846423745155334,
+        "canonical_test_acc": 46.15384615384615
+      },
+      "seconds": 81.9
+    },
+    {
+      "dataset": "squirrel",
+      "ratio": null,
+      "alpha": 0.2,
+      "k": null,
+      "bin_width": null,
+      "feature_dim_augmented": 7290,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 47.26224783861672,
+      "test_acc_std": 0.23530160833652097,
+      "test_acc_runs": [
+        47.2622,
+        47.5504,
+        46.9741
+      ],
+      "best_val_mean": 49.35897390047709,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_whole.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5156,
+        "mean_max_posterior": 0.5089664459228516,
+        "canonical_test_acc": 47.262247838616716
+      },
+      "seconds": 584.7
+    },
+    {
+      "dataset": "squirrel",
+      "ratio": 30,
+      "alpha": 0.2,
+      "k": 3641,
+      "bin_width": 0.0041713714599609375,
+      "feature_dim_augmented": 7290,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 41.91482548831252,
+      "test_acc_std": 0.9584777167528502,
+      "test_acc_runs": [
+        42.9395,
+        42.171,
+        40.634
+      ],
+      "best_val_mean": 40.86538453896841,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 3641,
+        "coarse_edges": 187335,
+        "achieved_ratio": 0.2999423187848491,
+        "trainable_supernodes": 2481,
+        "max_supernode_size": 7,
+        "mean_supernode_size": 1.4284536838531494,
+        "singleton_supernodes": 2503
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_30.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 5120,
+        "mean_max_posterior": 0.532410740852356,
+        "canonical_test_acc": 42.93948126801153
+      },
+      "seconds": 559.5
+    },
+    {
+      "dataset": "squirrel",
+      "ratio": 50,
+      "alpha": 0.2,
+      "k": 2600,
+      "bin_width": 0.00951363581680198,
+      "feature_dim_augmented": 7290,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 35.70284982388729,
+      "test_acc_std": 0.8386680021587442,
+      "test_acc_runs": [
+        35.0624,
+        36.8876,
+        35.1585
+      ],
+      "best_val_mean": 35.19230782985687,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 2597,
+        "coarse_edges": 170600,
+        "achieved_ratio": 0.5006729475100942,
+        "trainable_supernodes": 1985,
+        "max_supernode_size": 10,
+        "mean_supernode_size": 2.002695322036743,
+        "singleton_supernodes": 1223
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_50.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 4910,
+        "mean_max_posterior": 0.5043885707855225,
+        "canonical_test_acc": 35.06243996157541
+      },
+      "seconds": 524.9
+    },
+    {
+      "dataset": "squirrel",
+      "ratio": 70,
+      "alpha": 0.2,
+      "k": 1560,
+      "bin_width": 0.021993751748501208,
+      "feature_dim_augmented": 7290,
+      "split": {
+        "scheme": "paper",
+        "train": 3120,
+        "val": 1040,
+        "test": 1041
+      },
+      "test_acc_mean": 28.882484790265767,
+      "test_acc_std": 1.2895952971887465,
+      "test_acc_runs": [
+        27.0893,
+        29.4909,
+        30.0672
+      ],
+      "best_val_mean": 28.36538553237915,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "coarse": {
+        "k": 1572,
+        "coarse_edges": 147099,
+        "achieved_ratio": 0.6977504326091136,
+        "trainable_supernodes": 1315,
+        "max_supernode_size": 16,
+        "mean_supernode_size": 3.3085241317749023,
+        "singleton_supernodes": 513
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/squirrel_70.npy",
+        "shape": [
+          5201,
+          5
+        ],
+        "distinct_rows": 4816,
+        "mean_max_posterior": 0.28544431924819946,
+        "canonical_test_acc": 27.089337175792505
+      },
+      "seconds": 474.3
     }
   ]
 }

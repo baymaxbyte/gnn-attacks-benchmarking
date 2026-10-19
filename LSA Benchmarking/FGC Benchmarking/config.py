@@ -26,7 +26,7 @@ RESULTS = os.path.join(HERE, "results")
 LOGS = os.path.join(HERE, "logs")
 MANIFEST = os.path.join(HERE, "manifest.json")
 
-DATASETS = ("cora", "citeseer")
+DATASETS = ("cora", "citeseer", "chameleon", "squirrel")
 _PICKLE_SUFFIXES = ("x", "y", "tx", "ty", "allx", "ally", "graph", "test.index")
 
 
@@ -40,6 +40,11 @@ def check(verbose=True):
 
     say(f"  HERE          {HERE}")
     for ds in DATASETS:
+        # datasets without Planetoid pickles ship as an external {ds}.npz
+        # (chameleon, squirrel); skip the pickle check for them.
+        if os.path.exists(os.path.join(DATA, f"{ds}.npz")):
+            say(f"  {ds:9s}     external npz")
+            continue
         missing = [s for s in _PICKLE_SUFFIXES
                    if not os.path.exists(os.path.join(DATA, f"ind.{ds}.{s}"))]
         if missing:

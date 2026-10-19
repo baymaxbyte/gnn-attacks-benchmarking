@@ -15,7 +15,8 @@ import common as C
 
 GCOND_PY = C.GCOND_PY
 SETTINGS = ["whole", "0.25", "0.5", "1.0"]
-DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora")}
+DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora"),
+              "C": ("chameleon", "squirrel"), "D": ("squirrel", "chameleon")}
 RESULTS = os.path.join(C.HERE, "results", "attacks")
 
 

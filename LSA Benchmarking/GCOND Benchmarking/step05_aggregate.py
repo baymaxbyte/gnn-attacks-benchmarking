@@ -21,6 +21,7 @@ import numpy as np
 import common as C
 
 args_no_clustering = False
+DATASETS = ["cora", "citeseer", "chameleon", "squirrel"]
 SETTINGS = ["whole", "0.25", "0.5", "1.0"]
 BOX = {"whole": "B0", "0.25": "B1", "0.5": "B2", "1.0": "B3"}
 PAPER_R = {"cora": {"whole": "100%", "0.25": "1.3%", "0.5": "2.6%", "1.0": "5.2%"},
@@ -28,11 +29,24 @@ PAPER_R = {"cora": {"whole": "100%", "0.25": "1.3%", "0.5": "2.6%", "1.0": "5.2%
                         "1.0": "3.6%"}}
 SYN_NODES = {"cora": {"whole": 2708, "0.25": 35, "0.5": 70, "1.0": 140},
              "citeseer": {"whole": 3327, "0.25": 30, "0.5": 60, "1.0": 120}}
+
+
+def _fill_display_tables(box):
+    """chameleon/squirrel have no paper target and a split-dependent synthetic
+    node count, so populate PAPER_R / SYN_NODES from the measured box rows
+    (n_train_nodes) before any table or plot reads them."""
+    for ds in DATASETS:
+        if ds in ("cora", "citeseer"):
+            continue
+        for s in SETTINGS:
+            b = box.get((ds, s), {})
+            PAPER_R.setdefault(ds, {})[s] = "100%" if s == "whole" else "n/a"
+            SYN_NODES.setdefault(ds, {})[s] = b.get("n_train_nodes", "")
 KNOW = {0: (0, 0, 0), 1: (0, 0, 1), 2: (1, 0, 0), 3: (0, 1, 0),
         4: (0, 1, 1), 5: (1, 0, 1), 6: (1, 1, 0), 7: (1, 1, 1)}
 UNSUPERVISED = {0, 2}
 METRICS = ["auc", "accuracy", "precision", "recall", "f1"]
-DIRECTION = {"cora": "A", "citeseer": "B"}
+DIRECTION = {"cora": "A", "citeseer": "B", "chameleon": "C", "squirrel": "D"}
 A2_FAMILIES = [("target", "d(f(u),f(v))"), ("reference", "d(g(u),g(v))"),
                ("posterior_diff", "d(f) - d(g)"), ("feature", "d(Fu,Fv)")]
 
@@ -399,7 +413,7 @@ def markdown(runs, box, figs):
           "the served posteriors differ.", "",
           "Per-dataset data: `<ds>_attacks_detailed.csv` (one row per run) and",
           "`<ds>_attacks_summary.csv` (averaged over the 5 runs).", ""]
-    for tgt in ("cora", "citeseer"):
+    for tgt in DATASETS:
         present = [s for s in SETTINGS if (tgt, s) in runs]
         if not present:
             continue
@@ -425,9 +439,11 @@ def markdown(runs, box, figs):
         lp = [runs[(tgt, s)]["link_prediction"]["auc"] for s in present]
         md.append("| link-pred baseline | — | " +
                   " | ".join(f"{v:.4f}" for v in lp) + f" | {lp[-1] - lp[0]:+.4f} |")
+        def _acc(s):
+            a = box.get((tgt, s), {}).get("acc_mean")
+            return f"{a:.2f}" if a is not None else "n/a"
         md.append("| **box accuracy %** | — | " +
-                  " | ".join(f"{box[(tgt, s)]['acc_mean']:.2f}" for s in present)
-                  + " | |")
+                  " | ".join(_acc(s) for s in present) + " | |")
         md.append("| **training nodes** | — | " +
                   " | ".join(str(SYN_NODES[tgt][s]) for s in present) + " | |")
         md += ["",
@@ -454,7 +470,7 @@ def markdown(runs, box, figs):
            "posteriors (mean max probability falls from 0.695 to 0.278 on Cora), so",
            "**magnitude-sensitive** distances shrink while **scale-invariant** ones",
            "are unaffected.", ""]
-    for tgt in ("cora", "citeseer"):
+    for tgt in DATASETS:
         present = [s for s in SETTINGS if (tgt, s) in runs]
         pm = {s: runs[(tgt, s)].get("per_metric", {}).get("0") for s in present}
         if not present or not all(pm.values()):
@@ -500,11 +516,12 @@ def main():
     args_no_clustering = a.no_clustering
 
     runs, box = load()
+    _fill_display_tables(box)
     figdir = os.path.join(C.DIRS["results"], "figures")
     os.makedirs(figdir, exist_ok=True)
 
     outputs, figs, clust = [], [], {}
-    for ds in ("cora", "citeseer"):
+    for ds in DATASETS:
         if not any((ds, s) in runs for s in SETTINGS):
             continue
         print(f"\n{ds}:")

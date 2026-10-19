@@ -105,15 +105,25 @@ def main():
     failures = []
     for x in rows:
         a = x["orig"]
-        band = max(x["paper_std"], args.gate_tolerance)
-        ok = abs(a["delta_vs_paper"]) <= band
-        if not ok:
-            failures.append(x)
         label = f"{x['dataset']}_{'whole' if x['r'] is None else x['r']}"
+        # datasets without a published accuracy (chameleon, squirrel) are reported,
+        # not gated -- same stance as the KRON benchmark, which has no paper target.
+        pm, ps, dv = x["paper_mean"], x["paper_std"], a["delta_vs_paper"]
+        if pm is None:
+            band = args.gate_tolerance
+            gate = "n/a"
+        else:
+            band = max(ps, args.gate_tolerance)
+            ok = abs(dv) <= band
+            gate = "pass" if ok else "FAIL"
+            if not ok:
+                failures.append(x)
+        pm_str = f"{pm:7.2f}" if pm is not None else f"{'-':>7s}"
+        ps_str = f"{ps:5.2f}" if ps is not None else f"{'-':>5s}"
+        dv_str = f"{dv:+7.2f}" if dv is not None else f"{'-':>7s}"
         print(f"{label:18s} {str(x['k'] or '-'):>5s} {x['beta']:>6g} | "
-              f"{a['mean']:6.2f}+/-{a['std']:5.2f} {x['paper_mean']:7.2f}"
-              f"+/-{x['paper_std']:5.2f} {a['delta_vs_paper']:+7.2f} {band:5.2f}  "
-              f"{'pass' if ok else 'FAIL'}")
+              f"{a['mean']:6.2f}+/-{a['std']:5.2f} {pm_str}"
+              f"+/-{ps_str} {dv_str} {band:5.2f}  {gate}")
 
     # ---------------------------------------------------------------- Mode B
     print("\nMODE B  -- model(X_coarse, A_coarse)[s(u)]    no published target")
@@ -145,7 +155,8 @@ def main():
         json.dump({"repeats": args.repeats, "gate_tolerance": args.gate_tolerance,
                    "canonical_seed": CANONICAL_SEED, "boxes": rows}, f, indent=2)
 
-    dev = max(abs(x["orig"]["delta_vs_paper"]) for x in rows)
+    gated = [x for x in rows if x["orig"]["delta_vs_paper"] is not None]
+    dev = max((abs(x["orig"]["delta_vs_paper"]) for x in gated), default=0.0)
     K.record(
         "step02_blackbox",
         summary=(f"Built and validated {len(rows)} FGC black boxes; "

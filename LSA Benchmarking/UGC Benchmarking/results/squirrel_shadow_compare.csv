@@ -1,0 +1,17 @@
+dataset,setting,attack,knowledge,auc_coarsened_shadow,auc_whole_shadow,delta_whole_minus_coarsened
+squirrel,whole,attack-1,x/x/Y,0.74243,0.74243,0.0
+squirrel,whole,attack-4,x/Y/Y,0.779384,0.779384,0.0
+squirrel,whole,attack-5,Y/x/Y,0.708689,0.708689,0.0
+squirrel,whole,attack-7,Y/Y/Y,0.768012,0.768012,0.0
+squirrel,30,attack-1,x/x/Y,0.769737,0.740992,-0.028745
+squirrel,30,attack-4,x/Y/Y,0.797216,0.780057,-0.017159
+squirrel,30,attack-5,Y/x/Y,0.718112,0.724193,0.006081
+squirrel,30,attack-7,Y/Y/Y,0.786634,0.769654,-0.01698
+squirrel,50,attack-1,x/x/Y,0.756552,0.710339,-0.046213
+squirrel,50,attack-4,x/Y/Y,0.773096,0.725975,-0.047121
+squirrel,50,attack-5,Y/x/Y,0.641528,0.682844,0.041316
+squirrel,50,attack-7,Y/Y/Y,0.723928,0.738903,0.014975
+squirrel,70,attack-1,x/x/Y,0.532743,0.485056,-0.047687
+squirrel,70,attack-4,x/Y/Y,0.703544,0.695697,-0.007847
+squirrel,70,attack-5,Y/x/Y,0.513697,0.395055,-0.118642
+squirrel,70,attack-7,Y/Y/Y,0.678254,0.671102,-0.007152

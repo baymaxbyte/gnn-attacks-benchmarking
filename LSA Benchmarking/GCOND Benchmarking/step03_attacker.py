@@ -24,7 +24,11 @@ GCOND = C.GCOND
 GCOND_PY = C.GCOND_PY
 
 SETTINGS = ["whole", "0.25", "0.5", "1.0"]
-DATASETS = ["cora", "citeseer"]
+DATASETS = ["cora", "citeseer", "chameleon", "squirrel"]
+
+# Positive-pair cap so the dense chameleon/squirrel attack datasets stay
+# tractable; cora/citeseer (< cap edges) are unaffected and reproduce exactly.
+MAX_POS = 10000
 
 G_HIDDEN = 256
 G_NLAYERS = 2
@@ -124,7 +128,8 @@ def build_attack_dataset(dataset, setting):
            "--target_pred", f"{dataset}_gcondbb_{setting}_pred.pkl",
            "--reference_pred", f"{dataset}_g_pred.pkl",
            "--name", name,
-           "--seed", str(PAIR_SEED)]
+           "--seed", str(PAIR_SEED),
+           "--max_pos", str(MAX_POS)]
     print(f"\n>>> attack dataset {name}", flush=True)
     t0 = time.time()
     p = subprocess.run(cmd, cwd=C.LSA, capture_output=True, text=True)

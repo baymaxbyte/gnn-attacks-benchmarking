@@ -1,0 +1,17 @@
+Namespace(gpu_id=0, dataset='squirrel', dis_metric='ours', epochs=30, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=1.0, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (519, 519)
+#edges in adj_train: 5774.0
+adj_syn: (519, 519) feat_syn: torch.Size([519, 2089])
+Epoch 0, loss_avg: 1.8238399028778076
+[saved] saved_repro/{adj,feat,label}_squirrel_1.0_1.pt  adj=(519, 519) feat=(519, 2089)
+Train set results: loss= 1.6032 accuracy= 0.2293
+Test set results: loss= 1.6104 accuracy= 0.2069
+[saved] saved_repro/{adj,feat,label}_squirrel_1.0_1.pt  adj=(519, 519) feat=(519, 2089)
+Train set results: loss= 1.6033 accuracy= 0.2177
+Test set results: loss= 1.6126 accuracy= 0.2060
+[saved] saved_repro/{adj,feat,label}_squirrel_1.0_1.pt  adj=(519, 519) feat=(519, 2089)
+Train set results: loss= 1.6054 accuracy= 0.2293
+Test set results: loss= 1.6124 accuracy= 0.2057
+Train/Test Mean Accuracy: [array([0.22543353, 0.20620043]), array([0.00544976, 0.00051917])]
+
+===== STDERR =====

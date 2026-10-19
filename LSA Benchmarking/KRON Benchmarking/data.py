@@ -21,11 +21,55 @@ def _parse_index_file(path):
     return [int(line.strip()) for line in open(path)]
 
 
+def _load_external(path, dataset):
+    """Load a whole-graph {dataset}.npz in the LSA external schema.
+
+    Keys: n_nodes (int), edge_index (2, E), features (n, d), labels (n,). Used for
+    datasets without Planetoid pickles (chameleon, squirrel). Produces the SAME dict
+    as the Planetoid loader and the SAME node ordering the attack-side loader uses
+    (both read this identical file), so posteriors line up with the sampled pairs.
+    """
+    z = np.load(path, allow_pickle=False)
+    n = int(z["n_nodes"])
+    ei = z["edge_index"]
+    adj = sp.coo_matrix((np.ones(ei.shape[1], dtype=np.float32), (ei[0], ei[1])),
+                        shape=(n, n)).tocsr()
+    # binarise, symmetrise, drop self-loops (same normalisation as the Planetoid path)
+    adj.data[:] = 1.0
+    adj = adj.maximum(adj.T)
+    n_self_loops = int(adj.diagonal().sum())
+    adj = adj.tolil()
+    adj.setdiag(0)
+    adj = sp.csr_matrix(adj)
+    adj.eliminate_zeros()
+
+    features = sp.csr_matrix(np.asarray(z["features"], dtype=np.float32))
+    labels = np.asarray(z["labels"]).astype(np.int64).ravel()
+    n_classes = int(labels.max() + 1)
+    degree = np.asarray(adj.sum(1)).ravel()
+    return {
+        "dataset": dataset,
+        "adj": adj,
+        "features": features,
+        "labels": labels,
+        "n": n,
+        "d": features.shape[1],
+        "n_classes": n_classes,
+        "n_edges": int(adj.nnz // 2),
+        "n_self_loops_removed": n_self_loops,
+        "n_isolated": int((degree == 0).sum()),
+    }
+
+
 def load(dataset, datapath=None):
     """Load one dataset. Returns a dict."""
     if dataset not in C.DATASETS:
         raise ValueError(f"unsupported dataset: {dataset}")
     datapath = datapath or C.DATA
+
+    ext = os.path.join(datapath, f"{dataset}.npz")
+    if os.path.exists(ext):
+        return _load_external(ext, dataset)
 
     objects = []
     for nm in _NAMES:

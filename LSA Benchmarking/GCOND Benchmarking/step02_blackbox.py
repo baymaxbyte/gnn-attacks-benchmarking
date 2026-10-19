@@ -59,8 +59,10 @@ def main():
 
             ref = (f"paper {res['paper_mean']:.1f} +-{res['paper_std']:.1f}"
                    if res["paper_mean"] is not None else "paper n/a")
+            delta_s = (f"{res['delta']:+.2f}" if res["delta"] is not None
+                       else "n/a")
             print(f"  -> ours {res['acc_mean']:.2f} +-{res['acc_std']:.2f}   "
-                  f"{ref}   delta {res['delta']:+.2f}")
+                  f"{ref}   delta {delta_s}")
 
     print(f"\n{'=' * 74}\nVALIDATION GATE vs GCond Table 2\n{'=' * 74}")
     hdr = (f"  {'box':<5}{'dataset':<10}{'setting':<9}{'paper r':<9}"
@@ -81,13 +83,21 @@ def main():
     print(f"\n  largest absolute deviation from the paper: {worst:.2f} points")
 
     out = os.path.join(C.DIRS["results"], "step02_validation.json")
+    # Merge so per-dataset runs are additive: keep rows for datasets we did not
+    # touch, replace the ones we just rebuilt. Lets chameleon/squirrel be added
+    # (with their own --repeats) without wiping cora/citeseer box metadata.
+    merged = rows
+    if os.path.exists(out):
+        touched = {r["dataset"] for r in rows}
+        prior = json.load(open(out)).get("rows", [])
+        merged = [r for r in prior if r["dataset"] not in touched] + rows
     with open(out, "w") as f:
         json.dump({"eval_spec": {
             "model": "2-layer GCN", "hidden": 256, "dropout": 0.0,
             "weight_decay": 5e-4, "epochs": 600, "lr": 0.01,
             "repeats": args.repeats,
             "source": "paper Appendix A.2 + tester_other_arcs.py"},
-            "rows": rows}, f, indent=2)
+            "rows": merged}, f, indent=2)
     print(f"\n[saved] {C.rel(out)}")
 
     C.record(

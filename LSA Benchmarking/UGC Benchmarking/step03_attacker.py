@@ -40,6 +40,10 @@ PAIR_SEED = 1              # same as the GCond and FGC benchmarks -> identical p
 G_TAG = "gugc"
 BB_TAG = "ugcbb"
 SET_TAG = "ugc"
+# Positive-pair cap for the attack dataset. cora/citeseer have fewer edges than this
+# so they are unaffected; chameleon/squirrel (31k/198k edges) are subsampled to keep
+# the attack datasets tractable (they store raw features per pair).
+MAX_POS = 10000
 
 
 def train_reference_model(dataset, verbose=False):
@@ -121,7 +125,8 @@ def build_attack_dataset(dataset, setting, force=False):
            "--target_pred", f"{dataset}_{BB_TAG}_{setting}_pred.pkl",
            "--reference_pred", f"{dataset}_{G_TAG}_pred.pkl",
            "--name", name,
-           "--seed", str(PAIR_SEED)]
+           "--seed", str(PAIR_SEED),
+           "--max_pos", str(MAX_POS)]
     print(f"\n>>> attack dataset {name}", flush=True)
     t0 = time.time()
     p = subprocess.run(cmd, cwd=C.ATTACK_HOME, capture_output=True, text=True)

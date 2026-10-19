@@ -66,6 +66,10 @@ def parse_args():
                    help="paper: 0.5. Other values only for the Figure-7 study.")
     p.add_argument("--seed", type=int, default=1,
                    help="seed for negative sampling and the random half split")
+    p.add_argument("--max_pos", type=int, default=0,
+                   help="cap on positive (linked) pairs; 0 = all. Dense graphs "
+                        "(chameleon/squirrel) are subsampled so the attack dataset "
+                        "stays tractable; cora/citeseer (< cap) are unaffected.")
     p.add_argument("--target_pred", default=None,
                    help="posterior file for f; default <dataset>_gcn_pred.pkl. "
                         "Point this at a sage/gat/top-k file for Tables 11-12.")
@@ -77,7 +81,7 @@ def parse_args():
     return p.parse_args()
 
 
-def build_attack_dataset(adj, node_num, seed=1):
+def build_attack_dataset(adj, node_num, seed=1, max_pos=0):
     """Positives = all linked pairs; negatives = an equal number of unlinked."""
     rng = random.Random(seed)
 
@@ -88,6 +92,14 @@ def build_attack_dataset(adj, node_num, seed=1):
             link.append([int(r), int(c)])
             existing.add((int(r), int(c)))
     print(f"  linked pairs: {len(link)}  (from {len(rows)} directed entries)")
+
+    # Cap positives on dense graphs so the per-pair feature storage stays bounded.
+    # existing still holds ALL true edges, so negatives never collide with a real
+    # edge. Seeded -> reproducible; cora/citeseer have fewer edges than the cap.
+    if max_pos and len(link) > max_pos:
+        rng.shuffle(link)
+        link = link[:max_pos]
+        print(f"  subsampled positives to {len(link)} (--max_pos {max_pos})")
 
     n_neg = int(len(link) * NEGATIVE_SAMPLING_RATIO)
     unlink, seen_neg = [], set()
@@ -144,7 +156,8 @@ def main():
     node_num = len(gcn_pred)
     print(f"dataset={args.dataset}  nodes={node_num}")
     print(f"  f <- {tgt_file}\n  g <- {ref_file}")
-    link, unlink = build_attack_dataset(adj, node_num, seed=args.seed)
+    link, unlink = build_attack_dataset(adj, node_num, seed=args.seed,
+                                        max_pos=args.max_pos)
 
     n_train = int(len(link) * args.train_fraction)
     train, test, allrows = [], [], []

@@ -18,7 +18,8 @@ os.environ.update(K.single_thread_env())
 import config as C
 
 SETTINGS = ["whole"] + [f"{r}_{v}" for r in C.RATIOS for v in C.VARIANTS]
-DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora")}
+DIRECTIONS = {"A": ("cora", "citeseer"), "B": ("citeseer", "cora"),
+              "C": ("chameleon", "squirrel"), "D": ("squirrel", "chameleon")}
 RESULTS = os.path.join(C.RESULTS, "attacks")
 SET_TAG = "goren"
 

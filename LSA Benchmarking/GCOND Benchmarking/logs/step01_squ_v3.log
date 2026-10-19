@@ -1,0 +1,19 @@
+
+>>> condensing squirrel r=0.25
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=squirrel --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=30
+    done in 2.2 min   synthetic nodes=129
+    (GCond's own internal eval: test=0.2614 +-0.0087)
+
+>>> condensing squirrel r=0.5
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=squirrel --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=30
+    done in 5.9 min   synthetic nodes=259
+    (GCond's own internal eval: test=0.2757 +-0.0085)
+
+>>> condensing squirrel r=1.0
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=squirrel --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=30
+    done in 28.4 min   synthetic nodes=519
+    (GCond's own internal eval: test=0.2062 +-0.0005)
+
+[manifest] recorded step 01_condense_gcond: Re-ran GCond condensation for 3 (dataset, r) pairs using the authors' run_main.sh hyperparameters
+
+total 36.6 min

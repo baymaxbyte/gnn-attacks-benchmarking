@@ -43,6 +43,36 @@ The paper never runs node classification -- its evaluation is entirely spectral 
 | link-pred | – | 0.6130 | 0.6130 | 0.6130 | 0.6130 | 0.6130 | 0.6130 | 0.6130 |
 | **mean of 8** | | **0.9543** | **0.9506** | **0.9450** | **0.9500** | **0.9504** | **0.9453** | **0.9545** |
 
+## Target chameleon, shadow squirrel
+
+| attack | F/A*/D' | whole | 0.3_bl | 0.3_goren | 0.5_bl | 0.5_goren | 0.7_bl | 0.7_goren |
+|---|---|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6892 | 0.8148 | 0.8737 | 0.7790 | 0.8316 | 0.8135 | 0.8555 |
+| attack-1 | x/x/Y | 0.7040 | 0.7915 | 0.8379 | 0.7819 | 0.5377 | 0.4660 | 0.7309 |
+| attack-2 | Y/x/x | 0.6892 | 0.8148 | 0.8737 | 0.7790 | 0.8316 | 0.8135 | 0.8555 |
+| attack-3 | x/Y/x | 0.8747 | 0.9182 | 0.9415 | 0.9279 | 0.9507 | 0.9694 | 0.9697 |
+| attack-4 | x/Y/Y | 0.7430 | 0.8222 | 0.8539 | 0.8224 | 0.7251 | 0.7355 | 0.8237 |
+| attack-5 | Y/x/Y | 0.6947 | 0.7797 | 0.8336 | 0.7831 | 0.5253 | 0.4079 | 0.6466 |
+| attack-6 | Y/Y/x | 0.8820 | 0.9220 | 0.9431 | 0.9258 | 0.9512 | 0.9681 | 0.9665 |
+| attack-7 | Y/Y/Y | 0.7586 | 0.8215 | 0.8661 | 0.8369 | 0.7419 | 0.7048 | 0.8123 |
+| link-pred | – | 0.8574 | 0.8574 | 0.8574 | 0.8574 | 0.8574 | 0.8574 | 0.8574 |
+| **mean of 8** | | **0.7544** | **0.8356** | **0.8779** | **0.8295** | **0.7619** | **0.7349** | **0.8326** |
+
+## Target squirrel, shadow chameleon
+
+| attack | F/A*/D' | whole | 0.3_bl | 0.3_goren | 0.5_bl | 0.5_goren | 0.7_bl | 0.7_goren |
+|---|---|---|---|---|---|---|---|---|
+| attack-0 | x/x/x | 0.6462 | 0.8091 | 0.7200 | 0.7988 | 0.5902 | 0.6080 | 0.5699 |
+| attack-1 | x/x/Y | 0.7870 | 0.7990 | 0.6357 | 0.8121 | 0.3846 | 0.4073 | 0.5486 |
+| attack-2 | Y/x/x | 0.6462 | 0.8091 | 0.7200 | 0.7988 | 0.5902 | 0.6080 | 0.5699 |
+| attack-3 | x/Y/x | 0.9147 | 0.9359 | 0.9630 | 0.9390 | 0.9218 | 0.9448 | 0.9494 |
+| attack-4 | x/Y/Y | 0.8185 | 0.8646 | 0.7950 | 0.8932 | 0.5729 | 0.6906 | 0.6801 |
+| attack-5 | Y/x/Y | 0.7015 | 0.7899 | 0.6982 | 0.7979 | 0.4151 | 0.3921 | 0.5655 |
+| attack-6 | Y/Y/x | 0.9140 | 0.9320 | 0.9564 | 0.9370 | 0.9223 | 0.9420 | 0.9479 |
+| attack-7 | Y/Y/Y | 0.7905 | 0.8596 | 0.7315 | 0.8816 | 0.6200 | 0.7196 | 0.6992 |
+| link-pred | – | 0.8825 | 0.8825 | 0.8825 | 0.8825 | 0.8825 | 0.8825 | 0.8825 |
+| **mean of 8** | | **0.7773** | **0.8499** | **0.7775** | **0.8573** | **0.6271** | **0.6641** | **0.6913** |
+
 ## The paired comparison
 
 | setting | Eigenerror reduction | box acc bl | box acc goren | mean AUC bl | mean AUC goren | AUC goren − bl |
@@ -53,6 +83,12 @@ The paper never runs node classification -- its evaluation is entirely spectral 
 | citeseer r=0.3 | -42.8% | 75.45 | 75.15 | 0.9506 | 0.9450 | -0.0056 |
 | citeseer r=0.5 | +77.9% | 74.70 | 75.06 | 0.9500 | 0.9504 | +0.0004 |
 | citeseer r=0.7 | +87.1% | 74.43 | 75.18 | 0.9453 | 0.9545 | +0.0092 |
+| chameleon r=0.3 | -1252.3% | 52.70 | 49.49 | 0.8356 | 0.8779 | +0.0424 |
+| chameleon r=0.5 | -265.4% | 45.93 | 45.89 | 0.8295 | 0.7619 | -0.0676 |
+| chameleon r=0.7 | -19.0% | 41.05 | 43.96 | 0.7349 | 0.8326 | +0.0977 |
+| squirrel r=0.3 | -11818.9% | 38.33 | 29.88 | 0.8499 | 0.7775 | -0.0724 |
+| squirrel r=0.5 | -1545.0% | 34.29 | 30.07 | 0.8573 | 0.6271 | -0.2302 |
+| squirrel r=0.7 | -321.5% | 32.76 | 30.84 | 0.6641 | 0.6913 | +0.0273 |
 
 ## Attack setup
 
@@ -94,6 +130,18 @@ The paper never runs node classification -- its evaluation is entirely spectral 
 ![citeseer_auc_vs_setting.png](figures/citeseer_auc_vs_setting.png)
 
 ![citeseer_fidelity_vs_leakage.png](figures/citeseer_fidelity_vs_leakage.png)
+
+![chameleon_bl_vs_goren.png](figures/chameleon_bl_vs_goren.png)
+
+![chameleon_auc_vs_setting.png](figures/chameleon_auc_vs_setting.png)
+
+![chameleon_fidelity_vs_leakage.png](figures/chameleon_fidelity_vs_leakage.png)
+
+![squirrel_bl_vs_goren.png](figures/squirrel_bl_vs_goren.png)
+
+![squirrel_auc_vs_setting.png](figures/squirrel_auc_vs_setting.png)
+
+![squirrel_fidelity_vs_leakage.png](figures/squirrel_fidelity_vs_leakage.png)
 
 ## Notes
 

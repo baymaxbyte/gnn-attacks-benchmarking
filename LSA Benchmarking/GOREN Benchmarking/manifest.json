@@ -3,88 +3,99 @@
   "steps": [
     {
       "step": "step01_coarsen",
-      "summary": "Loukas variation_neighborhoods coarsenings for 6 (dataset, r) settings, supplying the coarse topology GOREN relearns weights on",
-      "timestamp": "2026-09-24 22:28:34",
+      "summary": "Loukas variation_neighborhoods coarsenings for 3 (dataset, r) settings, supplying the coarse topology GOREN relearns weights on",
+      "timestamp": "2026-10-19 11:13:51",
       "inputs": [
         "attack/data/dataset/original/ind.{cora,citeseer}.*",
         "variation_neighborhoods via graph_coarsening (GOREN repo)"
       ],
       "outputs": [
-        "artifacts/coarsened/goren_cora_ratio0.3.npz",
-        "artifacts/coarsened/goren_cora_ratio0.5.npz",
-        "artifacts/coarsened/goren_cora_ratio0.7.npz",
-        "artifacts/coarsened/goren_citeseer_ratio0.3.npz",
-        "artifacts/coarsened/goren_citeseer_ratio0.5.npz",
-        "artifacts/coarsened/goren_citeseer_ratio0.7.npz",
+        "artifacts/coarsened/goren_squirrel_ratio0.3.npz",
+        "artifacts/coarsened/goren_squirrel_ratio0.5.npz",
+        "artifacts/coarsened/goren_squirrel_ratio0.7.npz",
         "results/step01_coarsening.json"
       ],
       "numbers": {
-        "settings": 6,
-        "cora_0.3_k": 1896,
-        "cora_0.5_k": 1354,
-        "cora_0.7_k": 814,
-        "citeseer_0.3_k": 2330,
-        "citeseer_0.5_k": 1664,
-        "citeseer_0.7_k": 1000
+        "settings": 3,
+        "squirrel_0.3_k": 3641,
+        "squirrel_0.5_k": 2601,
+        "squirrel_0.7_k": 1561
       },
       "notes": "r is the fraction of nodes REMOVED. Baseline edge weights are A_c = C A C^T; GOREN replaces these in step 02. Cora and Citeseer are disconnected, so the variation cost divides by (nc-1) and emits divide-by-zero warnings on singleton subgraphs; the coarsening is unaffected and hits its target ratio."
     },
     {
       "step": "step02_blackbox",
-      "summary": "Built 14 GOREN black boxes: bl and goren edge weights across 3 ratios plus no-coarsening controls",
-      "timestamp": "2026-09-24 22:49:29",
+      "summary": "Built 7 GOREN black boxes: bl and goren edge weights across 3 ratios plus no-coarsening controls",
+      "timestamp": "2026-10-19 11:30:28",
       "inputs": [
         "artifacts/coarsened/*.npz",
         "artifacts/coarsened/goren_w_*.npy"
       ],
       "outputs": [
         "results/step02_validation.json",
-        "artifacts/posteriors/cora_whole.npy",
-        "artifacts/posteriors/cora_0.3_bl.npy",
-        "artifacts/posteriors/cora_0.3_goren.npy",
-        "artifacts/posteriors/cora_0.5_bl.npy",
-        "artifacts/posteriors/cora_0.5_goren.npy",
-        "artifacts/posteriors/cora_0.7_bl.npy",
-        "artifacts/posteriors/cora_0.7_goren.npy",
-        "artifacts/posteriors/citeseer_whole.npy",
-        "artifacts/posteriors/citeseer_0.3_bl.npy",
-        "artifacts/posteriors/citeseer_0.3_goren.npy",
-        "artifacts/posteriors/citeseer_0.5_bl.npy",
-        "artifacts/posteriors/citeseer_0.5_goren.npy",
-        "artifacts/posteriors/citeseer_0.7_bl.npy",
-        "artifacts/posteriors/citeseer_0.7_goren.npy"
+        "artifacts/posteriors/squirrel_whole.npy",
+        "artifacts/posteriors/squirrel_0.3_bl.npy",
+        "artifacts/posteriors/squirrel_0.3_goren.npy",
+        "artifacts/posteriors/squirrel_0.5_bl.npy",
+        "artifacts/posteriors/squirrel_0.5_goren.npy",
+        "artifacts/posteriors/squirrel_0.7_bl.npy",
+        "artifacts/posteriors/squirrel_0.7_goren.npy"
       ],
       "numbers": {
-        "boxes": 14,
-        "repeats": 5,
-        "cora_whole": 88.74,
-        "cora_0.3_bl": 87.85,
-        "cora_0.3_goren": 87.26,
-        "cora_0.5_bl": 87.33,
-        "cora_0.5_goren": 86.81,
-        "cora_0.7_bl": 87.22,
-        "cora_0.7_goren": 87.7,
-        "citeseer_whole": 75.24,
-        "citeseer_0.3_bl": 75.45,
-        "citeseer_0.3_goren": 75.15,
-        "citeseer_0.5_bl": 74.7,
-        "citeseer_0.5_goren": 75.06,
-        "citeseer_0.7_bl": 74.43,
-        "citeseer_0.7_goren": 75.18
+        "boxes": 7,
+        "repeats": 1,
+        "squirrel_whole": 46.78,
+        "squirrel_0.3_bl": 38.33,
+        "squirrel_0.3_goren": 29.88,
+        "squirrel_0.5_bl": 34.29,
+        "squirrel_0.5_goren": 30.07,
+        "squirrel_0.7_bl": 32.76,
+        "squirrel_0.7_goren": 30.84
       },
       "notes": "No published accuracy exists for GOREN on any dataset -- the paper evaluates only spectrally -- so this stage reports rather than gates. bl and goren differ in exactly one vector, the coarse edge weights. Classifier is the UGC benchmark's, which already consumes edge weights."
     },
     {
+      "step": "step02a_goren_weights",
+      "summary": "Trained GOREN's GIN for 3 settings; 4/12 improved Eigenerror, mean -1249.2%",
+      "timestamp": "2026-10-19 11:22:41",
+      "inputs": [
+        "artifacts/coarsened/goren_*.npz"
+      ],
+      "outputs": [
+        "artifacts/coarsened/goren_w_squirrel_r0.3.npy",
+        "artifacts/coarsened/goren_w_squirrel_r0.5.npy",
+        "artifacts/coarsened/goren_w_squirrel_r0.7.npy",
+        "results/step02a_goren_weights.json"
+      ],
+      "numbers": {
+        "cora_0.3_eigenerror_reduction": -0.5849,
+        "cora_0.5_eigenerror_reduction": 0.793,
+        "cora_0.7_eigenerror_reduction": 0.8935,
+        "citeseer_0.3_eigenerror_reduction": -0.4284,
+        "citeseer_0.5_eigenerror_reduction": 0.7795,
+        "citeseer_0.7_eigenerror_reduction": 0.8708,
+        "chameleon_0.3_eigenerror_reduction": -12.5233,
+        "chameleon_0.5_eigenerror_reduction": -2.6541,
+        "chameleon_0.7_eigenerror_reduction": -0.1904,
+        "squirrel_0.3_eigenerror_reduction": -118.1885,
+        "squirrel_0.5_eigenerror_reduction": -15.45,
+        "squirrel_0.7_eigenerror_reduction": -3.2155
+      },
+      "notes": "Loss follows the authors' loss_util.quaratic_loss: diagonal only, bottom-k eigenvectors, rayleigh-normalised, 1/|s| projection."
+    },
+    {
       "step": "step03_attacker",
-      "summary": "Trained the adversary's reference model g for 2 datasets and built 14 attack datasets on ORIGINAL edges",
-      "timestamp": "2026-09-24 23:15:38",
+      "summary": "Trained the adversary's reference model g for 4 datasets and built 28 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-10-19 11:34:28",
       "inputs": [
         "artifacts/posteriors/*.npy",
         "attack/data/dataset/original/ind.{cora,citeseer}.*"
       ],
       "outputs": [
         "attack/data/pred/cora_ggoren_pred.pkl",
-        "attack/data/pred/citeseer_ggoren_pred.pkl"
+        "attack/data/pred/citeseer_ggoren_pred.pkl",
+        "attack/data/pred/chameleon_ggoren_pred.pkl",
+        "attack/data/pred/squirrel_ggoren_pred.pkl"
       ],
       "numbers": {
         "g_cora": {
@@ -110,6 +121,30 @@
           "epochs": 500,
           "lr": 0.003,
           "weight_decay": 0.0005
+        },
+        "g_chameleon": {
+          "n_known": 227,
+          "n_nodes": 2277,
+          "acc_known": 0.9604,
+          "acc_heldout": 0.4102,
+          "graphfree_pairs_checked": 25,
+          "input_dim": 2325,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        },
+        "g_squirrel": {
+          "n_known": 520,
+          "n_nodes": 5201,
+          "acc_known": 0.9865,
+          "acc_heldout": 0.295,
+          "graphfree_pairs_checked": 25,
+          "input_dim": 2089,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
         }
       },
       "notes": "g mirrors the target's hyperparameters but is graph-free and runs on the original features. The adversary cannot tell a bl box from a goren box. Pair seed 1 matches the GCond, FGC and UGC benchmarks, so all four attack identical pairs."
@@ -117,25 +152,25 @@
     {
       "step": "step04_attacks",
       "summary": "Ran all 8 attacks + link-prediction baseline against 14 GOREN black-box configurations (2 directions x 7 settings), 5 runs each",
-      "timestamp": "2026-09-24 23:21:05",
+      "timestamp": "2026-10-19 11:44:15",
       "inputs": [
         "attack/data/attack_dataset/*_goren_*.json"
       ],
       "outputs": [
-        "results/attacks/cora_goren_whole__citeseer_goren_whole__goren_A_whole.json",
-        "results/attacks/cora_goren_0.3_bl__citeseer_goren_0.3_bl__goren_A_0.3_bl.json",
-        "results/attacks/cora_goren_0.3_goren__citeseer_goren_0.3_goren__goren_A_0.3_goren.json",
-        "results/attacks/cora_goren_0.5_bl__citeseer_goren_0.5_bl__goren_A_0.5_bl.json",
-        "results/attacks/cora_goren_0.5_goren__citeseer_goren_0.5_goren__goren_A_0.5_goren.json",
-        "results/attacks/cora_goren_0.7_bl__citeseer_goren_0.7_bl__goren_A_0.7_bl.json",
-        "results/attacks/cora_goren_0.7_goren__citeseer_goren_0.7_goren__goren_A_0.7_goren.json",
-        "results/attacks/citeseer_goren_whole__cora_goren_whole__goren_B_whole.json",
-        "results/attacks/citeseer_goren_0.3_bl__cora_goren_0.3_bl__goren_B_0.3_bl.json",
-        "results/attacks/citeseer_goren_0.3_goren__cora_goren_0.3_goren__goren_B_0.3_goren.json",
-        "results/attacks/citeseer_goren_0.5_bl__cora_goren_0.5_bl__goren_B_0.5_bl.json",
-        "results/attacks/citeseer_goren_0.5_goren__cora_goren_0.5_goren__goren_B_0.5_goren.json",
-        "results/attacks/citeseer_goren_0.7_bl__cora_goren_0.7_bl__goren_B_0.7_bl.json",
-        "results/attacks/citeseer_goren_0.7_goren__cora_goren_0.7_goren__goren_B_0.7_goren.json"
+        "results/attacks/chameleon_goren_whole__squirrel_goren_whole__goren_C_whole.json",
+        "results/attacks/chameleon_goren_0.3_bl__squirrel_goren_0.3_bl__goren_C_0.3_bl.json",
+        "results/attacks/chameleon_goren_0.3_goren__squirrel_goren_0.3_goren__goren_C_0.3_goren.json",
+        "results/attacks/chameleon_goren_0.5_bl__squirrel_goren_0.5_bl__goren_C_0.5_bl.json",
+        "results/attacks/chameleon_goren_0.5_goren__squirrel_goren_0.5_goren__goren_C_0.5_goren.json",
+        "results/attacks/chameleon_goren_0.7_bl__squirrel_goren_0.7_bl__goren_C_0.7_bl.json",
+        "results/attacks/chameleon_goren_0.7_goren__squirrel_goren_0.7_goren__goren_C_0.7_goren.json",
+        "results/attacks/squirrel_goren_whole__chameleon_goren_whole__goren_D_whole.json",
+        "results/attacks/squirrel_goren_0.3_bl__chameleon_goren_0.3_bl__goren_D_0.3_bl.json",
+        "results/attacks/squirrel_goren_0.3_goren__chameleon_goren_0.3_goren__goren_D_0.3_goren.json",
+        "results/attacks/squirrel_goren_0.5_bl__chameleon_goren_0.5_bl__goren_D_0.5_bl.json",
+        "results/attacks/squirrel_goren_0.5_goren__chameleon_goren_0.5_goren__goren_D_0.5_goren.json",
+        "results/attacks/squirrel_goren_0.7_bl__chameleon_goren_0.7_bl__goren_D_0.7_bl.json",
+        "results/attacks/squirrel_goren_0.7_goren__chameleon_goren_0.7_goren__goren_D_0.7_goren.json"
       ],
       "numbers": {
         "configurations": 14,
@@ -145,8 +180,8 @@
     },
     {
       "step": "step05_aggregate",
-      "summary": "Compiled 4 CSVs, 6 figures and the writeup from 14 attack configurations",
-      "timestamp": "2026-09-24 23:54:50",
+      "summary": "Compiled 8 CSVs, 12 figures and the writeup from 28 attack configurations",
+      "timestamp": "2026-10-19 11:44:34",
       "inputs": [
         "results/attacks/*.json",
         "results/step02_validation.json",
@@ -157,18 +192,28 @@
         "results/cora_attacks_summary.csv",
         "results/citeseer_attacks_detailed.csv",
         "results/citeseer_attacks_summary.csv",
+        "results/chameleon_attacks_detailed.csv",
+        "results/chameleon_attacks_summary.csv",
+        "results/squirrel_attacks_detailed.csv",
+        "results/squirrel_attacks_summary.csv",
         "results/figures/cora_bl_vs_goren.png",
         "results/figures/cora_auc_vs_setting.png",
         "results/figures/cora_fidelity_vs_leakage.png",
         "results/figures/citeseer_bl_vs_goren.png",
         "results/figures/citeseer_auc_vs_setting.png",
         "results/figures/citeseer_fidelity_vs_leakage.png",
+        "results/figures/chameleon_bl_vs_goren.png",
+        "results/figures/chameleon_auc_vs_setting.png",
+        "results/figures/chameleon_fidelity_vs_leakage.png",
+        "results/figures/squirrel_bl_vs_goren.png",
+        "results/figures/squirrel_auc_vs_setting.png",
+        "results/figures/squirrel_fidelity_vs_leakage.png",
         "results/GOREN_RESULTS.md"
       ],
       "numbers": {
-        "csvs": 4,
-        "figures": 6,
-        "configurations": 14
+        "csvs": 8,
+        "figures": 12,
+        "configurations": 28
       },
       "notes": "summary CSVs carry auc_delta_vs_whole and auc_goren_minus_bl. Column names match the GCond, FGC and UGC benchmarks."
     }

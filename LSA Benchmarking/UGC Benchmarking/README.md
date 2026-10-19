@@ -32,20 +32,48 @@ carries its own adjacency row, and that augmented matrix is used at training *an
 at inference — while inference also runs over the original adjacency. The graph
 therefore reaches the model twice.
 
+## Datasets and attack directions
+
+Runs on **four** datasets — the two homophilous citation graphs plus two
+heterophilous Wikipedia graphs added later:
+
+| dataset | family | nodes | undirected edges | classes |
+|---|---|---|---|---|
+| cora | citation (Planetoid) | 2708 | 5278 | 7 |
+| citeseer | citation (Planetoid) | 3327 | 4552 | 6 |
+| chameleon | Wikipedia (heterophilous) | 2277 | 31371 | 5 |
+| squirrel | Wikipedia (heterophilous) | 5201 | 198353 | 5 |
+
+Attacks run in four target→shadow directions (shadow = the other dataset in the
+same family, at the same setting):
+
+| direction | target → shadow |
+|---|---|
+| A | cora → citeseer |
+| B | citeseer → cora |
+| C | chameleon → squirrel |
+| D | squirrel → chameleon |
+
+The dense graphs cap positive pairs at 10 000 (`MAX_POS`) so the attack datasets
+stay tractable; cora/citeseer (< 10 000 edges) are unaffected and reproduce exactly.
+The heterophily factor α is fixed per dataset (cora 0.19, citeseer 0.26,
+chameleon/squirrel 0.20).
+
 ## Quick start
 
 ```bash
 python config.py                      # check dependencies
-python run_benchmark.py               # whole pipeline, both datasets
+python run_benchmark.py               # whole pipeline, all four datasets, directions A–D
 ```
 
-Or stage by stage:
+`run_benchmark.py` prepares all four datasets and attacks `--directions A,B,C,D` by
+default (pass `--directions A,B` for cora/citeseer only). Or stage by stage:
 
 ```bash
 python step01_coarsen.py              # calibrate bin widths, coarsen
-python step02_blackbox.py             # train + validate the 8 black boxes
+python step02_blackbox.py             # train + validate the black boxes
 python step03_attacker.py             # reference model g + attack datasets
-python step04_attacks.py              # 8 attacks per box
+python step04_attacks.py --directions A,B,C,D   # 8 attacks per box
 python step05_aggregate.py            # CSVs, figures, writeup
 ```
 
@@ -58,7 +86,8 @@ python step05_aggregate.py            # CSVs, figures, writeup
 | 70 | 812 | 998 |
 
 UGC is an LSH method, so the supernode count is not set directly — it emerges from a
-bin width. Stage 1 calibrates one per (dataset, ratio).
+bin width. Stage 1 calibrates one per (dataset, ratio), including for
+chameleon/squirrel.
 
 ## Stages
 

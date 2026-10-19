@@ -29,7 +29,9 @@ import config as C
 
 SET_TAG = "fgc"
 ORDER = ["whole", "0.3", "0.1", "0.05"]
-DIRECTION = {"cora": "A", "citeseer": "B"}
+DIRECTION = {"cora": "A", "citeseer": "B", "chameleon": "C", "squirrel": "D"}
+SHADOW = {"cora": "citeseer", "citeseer": "cora",
+          "chameleon": "squirrel", "squirrel": "chameleon"}
 FIGURES = os.path.join(C.RESULTS, "figures")
 
 # Knowledge triples from the link-stealing paper's Table 3: (F, A*, D_shadow).
@@ -72,14 +74,16 @@ def _box_cols(ds, setting, boxes):
         k_effective=(b["coarse"]["nonempty_supernodes"] if b.get("coarse")
                      else b["posteriors"]["orig"]["shape"][0]),
         box_acc_mean=round(a["mean"], 4), box_acc_std=round(a["std"], 4),
-        box_acc_paper=b["paper_mean"], box_acc_delta=round(a["delta_vs_paper"], 4),
+        box_acc_paper=(b["paper_mean"] if b["paper_mean"] is not None else ""),
+        box_acc_delta=(round(a["delta_vs_paper"], 4)
+                       if a["delta_vs_paper"] is not None else ""),
         box_acc_runs=";".join(f"{v:.4f}" for v in a["runs"]), beta=b["beta"])
 
 
 def write_csvs(attacks, boxes):
     written = []
     for ds in C.DATASETS:
-        shadow = "citeseer" if ds == "cora" else "cora"
+        shadow = SHADOW[ds]
         present = [s for s in ORDER if (ds, s) in attacks]
         det_rows, sum_rows = [], []
 
@@ -319,9 +323,13 @@ def markdown(attacks, boxes, figs):
             bc = _box_cols(ds, s, boxes)
             if bc["box_acc_mean"] == "":
                 continue
+            paper_str = (f"{bc['box_acc_paper']:.2f}"
+                         if bc["box_acc_paper"] != "" else "–")
+            delta_str = (f"{bc['box_acc_delta']:+.2f}"
+                         if bc["box_acc_delta"] != "" else "–")
             L.append(f"| {s} | {bc['k_nominal']} / {bc['k_effective']} | "
                      f"{bc['box_acc_mean']:.2f} ± {bc['box_acc_std']:.2f} | "
-                     f"{bc['box_acc_paper']:.2f} | {bc['box_acc_delta']:+.2f} |")
+                     f"{paper_str} | {delta_str} |")
         L.append("")
 
     cmp = _gcond_compare()

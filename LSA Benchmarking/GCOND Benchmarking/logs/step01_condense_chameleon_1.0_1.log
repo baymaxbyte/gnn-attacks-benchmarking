@@ -1,0 +1,39 @@
+Namespace(gpu_id=0, dataset='chameleon', dis_metric='ours', epochs=600, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=1.0, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (227, 227)
+#edges in adj_train: 504.0
+adj_syn: (227, 227) feat_syn: torch.Size([227, 2325])
+Epoch 0, loss_avg: 2.4373693370819094
+Epoch 50, loss_avg: 0.8077491187819235
+Epoch 100, loss_avg: 0.5793240579730055
+Epoch 150, loss_avg: 0.34743935147152377
+Epoch 200, loss_avg: 0.32228653652623307
+Epoch 250, loss_avg: 0.31307944000138405
+Epoch 300, loss_avg: 0.3114640859689269
+Epoch 350, loss_avg: 0.31574782956720626
+Epoch 400, loss_avg: 0.3031170176680977
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.1870 accuracy= 0.5330
+Test set results: loss= 1.5163 accuracy= 0.4352
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.1899 accuracy= 0.5947
+Test set results: loss= 1.5118 accuracy= 0.4210
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.1927 accuracy= 0.5154
+Test set results: loss= 1.5220 accuracy= 0.4232
+Train/Test Mean Accuracy: [array([0.54772394, 0.42645445]), array([0.03399658, 0.00627385])]
+Epoch 450, loss_avg: 0.30287791666744246
+Epoch 500, loss_avg: 0.2987618258362664
+Epoch 550, loss_avg: 0.30421175814044377
+Epoch 600, loss_avg: 0.3039919770870376
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.1994 accuracy= 0.5639
+Test set results: loss= 1.5205 accuracy= 0.3990
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.3885 accuracy= 0.4670
+Test set results: loss= 1.5822 accuracy= 0.3699
+[saved] saved_repro/{adj,feat,label}_chameleon_1.0_1.pt  adj=(227, 227) feat=(227, 2325)
+Train set results: loss= 1.3505 accuracy= 0.5286
+Test set results: loss= 1.5679 accuracy= 0.4160
+Train/Test Mean Accuracy: [array([0.51982379, 0.39498719]), array([0.0400534, 0.0190355])]
+
+===== STDERR =====

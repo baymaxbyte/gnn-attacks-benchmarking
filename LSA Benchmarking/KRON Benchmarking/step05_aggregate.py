@@ -27,7 +27,9 @@ import config as C
 
 SET_TAG = "kron"
 ORDER = ["whole"] + [str(r) for r in C.RATIOS]
-DIRECTION = {"cora": "A", "citeseer": "B"}
+DIRECTION = {"cora": "A", "citeseer": "B", "chameleon": "C", "squirrel": "D"}
+SHADOW = {"cora": "citeseer", "citeseer": "cora",
+          "chameleon": "squirrel", "squirrel": "chameleon"}
 FIGURES = os.path.join(C.RESULTS, "figures")
 
 KNOW = {0: ("x", "x", "x"), 1: ("x", "x", "Y"), 2: ("Y", "x", "x"),
@@ -77,7 +79,7 @@ def _box_cols(ds, setting, boxes):
 def write_csvs(attacks, boxes):
     written = []
     for ds in C.DATASETS:
-        shadow = "citeseer" if ds == "cora" else "cora"
+        shadow = SHADOW[ds]
         present = [s for s in ORDER if (ds, s) in attacks]
         det, summ = [], []
         for setting in present:

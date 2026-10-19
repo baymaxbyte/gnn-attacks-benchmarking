@@ -1,0 +1,19 @@
+
+>>> condensing chameleon r=0.25
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+    done in 2.5 min   synthetic nodes=56
+    (GCond's own internal eval: test=0.3692 +-0.0341)
+
+>>> condensing chameleon r=0.5
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+    done in 8.8 min   synthetic nodes=113
+    (GCond's own internal eval: test=0.4230 +-0.0128)
+
+>>> condensing chameleon r=1.0
+    /Users/chitraansh.pandey/Downloads/GNN DP/GCond/GCond-main/.venv/bin/python3 -W ignore -u train_gcond_transduct.py --dataset=chameleon --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=200
+    done in 37.4 min   synthetic nodes=227
+    (GCond's own internal eval: test=0.4343 +-0.0207)
+
+[manifest] recorded step 01_condense_gcond: Re-ran GCond condensation for 3 (dataset, r) pairs using the authors' run_main.sh hyperparameters
+
+total 48.7 min
