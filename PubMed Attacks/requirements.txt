@@ -1,0 +1,8 @@
+# Pinned to match the existing LSA + Membership benchmarks exactly, so PubMed
+# results sit on the same numerical footing as cora/citeseer/chameleon/squirrel.
+torch==2.8.0
+torch-geometric==2.6.1
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.6.1
+matplotlib==3.9.4
