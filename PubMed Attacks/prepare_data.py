@@ -124,23 +124,28 @@ def verify(ds):
     log(f"  verify {ds}: n={n} d={d} classes={nc} edges={ne}  OK")
 
 
+def ensure_attack_dirs():
+    """Create the (initially empty) attack data dirs each vendored LSA method
+    writes into (pred/, attack_dataset/, dataset/original/). Needed because the
+    vendored copy ships code only -- these dirs are regenerated at run time."""
+    for spec in C.LSA_SPECS.values():
+        if not os.path.isdir(os.path.join(C.LSA_ROOT, spec["dir"])):
+            continue
+        base = os.path.join(C.LSA_ROOT, spec["dir"], "attack", "data")
+        for sub in ("pred", "attack_dataset", os.path.join("dataset", "original")):
+            os.makedirs(os.path.join(base, sub), exist_ok=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--datasets", default="pubmed",
-                    help="comma list; cora is auto-added if its files are missing")
+    ap.add_argument("--datasets", default="pubmed,cora",
+                    help="comma list; cora is the whole-graph shadow, always needed")
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
 
     os.makedirs(PYG_CACHE, exist_ok=True)
     want = [d.strip() for d in args.datasets.split(",") if d.strip()]
-
-    # Ensure the whole-cora shadow data exists on both sides.
-    cora_mem = os.path.join(C.MEMBERSHIP_ROOT, "cora.npz")
-    cora_lsa = os.path.join(C.LSA_ROOT, "FGC Benchmarking", "attack", "data",
-                            "dataset", "original", "ind.cora.graph")
-    if "cora" not in want and (not os.path.exists(cora_mem) or not os.path.exists(cora_lsa)):
-        log("cora data missing on one side -> adding cora to the build")
-        want.append("cora")
+    ensure_attack_dirs()
 
     log("=" * 70)
     log(f"prepare_data  datasets={want}  force={args.force}")

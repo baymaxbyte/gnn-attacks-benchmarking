@@ -193,7 +193,10 @@ def run_membership(methods, prog, stop_on_fail=True):
     if not os.path.isdir(bench):
         R.log(f"[membership] SKIPPED: folder missing ({bench})")
         return True
-    env = R.build_env()                       # membership uses --only, no scoping
+    # Scope DATASETS to the two we touch: step01_split.py has no --only filter and
+    # would otherwise try to load citeseer/chameleon/squirrel (absent in the
+    # self-contained vendor). step02/03/04 additionally honour --only.
+    env = R.build_env(scope_datasets=["cora", "pubmed"])
     ms = ",".join(methods)
     R.banner(f"MEMBERSHIP  methods={methods}  (shadow = whole cora)")
 
@@ -223,7 +226,10 @@ def run_membership(methods, prog, stop_on_fail=True):
     # whole-cora shadow MLP (computes the <ds>_control_whole shadow AUC for pubmed)
     _mia("whole_shadow_mlp.py", [], bench, env,
          prog, "mia:pubmed:wholeshadow", stop_on_fail)
-    _mia("step05_aggregate.py", [], bench, env,
+    # step05 writes one CSV per C.DATASETS; scope it to pubmed so it doesn't choke
+    # on cora (shadow-only here, so it has no attack cells of its own).
+    env_agg = R.build_env(scope_datasets=["pubmed"])
+    _mia("step05_aggregate.py", [], bench, env_agg,
          prog, "mia:aggregate", stop_on_fail)
     R.log("[membership] complete")
     return True

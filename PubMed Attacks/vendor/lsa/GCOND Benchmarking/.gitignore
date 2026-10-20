@@ -1,0 +1,17 @@
+# Local working notes, not part of the published benchmark.
+DESIGN_NOTES.md
+IMPORTANT_CAVEATS.md
+
+# Generated attack datasets: each record inlines both endpoints' full attribute
+# vectors, so these reach several GB per (dataset, setting). Regenerate with
+# run_benchmark.py.
+attack/data/attack_dataset/
+
+# Served posteriors are regenerable from artifacts/condensed/, but they are tiny
+# and make the results reproducible without a rerun, so they are kept:
+#   attack/data/pred/
+
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/

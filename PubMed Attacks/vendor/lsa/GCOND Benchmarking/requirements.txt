@@ -1,0 +1,8 @@
+# Pinned to the versions this benchmark was produced with.
+# GCond's own environment additionally needs deeprobust; see config.py.
+torch==2.8.0
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.6.1
+networkx==3.2.1
+matplotlib==3.9.4

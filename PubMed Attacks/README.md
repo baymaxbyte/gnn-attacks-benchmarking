@@ -11,23 +11,32 @@ runs. One command, resumable, heavy logging, data auto-downloaded. Built for CPU
 
 ## How it works (architecture)
 
-This folder is an **orchestration layer**, not a re-implementation. It drives the
-already-verified sibling benchmarks so PubMed is produced with byte-identical code,
-seeds, ratios and epochs:
+**Self-contained.** This folder vendors the already-verified benchmark code under
+`vendor/` (byte-identical copies), so you upload ONLY this folder to SageMaker — no
+dependency on any sibling folder:
 
 ```
-Benchmarking/temp/
-  lsa/<METHOD> Benchmarking/   # FGC, KRON, UGC, GOREN, GCOND link-stealing pipelines
-  Membership Attack/           # node membership-inference pipeline
-  pubmed_attacks/              # <- THIS folder: config + data + orchestrator
+pubmed_attacks/
+  run_all.py  prepare_data.py  config.py  _runner.py  aggregate.py
+  requirements.txt  README.md
+  vendor/
+    lsa/<METHOD> Benchmarking/   # FGC, KRON, UGC, GOREN, GCOND link-stealing pipelines
+    Membership Attack/           # node membership-inference pipeline
 ```
 
-**It therefore requires those sibling folders to be present** (upload all of
-`Benchmarking/temp/` to SageMaker). The only edits made to the siblings are
-additive and non-destructive: `DATASETS` became env-overridable (default
-unchanged), `pubmed` was added to the membership config, and a `pubmed` UGC alpha
-was added. PubMed is scoped into each run via the `PUBMED_ATTACKS_DATASETS` env var
-so the other datasets are never recomputed.
+Because the code is vendored verbatim, PubMed is produced with the **same code,
+seeds, ratios and epochs** as the other datasets — results are unchanged. Only
+*code* is vendored; all data and the Cora shadow are regenerated from scratch at
+run time (deterministic, so byte-identical to the shipped runs). PubMed is scoped
+into each step via the `PUBMED_ATTACKS_DATASETS` env var.
+
+The vendored roots stay overridable if you ever want to point at an external
+layout instead of `vendor/`:
+
+```bash
+export PUBMED_ATTACKS_LSA_ROOT=/path/to/lsa
+export PUBMED_ATTACKS_MEMBERSHIP_ROOT="/path/to/Membership Attack"
+```
 
 ## Install
 

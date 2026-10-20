@@ -20,14 +20,17 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMP = os.path.abspath(os.path.join(HERE, ".."))              # Benchmarking/temp
-# Sibling benchmark roots. Default assumes this folder sits next to lsa/ and
-# "Membership Attack/" (i.e. inside Benchmarking/temp/). Override when the folder
-# is relocated (e.g. a repo checkout with a different layout):
+# This folder is SELF-CONTAINED: the sibling benchmark code is vendored under
+# ./vendor/ (byte-identical copies), so uploading just this folder to SageMaker is
+# enough -- no dependency on the original sibling folders. All data and the Cora
+# shadow regenerate from scratch (deterministic), so results are unchanged.
+# The roots stay env-overridable if you ever want to point at an external layout:
 #   export PUBMED_ATTACKS_LSA_ROOT=/path/to/lsa
 #   export PUBMED_ATTACKS_MEMBERSHIP_ROOT="/path/to/Membership Attack"
-LSA_ROOT = os.environ.get("PUBMED_ATTACKS_LSA_ROOT", os.path.join(TEMP, "lsa"))
+VENDOR = os.path.join(HERE, "vendor")
+LSA_ROOT = os.environ.get("PUBMED_ATTACKS_LSA_ROOT", os.path.join(VENDOR, "lsa"))
 MEMBERSHIP_ROOT = os.environ.get("PUBMED_ATTACKS_MEMBERSHIP_ROOT",
-                                 os.path.join(TEMP, "Membership Attack"))
+                                 os.path.join(VENDOR, "Membership Attack"))
 
 # Where this pipeline writes its own artifacts (logs, progress, collected results).
 RESULTS = os.path.join(HERE, "results")

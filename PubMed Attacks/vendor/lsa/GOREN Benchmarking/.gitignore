@@ -1,0 +1,12 @@
+# Generated attack datasets: each record inlines both endpoints' full attribute
+# vectors, so these reach several GB per (dataset, setting). Regenerate with
+# step03_attacker.py.
+attack/data/attack_dataset/
+
+# Served posteriors under attack/data/pred/ are tiny and make the shipped results
+# reproducible without a rerun, so they are kept.
+
+__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
