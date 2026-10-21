@@ -24,6 +24,12 @@ GRID = [
     ("citeseer", "0.25", "0.9%", 30),
     ("citeseer", "0.5", "1.8%", 60),
     ("citeseer", "1.0", "3.6%", 120),
+    # pubmed: standard Planetoid, condensed via GCond's native loader. No paper
+    # target count here (the pubmed_attacks pipeline uses r 0.25/0.5/1.0 as its
+    # gcond settings), so expect is left None.
+    ("pubmed", "0.25", "n/a", None),
+    ("pubmed", "0.5", "n/a", None),
+    ("pubmed", "1.0", "n/a", None),
     # chameleon / squirrel: whole-graph external npz, condensed via GCond's
     # patched get_dataset. No paper target and the synthetic count follows the
     # 10% stratified train split (expect left None).
@@ -113,7 +119,15 @@ def main():
 
     C.ensure_dirs()
     os.makedirs(CONDENSED, exist_ok=True)
-    grid = [g for g in GRID if not args.only or g[0] == args.only]
+    # pubmed_attacks: honour the dataset scope the orchestrator passes via
+    # PUBMED_ATTACKS_DATASETS (default: all of GRID), so a pubmed-scoped phase
+    # condenses only pubmed and the shadow phase only cora -- never the
+    # citeseer/chameleon/squirrel entries whose data isn't shipped here.
+    _scope = os.environ.get("PUBMED_ATTACKS_DATASETS")
+    _allowed = {d.strip() for d in _scope.split(",")} if _scope else None
+    grid = [g for g in GRID
+            if (not args.only or g[0] == args.only)
+            and (_allowed is None or g[0] in _allowed)]
 
     numbers, outputs = {}, []
     t0 = time.time()

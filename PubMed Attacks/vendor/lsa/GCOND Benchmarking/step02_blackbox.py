@@ -21,7 +21,11 @@ BOX_NAMES = {"whole": "B0", "0.25": "B1", "0.5": "B2", "1.0": "B3"}
 
 def main():
     ap = argparse.ArgumentParser(description="Build + validate GCond black boxes")
-    ap.add_argument("--datasets", default="cora")
+    # pubmed_attacks: default to the orchestrator's dataset scope
+    # (PUBMED_ATTACKS_DATASETS) so a scoped phase builds only pubmed (target) or
+    # only cora (shadow); falls back to the original "cora" default otherwise.
+    ap.add_argument("--datasets",
+                    default=os.environ.get("PUBMED_ATTACKS_DATASETS", "cora"))
     ap.add_argument("--settings", default=",".join(SETTINGS))
     ap.add_argument("--repeats", type=int, default=EVAL_REPEATS)
     ap.add_argument("--device", default="cpu")
