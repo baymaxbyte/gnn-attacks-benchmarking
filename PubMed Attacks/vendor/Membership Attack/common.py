@@ -18,9 +18,10 @@ def ensure_dirs():
 
 
 def single_thread_env():
-    return {"OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1",
-            "OPENBLAS_NUM_THREADS": "1", "VECLIB_MAXIMUM_THREADS": "1",
-            "NUMEXPR_NUM_THREADS": "1"}
+    _n = os.environ.get("BENCH_BLAS_THREADS", "1")
+    return {"OMP_NUM_THREADS": _n, "MKL_NUM_THREADS": _n,
+            "OPENBLAS_NUM_THREADS": _n, "VECLIB_MAXIMUM_THREADS": _n,
+            "NUMEXPR_NUM_THREADS": _n}
 
 
 def pin_single_thread():
