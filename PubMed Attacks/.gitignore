@@ -1,0 +1,42 @@
+# ======================================================================
+# PubMed Attacks: commit CODE and RESULTS only. Everything heavy or
+# machine-local (virtualenvs, caches, downloaded graphs, served
+# posteriors/predictions, per-pair attack datasets, resume state) is
+# regenerable from the code and must stay out of git.
+# ======================================================================
+
+# --- virtualenvs / caches / OS cruft -----------------------------------
+.venv/
+venv/
+env/
+_pyg_cache/
+**/_pyg_cache/
+__pycache__/
+**/__pycache__/
+*.pyc
+.DS_Store
+.ipynb_checkpoints/
+
+# --- machine-local resume state (regenerated every run) ----------------
+# A committed progress.json would make a fresh clone SKIP steps whose
+# artifacts it does not have, so keep it local.
+progress.json
+
+# --- large regenerable intermediates (NOT results) ---------------------
+# downloaded / assembled graphs
+*.npz
+# served posteriors, predictions, splits
+*.npy
+*.pkl
+vendor/Membership Attack/artifacts/
+# LSA raw datasets + served preds + the multi-GB per-pair attack datasets
+vendor/lsa/*/attack/data/
+vendor/lsa/*/data/
+
+# ----------------------------------------------------------------------
+# KEPT (tracked) on purpose:
+#   results/                          collected CSVs (aggregate.py output)
+#   vendor/Membership Attack/results/ membership CSVs + figures
+#   vendor/lsa/*/results/             per-method whole-shadow JSONs + CSVs
+#   logs/                             run logs
+# ----------------------------------------------------------------------
