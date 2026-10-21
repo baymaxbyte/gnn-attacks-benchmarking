@@ -2,7 +2,7 @@
 
 For each cell and seed: the unsupervised threshold attacks (confidence, entropy,
 loss, correctness) on the target's own posteriors, plus the supervised shadow
-classifier trained on the OTHER dataset at the same cell. Every attack is scored by
+classifier trained on the OTHER dataset's whole (uncoarsened) graph. Every attack is scored by
 AUC at separating members (V_in) from non-members (V_out); 0.5 is no leakage.
 
     python step04_attack.py
@@ -51,7 +51,13 @@ def _split_cache():
 def attack_cell(tag, splits):
     ds = tag.split("_", 1)[0]
     shadow_ds = C.SHADOW_OF[ds]
-    shadow_tag = shadow_ds + tag[len(ds):]
+    # pubmed_attacks pipeline: the shadow is ALWAYS the whole / uncoarsened shadow
+    # graph (<shadow>_control_whole) for EVERY target cell -- matching the LSA
+    # whole-shadow design and the "whole Cora shadow everywhere" intent. The
+    # upstream sibling instead pairs each cell with the OTHER dataset at the SAME
+    # reduction cell (e.g. cora_kron_r0.3); those coarsened shadows are never built
+    # here, which used to leave the reduced-cell shadow column blank.
+    shadow_tag = f"{shadow_ds}_control_whole"
     tinfo, sinfo = splits[ds], splits[shadow_ds]
 
     per_seed = []
