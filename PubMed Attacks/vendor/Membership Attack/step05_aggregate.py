@@ -219,6 +219,9 @@ def markdown(attacks, boxes, figs):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--no_figures", action="store_true")
+    ap.add_argument("--no_markdown", action="store_true",
+                    help="skip the MEMBERSHIP_RESULTS.md writeup; the CSVs are the "
+                         "canonical output")
     args = ap.parse_args()
     K.ensure_dirs()
     attacks = load_attacks()
@@ -231,14 +234,18 @@ def main():
     if not args.no_figures:
         print("\nfigures:")
         figs = figures(attacks)
-    print("\nwriteup:")
-    md = markdown(attacks, boxes, figs)
+    md = None
+    if not args.no_markdown:
+        print("\nwriteup:")
+        md = markdown(attacks, boxes, figs)
+    outputs = csvs + figs + ([md] if md else [])
     K.record(
         "step05_aggregate",
-        summary=(f"Compiled {len(csvs)} CSVs, {len(figs)} figures and the writeup "
-                 f"from {len(attacks)} attacked cells"),
+        summary=(f"Compiled {len(csvs)} CSVs, {len(figs)} figures"
+                 + (" and the writeup" if md else "")
+                 + f" from {len(attacks)} attacked cells"),
         inputs=["results/attacks/*.json", "results/step03_boxes.json"],
-        outputs=[K.rel(p) for p in csvs + figs + [md]],
+        outputs=[K.rel(p) for p in outputs],
         numbers={"cells": len(attacks)},
         notes="Membership AUC per method/ratio vs the no-reduction control.")
 

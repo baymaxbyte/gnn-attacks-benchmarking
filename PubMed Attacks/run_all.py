@@ -245,7 +245,7 @@ def run_membership(methods, prog, stop_on_fail=True):
     # step05 writes one CSV per C.DATASETS; scope it to pubmed so it doesn't choke
     # on cora (shadow-only here, so it has no attack cells of its own).
     env_agg = R.build_env(scope_datasets=["pubmed"])
-    _mia("step05_aggregate.py", [], bench, env_agg,
+    _mia("step05_aggregate.py", ["--no_markdown"], bench, env_agg,
          prog, "mia:aggregate", stop_on_fail)
     R.log("[membership] complete")
     return True
