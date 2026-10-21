@@ -164,6 +164,22 @@ def run_lsa_method(method, prog, runs, stop_on_fail=True):
             return False
         prog.mark(key, "done", minutes=round(dt / 60, 2))
 
+    # Free disk: the per-pair attack datasets are large (PubMed stores a 500-dim
+    # feature vector per endpoint per pair -> ~600 MB per setting) and are only
+    # needed during this method's attacks. The original run_wholeshadow deletes
+    # them after each method; do the same so they don't accumulate across methods
+    # and fill the volume.
+    adir = os.path.join(attack_dir, "data", "attack_dataset")
+    removed = 0
+    for jf in glob.glob(os.path.join(adir, "*.json")):
+        try:
+            os.remove(jf)
+            removed += 1
+        except OSError:
+            pass
+    if removed:
+        R.log(f"  [cleanup] removed {removed} attack_dataset files for {method}")
+
     R.log(f"[LSA {method}] complete")
     return True
 
