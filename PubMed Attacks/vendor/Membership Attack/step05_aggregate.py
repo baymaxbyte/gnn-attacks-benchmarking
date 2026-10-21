@@ -65,6 +65,16 @@ def _mean(a, key):
     return a.get(key, {}).get("mean", "")
 
 
+def _fmt(x, spec):
+    """Format x with spec, tolerating missing/empty values. A reduced cell can
+    lack a cross-dataset shadow (the whole-dataset shadow lives in the separate
+    shadow_compare.csv), so _mean returns '' there; format that as blank instead
+    of crashing the markdown writeup."""
+    if isinstance(x, str) or x is None:
+        return x or ""
+    return format(x, spec)
+
+
 def sort_key(tag):
     ds, method, ratio, variant = parse_tag(tag)
     mi = METHOD_ORDER.index(method) if method in METHOD_ORDER else 99
@@ -184,9 +194,9 @@ def markdown(attacks, boxes, figs):
             bx = boxes.get(tag, {})
             rv = (ratio or "whole") + (f"/{variant}" if variant else "")
             L.append(f"| {method} | {rv} | {bx.get('k_train','')} | "
-                     f"{bx.get('acc_gap',float('nan')):+.2f} | "
-                     f"{_mean(a,'best_threshold'):.4f} | "
-                     f"{_mean(a,'shadow_mlp'):.4f} |")
+                     f"{_fmt(bx.get('acc_gap',float('nan')),'+.2f')} | "
+                     f"{_fmt(_mean(a,'best_threshold'),'.4f')} | "
+                     f"{_fmt(_mean(a,'shadow_mlp'),'.4f')} |")
         L.append("")
     L += ["## Reading it", "",
           "- **control** is the reference leakage of a plain GNN on V_in.",
