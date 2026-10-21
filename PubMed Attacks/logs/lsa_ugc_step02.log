@@ -1,0 +1,26 @@
+
+==============================================================================
+2026-10-21 09:49:30  lsa:ugc:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+building 4 black boxes x 5 runs, 8 workers, CPU
+
+held-out test accuracy (60/20/20 split, best-validation weights)
+box               alpha      k        bw  aug dim |       test acc   paper   delta gate
+--------------------------------------------------------------------------------------------------------
+pubmed_whole       0.20  19717         -    20217 |  87.56+/- 0.12       -       - n/a
+pubmed_30          0.20  13802  0.000033    20217 |  86.84+/- 0.09       -       - n/a
+pubmed_50          0.20   9858  0.000080    20217 |  86.71+/- 0.11       -       - n/a
+pubmed_70          0.20   5915  0.000232    20217 |  85.43+/- 0.23       -       - n/a
+
+coarsening geometry and served posteriors
+box              trainable  maxsz  meansz  c_edges |  distinct   of n  mean max p
+------------------------------------------------------------------------------------------------
+pubmed_whole             -      -       -        - |     19703  99.9%      0.8881
+pubmed_30             9386      8     1.4    46323 |     19712 100.0%      0.8642
+pubmed_50             7298     11     2.0    46467 |     19711 100.0%      0.8932
+pubmed_70             4597     21     3.3    45782 |     19710 100.0%      0.8966
+
+[manifest] recorded step step02_blackbox: Built and validated 4 UGC black boxes; 0/0 gated boxes inside tolerance, largest deviation 0.00 points
+
+total 84.3 min

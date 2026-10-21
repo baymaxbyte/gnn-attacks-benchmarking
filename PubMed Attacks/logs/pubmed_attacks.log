@@ -1,0 +1,573 @@
+2026-10-20 10:48:33  ==============================================================================
+2026-10-20 10:48:33  PubMed attacks: end-to-end run
+2026-10-20 10:48:33  ==============================================================================
+2026-10-20 10:48:33  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-20 10:48:33  only=both  runs=5  skip_data=False
+2026-10-20 10:48:33  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-20 10:48:33  [run] data
+2026-10-20 10:48:33        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks
+2026-10-20 10:48:33        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python prepare_data.py
+2026-10-20 10:48:33        step-log -> logs/prepare_data.log
+2026-10-20 10:48:36  [ok] data  rc=0  0.0 min
+2026-10-20 10:48:36  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-20 10:48:36  ==============================================================================
+2026-10-20 10:48:36  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-20 10:48:36  ==============================================================================
+2026-10-20 10:48:36  [run] lsa:fgc:step01
+2026-10-20 10:48:36        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 10:48:36        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-20 10:48:36        step-log -> logs/lsa_fgc_step01.log
+2026-10-20 11:00:43  ==============================================================================
+2026-10-20 11:00:43  PubMed attacks: end-to-end run
+2026-10-20 11:00:43  ==============================================================================
+2026-10-20 11:00:43  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-20 11:00:43  only=both  runs=5  skip_data=False
+2026-10-20 11:00:43  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-20 11:00:43  [data] skipped
+2026-10-20 11:00:43  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-20 11:00:43  ==============================================================================
+2026-10-20 11:00:43  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-20 11:00:43  ==============================================================================
+2026-10-20 11:00:43  [run] lsa:fgc:step01
+2026-10-20 11:00:43        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 11:00:43        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-20 11:00:43        step-log -> logs/lsa_fgc_step01.log
+2026-10-20 19:01:55  [ok] lsa:fgc:step01  rc=0  481.2 min
+2026-10-20 19:01:55  [run] lsa:fgc:step02
+2026-10-20 19:01:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 19:01:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-20 19:01:55        step-log -> logs/lsa_fgc_step02.log
+2026-10-20 19:04:44  [ok] lsa:fgc:step02  rc=0  2.8 min
+2026-10-20 19:04:44  [run] lsa:fgc:step03
+2026-10-20 19:04:44        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 19:04:44        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-20 19:04:44        step-log -> logs/lsa_fgc_step03.log
+2026-10-20 19:05:19  [ok] lsa:fgc:step03  rc=0  0.6 min
+2026-10-20 19:05:19    [LSA fgc] cora pred pkls missing -> building cora boxes
+2026-10-20 19:05:19  [run] lsa:fgc:cora:step01
+2026-10-20 19:05:19        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 19:05:19        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-20 19:05:19        step-log -> logs/lsa_fgc_cora_step01.log
+2026-10-20 19:07:16  [ok] lsa:fgc:cora:step01  rc=0  2.0 min
+2026-10-20 19:07:16  [run] lsa:fgc:cora:step02
+2026-10-20 19:07:16        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 19:07:16        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-20 19:07:16        step-log -> logs/lsa_fgc_cora_step02.log
+2026-10-20 19:07:33  [ok] lsa:fgc:cora:step02  rc=0  0.3 min
+2026-10-20 19:07:33  [run] lsa:fgc:cora:step03
+2026-10-20 19:07:33        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking
+2026-10-20 19:07:33        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-20 19:07:33        step-log -> logs/lsa_fgc_cora_step03.log
+2026-10-20 19:08:02  [ok] lsa:fgc:cora:step03  rc=0  0.5 min
+2026-10-20 19:08:02    [cached] attack_dataset cora_fgc_whole
+2026-10-20 19:08:02    [cached] attack_dataset pubmed_fgc_whole
+2026-10-20 19:08:02    [cached] attack_dataset pubmed_fgc_0.3
+2026-10-20 19:08:02    [cached] attack_dataset pubmed_fgc_0.1
+2026-10-20 19:08:02    [cached] attack_dataset pubmed_fgc_0.05
+2026-10-20 19:08:02  [run] lsa:fgc:attack:whole
+2026-10-20 19:08:02        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-20 19:08:02        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_fgc_whole --shadow cora_fgc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag fgc_E_whole_wholeshadow --link_prediction --quiet
+2026-10-20 19:08:02        step-log -> logs/lsa_attack_fgc_whole.log
+2026-10-20 19:12:40  [ok] lsa:fgc:attack:whole  rc=0  4.6 min
+2026-10-20 19:12:40  [run] lsa:fgc:attack:0.3
+2026-10-20 19:12:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-20 19:12:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_fgc_0.3 --shadow cora_fgc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag fgc_E_0.3_wholeshadow --link_prediction --quiet
+2026-10-20 19:12:40        step-log -> logs/lsa_attack_fgc_0.3.log
+2026-10-20 19:17:14  [ok] lsa:fgc:attack:0.3  rc=0  4.6 min
+2026-10-20 19:17:14  [run] lsa:fgc:attack:0.1
+2026-10-20 19:17:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-20 19:17:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_fgc_0.1 --shadow cora_fgc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag fgc_E_0.1_wholeshadow --link_prediction --quiet
+2026-10-20 19:17:14        step-log -> logs/lsa_attack_fgc_0.1.log
+2026-10-20 19:21:51  [ok] lsa:fgc:attack:0.1  rc=0  4.6 min
+2026-10-20 19:21:51  [run] lsa:fgc:attack:0.05
+2026-10-20 19:21:51        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-20 19:21:51        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_fgc_0.05 --shadow cora_fgc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag fgc_E_0.05_wholeshadow --link_prediction --quiet
+2026-10-20 19:21:51        step-log -> logs/lsa_attack_fgc_0.05.log
+2026-10-20 19:26:30  [ok] lsa:fgc:attack:0.05  rc=0  4.6 min
+2026-10-20 19:26:30  [LSA fgc] complete
+2026-10-20 19:26:30  ==============================================================================
+2026-10-20 19:26:30  LSA  kron  (KRON Benchmarking)  settings=['whole', '0.3', '0.5', '0.7']
+2026-10-20 19:26:30  ==============================================================================
+2026-10-20 19:26:30  [run] lsa:kron:step01
+2026-10-20 19:26:30        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-20 19:26:30        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_reduce.py
+2026-10-20 19:26:30        step-log -> logs/lsa_kron_step01.log
+2026-10-20 19:29:31  [ok] lsa:kron:step01  rc=0  3.0 min
+2026-10-20 19:29:31  [run] lsa:kron:step02
+2026-10-20 19:29:31        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-20 19:29:31        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-20 19:29:31        step-log -> logs/lsa_kron_step02.log
+2026-10-20 19:41:46  [ok] lsa:kron:step02  rc=0  12.3 min
+2026-10-20 19:41:46  [run] lsa:kron:step03
+2026-10-20 19:41:46        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-20 19:41:46        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-20 19:41:46        step-log -> logs/lsa_kron_step03.log
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18  PubMed attacks: end-to-end run
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 06:01:18  only=both  runs=5  skip_data=False
+2026-10-21 06:01:18  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 06:01:18  [data] skipped
+2026-10-21 06:01:18  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18    [skip] lsa:fgc:step01 (progress)
+2026-10-21 06:01:18    [skip] lsa:fgc:step02 (progress)
+2026-10-21 06:01:18    [skip] lsa:fgc:step03 (progress)
+2026-10-21 06:01:18    [cached] attack_dataset cora_fgc_whole
+2026-10-21 06:01:18    [cached] attack_dataset pubmed_fgc_whole
+2026-10-21 06:01:18    [cached] attack_dataset pubmed_fgc_0.3
+2026-10-21 06:01:18    [cached] attack_dataset pubmed_fgc_0.1
+2026-10-21 06:01:18    [cached] attack_dataset pubmed_fgc_0.05
+2026-10-21 06:01:18    [skip] attack fgc/whole (exists)
+2026-10-21 06:01:18    [skip] attack fgc/0.3 (exists)
+2026-10-21 06:01:18    [skip] attack fgc/0.1 (exists)
+2026-10-21 06:01:18    [skip] attack fgc/0.05 (exists)
+2026-10-21 06:01:18    [cleanup] removed 24 attack_dataset files for fgc
+2026-10-21 06:01:18  [LSA fgc] complete
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18  LSA  kron  (KRON Benchmarking)  settings=['whole', '0.3', '0.5', '0.7']
+2026-10-21 06:01:18  ==============================================================================
+2026-10-21 06:01:18    [skip] lsa:kron:step01 (progress)
+2026-10-21 06:01:18    [skip] lsa:kron:step02 (progress)
+2026-10-21 06:01:18  [run] lsa:kron:step03
+2026-10-21 06:01:18        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-21 06:01:18        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 06:01:18        step-log -> logs/lsa_kron_step03.log
+2026-10-21 06:01:59  [ok] lsa:kron:step03  rc=0  0.7 min
+2026-10-21 06:01:59    [LSA kron] cora pred pkls missing -> building cora boxes
+2026-10-21 06:01:59  [run] lsa:kron:cora:step01
+2026-10-21 06:01:59        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-21 06:01:59        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_reduce.py
+2026-10-21 06:01:59        step-log -> logs/lsa_kron_cora_step01.log
+2026-10-21 06:02:00  [ok] lsa:kron:cora:step01  rc=0  0.0 min
+2026-10-21 06:02:00  [run] lsa:kron:cora:step02
+2026-10-21 06:02:00        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-21 06:02:00        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 06:02:00        step-log -> logs/lsa_kron_cora_step02.log
+2026-10-21 06:04:02  [ok] lsa:kron:cora:step02  rc=0  2.0 min
+2026-10-21 06:04:02  [run] lsa:kron:cora:step03
+2026-10-21 06:04:02        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking
+2026-10-21 06:04:02        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 06:04:02        step-log -> logs/lsa_kron_cora_step03.log
+2026-10-21 06:04:36  [ok] lsa:kron:cora:step03  rc=0  0.6 min
+2026-10-21 06:04:36    [cached] attack_dataset cora_kron_whole
+2026-10-21 06:04:36    [cached] attack_dataset pubmed_kron_whole
+2026-10-21 06:04:36    [cached] attack_dataset pubmed_kron_0.3
+2026-10-21 06:04:36    [cached] attack_dataset pubmed_kron_0.5
+2026-10-21 06:04:36    [cached] attack_dataset pubmed_kron_0.7
+2026-10-21 06:04:36  [run] lsa:kron:attack:whole
+2026-10-21 06:04:36        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 06:04:36        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_whole --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_whole_wholeshadow --link_prediction --quiet
+2026-10-21 06:04:36        step-log -> logs/lsa_attack_kron_whole.log
+2026-10-21 06:09:12  [ok] lsa:kron:attack:whole  rc=0  4.6 min
+2026-10-21 06:09:12  [run] lsa:kron:attack:0.3
+2026-10-21 06:09:12        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 06:09:12        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.3 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.3_wholeshadow --link_prediction --quiet
+2026-10-21 06:09:12        step-log -> logs/lsa_attack_kron_0.3.log
+2026-10-21 06:13:48  [ok] lsa:kron:attack:0.3  rc=0  4.6 min
+2026-10-21 06:13:48  [run] lsa:kron:attack:0.5
+2026-10-21 06:13:48        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 06:13:48        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.5 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.5_wholeshadow --link_prediction --quiet
+2026-10-21 06:13:48        step-log -> logs/lsa_attack_kron_0.5.log
+2026-10-21 06:13:52  [FAIL] lsa:kron:attack:0.5  rc=1  0.1 min
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  PubMed attacks: end-to-end run
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 09:26:17  only=both  runs=5  skip_data=False
+2026-10-21 09:26:17  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 09:26:17  [data] skipped
+2026-10-21 09:26:17  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17    [skip] lsa:fgc:step01 (progress)
+2026-10-21 09:26:17    [skip] lsa:fgc:step02 (progress)
+2026-10-21 09:26:17    [skip] lsa:fgc:step03 (progress)
+2026-10-21 09:26:17  [run] lsa:fgc:ds:cora_whole
+2026-10-21 09:26:17        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:17        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_fgcbb_whole_pred.pkl --reference_pred cora_gfgc_pred.pkl --name cora_fgc_whole --seed 1
+2026-10-21 09:26:17        step-log -> logs/lsa_build_cora_fgc_whole.log
+2026-10-21 09:26:24  [ok] lsa:fgc:ds:cora_whole  rc=0  0.1 min
+2026-10-21 09:26:24  [run] lsa:fgc:ds:pubmed_whole
+2026-10-21 09:26:24        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:24        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_whole_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_whole --seed 1 --max_pos 10000
+2026-10-21 09:26:24        step-log -> logs/lsa_build_pubmed_fgc_whole.log
+2026-10-21 09:26:31  [ok] lsa:fgc:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 09:26:31  [run] lsa:fgc:ds:pubmed_0.3
+2026-10-21 09:26:31        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:31        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.3_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.3 --seed 1 --max_pos 10000
+2026-10-21 09:26:31        step-log -> logs/lsa_build_pubmed_fgc_0.3.log
+2026-10-21 09:26:39  [ok] lsa:fgc:ds:pubmed_0.3  rc=0  0.1 min
+2026-10-21 09:26:39  [run] lsa:fgc:ds:pubmed_0.1
+2026-10-21 09:26:39        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:39        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.1_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.1 --seed 1 --max_pos 10000
+2026-10-21 09:26:39        step-log -> logs/lsa_build_pubmed_fgc_0.1.log
+2026-10-21 09:26:47  [ok] lsa:fgc:ds:pubmed_0.1  rc=0  0.1 min
+2026-10-21 09:26:47  [run] lsa:fgc:ds:pubmed_0.05
+2026-10-21 09:26:47        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:47        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.05_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.05 --seed 1 --max_pos 10000
+2026-10-21 09:26:47        step-log -> logs/lsa_build_pubmed_fgc_0.05.log
+2026-10-21 09:26:54  [ok] lsa:fgc:ds:pubmed_0.05  rc=0  0.1 min
+2026-10-21 09:26:54    [skip] attack fgc/whole (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.3 (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.1 (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.05 (exists)
+2026-10-21 09:26:54    [cleanup] removed 15 attack_dataset files for fgc
+2026-10-21 09:26:54  [LSA fgc] complete
+2026-10-21 09:26:54  ==============================================================================
+2026-10-21 09:26:54  LSA  kron  (KRON Benchmarking)  settings=['whole', '0.3', '0.5', '0.7']
+2026-10-21 09:26:54  ==============================================================================
+2026-10-21 09:26:54    [skip] lsa:kron:step01 (progress)
+2026-10-21 09:26:54    [skip] lsa:kron:step02 (progress)
+2026-10-21 09:26:54    [skip] lsa:kron:step03 (progress)
+2026-10-21 09:26:54    [cached] attack_dataset cora_kron_whole
+2026-10-21 09:26:54    [cached] attack_dataset pubmed_kron_whole
+2026-10-21 09:26:54    [cached] attack_dataset pubmed_kron_0.3
+2026-10-21 09:26:54  [run] lsa:kron:ds:pubmed_0.5
+2026-10-21 09:26:54        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:26:54        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_0.5_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_0.5 --seed 1 --max_pos 10000
+2026-10-21 09:26:54        step-log -> logs/lsa_build_pubmed_kron_0.5.log
+2026-10-21 09:27:02  [ok] lsa:kron:ds:pubmed_0.5  rc=0  0.1 min
+2026-10-21 09:27:02    [cached] attack_dataset pubmed_kron_0.7
+2026-10-21 09:27:02    [skip] attack kron/whole (exists)
+2026-10-21 09:27:02    [skip] attack kron/0.3 (exists)
+2026-10-21 09:27:02  [run] lsa:kron:attack:0.5
+2026-10-21 09:27:02        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:27:02        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.5 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.5_wholeshadow --link_prediction --quiet
+2026-10-21 09:27:02        step-log -> logs/lsa_attack_kron_0.5.log
+2026-10-21 09:31:36  [ok] lsa:kron:attack:0.5  rc=0  4.6 min
+2026-10-21 09:31:36  [run] lsa:kron:attack:0.7
+2026-10-21 09:31:36        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:31:36        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.7 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.7_wholeshadow --link_prediction --quiet
+2026-10-21 09:31:36        step-log -> logs/lsa_attack_kron_0.7.log
+2026-10-21 09:36:14  [ok] lsa:kron:attack:0.7  rc=0  4.6 min
+2026-10-21 09:36:14    [cleanup] removed 24 attack_dataset files for kron
+2026-10-21 09:36:14  [LSA kron] complete
+2026-10-21 09:36:14  ==============================================================================
+2026-10-21 09:36:14  LSA  ugc  (UGC Benchmarking)  settings=['whole', '30', '50', '70']
+2026-10-21 09:36:14  ==============================================================================
+2026-10-21 09:36:14  [run] lsa:ugc:step01
+2026-10-21 09:36:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 09:36:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 09:36:14        step-log -> logs/lsa_ugc_step01.log
+2026-10-21 09:49:30  [ok] lsa:ugc:step01  rc=0  13.3 min
+2026-10-21 09:49:30  [run] lsa:ugc:step02
+2026-10-21 09:49:30        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 09:49:30        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 09:49:30        step-log -> logs/lsa_ugc_step02.log
+2026-10-21 11:13:52  [ok] lsa:ugc:step02  rc=0  84.4 min
+2026-10-21 11:13:52  [run] lsa:ugc:step03
+2026-10-21 11:13:52        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:13:52        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 11:13:52        step-log -> logs/lsa_ugc_step03.log
+2026-10-21 11:14:53  [ok] lsa:ugc:step03  rc=0  1.0 min
+2026-10-21 11:14:53    [LSA ugc] cora pred pkls missing -> building cora boxes
+2026-10-21 11:14:53  [run] lsa:ugc:cora:step01
+2026-10-21 11:14:53        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:14:53        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 11:14:53        step-log -> logs/lsa_ugc_cora_step01.log
+2026-10-21 11:15:11  [ok] lsa:ugc:cora:step01  rc=0  0.3 min
+2026-10-21 11:15:11  [run] lsa:ugc:cora:step02
+2026-10-21 11:15:11        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:15:11        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 11:15:11        step-log -> logs/lsa_ugc_cora_step02.log
+2026-10-21 11:18:33  [ok] lsa:ugc:cora:step02  rc=0  3.4 min
+2026-10-21 11:18:33  [run] lsa:ugc:cora:step03
+2026-10-21 11:18:33        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:18:33        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 11:18:33        step-log -> logs/lsa_ugc_cora_step03.log
+2026-10-21 11:19:07  [ok] lsa:ugc:cora:step03  rc=0  0.6 min
+2026-10-21 11:19:07    [cached] attack_dataset cora_ugc_whole
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_whole
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_30
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_50
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_70
+2026-10-21 11:19:07  [run] lsa:ugc:attack:whole
+2026-10-21 11:19:07        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:19:07        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_whole --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_whole_wholeshadow --link_prediction --quiet
+2026-10-21 11:19:07        step-log -> logs/lsa_attack_ugc_whole.log
+2026-10-21 11:23:45  [ok] lsa:ugc:attack:whole  rc=0  4.6 min
+2026-10-21 11:23:45  [run] lsa:ugc:attack:30
+2026-10-21 11:23:45        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:23:45        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_30 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_30_wholeshadow --link_prediction --quiet
+2026-10-21 11:23:45        step-log -> logs/lsa_attack_ugc_30.log
+2026-10-21 11:28:22  [ok] lsa:ugc:attack:30  rc=0  4.6 min
+2026-10-21 11:28:22  [run] lsa:ugc:attack:50
+2026-10-21 11:28:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:28:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_50 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_50_wholeshadow --link_prediction --quiet
+2026-10-21 11:28:22        step-log -> logs/lsa_attack_ugc_50.log
+2026-10-21 11:33:01  [ok] lsa:ugc:attack:50  rc=0  4.6 min
+2026-10-21 11:33:01  [run] lsa:ugc:attack:70
+2026-10-21 11:33:01        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:33:01        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_70 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_70_wholeshadow --link_prediction --quiet
+2026-10-21 11:33:01        step-log -> logs/lsa_attack_ugc_70.log
+2026-10-21 11:37:36  [ok] lsa:ugc:attack:70  rc=0  4.6 min
+2026-10-21 11:37:37    [cleanup] removed 24 attack_dataset files for ugc
+2026-10-21 11:37:37  [LSA ugc] complete
+2026-10-21 11:37:37  membership methods to run: ['control', 'kron', 'ugc', 'fgc']
+2026-10-21 11:37:37  ==============================================================================
+2026-10-21 11:37:37  MEMBERSHIP  methods=['control', 'kron', 'ugc', 'fgc']  (shadow = whole cora)
+2026-10-21 11:37:37  ==============================================================================
+2026-10-21 11:37:37    [membership] cora_control_whole posteriors missing -> building
+2026-10-21 11:37:37  [run] mia:cora:split
+2026-10-21 11:37:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_split.py --only cora
+2026-10-21 11:37:37        step-log -> logs/mia_cora_split.log
+2026-10-21 11:37:37  [ok] mia:cora:split  rc=0  0.0 min
+2026-10-21 11:37:37  [run] mia:cora:reduce
+2026-10-21 11:37:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only cora --methods control
+2026-10-21 11:37:37        step-log -> logs/mia_cora_reduce.log
+2026-10-21 11:37:40  [ok] mia:cora:reduce  rc=0  0.0 min
+2026-10-21 11:37:40  [run] mia:cora:box
+2026-10-21 11:37:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only cora --methods control
+2026-10-21 11:37:40        step-log -> logs/mia_cora_box.log
+2026-10-21 11:37:55  [ok] mia:cora:box  rc=0  0.2 min
+2026-10-21 11:37:55  [run] mia:pubmed:split
+2026-10-21 11:37:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_split.py --only pubmed
+2026-10-21 11:37:55        step-log -> logs/mia_pubmed_split.log
+2026-10-21 11:37:55  [ok] mia:pubmed:split  rc=0  0.0 min
+2026-10-21 11:37:55  [run] mia:pubmed:reduce
+2026-10-21 11:37:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 11:37:55        step-log -> logs/mia_pubmed_reduce.log
+2026-10-21 14:02:23  [ok] mia:pubmed:reduce  rc=0  144.5 min
+2026-10-21 14:02:23  [run] mia:pubmed:box
+2026-10-21 14:02:23        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:02:23        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 14:02:23        step-log -> logs/mia_pubmed_box.log
+2026-10-21 14:09:51  [ok] mia:pubmed:box  rc=0  7.5 min
+2026-10-21 14:09:51  [run] mia:pubmed:attack
+2026-10-21 14:09:51        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:09:51        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 14:09:51        step-log -> logs/mia_pubmed_attack.log
+2026-10-21 14:09:55  [ok] mia:pubmed:attack  rc=0  0.1 min
+2026-10-21 14:09:55  [run] mia:pubmed:wholeshadow
+2026-10-21 14:09:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:09:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python whole_shadow_mlp.py
+2026-10-21 14:09:55        step-log -> logs/mia_pubmed_wholeshadow.log
+2026-10-21 14:10:15  [ok] mia:pubmed:wholeshadow  rc=0  0.3 min
+2026-10-21 14:10:15  [run] mia:aggregate
+2026-10-21 14:10:15        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:10:15        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py
+2026-10-21 14:10:15        step-log -> logs/mia_aggregate.log
+2026-10-21 14:10:18  [FAIL] mia:aggregate  rc=1  0.0 min
+2026-10-21 15:38:49  ==============================================================================
+2026-10-21 15:38:49  PubMed attacks: end-to-end run
+2026-10-21 15:38:49  ==============================================================================
+2026-10-21 15:38:49  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 15:38:49  only=both  runs=5  skip_data=False
+2026-10-21 15:38:49  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 15:38:49  [data] skipped
+2026-10-21 15:38:49  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-21 15:38:49  ==============================================================================
+2026-10-21 15:38:49  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-21 15:38:49  ==============================================================================
+2026-10-21 15:38:49    [skip] lsa:fgc:step01 (progress)
+2026-10-21 15:38:49    [skip] lsa:fgc:step02 (progress)
+2026-10-21 15:38:49    [skip] lsa:fgc:step03 (progress)
+2026-10-21 15:38:49  [run] lsa:fgc:ds:cora_whole
+2026-10-21 15:38:49        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 15:38:49        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_fgcbb_whole_pred.pkl --reference_pred cora_gfgc_pred.pkl --name cora_fgc_whole --seed 1
+2026-10-21 15:38:49        step-log -> logs/lsa_build_cora_fgc_whole.log
+2026-10-21 15:38:56  [ok] lsa:fgc:ds:cora_whole  rc=0  0.1 min
+2026-10-21 15:38:56  [run] lsa:fgc:ds:pubmed_whole
+2026-10-21 15:38:56        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 15:38:56        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_whole_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_whole --seed 1 --max_pos 10000
+2026-10-21 15:38:56        step-log -> logs/lsa_build_pubmed_fgc_whole.log
+2026-10-21 15:39:03  [ok] lsa:fgc:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 15:39:03  [run] lsa:fgc:ds:pubmed_0.3
+2026-10-21 15:39:03        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 15:39:03        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.3_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.3 --seed 1 --max_pos 10000
+2026-10-21 15:39:03        step-log -> logs/lsa_build_pubmed_fgc_0.3.log
+2026-10-21 15:39:11  [ok] lsa:fgc:ds:pubmed_0.3  rc=0  0.1 min
+2026-10-21 15:39:11  [run] lsa:fgc:ds:pubmed_0.1
+2026-10-21 15:39:11        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 15:39:11        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.1_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.1 --seed 1 --max_pos 10000
+2026-10-21 15:39:11        step-log -> logs/lsa_build_pubmed_fgc_0.1.log
+2026-10-21 15:39:18  [ok] lsa:fgc:ds:pubmed_0.1  rc=0  0.1 min
+2026-10-21 15:39:18  [run] lsa:fgc:ds:pubmed_0.05
+2026-10-21 15:39:18        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 15:39:18        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.05_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.05 --seed 1 --max_pos 10000
+2026-10-21 15:39:18        step-log -> logs/lsa_build_pubmed_fgc_0.05.log
+2026-10-21 15:39:26  [ok] lsa:fgc:ds:pubmed_0.05  rc=0  0.1 min
+2026-10-21 15:39:26    [skip] attack fgc/whole (exists)
+2026-10-21 15:39:26    [skip] attack fgc/0.3 (exists)
+2026-10-21 15:39:26    [skip] attack fgc/0.1 (exists)
+2026-10-21 15:39:26    [skip] attack fgc/0.05 (exists)
+2026-10-21 15:39:26    [cleanup] removed 15 attack_dataset files for fgc
+2026-10-21 15:39:26  [LSA fgc] complete
+2026-10-21 15:39:26  ==============================================================================
+2026-10-21 15:39:26  LSA  kron  (KRON Benchmarking)  settings=['whole', '0.3', '0.5', '0.7']
+2026-10-21 15:39:26  ==============================================================================
+2026-10-21 15:39:26    [skip] lsa:kron:step01 (progress)
+2026-10-21 15:39:26    [skip] lsa:kron:step02 (progress)
+2026-10-21 15:39:26    [skip] lsa:kron:step03 (progress)
+2026-10-21 15:39:26  [run] lsa:kron:ds:cora_whole
+2026-10-21 15:39:26        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 15:39:26        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_kronbb_whole_pred.pkl --reference_pred cora_gkron_pred.pkl --name cora_kron_whole --seed 1
+2026-10-21 15:39:26        step-log -> logs/lsa_build_cora_kron_whole.log
+2026-10-21 15:39:33  [ok] lsa:kron:ds:cora_whole  rc=0  0.1 min
+2026-10-21 15:39:33  [run] lsa:kron:ds:pubmed_whole
+2026-10-21 15:39:33        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 15:39:33        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_whole_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_whole --seed 1 --max_pos 10000
+2026-10-21 15:39:33        step-log -> logs/lsa_build_pubmed_kron_whole.log
+2026-10-21 15:39:40  [ok] lsa:kron:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 15:39:40  [run] lsa:kron:ds:pubmed_0.3
+2026-10-21 15:39:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 15:39:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_0.3_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_0.3 --seed 1 --max_pos 10000
+2026-10-21 15:39:40        step-log -> logs/lsa_build_pubmed_kron_0.3.log
+2026-10-21 15:39:48  [ok] lsa:kron:ds:pubmed_0.3  rc=0  0.1 min
+2026-10-21 15:39:48  [run] lsa:kron:ds:pubmed_0.5
+2026-10-21 15:39:48        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 15:39:48        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_0.5_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_0.5 --seed 1 --max_pos 10000
+2026-10-21 15:39:48        step-log -> logs/lsa_build_pubmed_kron_0.5.log
+2026-10-21 15:39:55  [ok] lsa:kron:ds:pubmed_0.5  rc=0  0.1 min
+2026-10-21 15:39:55  [run] lsa:kron:ds:pubmed_0.7
+2026-10-21 15:39:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 15:39:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_0.7_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_0.7 --seed 1 --max_pos 10000
+2026-10-21 15:39:55        step-log -> logs/lsa_build_pubmed_kron_0.7.log
+2026-10-21 15:40:03  [ok] lsa:kron:ds:pubmed_0.7  rc=0  0.1 min
+2026-10-21 15:40:03    [skip] attack kron/whole (exists)
+2026-10-21 15:40:03    [skip] attack kron/0.3 (exists)
+2026-10-21 15:40:03    [skip] attack kron/0.5 (exists)
+2026-10-21 15:40:03    [skip] attack kron/0.7 (exists)
+2026-10-21 15:40:03    [cleanup] removed 15 attack_dataset files for kron
+2026-10-21 15:40:03  [LSA kron] complete
+2026-10-21 15:40:03  ==============================================================================
+2026-10-21 15:40:03  LSA  ugc  (UGC Benchmarking)  settings=['whole', '30', '50', '70']
+2026-10-21 15:40:03  ==============================================================================
+2026-10-21 15:40:03    [skip] lsa:ugc:step01 (progress)
+2026-10-21 15:40:03    [skip] lsa:ugc:step02 (progress)
+2026-10-21 15:40:03    [skip] lsa:ugc:step03 (progress)
+2026-10-21 15:40:03  [run] lsa:ugc:ds:cora_whole
+2026-10-21 15:40:03        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 15:40:03        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_ugcbb_whole_pred.pkl --reference_pred cora_gugc_pred.pkl --name cora_ugc_whole --seed 1
+2026-10-21 15:40:03        step-log -> logs/lsa_build_cora_ugc_whole.log
+2026-10-21 15:40:10  [ok] lsa:ugc:ds:cora_whole  rc=0  0.1 min
+2026-10-21 15:40:10  [run] lsa:ugc:ds:pubmed_whole
+2026-10-21 15:40:10        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 15:40:10        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_ugcbb_whole_pred.pkl --reference_pred pubmed_gugc_pred.pkl --name pubmed_ugc_whole --seed 1 --max_pos 10000
+2026-10-21 15:40:10        step-log -> logs/lsa_build_pubmed_ugc_whole.log
+2026-10-21 15:40:17  [ok] lsa:ugc:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 15:40:17  [run] lsa:ugc:ds:pubmed_30
+2026-10-21 15:40:17        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 15:40:17        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_ugcbb_30_pred.pkl --reference_pred pubmed_gugc_pred.pkl --name pubmed_ugc_30 --seed 1 --max_pos 10000
+2026-10-21 15:40:17        step-log -> logs/lsa_build_pubmed_ugc_30.log
+2026-10-21 15:40:25  [ok] lsa:ugc:ds:pubmed_30  rc=0  0.1 min
+2026-10-21 15:40:25  [run] lsa:ugc:ds:pubmed_50
+2026-10-21 15:40:25        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 15:40:25        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_ugcbb_50_pred.pkl --reference_pred pubmed_gugc_pred.pkl --name pubmed_ugc_50 --seed 1 --max_pos 10000
+2026-10-21 15:40:25        step-log -> logs/lsa_build_pubmed_ugc_50.log
+2026-10-21 15:40:32  [ok] lsa:ugc:ds:pubmed_50  rc=0  0.1 min
+2026-10-21 15:40:32  [run] lsa:ugc:ds:pubmed_70
+2026-10-21 15:40:32        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 15:40:32        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_ugcbb_70_pred.pkl --reference_pred pubmed_gugc_pred.pkl --name pubmed_ugc_70 --seed 1 --max_pos 10000
+2026-10-21 15:40:32        step-log -> logs/lsa_build_pubmed_ugc_70.log
+2026-10-21 15:40:40  [ok] lsa:ugc:ds:pubmed_70  rc=0  0.1 min
+2026-10-21 15:40:40    [skip] attack ugc/whole (exists)
+2026-10-21 15:40:40    [skip] attack ugc/30 (exists)
+2026-10-21 15:40:40    [skip] attack ugc/50 (exists)
+2026-10-21 15:40:40    [skip] attack ugc/70 (exists)
+2026-10-21 15:40:40    [cleanup] removed 15 attack_dataset files for ugc
+2026-10-21 15:40:40  [LSA ugc] complete
+2026-10-21 15:40:40  membership methods to run: ['control', 'kron', 'ugc', 'fgc']
+2026-10-21 15:40:40  ==============================================================================
+2026-10-21 15:40:40  MEMBERSHIP  methods=['control', 'kron', 'ugc', 'fgc']  (shadow = whole cora)
+2026-10-21 15:40:40  ==============================================================================
+2026-10-21 15:40:40    [membership] cora_control_whole posteriors present (shadow ready)
+2026-10-21 15:40:40    [skip] mia:pubmed:split (progress)
+2026-10-21 15:40:40    [skip] mia:pubmed:reduce (progress)
+2026-10-21 15:40:40    [skip] mia:pubmed:box (progress)
+2026-10-21 15:40:40    [skip] mia:pubmed:attack (progress)
+2026-10-21 15:40:40    [skip] mia:pubmed:wholeshadow (progress)
+2026-10-21 15:40:40  [run] mia:aggregate
+2026-10-21 15:40:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 15:40:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py --no_markdown
+2026-10-21 15:40:40        step-log -> logs/mia_aggregate.log
+2026-10-21 15:40:41  [ok] mia:aggregate  rc=0  0.0 min
+2026-10-21 15:40:41  [membership] complete
+2026-10-21 15:40:41  [run] aggregate_collect
+2026-10-21 15:40:41        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks
+2026-10-21 15:40:41        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+2026-10-21 15:40:41        step-log -> logs/aggregate.log
+2026-10-21 15:40:41  [ok] aggregate_collect  rc=0  0.0 min
+2026-10-21 15:40:41  ==============================================================================
+2026-10-21 15:40:41  RUN COMPLETE (re-run the same command to resume anything unfinished)
+2026-10-21 15:40:41  ==============================================================================
+2026-10-21 15:59:22  ==============================================================================
+2026-10-21 15:59:22  PubMed attacks: end-to-end run
+2026-10-21 15:59:22  ==============================================================================
+2026-10-21 15:59:22  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 15:59:22  only=membership  runs=5  skip_data=False
+2026-10-21 15:59:22  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 15:59:22  [data] skipped
+2026-10-21 15:59:22  membership methods to run: ['control', 'kron', 'ugc', 'fgc']
+2026-10-21 15:59:22  ==============================================================================
+2026-10-21 15:59:22  MEMBERSHIP  methods=['control', 'kron', 'ugc', 'fgc']  (shadow = whole cora)
+2026-10-21 15:59:22  ==============================================================================
+2026-10-21 15:59:22    [membership] cora_control_whole posteriors present (shadow ready)
+2026-10-21 15:59:22    [skip] mia:pubmed:split (progress)
+2026-10-21 15:59:22    [skip] mia:pubmed:reduce (progress)
+2026-10-21 15:59:22    [skip] mia:pubmed:box (progress)
+2026-10-21 15:59:22  [run] mia:pubmed:attack
+2026-10-21 15:59:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 15:59:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 15:59:22        step-log -> logs/mia_pubmed_attack.log
+2026-10-21 15:59:40  [ok] mia:pubmed:attack  rc=0  0.3 min
+2026-10-21 15:59:40    [skip] mia:pubmed:wholeshadow (progress)
+2026-10-21 15:59:40  [run] mia:aggregate
+2026-10-21 15:59:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 15:59:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py --no_markdown
+2026-10-21 15:59:40        step-log -> logs/mia_aggregate.log
+2026-10-21 15:59:41  [ok] mia:aggregate  rc=0  0.0 min
+2026-10-21 15:59:41  [membership] complete
+2026-10-21 15:59:41  [run] aggregate_collect
+2026-10-21 15:59:41        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks
+2026-10-21 15:59:41        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+2026-10-21 15:59:41        step-log -> logs/aggregate.log
+2026-10-21 15:59:41  [ok] aggregate_collect  rc=0  0.0 min
+2026-10-21 15:59:41  ==============================================================================
+2026-10-21 15:59:41  RUN COMPLETE (re-run the same command to resume anything unfinished)
+2026-10-21 15:59:41  ==============================================================================
+2026-10-21 16:19:54  ==============================================================================
+2026-10-21 16:19:54  PubMed attacks: end-to-end run
+2026-10-21 16:19:54  ==============================================================================
+2026-10-21 16:19:54  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 16:19:54  only=membership  runs=5  skip_data=False
+2026-10-21 16:19:54  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 16:19:54  [data] skipped
+2026-10-21 16:19:54  membership methods to run: ['control', 'kron', 'ugc', 'fgc']
+2026-10-21 16:19:54  ==============================================================================
+2026-10-21 16:19:54  MEMBERSHIP  methods=['control', 'kron', 'ugc', 'fgc']  (shadow = whole cora)
+2026-10-21 16:19:54  ==============================================================================
+2026-10-21 16:19:54    [membership] cora_control_whole posteriors present (shadow ready)
+2026-10-21 16:19:54    [skip] mia:pubmed:split (progress)
+2026-10-21 16:19:54    [skip] mia:pubmed:reduce (progress)
+2026-10-21 16:19:54    [skip] mia:pubmed:box (progress)
+2026-10-21 16:19:54  [run] mia:pubmed:attack
+2026-10-21 16:19:54        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 16:19:54        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 16:19:54        step-log -> logs/mia_pubmed_attack.log
+2026-10-21 16:20:13  [ok] mia:pubmed:attack  rc=0  0.3 min
+2026-10-21 16:20:13    [skip] mia:pubmed:wholeshadow (progress)
+2026-10-21 16:20:13  [run] mia:aggregate
+2026-10-21 16:20:13        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 16:20:13        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py --no_markdown
+2026-10-21 16:20:13        step-log -> logs/mia_aggregate.log
+2026-10-21 16:20:14  [ok] mia:aggregate  rc=0  0.0 min
+2026-10-21 16:20:14  [membership] complete
+2026-10-21 16:20:14  [run] aggregate_collect
+2026-10-21 16:20:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks
+2026-10-21 16:20:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+2026-10-21 16:20:14        step-log -> logs/aggregate.log
+2026-10-21 16:20:14  [ok] aggregate_collect  rc=0  0.0 min
+2026-10-21 16:20:14  ==============================================================================
+2026-10-21 16:20:14  RUN COMPLETE (re-run the same command to resume anything unfinished)
+2026-10-21 16:20:14  ==============================================================================

@@ -1,0 +1,38 @@
+
+==============================================================================
+2026-10-20 19:07:16  lsa:fgc:cora:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+building 4 black boxes x 10 GNN re-inits, 8 workers, CPU
+
+MODE A  -- model(X_original, A_original)[u]   gate vs kumar23a T4/T6
+box                    k   beta |           ours          paper   delta  band  gate
+----------------------------------------------------------------------------------------
+cora_whole             -  0.001 |  97.01+/- 0.18   89.50+/- 1.23   +7.51  1.23  FAIL
+cora_0.3             812  0.001 |  85.51+/- 0.28   85.79+/- 0.24   -0.28  1.00  pass
+cora_0.1             270  0.001 |  81.35+/- 0.78   81.46+/- 0.79   -0.11  1.00  pass
+cora_0.05            135  0.001 |  68.73+/- 1.64   80.01+/- 0.51  -11.28  1.00  FAIL
+
+MODE B  -- model(X_coarse, A_coarse)[s(u)]    no published target
+box                    k |           ours  vs ModeA | distinct  meansz  maxsz  ident.pairs
+----------------------------------------------------------------------------------------
+cora_0.3             812 |  58.70+/- 0.57    -26.81 |      577     4.7     83        19014
+cora_0.1             270 |  46.05+/- 1.08    -35.31 |      247    11.0     72        34991
+cora_0.05            135 |  33.75+/- 1.80    -34.99 |      131    20.7     89        51679
+
+SERVED POSTERIORS (canonical build, model.eval())
+endpoint                          shape  distinct  mean max p     acc
+------------------------------------------------------------------------
+cora_whole_orig               (2708, 7)      2583      0.9405   96.94
+cora_0.3_orig                 (2708, 7)      2582      0.9288   85.49
+cora_0.3_lift                 (2708, 7)       575      0.7689   59.34
+cora_0.1_orig                 (2708, 7)      2574      0.8905   81.02
+cora_0.1_lift                 (2708, 7)       247      0.5282   45.31
+cora_0.05_orig                (2708, 7)      2585      0.6851   69.42
+cora_0.05_lift                (2708, 7)       131      0.3859   35.30
+
+[manifest] recorded step step02_blackbox: Built and validated 4 FGC black boxes; 2/4 inside gate, largest Mode A deviation 11.28 points
+
+total 0.2 min
+
+2 box(es) outside gate: cora_whole, cora_0.05

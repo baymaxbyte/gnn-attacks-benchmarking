@@ -1,0 +1,28 @@
+
+==============================================================================
+2026-10-21 09:26:17  lsa:fgc:ds:cora_whole
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_fgcbb_whole_pred.pkl --reference_pred cora_gfgc_pred.pkl --name cora_fgc_whole --seed 1
+==============================================================================
+dataset=cora  nodes=2708
+  f <- cora_fgcbb_whole_pred.pkl
+  g <- cora_gfgc_pred.pkl
+  linked pairs: 5278  (from 10556 directed entries)
+  unlinked pairs: 5278  (0.0s)
+  all  :  10556 records  -> data/attack_dataset/cora_fgc_whole_attack_all.json
+  train:   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_train.json
+  test :   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_test.json
+  train_fraction=0.5  (paper: 0.5)
+
+==============================================================================
+2026-10-21 15:38:49  lsa:fgc:ds:cora_whole
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_fgcbb_whole_pred.pkl --reference_pred cora_gfgc_pred.pkl --name cora_fgc_whole --seed 1
+==============================================================================
+dataset=cora  nodes=2708
+  f <- cora_fgcbb_whole_pred.pkl
+  g <- cora_gfgc_pred.pkl
+  linked pairs: 5278  (from 10556 directed entries)
+  unlinked pairs: 5278  (0.0s)
+  all  :  10556 records  -> data/attack_dataset/cora_fgc_whole_attack_all.json
+  train:   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_train.json
+  test :   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_test.json
+  train_fraction=0.5  (paper: 0.5)

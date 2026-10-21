@@ -1,0 +1,36 @@
+
+==============================================================================
+2026-10-20 19:01:55  lsa:fgc:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+building 4 black boxes x 10 GNN re-inits, 8 workers, CPU
+
+MODE A  -- model(X_original, A_original)[u]   gate vs kumar23a T4/T6
+box                    k   beta |           ours          paper   delta  band  gate
+----------------------------------------------------------------------------------------
+pubmed_whole           -  0.001 |  87.43+/- 0.06       -+/-    -       -  1.00  n/a
+pubmed_0.3          5915  0.001 |  83.05+/- 0.18       -+/-    -       -  1.00  n/a
+pubmed_0.1          1971  0.001 |  79.83+/- 2.01       -+/-    -       -  1.00  n/a
+pubmed_0.05          985  0.001 |  73.72+/- 0.58       -+/-    -       -  1.00  n/a
+
+MODE B  -- model(X_coarse, A_coarse)[s(u)]    no published target
+box                    k |           ours  vs ModeA | distinct  meansz  maxsz  ident.pairs
+----------------------------------------------------------------------------------------
+pubmed_0.3          5915 |  66.62+/- 0.62    -16.43 |     4006     4.9    359       646343
+pubmed_0.1          1971 |  57.02+/- 2.36    -22.81 |     1477    13.3    288       978430
+pubmed_0.05          985 |  51.10+/- 0.93    -22.62 |      318    62.0   7710     31286403
+
+SERVED POSTERIORS (canonical build, model.eval())
+endpoint                          shape  distinct  mean max p     acc
+------------------------------------------------------------------------
+pubmed_whole_orig            (19717, 3)     19713      0.8304   87.40
+pubmed_0.3_orig              (19717, 3)     19712      0.7813   83.08
+pubmed_0.3_lift              (19717, 3)      4006      0.7337   65.71
+pubmed_0.1_orig              (19717, 3)     19711      0.7934   80.66
+pubmed_0.1_lift              (19717, 3)      1477      0.6939   56.41
+pubmed_0.05_orig             (19717, 3)     19712      0.7232   73.22
+pubmed_0.05_lift             (19717, 3)       318      0.6908   52.24
+
+[manifest] recorded step step02_blackbox: Built and validated 4 FGC black boxes; 4/4 inside gate, largest Mode A deviation 0.00 points
+
+total 2.8 min

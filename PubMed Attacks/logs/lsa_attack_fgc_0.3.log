@@ -1,0 +1,144 @@
+
+==============================================================================
+2026-10-20 19:12:40  lsa:fgc:attack:0.3
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_fgc_0.3 --shadow cora_fgc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag fgc_E_0.3_wholeshadow --link_prediction --quiet
+==============================================================================
+target=pubmed_fgc_0.3  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+shadow=cora_fgc_whole  (its attack dataset is used unsplit)
+attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+
+====================================================================
+Attack-0   K = (x,x,x)
+====================================================================
+  selected metric : correlation
+  AUC             : 0.8759
+  K-means (K=2)   : precision=0.7103  recall=0.9552  f1=0.8147
+
+====================================================================
+Attack-1   K = (x,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.7636 +/- 0.0196
+  accuracy        : 0.7174 +/- 0.0353
+  precision/recall/f1 : 0.6817 / 0.8118 / 0.7399
+
+====================================================================
+Attack-2   K = (Y,x,x)
+====================================================================
+  selected metric : target_correlation
+  AUC             : 0.8759
+  K-means (K=2)   : precision=0.7103  recall=0.9552  f1=0.8147
+
+====================================================================
+Attack-3   K = (x,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    features=24  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 24
+  AUC             : 0.9223 +/- 0.0012
+  accuracy        : 0.8486 +/- 0.0014
+  precision/recall/f1 : 0.8586 / 0.8348 / 0.8465
+
+====================================================================
+Attack-4   K = (x,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8508 +/- 0.0060
+  accuracy        : 0.7760 +/- 0.0089
+  precision/recall/f1 : 0.7322 / 0.8705 / 0.7952
+
+====================================================================
+Attack-5   K = (Y,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.8852 +/- 0.0058
+  accuracy        : 0.7970 +/- 0.0093
+  precision/recall/f1 : 0.7532 / 0.8836 / 0.8132
+
+====================================================================
+Attack-6   K = (Y,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    features=56  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 56
+  AUC             : 0.9545 +/- 0.0006
+  accuracy        : 0.8897 +/- 0.0018
+  precision/recall/f1 : 0.8886 / 0.8912 / 0.8899
+
+====================================================================
+Attack-7   K = (Y,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9205 +/- 0.0035
+  accuracy        : 0.8307 +/- 0.0016
+  precision/recall/f1 : 0.7702 / 0.9428 / 0.8478
+
+====================================================================
+Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+====================================================================
+    partial graph: 5000 edges over 5929 nodes
+  features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+  AUC             : 0.6329 +/- 0.0000
+  precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+
+====================================================================
+SUMMARY   target=pubmed_fgc_0.3   shadow=cora_fgc_whole
+====================================================================
+  attack   K=(F,A*,D)    AUC       std      runs  
+  Attack-0  (x,x,x)       0.8759    -        1     
+  Attack-1  (x,x,Y)       0.7636    0.0196   5     
+  Attack-2  (Y,x,x)       0.8759    -        1     
+  Attack-3  (x,Y,x)       0.9223    0.0012   5     
+  Attack-4  (x,Y,Y)       0.8508    0.0060   5     
+  Attack-5  (Y,x,Y)       0.8852    0.0058   5     
+  Attack-6  (Y,Y,x)       0.9545    0.0006   5     
+  Attack-7  (Y,Y,Y)       0.9205    0.0035   5     
+  link-pred (baseline)    0.6329    0.0000   5     
+
+  8/8 attacks beat the link-prediction baseline
+
+[saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/results/attacks_wholeshadow/pubmed_fgc_0.3__cora_fgc_whole__fgc_E_0.3_wholeshadow.json

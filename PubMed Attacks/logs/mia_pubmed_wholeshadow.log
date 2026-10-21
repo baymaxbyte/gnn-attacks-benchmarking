@@ -1,0 +1,7 @@
+
+==============================================================================
+2026-10-21 14:09:55  mia:pubmed:wholeshadow
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python whole_shadow_mlp.py
+==============================================================================
+wrote results/cora_membership_shadow_compare.csv  (1 cells)
+wrote results/pubmed_membership_shadow_compare.csv  (10 cells)

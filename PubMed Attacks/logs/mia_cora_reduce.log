@@ -1,0 +1,13 @@
+
+==============================================================================
+2026-10-21 11:37:37  mia:cora:reduce
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only cora --methods control
+==============================================================================
+reducing V_in: methods=['control']  datasets=['cora']
+
+=== cora  V_in 2166 nodes ===
+  cora_control_whole         k= 2166 feat_dim= 1433 E=  3485 train= 2166 unweighted             plain      [0.1s]
+
+
+[manifest] recorded step step02_reduce: Reduced V_in into 1 training graphs across 1 methods and 1 datasets
+total 0.0 min

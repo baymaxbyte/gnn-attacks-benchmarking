@@ -1,0 +1,33 @@
+
+==============================================================================
+2026-10-20 19:05:19  lsa:fgc:cora:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+==============================================================================
+beta search: 15 coarsenings x 3 GNN runs, 8 workers
+
+dataset       r    beta          ModeA   paper  |delta|  nonemp  meansz  c_edges   sec
+--------------------------------------------------------------------------------------------
+cora        0.3   0.001  85.33+/- 0.25   85.79     0.46     577     4.7     3666  48.8
+cora        0.3    0.01  84.63+/- 0.28   85.79     1.16     578     4.7     3792  48.5
+cora        0.3     0.1  75.58+/- 0.97   85.79    10.21     180    15.0      996  47.5
+cora        0.3       1  61.63+/- 1.16   85.79    24.16     137    19.8     1078  45.8
+cora        0.3      10  27.61+/- 0.58   85.79    58.18       2  1354.0        1  45.8
+cora        0.1   0.001  81.27+/- 1.25   81.46     0.19     247    11.0     3006  13.8
+cora        0.1    0.01  75.53+/- 0.92   81.46     5.93     244    11.1     2932  13.3
+cora        0.1     0.1  52.77+/- 2.68   81.46    28.69      35    77.4      135  12.8
+cora        0.1       1  28.51+/- 0.31   81.46    52.95       2  1354.0        1  12.6
+cora        0.1      10  28.58+/- 0.34   81.46    52.88       2  1354.0        1  12.7
+cora       0.05   0.001  69.93+/- 0.38   80.01    10.08     131    20.7     2191   6.4
+cora       0.05    0.01  61.69+/- 0.51   80.01    18.32      57    47.5      122   6.3
+cora       0.05     0.1  29.26+/- 0.20   80.01    50.75       2  1354.0        1   6.0
+cora       0.05       1  29.30+/- 0.26   80.01    50.71       2  1354.0        1   6.4
+cora       0.05      10  29.33+/- 0.23   80.01    50.68       2  1354.0        1   6.2
+
+selected beta and saved coarsenings:
+  cora      r=0.3   beta=0.001   k= 812 nonempty= 577 mean_size=  4.7 coarse_edges= 3666  |delta vs paper| = 0.46
+  cora      r=0.1   beta=0.001   k= 270 nonempty= 247 mean_size= 11.0 coarse_edges= 3006  |delta vs paper| = 0.19
+  cora      r=0.05  beta=0.001   k= 135 nonempty= 131 mean_size= 20.7 coarse_edges= 2191  |delta vs paper| = 10.08
+
+[manifest] recorded step step01_coarsen: FGC-with-sparsity coarsenings for 3 (dataset, r) settings; beta selected per setting from the notebook grid
+
+total 1.9 min

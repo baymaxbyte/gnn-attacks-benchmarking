@@ -1,0 +1,40 @@
+
+==============================================================================
+2026-10-20 10:48:36  lsa:fgc:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+==============================================================================
+beta search: 15 coarsenings x 3 GNN runs, 8 workers
+
+
+==============================================================================
+2026-10-20 11:00:43  lsa:fgc:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+==============================================================================
+beta search: 15 coarsenings x 3 GNN runs, 8 workers
+
+dataset       r    beta          ModeA   paper  |delta|  nonemp  meansz  c_edges   sec
+--------------------------------------------------------------------------------------------
+pubmed      0.3   0.001  82.99+/- 0.08     n/a        -    4006     4.9    36824 13296.8
+pubmed      0.3    0.01  82.39+/- 0.06     n/a        -    3292     6.0    35605 13306.6
+pubmed      0.3     0.1  53.48+/- 3.20     n/a        -     469    42.0     1436 13007.4
+pubmed      0.3       1  20.81+/- 0.00     n/a        -       2  9858.5        1 12930.7
+pubmed      0.3      10  20.81+/- 0.00     n/a        -       2  9858.5        1 12981.4
+pubmed      0.1   0.001  80.30+/- 0.63     n/a        -    1477    13.3    25970 2169.6
+pubmed      0.1    0.01  75.06+/- 3.08     n/a        -     352    56.0      678 2160.7
+pubmed      0.1     0.1  20.81+/- 0.00     n/a        -       5  3943.4        6 2152.8
+pubmed      0.1       1  20.81+/- 0.00     n/a        -       2  9858.5        1 2149.0
+pubmed      0.1      10  20.81+/- 0.00     n/a        -       2  9858.5        1 2152.5
+pubmed     0.05   0.001  73.85+/- 0.56     n/a        -     318    62.0     1724 974.2
+pubmed     0.05    0.01  29.49+/- 0.95     n/a        -      48   410.8      171 973.1
+pubmed     0.05     0.1  20.81+/- 0.00     n/a        -       2  9858.5        1 972.3
+pubmed     0.05       1  20.81+/- 0.00     n/a        -       2  9858.5        1 971.8
+pubmed     0.05      10  20.81+/- 0.00     n/a        -       2  9858.5        1 971.0
+
+selected beta and saved coarsenings:
+  pubmed    r=0.3   beta=0.001   k=5915 nonempty=4006 mean_size=  4.9 coarse_edges=36824  mode-A = 82.99 (highest; no paper target)
+  pubmed    r=0.1   beta=0.001   k=1971 nonempty=1477 mean_size= 13.3 coarse_edges=25970  mode-A = 80.30 (highest; no paper target)
+  pubmed    r=0.05  beta=0.001   k= 985 nonempty= 318 mean_size= 62.0 coarse_edges= 1724  mode-A = 73.85 (highest; no paper target)
+
+[manifest] recorded step step01_coarsen: FGC-with-sparsity coarsenings for 3 (dataset, r) settings; beta selected per setting from the notebook grid
+
+total 481.2 min

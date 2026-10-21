@@ -1,0 +1,30 @@
+
+==============================================================================
+2026-10-20 10:48:33  data
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python prepare_data.py
+==============================================================================
+======================================================================
+prepare_data  datasets=['pubmed', 'cora']  force=False
+  PyG cache: /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/_pyg_cache
+
+[pubmed] downloading/assembling via PyG Planetoid ...
+  assembled: n=19717 d=500 classes=3 edges=44324
+  [keep] membership pubmed.npz (exists)
+  [keep] FGC Benchmarking/.../pubmed.npz (exists)
+  [keep] KRON Benchmarking/.../pubmed.npz (exists)
+  [keep] UGC Benchmarking/.../pubmed.npz (exists)
+  [keep] GOREN Benchmarking/.../pubmed.npz (exists)
+  [keep] GCOND Benchmarking/.../pubmed.npz (exists)
+  verify pubmed: n=19717 d=500 classes=3 edges=44324  OK
+
+[cora] downloading/assembling via PyG Planetoid ...
+  assembled: n=2708 d=1433 classes=7 edges=5278
+  [keep] membership cora.npz (exists)
+  [keep] FGC Benchmarking/.../cora.npz (exists)
+  [keep] KRON Benchmarking/.../cora.npz (exists)
+  [keep] UGC Benchmarking/.../cora.npz (exists)
+  [keep] GOREN Benchmarking/.../cora.npz (exists)
+  [keep] GCOND Benchmarking/.../cora.npz (exists)
+  verify cora: n=2708 d=1433 classes=7 edges=5278  OK
+
+prepare_data DONE

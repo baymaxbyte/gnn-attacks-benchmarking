@@ -1,0 +1,93 @@
+
+==============================================================================
+2026-10-20 19:41:46  lsa:kron:step03
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+==============================================================================
+==============================================================================
+reference model g -- graph-free, hidden 64, 500 epochs, original features
+==============================================================================
+
+pubmed:
+  adversary knows 1971 of 19717 labels (10%, seed=123); 500 original feature columns
+  g accuracy: 1.0000 on its known labels, 0.8179 on the rest   (graph-free verified on 3 duplicate-feature pairs)
+  [saved] data/pred/pubmed_gkron_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+publishing black-box posteriors to the attack code
+==============================================================================
+  [saved] data/pred/pubmed_kronbb_whole_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.3_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.5_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.7_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+==============================================================================
+
+>>> attack dataset pubmed_kron_whole
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_kron_whole_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_kron_whole_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_kron_whole_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_kron_0.3
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_kron_0.3_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_kron_0.3_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_kron_0.3_attack_test.json
+    7.5s
+
+>>> attack dataset pubmed_kron_0.5
+dataset=pubmed  nodes=19717
+  f <- pubmed_kronbb_0.5_pred.pkl
+  g <- pubmed_gkron_pred.pkl
+  linked pairs: 44324  (from 88648 directed entries)
+  subsampled positives to 10000 (--max_pos 10000)
+  unlinked pairs: 10000  (0.0s)
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/partial_graph_generation.py", line 184, in <module>
+    main()
+
+==============================================================================
+2026-10-21 06:01:18  lsa:kron:step03
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+==============================================================================
+==============================================================================
+reference model g -- graph-free, hidden 64, 500 epochs, original features
+==============================================================================
+
+pubmed:
+  adversary knows 1971 of 19717 labels (10%, seed=123); 500 original feature columns
+  g accuracy: 1.0000 on its known labels, 0.8179 on the rest   (graph-free verified on 3 duplicate-feature pairs)
+  [saved] data/pred/pubmed_gkron_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+publishing black-box posteriors to the attack code
+==============================================================================
+  [saved] data/pred/pubmed_kronbb_whole_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.3_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.5_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_kronbb_0.7_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+==============================================================================
+  [cached] pubmed_kron_whole_attack_*.json
+  [cached] pubmed_kron_0.3_attack_*.json
+  [cached] pubmed_kron_0.5_attack_*.json
+
+>>> attack dataset pubmed_kron_0.7
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_kron_0.7_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_kron_0.7_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_kron_0.7_attack_test.json
+    7.5s
+
+[manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges
+
+total 0.6 min

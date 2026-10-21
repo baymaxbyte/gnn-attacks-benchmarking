@@ -1,0 +1,64 @@
+
+==============================================================================
+2026-10-21 11:37:55  mia:pubmed:reduce
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,kron,ugc,fgc
+==============================================================================
+reducing V_in: methods=['control', 'kron', 'ugc', 'fgc']  datasets=['pubmed']
+
+=== pubmed  V_in 15774 nodes ===
+  pubmed_control_whole       k=15774 feat_dim=  500 E= 28294 train=15774 unweighted             plain      [0.4s]
+  pubmed_kron_r0.3           k=11042 feat_dim=  500 E= 23562 train=11042 w[1,1]                 plain      [21.0s]
+  pubmed_kron_r0.5           k= 7887 feat_dim=  500 E= 20194 train= 7887 w[0.25,3.5]            plain      [24.8s]
+  pubmed_kron_r0.7           k= 4732 feat_dim=  500 E= 19202 train= 4732 w[0.000222,6.07]       plain      [25.4s]
+    [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    [ugc] bin-search it  20  bw 3.86238e-05  ratio 0.2990
+    [ugc] bin-search it  30  bw 2.74968e-05  ratio 0.2337
+    [ugc] bin-search it  40  bw 1.95754e-05  ratio 0.1828
+    [ugc] bin-search it  50  bw 4.1808e-05  ratio 0.3119
+    [ugc] bin-search it  60  bw 2.97637e-05  ratio 0.2445
+    [ugc] bin-search it  70  bw 2.11892e-05  ratio 0.1954
+  pubmed_ugc_r0.3            k=11058 feat_dim=16274 E= 29939 train=11058 w[1,6]                 ugc_aug    [186.5s]
+    [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    [ugc] bin-search it  20  bw 0.000115871  ratio 0.5498
+    [ugc] bin-search it  30  bw 8.24905e-05  ratio 0.4751
+    [ugc] bin-search it  40  bw 5.87261e-05  ratio 0.3883
+    [ugc] bin-search it  50  bw 0.000125424  ratio 0.5668
+    [ugc] bin-search it  60  bw 8.9291e-05  ratio 0.4900
+    [ugc] bin-search it  70  bw 6.35676e-05  ratio 0.4095
+  pubmed_ugc_r0.5            k= 7902 feat_dim=16274 E= 30037 train= 7902 w[1,11]                ugc_aug    [142.8s]
+    [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    [ugc] bin-search it  20  bw 0.000347614  ratio 0.7452
+    [ugc] bin-search it  30  bw 0.000247472  ratio 0.6906
+    [ugc] bin-search it  40  bw 0.000176178  ratio 0.6348
+    [ugc] bin-search it  50  bw 0.000376272  ratio 0.7578
+    [ugc] bin-search it  60  bw 0.000267873  ratio 0.7053
+    [ugc] bin-search it  70  bw 0.000190703  ratio 0.6477
+  pubmed_ugc_r0.7            k= 4701 feat_dim=16274 E= 29510 train= 4701 w[1,20]                ugc_aug    [107.1s]
+      [fgc] iter 1/50
+      [fgc] iter 11/50
+      [fgc] iter 21/50
+      [fgc] iter 31/50
+      [fgc] iter 41/50
+      [fgc] iter 50/50
+  pubmed_fgc_r0.3            k= 4732 feat_dim=  500 E= 26072 train= 4131 unweighted             plain      [6536.6s]
+      [fgc] iter 1/50
+      [fgc] iter 11/50
+      [fgc] iter 21/50
+      [fgc] iter 31/50
+      [fgc] iter 41/50
+      [fgc] iter 50/50
+  pubmed_fgc_r0.1            k= 1577 feat_dim=  500 E= 16383 train= 1030 unweighted             plain      [1115.6s]
+      [fgc] iter 1/50
+      [fgc] iter 11/50
+      [fgc] iter 21/50
+      [fgc] iter 31/50
+      [fgc] iter 41/50
+      [fgc] iter 50/50
+  pubmed_fgc_r0.05           k=  788 feat_dim=  500 E= 12634 train=  438 unweighted             plain      [505.3s]
+
+
+[manifest] recorded step step02_reduce: Reduced V_in into 10 training graphs across 4 methods and 1 datasets
+total 144.4 min

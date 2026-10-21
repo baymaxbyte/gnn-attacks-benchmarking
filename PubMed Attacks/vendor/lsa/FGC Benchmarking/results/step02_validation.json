@@ -1,0 +1,319 @@
+{
+  "repeats": 10,
+  "gate_tolerance": 1.0,
+  "canonical_seed": 0,
+  "boxes": [
+    {
+      "dataset": "cora",
+      "r": null,
+      "k": null,
+      "paper_mean": 89.5,
+      "paper_std": 1.23,
+      "orig": {
+        "mean": 97.00516986706057,
+        "std": 0.17590111320257815,
+        "runs": [
+          96.935,
+          97.0827,
+          97.1935,
+          96.6765,
+          96.7134,
+          97.0827,
+          97.1196,
+          97.1566,
+          96.935,
+          97.1566
+        ],
+        "mean_dropout_on": 95.72378138847857,
+        "delta_vs_paper": 7.505169867060573
+      },
+      "beta": 0.001,
+      "hp": {
+        "lam": 0.001,
+        "alpha": 1.0,
+        "gamma": 0.001,
+        "beta": 0.001
+      },
+      "posteriors": {
+        "orig": {
+          "path": "artifacts/posteriors/cora_whole_orig.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 2583,
+          "mean_max_posterior": 0.9405137300491333,
+          "canonical_accuracy": 96.93500738552437
+        }
+      },
+      "seconds": 12.5
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "k": 812,
+      "paper_mean": 85.79,
+      "paper_std": 0.24,
+      "orig": {
+        "mean": 85.51329394387002,
+        "std": 0.276858672787689,
+        "runs": [
+          85.4874,
+          84.9705,
+          85.5244,
+          85.3028,
+          85.7459,
+          85.8198,
+          85.9675,
+          85.2659,
+          85.4505,
+          85.5982
+        ],
+        "mean_dropout_on": 84.75997045790251,
+        "delta_vs_paper": -0.27670605612998145
+      },
+      "lift": {
+        "mean": 58.70014771048746,
+        "std": 0.5704570610731926,
+        "runs": [
+          59.3427,
+          58.0871,
+          58.0502,
+          58.7149,
+          58.9734,
+          59.195,
+          58.0502,
+          58.2718,
+          59.7489,
+          58.5672
+        ],
+        "mean_dropout_on": 57.98005908419498,
+        "delta_vs_paper": -27.08985228951255
+      },
+      "coarse": {
+        "Wc_nnz": 7332,
+        "coarse_edges": 3666,
+        "k": 812,
+        "nonempty_supernodes": 577,
+        "max_supernode_size": 83,
+        "mean_nonempty_size": 4.693241119384766,
+        "singleton_supernodes": 171
+      },
+      "collisions": {
+        "distinct_posteriors_lift": 577,
+        "distinct_posteriors_orig": 2584,
+        "mean_group_size": 4.693240901213172,
+        "max_group_size": 83,
+        "identical_pairs": 19014
+      },
+      "beta": 0.001,
+      "hp": {
+        "lam": 0.001,
+        "alpha": 1.0,
+        "gamma": 0.001,
+        "beta": 0.001
+      },
+      "posteriors": {
+        "orig": {
+          "path": "artifacts/posteriors/cora_0.3_orig.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 2582,
+          "mean_max_posterior": 0.9288321733474731,
+          "canonical_accuracy": 85.48744460856722
+        },
+        "lift": {
+          "path": "artifacts/posteriors/cora_0.3_lift.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 575,
+          "mean_max_posterior": 0.7689189910888672,
+          "canonical_accuracy": 59.342688330871496
+        }
+      },
+      "seconds": 6.4
+    },
+    {
+      "dataset": "cora",
+      "r": 0.1,
+      "k": 270,
+      "paper_mean": 81.46,
+      "paper_std": 0.79,
+      "orig": {
+        "mean": 81.35155096011817,
+        "std": 0.7786388504049726,
+        "runs": [
+          81.0192,
+          82.9025,
+          79.8744,
+          81.0192,
+          81.9424,
+          81.0931,
+          80.9453,
+          81.2408,
+          81.3146,
+          82.164
+        ],
+        "mean_dropout_on": 80.14032496307239,
+        "delta_vs_paper": -0.10844903988181898
+      },
+      "lift": {
+        "mean": 46.045051698670605,
+        "std": 1.080213419718838,
+        "runs": [
+          45.3102,
+          46.8981,
+          46.935,
+          43.7223,
+          46.6027,
+          45.4948,
+          46.3072,
+          44.9409,
+          47.0827,
+          47.1566
+        ],
+        "mean_dropout_on": 45.56868537666175,
+        "delta_vs_paper": -35.41494830132939
+      },
+      "coarse": {
+        "Wc_nnz": 6012,
+        "coarse_edges": 3006,
+        "k": 270,
+        "nonempty_supernodes": 247,
+        "max_supernode_size": 72,
+        "mean_nonempty_size": 10.963562965393066,
+        "singleton_supernodes": 29
+      },
+      "collisions": {
+        "distinct_posteriors_lift": 247,
+        "distinct_posteriors_orig": 2574,
+        "mean_group_size": 10.963562753036438,
+        "max_group_size": 72,
+        "identical_pairs": 34991
+      },
+      "beta": 0.001,
+      "hp": {
+        "lam": 0.001,
+        "alpha": 1.0,
+        "gamma": 0.001,
+        "beta": 0.001
+      },
+      "posteriors": {
+        "orig": {
+          "path": "artifacts/posteriors/cora_0.1_orig.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 2574,
+          "mean_max_posterior": 0.8905263543128967,
+          "canonical_accuracy": 81.01920236336781
+        },
+        "lift": {
+          "path": "artifacts/posteriors/cora_0.1_lift.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 247,
+          "mean_max_posterior": 0.5281730890274048,
+          "canonical_accuracy": 45.310192023633675
+        }
+      },
+      "seconds": 5.1
+    },
+    {
+      "dataset": "cora",
+      "r": 0.05,
+      "k": 135,
+      "paper_mean": 80.01,
+      "paper_std": 0.51,
+      "orig": {
+        "mean": 68.73338257016249,
+        "std": 1.6408542678041982,
+        "runs": [
+          69.4239,
+          70.0148,
+          70.3471,
+          69.5716,
+          68.3161,
+          64.8818,
+          69.2762,
+          67.6883,
+          70.4948,
+          67.3191
+        ],
+        "mean_dropout_on": 66.10044313146233,
+        "delta_vs_paper": -11.276617429837515
+      },
+      "lift": {
+        "mean": 33.74815361890695,
+        "std": 1.8036752463541321,
+        "runs": [
+          35.3028,
+          36.4476,
+          34.8597,
+          32.0162,
+          31.3146,
+          31.8685,
+          35.8936,
+          34.8227,
+          32.7548,
+          32.2009
+        ],
+        "mean_dropout_on": 34.20974889217135,
+        "delta_vs_paper": -46.26184638109306
+      },
+      "coarse": {
+        "Wc_nnz": 4382,
+        "coarse_edges": 2191,
+        "k": 135,
+        "nonempty_supernodes": 131,
+        "max_supernode_size": 89,
+        "mean_nonempty_size": 20.671754837036133,
+        "singleton_supernodes": 3
+      },
+      "collisions": {
+        "distinct_posteriors_lift": 131,
+        "distinct_posteriors_orig": 2584,
+        "mean_group_size": 20.671755725190838,
+        "max_group_size": 89,
+        "identical_pairs": 51679
+      },
+      "beta": 0.001,
+      "hp": {
+        "lam": 0.001,
+        "alpha": 1.0,
+        "gamma": 0.001,
+        "beta": 0.001
+      },
+      "posteriors": {
+        "orig": {
+          "path": "artifacts/posteriors/cora_0.05_orig.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 2585,
+          "mean_max_posterior": 0.6851354241371155,
+          "canonical_accuracy": 69.42392909896603
+        },
+        "lift": {
+          "path": "artifacts/posteriors/cora_0.05_lift.npy",
+          "shape": [
+            2708,
+            7
+          ],
+          "distinct_rows": 131,
+          "mean_max_posterior": 0.3859424293041229,
+          "canonical_accuracy": 35.30280649926144
+        }
+      },
+      "seconds": 2.8
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+
+==============================================================================
+2026-10-20 19:26:30  lsa:kron:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_reduce.py
+==============================================================================
+Kron reduction, selection='degree', 3 settings
+
+dataset       r      n      k   keep      r*  comps  edges->  reduced   fill    w_min   w_max     |L1|
+--------------------------------------------------------------------------------------------------------
+pubmed      0.3  19717  13802 0.7000  0.3000      1    44324    38409   0.87        1       1  0.0e+00
+pubmed      0.5  19717   9858 0.5000  0.5000      1    44324    34338   0.77   0.3333       2  1.8e-15
+pubmed      0.7  19717   5915 0.3000  0.7000      1    44324    30145   0.68  0.01235    7.83  2.8e-14
+
+[manifest] recorded step step01_reduce: Kron-reduced 3 (dataset, r) settings by Schur complement, eliminating the lowest-degree interior nodes
+
+total 181.0s

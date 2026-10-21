@@ -1,0 +1,162 @@
+{
+  "repeats": 5,
+  "canonical_seed": 0,
+  "boxes": [
+    {
+      "dataset": "cora",
+      "r": null,
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.74074074074073,
+      "test_acc_std": 0.2456759103966977,
+      "test_acc_runs": [
+        88.7037,
+        89.0741,
+        88.8889,
+        88.7037,
+        88.3333
+      ],
+      "best_val_mean": 87.01107025146484,
+      "tag": "cora_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_whole.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2581,
+        "mean_max_posterior": 0.917997419834137,
+        "canonical_test_acc": 88.70370370370371
+      },
+      "seconds": 117.6
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "k": 1896,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.81481481481481,
+      "test_acc_std": 1.269025311037912,
+      "test_acc_runs": [
+        86.4815,
+        88.7037,
+        87.7778,
+        85.9259,
+        85.1852
+      ],
+      "best_val_mean": 86.71586751937866,
+      "reduced": {
+        "kept_nodes": 1896,
+        "train_nodes": 1137,
+        "reduced_edges": 4328,
+        "edge_weight_mean": 0.9938386082649231,
+        "edge_weight_min": 0.25,
+        "edge_weight_max": 2.5
+      },
+      "tag": "cora_0.3",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.3.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2588,
+        "mean_max_posterior": 0.9011149406433105,
+        "canonical_test_acc": 86.48148148148148
+      },
+      "seconds": 98.6
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "k": 1354,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.0,
+      "test_acc_std": 0.5418051421602903,
+      "test_acc_runs": [
+        88.7037,
+        88.1481,
+        87.037,
+        87.963,
+        88.1481
+      ],
+      "best_val_mean": 86.34686350822449,
+      "reduced": {
+        "kept_nodes": 1354,
+        "train_nodes": 818,
+        "reduced_edges": 3616,
+        "edge_weight_mean": 0.9358601570129395,
+        "edge_weight_min": 0.012500000186264515,
+        "edge_weight_max": 3.3333332538604736
+      },
+      "tag": "cora_0.5",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.5.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2589,
+        "mean_max_posterior": 0.8619768619537354,
+        "canonical_test_acc": 88.70370370370371
+      },
+      "seconds": 86.3
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "k": 812,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 85.22222222222224,
+      "test_acc_std": 0.6350528962771196,
+      "test_acc_runs": [
+        84.6296,
+        86.1111,
+        85.7407,
+        84.4444,
+        85.1852
+      ],
+      "best_val_mean": 84.6494472026825,
+      "reduced": {
+        "kept_nodes": 812,
+        "train_nodes": 475,
+        "reduced_edges": 3373,
+        "edge_weight_mean": 0.6784240007400513,
+        "edge_weight_min": 0.000206635711947456,
+        "edge_weight_max": 4.685682773590088
+      },
+      "tag": "cora_0.7",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.7.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2588,
+        "mean_max_posterior": 0.826837420463562,
+        "canonical_test_acc": 84.62962962962963
+      },
+      "seconds": 75.4
+    }
+  ]
+}

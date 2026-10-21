@@ -1,0 +1,61 @@
+
+==============================================================================
+2026-10-20 19:07:33  lsa:fgc:cora:step03
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+==============================================================================
+==============================================================================
+reference model g -- graph-free, hidden 64, 60 epochs, raw binary features
+==============================================================================
+
+cora:
+  adversary knows 270 of 2708 labels (10%, seed=123)
+  g accuracy: 1.0000 on its known labels, 0.6231 on the rest   (graph-free verified on 11 duplicate-feature pairs)
+  [saved] data/pred/cora_gfgc_pred.pkl  shape=(2708, 7)
+
+==============================================================================
+publishing black-box posteriors (Mode A) to the attack code
+==============================================================================
+  [saved] data/pred/cora_fgcbb_whole_pred.pkl  shape=(2708, 7)
+  [saved] data/pred/cora_fgcbb_0.3_pred.pkl  shape=(2708, 7)
+  [saved] data/pred/cora_fgcbb_0.1_pred.pkl  shape=(2708, 7)
+  [saved] data/pred/cora_fgcbb_0.05_pred.pkl  shape=(2708, 7)
+
+==============================================================================
+attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+==============================================================================
+
+>>> attack dataset cora_fgc_whole
+    linked pairs: 5278  (from 10556 directed entries)
+    unlinked pairs: 5278  (0.0s)
+    all  :  10556 records  -> data/attack_dataset/cora_fgc_whole_attack_all.json
+    train:   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_train.json
+    test :   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_test.json
+    6.7s
+
+>>> attack dataset cora_fgc_0.3
+    linked pairs: 5278  (from 10556 directed entries)
+    unlinked pairs: 5278  (0.0s)
+    all  :  10556 records  -> data/attack_dataset/cora_fgc_0.3_attack_all.json
+    train:   5278 records  -> data/attack_dataset/cora_fgc_0.3_attack_train.json
+    test :   5278 records  -> data/attack_dataset/cora_fgc_0.3_attack_test.json
+    6.3s
+
+>>> attack dataset cora_fgc_0.1
+    linked pairs: 5278  (from 10556 directed entries)
+    unlinked pairs: 5278  (0.0s)
+    all  :  10556 records  -> data/attack_dataset/cora_fgc_0.1_attack_all.json
+    train:   5278 records  -> data/attack_dataset/cora_fgc_0.1_attack_train.json
+    test :   5278 records  -> data/attack_dataset/cora_fgc_0.1_attack_test.json
+    6.4s
+
+>>> attack dataset cora_fgc_0.05
+    linked pairs: 5278  (from 10556 directed entries)
+    unlinked pairs: 5278  (0.0s)
+    all  :  10556 records  -> data/attack_dataset/cora_fgc_0.05_attack_all.json
+    train:   5278 records  -> data/attack_dataset/cora_fgc_0.05_attack_train.json
+    test :   5278 records  -> data/attack_dataset/cora_fgc_0.05_attack_test.json
+    6.3s
+
+[manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges
+
+total 0.4 min

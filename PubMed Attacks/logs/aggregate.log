@@ -1,0 +1,90 @@
+
+==============================================================================
+2026-10-21 15:40:41  aggregate_collect
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+==============================================================================
+======================================================================
+Collecting PubMed results into results
+
+[LSA] compiling whole-shadow summaries via aggregate_shadows.py ...
+fgc: wrote wholeshadow summaries + shadow_compare (36 rows) into FGC Benchmarking/results/
+gcond: no whole-shadow results yet, skipping
+goren: no whole-shadow results yet, skipping
+kron: wrote wholeshadow summaries + shadow_compare (36 rows) into KRON Benchmarking/results/
+ugc: wrote wholeshadow summaries + shadow_compare (36 rows) into UGC Benchmarking/results/
+  copied PubMed Attacks/vendor/lsa/FGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/fgc_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/KRON Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/kron_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/UGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/ugc_pubmed_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  -> combined 108 rows across methods: results/lsa_pubmed_wholeshadow_ALL.csv
+
+[membership] collecting pubmed CSVs ...
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_summary.csv -> results/membership/pubmed_membership_summary.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_detailed.csv -> results/membership/pubmed_membership_detailed.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_shadow_compare.csv -> results/membership/pubmed_membership_shadow_compare.csv
+
+aggregate DONE.  Key files:
+  results/lsa_pubmed_wholeshadow_ALL.csv         (LSA, all methods)
+  results/membership/pubmed_membership_summary.csv
+  results/membership/pubmed_membership_shadow_compare.csv (whole-cora shadow)
+
+==============================================================================
+2026-10-21 15:59:41  aggregate_collect
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+==============================================================================
+======================================================================
+Collecting PubMed results into results
+
+[LSA] compiling whole-shadow summaries via aggregate_shadows.py ...
+fgc: wrote wholeshadow summaries + shadow_compare (36 rows) into FGC Benchmarking/results/
+gcond: no whole-shadow results yet, skipping
+goren: no whole-shadow results yet, skipping
+kron: wrote wholeshadow summaries + shadow_compare (36 rows) into KRON Benchmarking/results/
+ugc: wrote wholeshadow summaries + shadow_compare (36 rows) into UGC Benchmarking/results/
+  copied PubMed Attacks/vendor/lsa/FGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/fgc_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/KRON Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/kron_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/UGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/ugc_pubmed_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  -> combined 108 rows across methods: results/lsa_pubmed_wholeshadow_ALL.csv
+
+[membership] collecting pubmed CSVs ...
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_summary.csv -> results/membership/pubmed_membership_summary.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_detailed.csv -> results/membership/pubmed_membership_detailed.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_shadow_compare.csv -> results/membership/pubmed_membership_shadow_compare.csv
+
+aggregate DONE.  Key files:
+  results/lsa_pubmed_wholeshadow_ALL.csv         (LSA, all methods)
+  results/membership/pubmed_membership_summary.csv
+  results/membership/pubmed_membership_shadow_compare.csv (whole-cora shadow)
+
+==============================================================================
+2026-10-21 16:20:14  aggregate_collect
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+==============================================================================
+======================================================================
+Collecting PubMed results into results
+
+[LSA] compiling whole-shadow summaries via aggregate_shadows.py ...
+fgc: wrote wholeshadow summaries + shadow_compare (36 rows) into FGC Benchmarking/results/
+gcond: no whole-shadow results yet, skipping
+goren: no whole-shadow results yet, skipping
+kron: wrote wholeshadow summaries + shadow_compare (36 rows) into KRON Benchmarking/results/
+ugc: wrote wholeshadow summaries + shadow_compare (36 rows) into UGC Benchmarking/results/
+  copied PubMed Attacks/vendor/lsa/FGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/fgc_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/KRON Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/kron_pubmed_wholeshadow.csv
+  copied PubMed Attacks/vendor/lsa/UGC Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv -> results/lsa/ugc_pubmed_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  [missing] PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/pubmed_attacks_summary_wholeshadow.csv
+  -> combined 108 rows across methods: results/lsa_pubmed_wholeshadow_ALL.csv
+
+[membership] collecting pubmed CSVs ...
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_summary.csv -> results/membership/pubmed_membership_summary.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_detailed.csv -> results/membership/pubmed_membership_detailed.csv
+  copied PubMed Attacks/vendor/Membership Attack/results/pubmed_membership_shadow_compare.csv -> results/membership/pubmed_membership_shadow_compare.csv
+
+aggregate DONE.  Key files:
+  results/lsa_pubmed_wholeshadow_ALL.csv         (LSA, all methods)
+  results/membership/pubmed_membership_summary.csv
+  results/membership/pubmed_membership_shadow_compare.csv (whole-cora shadow)

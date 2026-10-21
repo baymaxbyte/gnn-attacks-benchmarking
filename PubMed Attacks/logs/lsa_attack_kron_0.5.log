@@ -1,0 +1,167 @@
+
+==============================================================================
+2026-10-21 06:13:48  lsa:kron:attack:0.5
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.5 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.5_wholeshadow --link_prediction --quiet
+==============================================================================
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/run_attack.py", line 369, in <module>
+    main()
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/run_attack.py", line 211, in main
+    target_train_rows, test_rows = target_halves(args)
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/run_attack.py", line 154, in target_halves
+    test = read_jsonl(require(
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/lsa/attacks.py", line 60, in read_jsonl
+    return [json.loads(line) for line in f if line.strip()]
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack/lsa/attacks.py", line 60, in <listcomp>
+    return [json.loads(line) for line in f if line.strip()]
+  File "/home/ec2-user/anaconda3/envs/JupyterSystemEnv/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/home/ec2-user/anaconda3/envs/JupyterSystemEnv/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/home/ec2-user/anaconda3/envs/JupyterSystemEnv/lib/python3.10/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 1 column 2847 (char 2846)
+
+==============================================================================
+2026-10-21 09:27:02  lsa:kron:attack:0.5
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.5 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.5_wholeshadow --link_prediction --quiet
+==============================================================================
+target=pubmed_kron_0.5  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+shadow=cora_kron_whole  (its attack dataset is used unsplit)
+attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+
+====================================================================
+Attack-0   K = (x,x,x)
+====================================================================
+  selected metric : correlation
+  AUC             : 0.8573
+  K-means (K=2)   : precision=0.7064  recall=0.9358  f1=0.8051
+
+====================================================================
+Attack-1   K = (x,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8162 +/- 0.0057
+  accuracy        : 0.7699 +/- 0.0040
+  precision/recall/f1 : 0.7177 / 0.8898 / 0.7945
+
+====================================================================
+Attack-2   K = (Y,x,x)
+====================================================================
+  selected metric : target_correlation
+  AUC             : 0.8573
+  K-means (K=2)   : precision=0.7064  recall=0.9358  f1=0.8051
+
+====================================================================
+Attack-3   K = (x,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    features=24  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 24
+  AUC             : 0.9051 +/- 0.0009
+  accuracy        : 0.8340 +/- 0.0016
+  precision/recall/f1 : 0.8332 / 0.8354 / 0.8342
+
+====================================================================
+Attack-4   K = (x,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8768 +/- 0.0009
+  accuracy        : 0.7953 +/- 0.0031
+  precision/recall/f1 : 0.7660 / 0.8511 / 0.8061
+
+====================================================================
+Attack-5   K = (Y,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9097 +/- 0.0039
+  accuracy        : 0.8174 +/- 0.0036
+  precision/recall/f1 : 0.7716 / 0.9020 / 0.8316
+
+====================================================================
+Attack-6   K = (Y,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    features=56  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 56
+  AUC             : 0.9521 +/- 0.0002
+  accuracy        : 0.8868 +/- 0.0011
+  precision/recall/f1 : 0.8849 / 0.8892 / 0.8871
+
+====================================================================
+Attack-7   K = (Y,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9383 +/- 0.0014
+  accuracy        : 0.8530 +/- 0.0009
+  precision/recall/f1 : 0.8089 / 0.9244 / 0.8628
+
+====================================================================
+Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+====================================================================
+    partial graph: 5000 edges over 5929 nodes
+  features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+  AUC             : 0.6329 +/- 0.0000
+  precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+
+====================================================================
+SUMMARY   target=pubmed_kron_0.5   shadow=cora_kron_whole
+====================================================================
+  attack   K=(F,A*,D)    AUC       std      runs  
+  Attack-0  (x,x,x)       0.8573    -        1     
+  Attack-1  (x,x,Y)       0.8162    0.0057   5     
+  Attack-2  (Y,x,x)       0.8573    -        1     
+  Attack-3  (x,Y,x)       0.9051    0.0009   5     
+  Attack-4  (x,Y,Y)       0.8768    0.0009   5     
+  Attack-5  (Y,x,Y)       0.9097    0.0039   5     
+  Attack-6  (Y,Y,x)       0.9521    0.0002   5     
+  Attack-7  (Y,Y,Y)       0.9383    0.0014   5     
+  link-pred (baseline)    0.6329    0.0000   5     
+
+  8/8 attacks beat the link-prediction baseline
+
+[saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow/pubmed_kron_0.5__cora_kron_whole__kron_E_0.5_wholeshadow.json

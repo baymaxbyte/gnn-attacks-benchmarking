@@ -1,0 +1,145 @@
+{
+  "pipeline": "membership_inference",
+  "steps": [
+    {
+      "step": "step01_split",
+      "summary": "Built uniform-random 20% member/non-member split for 2 datasets (seed 42)",
+      "timestamp": "2026-10-21 11:37:55",
+      "inputs": [
+        "cora.npz",
+        "pubmed.npz"
+      ],
+      "outputs": [
+        "artifacts/splits/cora_split.npz",
+        "artifacts/splits/pubmed_split.npz"
+      ],
+      "numbers": {
+        "cora_members": 2166,
+        "pubmed_members": 15774
+      },
+      "notes": "Non-members (V_out) and their edges are removed; V_in is the members' induced subgraph. Split is uniform-random and shared by every reduction method, so members/non-members are identical across GCond, FGC, UGC, GOREN, KRON and the control."
+    },
+    {
+      "step": "step02_reduce",
+      "summary": "Reduced V_in into 10 training graphs across 4 methods and 1 datasets",
+      "timestamp": "2026-10-21 14:02:23",
+      "inputs": [
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "artifacts/reduced/pubmed_control_whole.npz",
+        "artifacts/reduced/pubmed_kron_r0.3.npz",
+        "artifacts/reduced/pubmed_kron_r0.5.npz",
+        "artifacts/reduced/pubmed_kron_r0.7.npz",
+        "artifacts/reduced/pubmed_ugc_r0.3.npz",
+        "artifacts/reduced/pubmed_ugc_r0.5.npz",
+        "artifacts/reduced/pubmed_ugc_r0.7.npz",
+        "artifacts/reduced/pubmed_fgc_r0.3.npz",
+        "artifacts/reduced/pubmed_fgc_r0.1.npz",
+        "artifacts/reduced/pubmed_fgc_r0.05.npz"
+      ],
+      "numbers": {
+        "pubmed_control_whole": 15774,
+        "pubmed_kron_r0.3": 11042,
+        "pubmed_kron_r0.5": 7887,
+        "pubmed_kron_r0.7": 4732,
+        "pubmed_ugc_r0.3": 11058,
+        "pubmed_ugc_r0.5": 7902,
+        "pubmed_ugc_r0.7": 4701,
+        "pubmed_fgc_r0.3": 4732,
+        "pubmed_fgc_r0.1": 1577,
+        "pubmed_fgc_r0.05": 788
+      },
+      "notes": "One reduced graph per cell; step03 trains 3 boxes on each. control=V_in un-reduced; GCond condenses to synthetic nodes (serve on row-normalised features); UGC augments features with the V_in adjacency (serve augments to V_in width); GOREN has bl and goren edge-weight variants."
+    },
+    {
+      "step": "step03_blackbox",
+      "summary": "Trained 30 boxes (10 cells x 3 seeds) and served posteriors on the original graph",
+      "timestamp": "2026-10-21 14:09:51",
+      "inputs": [
+        "artifacts/reduced/*.npz",
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "artifacts/posteriors/pubmed_control_whole_seed0.npy",
+        "artifacts/posteriors/pubmed_control_whole_seed1.npy",
+        "artifacts/posteriors/pubmed_control_whole_seed2.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.05_seed0.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.05_seed1.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.05_seed2.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.1_seed0.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.1_seed1.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.1_seed2.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.3_seed0.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.3_seed1.npy",
+        "artifacts/posteriors/pubmed_fgc_r0.3_seed2.npy",
+        "artifacts/posteriors/pubmed_kron_r0.3_seed0.npy",
+        "artifacts/posteriors/pubmed_kron_r0.3_seed1.npy",
+        "artifacts/posteriors/pubmed_kron_r0.3_seed2.npy",
+        "artifacts/posteriors/pubmed_kron_r0.5_seed0.npy",
+        "artifacts/posteriors/pubmed_kron_r0.5_seed1.npy",
+        "artifacts/posteriors/pubmed_kron_r0.5_seed2.npy",
+        "artifacts/posteriors/pubmed_kron_r0.7_seed0.npy",
+        "artifacts/posteriors/pubmed_kron_r0.7_seed1.npy",
+        "artifacts/posteriors/pubmed_kron_r0.7_seed2.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.3_seed0.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.3_seed1.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.3_seed2.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.5_seed0.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.5_seed1.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.5_seed2.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.7_seed0.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.7_seed1.npy",
+        "artifacts/posteriors/pubmed_ugc_r0.7_seed2.npy"
+      ],
+      "numbers": {
+        "boxes": 30,
+        "cells": 10
+      },
+      "notes": "Uniform 3-layer GCN across all methods, trained on the reduced graph and served on the original graph. member_acc/nonmember_acc gap is a leakage sanity signal (members typically higher)."
+    },
+    {
+      "step": "step04_attack",
+      "summary": "Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each",
+      "timestamp": "2026-10-21 16:20:13",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "artifacts/splits/*_split.npz"
+      ],
+      "outputs": [
+        "results/attacks/pubmed_control_whole.json",
+        "results/attacks/pubmed_fgc_r0.05.json",
+        "results/attacks/pubmed_fgc_r0.1.json",
+        "results/attacks/pubmed_fgc_r0.3.json",
+        "results/attacks/pubmed_kron_r0.3.json",
+        "results/attacks/pubmed_kron_r0.5.json",
+        "results/attacks/pubmed_kron_r0.7.json",
+        "results/attacks/pubmed_ugc_r0.3.json",
+        "results/attacks/pubmed_ugc_r0.5.json",
+        "results/attacks/pubmed_ugc_r0.7.json"
+      ],
+      "numbers": {
+        "cells": 10
+      },
+      "notes": "AUC separates members (V_in) from non-members (V_out); 0.5 = no leakage. Threshold attacks are unsupervised; shadow_mlp trains on the other dataset at the same cell. Features are dimension-agnostic scalar summaries so the shadow transfers across datasets."
+    },
+    {
+      "step": "step05_aggregate",
+      "summary": "Compiled 2 CSVs, 1 figures from 10 attacked cells",
+      "timestamp": "2026-10-21 16:20:14",
+      "inputs": [
+        "results/attacks/*.json",
+        "results/step03_boxes.json"
+      ],
+      "outputs": [
+        "results/pubmed_membership_summary.csv",
+        "results/pubmed_membership_detailed.csv",
+        "results/figures/pubmed_membership_by_method.png"
+      ],
+      "numbers": {
+        "cells": 10
+      },
+      "notes": "Membership AUC per method/ratio vs the no-reduction control."
+    }
+  ]
+}

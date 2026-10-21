@@ -1,0 +1,24 @@
+
+==============================================================================
+2026-10-21 11:14:53  lsa:ugc:cora:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+==============================================================================
+calibrating + coarsening 3 settings, alpha fixed per dataset (cora 0.19, citeseer 0.26)
+
+dataset   ratio  alpha         bw target k      k  ratio* trainable  maxsz  c_edges    sec
+--------------------------------------------------------------------------------------------------------
+cora         30   0.19   0.001854     1896   1900  0.2984      1313      6     5510   10.8
+cora         50   0.19   0.004171     1354   1356  0.4993      1006      9     5507   11.6
+cora         70   0.19   0.009775      812    807  0.7020       673     14     5355   10.3
+
+calibration check against the authors' shipped bin width:
+  cora ratio 50: ours bw=0.004171 -> k=1356, ratio=0.4993   |   shipped bw=0.004000 -> k=1398, ratio=0.4838
+
+saving coarsenings:
+  artifacts/coarsened/ugc_cora_ratio30.npz  k=1900 trainable=1313
+  artifacts/coarsened/ugc_cora_ratio50.npz  k=1356 trainable=1006
+  artifacts/coarsened/ugc_cora_ratio70.npz  k=807 trainable=673
+
+[manifest] recorded step step01_coarsen: UGC LSH coarsenings for 3 (dataset, ratio) settings; bin widths calibrated, alpha fixed per dataset
+
+total 0.3 min

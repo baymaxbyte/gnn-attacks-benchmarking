@@ -1,0 +1,23 @@
+
+==============================================================================
+2026-10-21 14:02:23  mia:pubmed:box
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only pubmed --methods control,kron,ugc,fgc
+==============================================================================
+10 cells, 30 box trainings to run (3 seeds each), 7 workers
+
+cell                          k_tr      serve  mem acc  non acc     gap
+----------------------------------------------------------------------------
+pubmed_control_whole         15774      plain   88.75%   87.88%  +0.86
+pubmed_fgc_r0.05               438      plain   73.28%   72.20%  +1.08
+pubmed_fgc_r0.1               1030      plain   81.60%   80.98%  +0.62
+pubmed_fgc_r0.3               4131      plain   84.53%   84.38%  +0.15
+pubmed_kron_r0.3             11042      plain   88.21%   87.58%  +0.63
+pubmed_kron_r0.5              7887      plain   87.38%   86.93%  +0.46
+pubmed_kron_r0.7              4732      plain   86.31%   86.77%  -0.46
+pubmed_ugc_r0.3              11058    ugc_aug   88.30%   86.26%  +2.03
+pubmed_ugc_r0.5               7902    ugc_aug   86.56%   85.50%  +1.06
+pubmed_ugc_r0.7               4701    ugc_aug   85.48%   84.73%  +0.75
+
+[manifest] recorded step step03_blackbox: Trained 30 boxes (10 cells x 3 seeds) and served posteriors on the original graph
+
+total 7.4 min

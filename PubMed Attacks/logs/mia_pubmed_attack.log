@@ -1,0 +1,69 @@
+
+==============================================================================
+2026-10-21 14:09:51  mia:pubmed:attack
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+==============================================================================
+attacking 10 cells
+
+cell                          best thr   shadow    conf entropy   loss
+----------------------------------------------------------------------------
+pubmed_control_whole            0.5043   0.5034   0.498   0.499  0.502
+pubmed_fgc_r0.05                0.5065      nan   0.506   0.506  0.505
+pubmed_fgc_r0.1                 0.5034      nan   0.502   0.502  0.503
+pubmed_fgc_r0.3                 0.5025      nan   0.502   0.503  0.502
+pubmed_kron_r0.3                0.5031      nan   0.500   0.500  0.502
+pubmed_kron_r0.5                0.5022      nan   0.501   0.502  0.502
+pubmed_kron_r0.7                0.5041      nan   0.503   0.504  0.503
+pubmed_ugc_r0.3                 0.5102      nan   0.498   0.499  0.508
+pubmed_ugc_r0.5                 0.5076      nan   0.502   0.502  0.508
+pubmed_ugc_r0.7                 0.5125      nan   0.512   0.512  0.512
+
+[manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
+
+attacked 10 cells
+
+==============================================================================
+2026-10-21 15:59:22  mia:pubmed:attack
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+==============================================================================
+attacking 10 cells
+
+cell                          best thr   shadow    conf entropy   loss
+----------------------------------------------------------------------------
+pubmed_control_whole            0.5043   0.5034   0.498   0.499  0.502
+pubmed_fgc_r0.05                0.5065   0.4997   0.506   0.506  0.505
+pubmed_fgc_r0.1                 0.5034   0.5029   0.502   0.502  0.503
+pubmed_fgc_r0.3                 0.5025   0.5008   0.502   0.503  0.502
+pubmed_kron_r0.3                0.5031   0.4989   0.500   0.500  0.502
+pubmed_kron_r0.5                0.5022   0.4990   0.501   0.502  0.502
+pubmed_kron_r0.7                0.5041   0.4956   0.503   0.504  0.503
+pubmed_ugc_r0.3                 0.5102   0.5150   0.498   0.499  0.508
+pubmed_ugc_r0.5                 0.5076   0.5061   0.502   0.502  0.508
+pubmed_ugc_r0.7                 0.5125   0.5053   0.512   0.512  0.512
+
+[manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
+
+attacked 10 cells
+
+==============================================================================
+2026-10-21 16:19:54  mia:pubmed:attack
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+==============================================================================
+attacking 10 cells
+
+cell                          best thr   shadow    conf entropy   loss
+----------------------------------------------------------------------------
+pubmed_control_whole            0.5043   0.5034   0.498   0.499  0.502
+pubmed_fgc_r0.05                0.5065   0.4997   0.506   0.506  0.505
+pubmed_fgc_r0.1                 0.5034   0.5029   0.502   0.502  0.503
+pubmed_fgc_r0.3                 0.5025   0.5008   0.502   0.503  0.502
+pubmed_kron_r0.3                0.5031   0.4989   0.500   0.500  0.502
+pubmed_kron_r0.5                0.5022   0.4990   0.501   0.502  0.502
+pubmed_kron_r0.7                0.5041   0.4956   0.503   0.504  0.503
+pubmed_ugc_r0.3                 0.5102   0.5150   0.498   0.499  0.508
+pubmed_ugc_r0.5                 0.5076   0.5061   0.502   0.502  0.508
+pubmed_ugc_r0.7                 0.5125   0.5053   0.512   0.512  0.512
+
+[manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
+
+attacked 10 cells

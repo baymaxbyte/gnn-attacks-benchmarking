@@ -1,0 +1,61 @@
+
+==============================================================================
+2026-10-21 11:13:52  lsa:ugc:step03
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+==============================================================================
+==============================================================================
+reference model g -- graph-free, hidden 64, 500 epochs, ORIGINAL (unaugmented) features
+==============================================================================
+
+pubmed:
+  adversary knows 1971 of 19717 labels (10%, seed=123); features 500 columns (target consumes 20217)
+  g accuracy: 1.0000 on its known labels, 0.8179 on the rest   (graph-free verified on 3 duplicate-feature pairs)
+  [saved] data/pred/pubmed_gugc_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+publishing black-box posteriors to the attack code
+==============================================================================
+  [saved] data/pred/pubmed_ugcbb_whole_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_ugcbb_30_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_ugcbb_50_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_ugcbb_70_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+==============================================================================
+
+>>> attack dataset pubmed_ugc_whole
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_test.json
+    7.5s
+
+>>> attack dataset pubmed_ugc_30
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_ugc_30_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_ugc_30_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_ugc_30_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_ugc_50
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_ugc_50_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_ugc_50_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_ugc_50_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_ugc_70
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_ugc_70_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_ugc_70_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_ugc_70_attack_test.json
+    7.5s
+
+[manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges
+
+total 1.0 min

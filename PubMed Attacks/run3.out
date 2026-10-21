@@ -1,0 +1,1438 @@
+nohup: ignoring input
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  PubMed attacks: end-to-end run
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 09:26:17  only=both  runs=5  skip_data=False
+2026-10-21 09:26:17  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 09:26:17  [data] skipped
+2026-10-21 09:26:17  LSA methods to run: ['fgc', 'kron', 'ugc']
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17  LSA  fgc  (FGC Benchmarking)  settings=['whole', '0.3', '0.1', '0.05']
+2026-10-21 09:26:17  ==============================================================================
+2026-10-21 09:26:17    [skip] lsa:fgc:step01 (progress)
+2026-10-21 09:26:17    [skip] lsa:fgc:step02 (progress)
+2026-10-21 09:26:17    [skip] lsa:fgc:step03 (progress)
+2026-10-21 09:26:17  [run] lsa:fgc:ds:cora_whole
+2026-10-21 09:26:17        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:17        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_fgcbb_whole_pred.pkl --reference_pred cora_gfgc_pred.pkl --name cora_fgc_whole --seed 1
+2026-10-21 09:26:17        step-log -> logs/lsa_build_cora_fgc_whole.log
+    | dataset=cora  nodes=2708
+    |   f <- cora_fgcbb_whole_pred.pkl
+    |   g <- cora_gfgc_pred.pkl
+    |   linked pairs: 5278  (from 10556 directed entries)
+    |   unlinked pairs: 5278  (0.0s)
+    |   all  :  10556 records  -> data/attack_dataset/cora_fgc_whole_attack_all.json
+    |   train:   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_train.json
+    |   test :   5278 records  -> data/attack_dataset/cora_fgc_whole_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:26:24  [ok] lsa:fgc:ds:cora_whole  rc=0  0.1 min
+2026-10-21 09:26:24  [run] lsa:fgc:ds:pubmed_whole
+2026-10-21 09:26:24        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:24        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_whole_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_whole --seed 1 --max_pos 10000
+2026-10-21 09:26:24        step-log -> logs/lsa_build_pubmed_fgc_whole.log
+    | dataset=pubmed  nodes=19717
+    |   f <- pubmed_fgcbb_whole_pred.pkl
+    |   g <- pubmed_gfgc_pred.pkl
+    |   linked pairs: 44324  (from 88648 directed entries)
+    |   subsampled positives to 10000 (--max_pos 10000)
+    |   unlinked pairs: 10000  (0.0s)
+    |   all  :  20000 records  -> data/attack_dataset/pubmed_fgc_whole_attack_all.json
+    |   train:  10000 records  -> data/attack_dataset/pubmed_fgc_whole_attack_train.json
+    |   test :  10000 records  -> data/attack_dataset/pubmed_fgc_whole_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:26:31  [ok] lsa:fgc:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 09:26:31  [run] lsa:fgc:ds:pubmed_0.3
+2026-10-21 09:26:31        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:31        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.3_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.3 --seed 1 --max_pos 10000
+2026-10-21 09:26:31        step-log -> logs/lsa_build_pubmed_fgc_0.3.log
+    | dataset=pubmed  nodes=19717
+    |   f <- pubmed_fgcbb_0.3_pred.pkl
+    |   g <- pubmed_gfgc_pred.pkl
+    |   linked pairs: 44324  (from 88648 directed entries)
+    |   subsampled positives to 10000 (--max_pos 10000)
+    |   unlinked pairs: 10000  (0.0s)
+    |   all  :  20000 records  -> data/attack_dataset/pubmed_fgc_0.3_attack_all.json
+    |   train:  10000 records  -> data/attack_dataset/pubmed_fgc_0.3_attack_train.json
+    |   test :  10000 records  -> data/attack_dataset/pubmed_fgc_0.3_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:26:39  [ok] lsa:fgc:ds:pubmed_0.3  rc=0  0.1 min
+2026-10-21 09:26:39  [run] lsa:fgc:ds:pubmed_0.1
+2026-10-21 09:26:39        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:39        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.1_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.1 --seed 1 --max_pos 10000
+2026-10-21 09:26:39        step-log -> logs/lsa_build_pubmed_fgc_0.1.log
+    | dataset=pubmed  nodes=19717
+    |   f <- pubmed_fgcbb_0.1_pred.pkl
+    |   g <- pubmed_gfgc_pred.pkl
+    |   linked pairs: 44324  (from 88648 directed entries)
+    |   subsampled positives to 10000 (--max_pos 10000)
+    |   unlinked pairs: 10000  (0.0s)
+    |   all  :  20000 records  -> data/attack_dataset/pubmed_fgc_0.1_attack_all.json
+    |   train:  10000 records  -> data/attack_dataset/pubmed_fgc_0.1_attack_train.json
+    |   test :  10000 records  -> data/attack_dataset/pubmed_fgc_0.1_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:26:47  [ok] lsa:fgc:ds:pubmed_0.1  rc=0  0.1 min
+2026-10-21 09:26:47  [run] lsa:fgc:ds:pubmed_0.05
+2026-10-21 09:26:47        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/FGC Benchmarking/attack
+2026-10-21 09:26:47        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_fgcbb_0.05_pred.pkl --reference_pred pubmed_gfgc_pred.pkl --name pubmed_fgc_0.05 --seed 1 --max_pos 10000
+2026-10-21 09:26:47        step-log -> logs/lsa_build_pubmed_fgc_0.05.log
+    | dataset=pubmed  nodes=19717
+    |   f <- pubmed_fgcbb_0.05_pred.pkl
+    |   g <- pubmed_gfgc_pred.pkl
+    |   linked pairs: 44324  (from 88648 directed entries)
+    |   subsampled positives to 10000 (--max_pos 10000)
+    |   unlinked pairs: 10000  (0.0s)
+    |   all  :  20000 records  -> data/attack_dataset/pubmed_fgc_0.05_attack_all.json
+    |   train:  10000 records  -> data/attack_dataset/pubmed_fgc_0.05_attack_train.json
+    |   test :  10000 records  -> data/attack_dataset/pubmed_fgc_0.05_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:26:54  [ok] lsa:fgc:ds:pubmed_0.05  rc=0  0.1 min
+2026-10-21 09:26:54    [skip] attack fgc/whole (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.3 (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.1 (exists)
+2026-10-21 09:26:54    [skip] attack fgc/0.05 (exists)
+2026-10-21 09:26:54    [cleanup] removed 15 attack_dataset files for fgc
+2026-10-21 09:26:54  [LSA fgc] complete
+2026-10-21 09:26:54  ==============================================================================
+2026-10-21 09:26:54  LSA  kron  (KRON Benchmarking)  settings=['whole', '0.3', '0.5', '0.7']
+2026-10-21 09:26:54  ==============================================================================
+2026-10-21 09:26:54    [skip] lsa:kron:step01 (progress)
+2026-10-21 09:26:54    [skip] lsa:kron:step02 (progress)
+2026-10-21 09:26:54    [skip] lsa:kron:step03 (progress)
+2026-10-21 09:26:54    [cached] attack_dataset cora_kron_whole
+2026-10-21 09:26:54    [cached] attack_dataset pubmed_kron_whole
+2026-10-21 09:26:54    [cached] attack_dataset pubmed_kron_0.3
+2026-10-21 09:26:54  [run] lsa:kron:ds:pubmed_0.5
+2026-10-21 09:26:54        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:26:54        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_kronbb_0.5_pred.pkl --reference_pred pubmed_gkron_pred.pkl --name pubmed_kron_0.5 --seed 1 --max_pos 10000
+2026-10-21 09:26:54        step-log -> logs/lsa_build_pubmed_kron_0.5.log
+    | dataset=pubmed  nodes=19717
+    |   f <- pubmed_kronbb_0.5_pred.pkl
+    |   g <- pubmed_gkron_pred.pkl
+    |   linked pairs: 44324  (from 88648 directed entries)
+    |   subsampled positives to 10000 (--max_pos 10000)
+    |   unlinked pairs: 10000  (0.0s)
+    |   all  :  20000 records  -> data/attack_dataset/pubmed_kron_0.5_attack_all.json
+    |   train:  10000 records  -> data/attack_dataset/pubmed_kron_0.5_attack_train.json
+    |   test :  10000 records  -> data/attack_dataset/pubmed_kron_0.5_attack_test.json
+    |   train_fraction=0.5  (paper: 0.5)
+2026-10-21 09:27:02  [ok] lsa:kron:ds:pubmed_0.5  rc=0  0.1 min
+2026-10-21 09:27:02    [cached] attack_dataset pubmed_kron_0.7
+2026-10-21 09:27:02    [skip] attack kron/whole (exists)
+2026-10-21 09:27:02    [skip] attack kron/0.3 (exists)
+2026-10-21 09:27:02  [run] lsa:kron:attack:0.5
+2026-10-21 09:27:02        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:27:02        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.5 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.5_wholeshadow --link_prediction --quiet
+2026-10-21 09:27:02        step-log -> logs/lsa_attack_kron_0.5.log
+    | target=pubmed_kron_0.5  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_kron_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8573
+    |   K-means (K=2)   : precision=0.7064  recall=0.9358  f1=0.8051
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8162 +/- 0.0057
+    |   accuracy        : 0.7699 +/- 0.0040
+    |   precision/recall/f1 : 0.7177 / 0.8898 / 0.7945
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8573
+    |   K-means (K=2)   : precision=0.7064  recall=0.9358  f1=0.8051
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.9051 +/- 0.0009
+    |   accuracy        : 0.8340 +/- 0.0016
+    |   precision/recall/f1 : 0.8332 / 0.8354 / 0.8342
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8768 +/- 0.0009
+    |   accuracy        : 0.7953 +/- 0.0031
+    |   precision/recall/f1 : 0.7660 / 0.8511 / 0.8061
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9097 +/- 0.0039
+    |   accuracy        : 0.8174 +/- 0.0036
+    |   precision/recall/f1 : 0.7716 / 0.9020 / 0.8316
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9521 +/- 0.0002
+    |   accuracy        : 0.8868 +/- 0.0011
+    |   precision/recall/f1 : 0.8849 / 0.8892 / 0.8871
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9383 +/- 0.0014
+    |   accuracy        : 0.8530 +/- 0.0009
+    |   precision/recall/f1 : 0.8089 / 0.9244 / 0.8628
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_kron_0.5   shadow=cora_kron_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8573    -        1     
+    |   Attack-1  (x,x,Y)       0.8162    0.0057   5     
+    |   Attack-2  (Y,x,x)       0.8573    -        1     
+    |   Attack-3  (x,Y,x)       0.9051    0.0009   5     
+    |   Attack-4  (x,Y,Y)       0.8768    0.0009   5     
+    |   Attack-5  (Y,x,Y)       0.9097    0.0039   5     
+    |   Attack-6  (Y,Y,x)       0.9521    0.0002   5     
+    |   Attack-7  (Y,Y,Y)       0.9383    0.0014   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow/pubmed_kron_0.5__cora_kron_whole__kron_E_0.5_wholeshadow.json
+2026-10-21 09:31:36  [ok] lsa:kron:attack:0.5  rc=0  4.6 min
+2026-10-21 09:31:36  [run] lsa:kron:attack:0.7
+2026-10-21 09:31:36        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/attack
+2026-10-21 09:31:36        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_kron_0.7 --shadow cora_kron_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow --runs 5 --tag kron_E_0.7_wholeshadow --link_prediction --quiet
+2026-10-21 09:31:36        step-log -> logs/lsa_attack_kron_0.7.log
+    | target=pubmed_kron_0.7  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_kron_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8612
+    |   K-means (K=2)   : precision=0.7077  recall=0.9458  f1=0.8096
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8018 +/- 0.0096
+    |   accuracy        : 0.7543 +/- 0.0128
+    |   precision/recall/f1 : 0.7042 / 0.8764 / 0.7807
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8612
+    |   K-means (K=2)   : precision=0.7077  recall=0.9458  f1=0.8096
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.9147 +/- 0.0005
+    |   accuracy        : 0.8428 +/- 0.0017
+    |   precision/recall/f1 : 0.8468 / 0.8372 / 0.8418
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8738 +/- 0.0037
+    |   accuracy        : 0.7945 +/- 0.0025
+    |   precision/recall/f1 : 0.7622 / 0.8561 / 0.8064
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9008 +/- 0.0044
+    |   accuracy        : 0.8077 +/- 0.0047
+    |   precision/recall/f1 : 0.7638 / 0.8913 / 0.8225
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9543 +/- 0.0003
+    |   accuracy        : 0.8883 +/- 0.0009
+    |   precision/recall/f1 : 0.8824 / 0.8961 / 0.8892
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9367 +/- 0.0022
+    |   accuracy        : 0.8534 +/- 0.0015
+    |   precision/recall/f1 : 0.8105 / 0.9226 / 0.8629
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_kron_0.7   shadow=cora_kron_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8612    -        1     
+    |   Attack-1  (x,x,Y)       0.8018    0.0096   5     
+    |   Attack-2  (Y,x,x)       0.8612    -        1     
+    |   Attack-3  (x,Y,x)       0.9147    0.0005   5     
+    |   Attack-4  (x,Y,Y)       0.8738    0.0037   5     
+    |   Attack-5  (Y,x,Y)       0.9008    0.0044   5     
+    |   Attack-6  (Y,Y,x)       0.9543    0.0003   5     
+    |   Attack-7  (Y,Y,Y)       0.9367    0.0022   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/KRON Benchmarking/results/attacks_wholeshadow/pubmed_kron_0.7__cora_kron_whole__kron_E_0.7_wholeshadow.json
+2026-10-21 09:36:14  [ok] lsa:kron:attack:0.7  rc=0  4.6 min
+2026-10-21 09:36:14    [cleanup] removed 24 attack_dataset files for kron
+2026-10-21 09:36:14  [LSA kron] complete
+2026-10-21 09:36:14  ==============================================================================
+2026-10-21 09:36:14  LSA  ugc  (UGC Benchmarking)  settings=['whole', '30', '50', '70']
+2026-10-21 09:36:14  ==============================================================================
+2026-10-21 09:36:14  [run] lsa:ugc:step01
+2026-10-21 09:36:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 09:36:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 09:36:14        step-log -> logs/lsa_ugc_step01.log
+    | calibrating + coarsening 3 settings, alpha fixed per dataset (cora 0.19, citeseer 0.26)
+    | 
+    | dataset   ratio  alpha         bw target k      k  ratio* trainable  maxsz  c_edges    sec
+    | --------------------------------------------------------------------------------------------------------
+    | pubmed       30   0.20   0.000033    13802  13769  0.3017      9386      8    46323  309.4
+    | pubmed       50   0.20   0.000080     9858   9887  0.4986      7298     11    46467  228.0
+    | pubmed       70   0.20   0.000232     5915   5932  0.6991      4597     21    45782  160.0
+    | 
+    | saving coarsenings:
+    |   artifacts/coarsened/ugc_pubmed_ratio30.npz  k=13769 trainable=9386
+    |   artifacts/coarsened/ugc_pubmed_ratio50.npz  k=9887 trainable=7298
+    |   artifacts/coarsened/ugc_pubmed_ratio70.npz  k=5932 trainable=4597
+    | 
+    | [manifest] recorded step step01_coarsen: UGC LSH coarsenings for 3 (dataset, ratio) settings; bin widths calibrated, alpha fixed per dataset
+    | 
+    | total 13.2 min
+2026-10-21 09:49:30  [ok] lsa:ugc:step01  rc=0  13.3 min
+2026-10-21 09:49:30  [run] lsa:ugc:step02
+2026-10-21 09:49:30        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 09:49:30        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 09:49:30        step-log -> logs/lsa_ugc_step02.log
+    | building 4 black boxes x 5 runs, 8 workers, CPU
+    | 
+    | held-out test accuracy (60/20/20 split, best-validation weights)
+    | box               alpha      k        bw  aug dim |       test acc   paper   delta gate
+    | --------------------------------------------------------------------------------------------------------
+    | pubmed_whole       0.20  19717         -    20217 |  87.56+/- 0.12       -       - n/a
+    | pubmed_30          0.20  13802  0.000033    20217 |  86.84+/- 0.09       -       - n/a
+    | pubmed_50          0.20   9858  0.000080    20217 |  86.71+/- 0.11       -       - n/a
+    | pubmed_70          0.20   5915  0.000232    20217 |  85.43+/- 0.23       -       - n/a
+    | 
+    | coarsening geometry and served posteriors
+    | box              trainable  maxsz  meansz  c_edges |  distinct   of n  mean max p
+    | ------------------------------------------------------------------------------------------------
+    | pubmed_whole             -      -       -        - |     19703  99.9%      0.8881
+    | pubmed_30             9386      8     1.4    46323 |     19712 100.0%      0.8642
+    | pubmed_50             7298     11     2.0    46467 |     19711 100.0%      0.8932
+    | pubmed_70             4597     21     3.3    45782 |     19710 100.0%      0.8966
+    | 
+    | [manifest] recorded step step02_blackbox: Built and validated 4 UGC black boxes; 0/0 gated boxes inside tolerance, largest deviation 0.00 points
+    | 
+    | total 84.3 min
+2026-10-21 11:13:52  [ok] lsa:ugc:step02  rc=0  84.4 min
+2026-10-21 11:13:52  [run] lsa:ugc:step03
+2026-10-21 11:13:52        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:13:52        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 11:13:52        step-log -> logs/lsa_ugc_step03.log
+    | ==============================================================================
+    | reference model g -- graph-free, hidden 64, 500 epochs, ORIGINAL (unaugmented) features
+    | ==============================================================================
+    | 
+    | pubmed:
+    |   adversary knows 1971 of 19717 labels (10%, seed=123); features 500 columns (target consumes 20217)
+    |   g accuracy: 1.0000 on its known labels, 0.8179 on the rest   (graph-free verified on 3 duplicate-feature pairs)
+    |   [saved] data/pred/pubmed_gugc_pred.pkl  shape=(19717, 3)
+    | 
+    | ==============================================================================
+    | publishing black-box posteriors to the attack code
+    | ==============================================================================
+    |   [saved] data/pred/pubmed_ugcbb_whole_pred.pkl  shape=(19717, 3)
+    |   [saved] data/pred/pubmed_ugcbb_30_pred.pkl  shape=(19717, 3)
+    |   [saved] data/pred/pubmed_ugcbb_50_pred.pkl  shape=(19717, 3)
+    |   [saved] data/pred/pubmed_ugcbb_70_pred.pkl  shape=(19717, 3)
+    | 
+    | ==============================================================================
+    | attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+    | ==============================================================================
+    | 
+    | >>> attack dataset pubmed_ugc_whole
+    |     linked pairs: 44324  (from 88648 directed entries)
+    |     unlinked pairs: 10000  (0.0s)
+    |     all  :  20000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_all.json
+    |     train:  10000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_train.json
+    |     test :  10000 records  -> data/attack_dataset/pubmed_ugc_whole_attack_test.json
+    |     7.5s
+    | 
+    | >>> attack dataset pubmed_ugc_30
+    |     linked pairs: 44324  (from 88648 directed entries)
+    |     unlinked pairs: 10000  (0.0s)
+    |     all  :  20000 records  -> data/attack_dataset/pubmed_ugc_30_attack_all.json
+    |     train:  10000 records  -> data/attack_dataset/pubmed_ugc_30_attack_train.json
+    |     test :  10000 records  -> data/attack_dataset/pubmed_ugc_30_attack_test.json
+    |     7.6s
+    | 
+    | >>> attack dataset pubmed_ugc_50
+    |     linked pairs: 44324  (from 88648 directed entries)
+    |     unlinked pairs: 10000  (0.0s)
+    |     all  :  20000 records  -> data/attack_dataset/pubmed_ugc_50_attack_all.json
+    |     train:  10000 records  -> data/attack_dataset/pubmed_ugc_50_attack_train.json
+    |     test :  10000 records  -> data/attack_dataset/pubmed_ugc_50_attack_test.json
+    |     7.6s
+    | 
+    | >>> attack dataset pubmed_ugc_70
+    |     linked pairs: 44324  (from 88648 directed entries)
+    |     unlinked pairs: 10000  (0.0s)
+    |     all  :  20000 records  -> data/attack_dataset/pubmed_ugc_70_attack_all.json
+    |     train:  10000 records  -> data/attack_dataset/pubmed_ugc_70_attack_train.json
+    |     test :  10000 records  -> data/attack_dataset/pubmed_ugc_70_attack_test.json
+    |     7.5s
+    | 
+    | [manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges
+    | 
+    | total 1.0 min
+2026-10-21 11:14:53  [ok] lsa:ugc:step03  rc=0  1.0 min
+2026-10-21 11:14:53    [LSA ugc] cora pred pkls missing -> building cora boxes
+2026-10-21 11:14:53  [run] lsa:ugc:cora:step01
+2026-10-21 11:14:53        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:14:53        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 11:14:53        step-log -> logs/lsa_ugc_cora_step01.log
+    | calibrating + coarsening 3 settings, alpha fixed per dataset (cora 0.19, citeseer 0.26)
+    | 
+    | dataset   ratio  alpha         bw target k      k  ratio* trainable  maxsz  c_edges    sec
+    | --------------------------------------------------------------------------------------------------------
+    | cora         30   0.19   0.001854     1896   1900  0.2984      1313      6     5510   10.8
+    | cora         50   0.19   0.004171     1354   1356  0.4993      1006      9     5507   11.6
+    | cora         70   0.19   0.009775      812    807  0.7020       673     14     5355   10.3
+    | 
+    | calibration check against the authors' shipped bin width:
+    |   cora ratio 50: ours bw=0.004171 -> k=1356, ratio=0.4993   |   shipped bw=0.004000 -> k=1398, ratio=0.4838
+    | 
+    | saving coarsenings:
+    |   artifacts/coarsened/ugc_cora_ratio30.npz  k=1900 trainable=1313
+    |   artifacts/coarsened/ugc_cora_ratio50.npz  k=1356 trainable=1006
+    |   artifacts/coarsened/ugc_cora_ratio70.npz  k=807 trainable=673
+    | 
+    | [manifest] recorded step step01_coarsen: UGC LSH coarsenings for 3 (dataset, ratio) settings; bin widths calibrated, alpha fixed per dataset
+    | 
+    | total 0.3 min
+2026-10-21 11:15:11  [ok] lsa:ugc:cora:step01  rc=0  0.3 min
+2026-10-21 11:15:11  [run] lsa:ugc:cora:step02
+2026-10-21 11:15:11        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:15:11        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 11:15:11        step-log -> logs/lsa_ugc_cora_step02.log
+    | building 4 black boxes x 5 runs, 8 workers, CPU
+    | 
+    | held-out test accuracy (60/20/20 split, best-validation weights)
+    | box               alpha      k        bw  aug dim |       test acc   paper   delta gate
+    | --------------------------------------------------------------------------------------------------------
+    | cora_whole         0.19   2708         -     4141 |  88.67+/- 0.34       -       - n/a
+    | cora_30            0.19   1896  0.001854     4141 |  86.74+/- 0.60   86.30   +0.44 pass
+    | cora_50            0.19   1354  0.004171     4141 |  86.37+/- 0.25   86.30   +0.07 pass
+    | cora_70            0.19    812  0.009775     4141 |  80.26+/- 0.59   84.63   -4.37 FAIL
+    | 
+    | coarsening geometry and served posteriors
+    | box              trainable  maxsz  meansz  c_edges |  distinct   of n  mean max p
+    | ------------------------------------------------------------------------------------------------
+    | cora_whole               -      -       -        - |      2582  95.3%      0.9162
+    | cora_30               1313      6     1.4     5510 |      2584  95.4%      0.9063
+    | cora_50               1006      9     2.0     5507 |      2580  95.3%      0.9105
+    | cora_70                673     14     3.4     5355 |      2579  95.2%      0.8903
+    | 
+    | [manifest] recorded step step02_blackbox: Built and validated 4 UGC black boxes; 2/3 gated boxes inside tolerance, largest deviation 4.37 points
+    | 
+    | total 3.3 min
+    | outside tolerance: cora_70
+2026-10-21 11:18:33  [ok] lsa:ugc:cora:step02  rc=0  3.4 min
+2026-10-21 11:18:33  [run] lsa:ugc:cora:step03
+2026-10-21 11:18:33        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking
+2026-10-21 11:18:33        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 11:18:33        step-log -> logs/lsa_ugc_cora_step03.log
+    | ==============================================================================
+    | reference model g -- graph-free, hidden 64, 500 epochs, ORIGINAL (unaugmented) features
+    | ==============================================================================
+    | 
+    | cora:
+    |   adversary knows 270 of 2708 labels (10%, seed=123); features 1433 columns (target consumes 4141)
+    |   g accuracy: 1.0000 on its known labels, 0.6284 on the rest   (graph-free verified on 11 duplicate-feature pairs)
+    |   [saved] data/pred/cora_gugc_pred.pkl  shape=(2708, 7)
+    | 
+    | ==============================================================================
+    | publishing black-box posteriors to the attack code
+    | ==============================================================================
+    |   [saved] data/pred/cora_ugcbb_whole_pred.pkl  shape=(2708, 7)
+    |   [saved] data/pred/cora_ugcbb_30_pred.pkl  shape=(2708, 7)
+    |   [saved] data/pred/cora_ugcbb_50_pred.pkl  shape=(2708, 7)
+    |   [saved] data/pred/cora_ugcbb_70_pred.pkl  shape=(2708, 7)
+    | 
+    | ==============================================================================
+    | attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+    | ==============================================================================
+    | 
+    | >>> attack dataset cora_ugc_whole
+    |     linked pairs: 5278  (from 10556 directed entries)
+    |     unlinked pairs: 5278  (0.0s)
+    |     all  :  10556 records  -> data/attack_dataset/cora_ugc_whole_attack_all.json
+    |     train:   5278 records  -> data/attack_dataset/cora_ugc_whole_attack_train.json
+    |     test :   5278 records  -> data/attack_dataset/cora_ugc_whole_attack_test.json
+    |     6.4s
+    | 
+    | >>> attack dataset cora_ugc_30
+    |     linked pairs: 5278  (from 10556 directed entries)
+    |     unlinked pairs: 5278  (0.0s)
+    |     all  :  10556 records  -> data/attack_dataset/cora_ugc_30_attack_all.json
+    |     train:   5278 records  -> data/attack_dataset/cora_ugc_30_attack_train.json
+    |     test :   5278 records  -> data/attack_dataset/cora_ugc_30_attack_test.json
+    |     6.4s
+    | 
+    | >>> attack dataset cora_ugc_50
+    |     linked pairs: 5278  (from 10556 directed entries)
+    |     unlinked pairs: 5278  (0.0s)
+    |     all  :  10556 records  -> data/attack_dataset/cora_ugc_50_attack_all.json
+    |     train:   5278 records  -> data/attack_dataset/cora_ugc_50_attack_train.json
+    |     test :   5278 records  -> data/attack_dataset/cora_ugc_50_attack_test.json
+    |     6.4s
+    | 
+    | >>> attack dataset cora_ugc_70
+    |     linked pairs: 5278  (from 10556 directed entries)
+    |     unlinked pairs: 5278  (0.0s)
+    |     all  :  10556 records  -> data/attack_dataset/cora_ugc_70_attack_all.json
+    |     train:   5278 records  -> data/attack_dataset/cora_ugc_70_attack_train.json
+    |     test :   5278 records  -> data/attack_dataset/cora_ugc_70_attack_test.json
+    |     6.4s
+    | 
+    | [manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges
+    | 
+    | total 0.5 min
+2026-10-21 11:19:07  [ok] lsa:ugc:cora:step03  rc=0  0.6 min
+2026-10-21 11:19:07    [cached] attack_dataset cora_ugc_whole
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_whole
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_30
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_50
+2026-10-21 11:19:07    [cached] attack_dataset pubmed_ugc_70
+2026-10-21 11:19:07  [run] lsa:ugc:attack:whole
+2026-10-21 11:19:07        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:19:07        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_whole --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_whole_wholeshadow --link_prediction --quiet
+2026-10-21 11:19:07        step-log -> logs/lsa_attack_ugc_whole.log
+    | target=pubmed_ugc_whole  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_ugc_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8538
+    |   K-means (K=2)   : precision=0.7065  recall=0.9256  f1=0.8013
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8330 +/- 0.0038
+    |   accuracy        : 0.7787 +/- 0.0006
+    |   precision/recall/f1 : 0.7231 / 0.9034 / 0.8032
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8538
+    |   K-means (K=2)   : precision=0.7065  recall=0.9256  f1=0.8013
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.8976 +/- 0.0008
+    |   accuracy        : 0.8205 +/- 0.0017
+    |   precision/recall/f1 : 0.8082 / 0.8406 / 0.8240
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8815 +/- 0.0021
+    |   accuracy        : 0.7961 +/- 0.0019
+    |   precision/recall/f1 : 0.7600 / 0.8656 / 0.8093
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9129 +/- 0.0032
+    |   accuracy        : 0.8177 +/- 0.0042
+    |   precision/recall/f1 : 0.7722 / 0.9019 / 0.8319
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9500 +/- 0.0002
+    |   accuracy        : 0.8825 +/- 0.0008
+    |   precision/recall/f1 : 0.8841 / 0.8804 / 0.8822
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9345 +/- 0.0016
+    |   accuracy        : 0.8498 +/- 0.0031
+    |   precision/recall/f1 : 0.8092 / 0.9155 / 0.8591
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_ugc_whole   shadow=cora_ugc_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8538    -        1     
+    |   Attack-1  (x,x,Y)       0.8330    0.0038   5     
+    |   Attack-2  (Y,x,x)       0.8538    -        1     
+    |   Attack-3  (x,Y,x)       0.8976    0.0008   5     
+    |   Attack-4  (x,Y,Y)       0.8815    0.0021   5     
+    |   Attack-5  (Y,x,Y)       0.9129    0.0032   5     
+    |   Attack-6  (Y,Y,x)       0.9500    0.0002   5     
+    |   Attack-7  (Y,Y,Y)       0.9345    0.0016   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow/pubmed_ugc_whole__cora_ugc_whole__ugc_E_whole_wholeshadow.json
+2026-10-21 11:23:45  [ok] lsa:ugc:attack:whole  rc=0  4.6 min
+2026-10-21 11:23:45  [run] lsa:ugc:attack:30
+2026-10-21 11:23:45        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:23:45        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_30 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_30_wholeshadow --link_prediction --quiet
+2026-10-21 11:23:45        step-log -> logs/lsa_attack_ugc_30.log
+    | target=pubmed_ugc_30  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_ugc_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8629
+    |   K-means (K=2)   : precision=0.7151  recall=0.9322  f1=0.8093
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8028 +/- 0.0073
+    |   accuracy        : 0.7663 +/- 0.0023
+    |   precision/recall/f1 : 0.7114 / 0.8964 / 0.7932
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8629
+    |   K-means (K=2)   : precision=0.7151  recall=0.9322  f1=0.8093
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.9199 +/- 0.0011
+    |   accuracy        : 0.8506 +/- 0.0023
+    |   precision/recall/f1 : 0.8516 / 0.8494 / 0.8504
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8933 +/- 0.0036
+    |   accuracy        : 0.8148 +/- 0.0040
+    |   precision/recall/f1 : 0.7850 / 0.8674 / 0.8241
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9043 +/- 0.0037
+    |   accuracy        : 0.8118 +/- 0.0051
+    |   precision/recall/f1 : 0.7663 / 0.8975 / 0.8266
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9585 +/- 0.0002
+    |   accuracy        : 0.8947 +/- 0.0016
+    |   precision/recall/f1 : 0.8926 / 0.8974 / 0.8950
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9444 +/- 0.0018
+    |   accuracy        : 0.8604 +/- 0.0037
+    |   precision/recall/f1 : 0.8194 / 0.9247 / 0.8688
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_ugc_30   shadow=cora_ugc_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8629    -        1     
+    |   Attack-1  (x,x,Y)       0.8028    0.0073   5     
+    |   Attack-2  (Y,x,x)       0.8629    -        1     
+    |   Attack-3  (x,Y,x)       0.9199    0.0011   5     
+    |   Attack-4  (x,Y,Y)       0.8933    0.0036   5     
+    |   Attack-5  (Y,x,Y)       0.9043    0.0037   5     
+    |   Attack-6  (Y,Y,x)       0.9585    0.0002   5     
+    |   Attack-7  (Y,Y,Y)       0.9444    0.0018   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow/pubmed_ugc_30__cora_ugc_whole__ugc_E_30_wholeshadow.json
+2026-10-21 11:28:22  [ok] lsa:ugc:attack:30  rc=0  4.6 min
+2026-10-21 11:28:22  [run] lsa:ugc:attack:50
+2026-10-21 11:28:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:28:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_50 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_50_wholeshadow --link_prediction --quiet
+2026-10-21 11:28:22        step-log -> logs/lsa_attack_ugc_50.log
+    | target=pubmed_ugc_50  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_ugc_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8600
+    |   K-means (K=2)   : precision=0.7126  recall=0.9252  f1=0.8051
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8116 +/- 0.0060
+    |   accuracy        : 0.7728 +/- 0.0011
+    |   precision/recall/f1 : 0.7189 / 0.8958 / 0.7977
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8600
+    |   K-means (K=2)   : precision=0.7126  recall=0.9252  f1=0.8051
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.9142 +/- 0.0006
+    |   accuracy        : 0.8412 +/- 0.0026
+    |   precision/recall/f1 : 0.8439 / 0.8377 / 0.8406
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8925 +/- 0.0008
+    |   accuracy        : 0.8137 +/- 0.0033
+    |   precision/recall/f1 : 0.7865 / 0.8617 / 0.8222
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9071 +/- 0.0035
+    |   accuracy        : 0.8146 +/- 0.0040
+    |   precision/recall/f1 : 0.7700 / 0.8976 / 0.8288
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9559 +/- 0.0005
+    |   accuracy        : 0.8912 +/- 0.0014
+    |   precision/recall/f1 : 0.8902 / 0.8925 / 0.8914
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9388 +/- 0.0014
+    |   accuracy        : 0.8560 +/- 0.0026
+    |   precision/recall/f1 : 0.8156 / 0.9202 / 0.8647
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_ugc_50   shadow=cora_ugc_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8600    -        1     
+    |   Attack-1  (x,x,Y)       0.8116    0.0060   5     
+    |   Attack-2  (Y,x,x)       0.8600    -        1     
+    |   Attack-3  (x,Y,x)       0.9142    0.0006   5     
+    |   Attack-4  (x,Y,Y)       0.8925    0.0008   5     
+    |   Attack-5  (Y,x,Y)       0.9071    0.0035   5     
+    |   Attack-6  (Y,Y,x)       0.9559    0.0005   5     
+    |   Attack-7  (Y,Y,Y)       0.9388    0.0014   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow/pubmed_ugc_50__cora_ugc_whole__ugc_E_50_wholeshadow.json
+2026-10-21 11:33:01  [ok] lsa:ugc:attack:50  rc=0  4.6 min
+2026-10-21 11:33:01  [run] lsa:ugc:attack:70
+2026-10-21 11:33:01        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/attack
+2026-10-21 11:33:01        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_ugc_70 --shadow cora_ugc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow --runs 5 --tag ugc_E_70_wholeshadow --link_prediction --quiet
+2026-10-21 11:33:01        step-log -> logs/lsa_attack_ugc_70.log
+    | target=pubmed_ugc_70  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+    | shadow=cora_ugc_whole  (its attack dataset is used unsplit)
+    | attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+    | 
+    | ====================================================================
+    | Attack-0   K = (x,x,x)
+    | ====================================================================
+    |   selected metric : correlation
+    |   AUC             : 0.8706
+    |   K-means (K=2)   : precision=0.7214  recall=0.9390  f1=0.8160
+    | 
+    | ====================================================================
+    | Attack-1   K = (x,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.8185 +/- 0.0057
+    |   accuracy        : 0.7824 +/- 0.0012
+    |   precision/recall/f1 : 0.7282 / 0.9014 / 0.8056
+    | 
+    | ====================================================================
+    | Attack-2   K = (Y,x,x)
+    | ====================================================================
+    |   selected metric : target_correlation
+    |   AUC             : 0.8706
+    |   K-means (K=2)   : precision=0.7214  recall=0.9390  f1=0.8160
+    | 
+    | ====================================================================
+    | Attack-3   K = (x,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    |     features=24  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 24
+    |   AUC             : 0.9186 +/- 0.0006
+    |   accuracy        : 0.8455 +/- 0.0027
+    |   precision/recall/f1 : 0.8524 / 0.8359 / 0.8439
+    | 
+    | ====================================================================
+    | Attack-4   K = (x,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f   [Table 3]
+    |     features=12  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 12
+    |   AUC             : 0.9021 +/- 0.0028
+    |   accuracy        : 0.8250 +/- 0.0025
+    |   precision/recall/f1 : 0.7994 / 0.8686 / 0.8323
+    | 
+    | ====================================================================
+    | Attack-5   K = (Y,x,Y)
+    | ====================================================================
+    |   training data   : 10556 pairs  [shadow_all]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=10556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9098 +/- 0.0032
+    |   accuracy        : 0.8203 +/- 0.0041
+    |   precision/recall/f1 : 0.7755 / 0.9019 / 0.8339
+    | 
+    | ====================================================================
+    | Attack-6   K = (Y,Y,x)
+    | ====================================================================
+    |   training data   : 10000 pairs  [target_train]
+    |   feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    |     features=56  train=10000  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 56
+    |   AUC             : 0.9577 +/- 0.0004
+    |   accuracy        : 0.8944 +/- 0.0004
+    |   precision/recall/f1 : 0.8871 / 0.9038 / 0.8954
+    | 
+    | ====================================================================
+    | Attack-7   K = (Y,Y,Y)
+    | ====================================================================
+    |   training data   : 20556 pairs  [shadow_all + target_train]
+    |   feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    |     features=32  train=20556  test=10000
+    |     run 1/5
+    |     run 2/5
+    |     run 3/5
+    |     run 4/5
+    |     run 5/5
+    |   features        : 32
+    |   AUC             : 0.9409 +/- 0.0016
+    |   accuracy        : 0.8605 +/- 0.0026
+    |   precision/recall/f1 : 0.8216 / 0.9211 / 0.8685
+    | 
+    | ====================================================================
+    | Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+    | ====================================================================
+    |     partial graph: 5000 edges over 5929 nodes
+    |   features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+    |   AUC             : 0.6329 +/- 0.0000
+    |   precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+    | 
+    | ====================================================================
+    | SUMMARY   target=pubmed_ugc_70   shadow=cora_ugc_whole
+    | ====================================================================
+    |   attack   K=(F,A*,D)    AUC       std      runs  
+    |   Attack-0  (x,x,x)       0.8706    -        1     
+    |   Attack-1  (x,x,Y)       0.8185    0.0057   5     
+    |   Attack-2  (Y,x,x)       0.8706    -        1     
+    |   Attack-3  (x,Y,x)       0.9186    0.0006   5     
+    |   Attack-4  (x,Y,Y)       0.9021    0.0028   5     
+    |   Attack-5  (Y,x,Y)       0.9098    0.0032   5     
+    |   Attack-6  (Y,Y,x)       0.9577    0.0004   5     
+    |   Attack-7  (Y,Y,Y)       0.9409    0.0016   5     
+    |   link-pred (baseline)    0.6329    0.0000   5     
+    | 
+    |   8/8 attacks beat the link-prediction baseline
+    | 
+    | [saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/UGC Benchmarking/results/attacks_wholeshadow/pubmed_ugc_70__cora_ugc_whole__ugc_E_70_wholeshadow.json
+2026-10-21 11:37:36  [ok] lsa:ugc:attack:70  rc=0  4.6 min
+2026-10-21 11:37:37    [cleanup] removed 24 attack_dataset files for ugc
+2026-10-21 11:37:37  [LSA ugc] complete
+2026-10-21 11:37:37  membership methods to run: ['control', 'kron', 'ugc', 'fgc']
+2026-10-21 11:37:37  ==============================================================================
+2026-10-21 11:37:37  MEMBERSHIP  methods=['control', 'kron', 'ugc', 'fgc']  (shadow = whole cora)
+2026-10-21 11:37:37  ==============================================================================
+2026-10-21 11:37:37    [membership] cora_control_whole posteriors missing -> building
+2026-10-21 11:37:37  [run] mia:cora:split
+2026-10-21 11:37:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_split.py --only cora
+2026-10-21 11:37:37        step-log -> logs/mia_cora_split.log
+    | membership split: uniform-random 20% non-members, seed 42
+    | 
+    | === cora ===
+    |   members / non-members : 2166 / 542  (20.015%)
+    |   edges (orig -> V_in)  : 5278 -> 3485
+    |   isolated inside V_in  : 97
+    |   mean degree (orig)    : members 3.95  non-members 3.69  (close = degree-representative)
+    |   wrote artifacts/splits/cora_split.npz
+    | 
+    | === pubmed ===
+    |   members / non-members : 15774 / 3943  (19.998%)
+    |   edges (orig -> V_in)  : 44324 -> 28294
+    |   isolated inside V_in  : 1750
+    |   mean degree (orig)    : members 4.49  non-members 4.51  (close = degree-representative)
+    |   wrote artifacts/splits/pubmed_split.npz
+    | 
+    | 
+    | [manifest] recorded step step01_split: Built uniform-random 20% member/non-member split for 2 datasets (seed 42)
+2026-10-21 11:37:37  [ok] mia:cora:split  rc=0  0.0 min
+2026-10-21 11:37:37  [run] mia:cora:reduce
+2026-10-21 11:37:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only cora --methods control
+2026-10-21 11:37:37        step-log -> logs/mia_cora_reduce.log
+    | reducing V_in: methods=['control']  datasets=['cora']
+    | 
+    | === cora  V_in 2166 nodes ===
+    |   cora_control_whole         k= 2166 feat_dim= 1433 E=  3485 train= 2166 unweighted             plain      [0.1s]
+    | 
+    | 
+    | [manifest] recorded step step02_reduce: Reduced V_in into 1 training graphs across 1 methods and 1 datasets
+    | total 0.0 min
+2026-10-21 11:37:40  [ok] mia:cora:reduce  rc=0  0.0 min
+2026-10-21 11:37:40  [run] mia:cora:box
+2026-10-21 11:37:40        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:40        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only cora --methods control
+2026-10-21 11:37:40        step-log -> logs/mia_cora_box.log
+    | 1 cells, 3 box trainings to run (3 seeds each), 7 workers
+    | 
+    | cell                          k_tr      serve  mem acc  non acc     gap
+    | ----------------------------------------------------------------------------
+    | cora_control_whole            2166      plain   95.61%   88.07%  +7.54
+    | 
+    | [manifest] recorded step step03_blackbox: Trained 3 boxes (1 cells x 3 seeds) and served posteriors on the original graph
+    | 
+    | total 0.2 min
+2026-10-21 11:37:55  [ok] mia:cora:box  rc=0  0.2 min
+2026-10-21 11:37:55  [run] mia:pubmed:split
+2026-10-21 11:37:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_split.py --only pubmed
+2026-10-21 11:37:55        step-log -> logs/mia_pubmed_split.log
+    | membership split: uniform-random 20% non-members, seed 42
+    | 
+    | === cora ===
+    |   members / non-members : 2166 / 542  (20.015%)
+    |   edges (orig -> V_in)  : 5278 -> 3485
+    |   isolated inside V_in  : 97
+    |   mean degree (orig)    : members 3.95  non-members 3.69  (close = degree-representative)
+    |   wrote artifacts/splits/cora_split.npz
+    | 
+    | === pubmed ===
+    |   members / non-members : 15774 / 3943  (19.998%)
+    |   edges (orig -> V_in)  : 44324 -> 28294
+    |   isolated inside V_in  : 1750
+    |   mean degree (orig)    : members 4.49  non-members 4.51  (close = degree-representative)
+    |   wrote artifacts/splits/pubmed_split.npz
+    | 
+    | 
+    | [manifest] recorded step step01_split: Built uniform-random 20% member/non-member split for 2 datasets (seed 42)
+2026-10-21 11:37:55  [ok] mia:pubmed:split  rc=0  0.0 min
+2026-10-21 11:37:55  [run] mia:pubmed:reduce
+2026-10-21 11:37:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 11:37:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 11:37:55        step-log -> logs/mia_pubmed_reduce.log
+    | reducing V_in: methods=['control', 'kron', 'ugc', 'fgc']  datasets=['pubmed']
+    | 
+    | === pubmed  V_in 15774 nodes ===
+    |   pubmed_control_whole       k=15774 feat_dim=  500 E= 28294 train=15774 unweighted             plain      [0.4s]
+    |   pubmed_kron_r0.3           k=11042 feat_dim=  500 E= 23562 train=11042 w[1,1]                 plain      [21.0s]
+    |   pubmed_kron_r0.5           k= 7887 feat_dim=  500 E= 20194 train= 7887 w[0.25,3.5]            plain      [24.8s]
+    |   pubmed_kron_r0.7           k= 4732 feat_dim=  500 E= 19202 train= 4732 w[0.000222,6.07]       plain      [25.4s]
+    |     [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    |     [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    |     [ugc] bin-search it  20  bw 3.86238e-05  ratio 0.2990
+    |     [ugc] bin-search it  30  bw 2.74968e-05  ratio 0.2337
+    |     [ugc] bin-search it  40  bw 1.95754e-05  ratio 0.1828
+    |     [ugc] bin-search it  50  bw 4.1808e-05  ratio 0.3119
+    |     [ugc] bin-search it  60  bw 2.97637e-05  ratio 0.2445
+    |     [ugc] bin-search it  70  bw 2.11892e-05  ratio 0.1954
+    |   pubmed_ugc_r0.3            k=11058 feat_dim=16274 E= 29939 train=11058 w[1,6]                 ugc_aug    [186.5s]
+    |     [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    |     [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    |     [ugc] bin-search it  20  bw 0.000115871  ratio 0.5498
+    |     [ugc] bin-search it  30  bw 8.24905e-05  ratio 0.4751
+    |     [ugc] bin-search it  40  bw 5.87261e-05  ratio 0.3883
+    |     [ugc] bin-search it  50  bw 0.000125424  ratio 0.5668
+    |     [ugc] bin-search it  60  bw 8.9291e-05  ratio 0.4900
+    |     [ugc] bin-search it  70  bw 6.35676e-05  ratio 0.4095
+    |   pubmed_ugc_r0.5            k= 7902 feat_dim=16274 E= 30037 train= 7902 w[1,11]                ugc_aug    [142.8s]
+    |     [ugc] bin-search it   0  bw 0.5  ratio 0.9987
+    |     [ugc] bin-search it  10  bw 0.000488281  ratio 0.7896
+    |     [ugc] bin-search it  20  bw 0.000347614  ratio 0.7452
+    |     [ugc] bin-search it  30  bw 0.000247472  ratio 0.6906
+    |     [ugc] bin-search it  40  bw 0.000176178  ratio 0.6348
+    |     [ugc] bin-search it  50  bw 0.000376272  ratio 0.7578
+    |     [ugc] bin-search it  60  bw 0.000267873  ratio 0.7053
+    |     [ugc] bin-search it  70  bw 0.000190703  ratio 0.6477
+    |   pubmed_ugc_r0.7            k= 4701 feat_dim=16274 E= 29510 train= 4701 w[1,20]                ugc_aug    [107.1s]
+    |       [fgc] iter 1/50
+    |       [fgc] iter 11/50
+    |       [fgc] iter 21/50
+    |       [fgc] iter 31/50
+    |       [fgc] iter 41/50
+    |       [fgc] iter 50/50
+    |   pubmed_fgc_r0.3            k= 4732 feat_dim=  500 E= 26072 train= 4131 unweighted             plain      [6536.6s]
+    |       [fgc] iter 1/50
+    |       [fgc] iter 11/50
+    |       [fgc] iter 21/50
+    |       [fgc] iter 31/50
+    |       [fgc] iter 41/50
+    |       [fgc] iter 50/50
+    |   pubmed_fgc_r0.1            k= 1577 feat_dim=  500 E= 16383 train= 1030 unweighted             plain      [1115.6s]
+    |       [fgc] iter 1/50
+    |       [fgc] iter 11/50
+    |       [fgc] iter 21/50
+    |       [fgc] iter 31/50
+    |       [fgc] iter 41/50
+    |       [fgc] iter 50/50
+    |   pubmed_fgc_r0.05           k=  788 feat_dim=  500 E= 12634 train=  438 unweighted             plain      [505.3s]
+    | 
+    | 
+    | [manifest] recorded step step02_reduce: Reduced V_in into 10 training graphs across 4 methods and 1 datasets
+    | total 144.4 min
+2026-10-21 14:02:23  [ok] mia:pubmed:reduce  rc=0  144.5 min
+2026-10-21 14:02:23  [run] mia:pubmed:box
+2026-10-21 14:02:23        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:02:23        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 14:02:23        step-log -> logs/mia_pubmed_box.log
+    | 10 cells, 30 box trainings to run (3 seeds each), 7 workers
+    | 
+    | cell                          k_tr      serve  mem acc  non acc     gap
+    | ----------------------------------------------------------------------------
+    | pubmed_control_whole         15774      plain   88.75%   87.88%  +0.86
+    | pubmed_fgc_r0.05               438      plain   73.28%   72.20%  +1.08
+    | pubmed_fgc_r0.1               1030      plain   81.60%   80.98%  +0.62
+    | pubmed_fgc_r0.3               4131      plain   84.53%   84.38%  +0.15
+    | pubmed_kron_r0.3             11042      plain   88.21%   87.58%  +0.63
+    | pubmed_kron_r0.5              7887      plain   87.38%   86.93%  +0.46
+    | pubmed_kron_r0.7              4732      plain   86.31%   86.77%  -0.46
+    | pubmed_ugc_r0.3              11058    ugc_aug   88.30%   86.26%  +2.03
+    | pubmed_ugc_r0.5               7902    ugc_aug   86.56%   85.50%  +1.06
+    | pubmed_ugc_r0.7               4701    ugc_aug   85.48%   84.73%  +0.75
+    | 
+    | [manifest] recorded step step03_blackbox: Trained 30 boxes (10 cells x 3 seeds) and served posteriors on the original graph
+    | 
+    | total 7.4 min
+2026-10-21 14:09:51  [ok] mia:pubmed:box  rc=0  7.5 min
+2026-10-21 14:09:51  [run] mia:pubmed:attack
+2026-10-21 14:09:51        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:09:51        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,kron,ugc,fgc
+2026-10-21 14:09:51        step-log -> logs/mia_pubmed_attack.log
+    | attacking 10 cells
+    | 
+    | cell                          best thr   shadow    conf entropy   loss
+    | ----------------------------------------------------------------------------
+    | pubmed_control_whole            0.5043   0.5034   0.498   0.499  0.502
+    | pubmed_fgc_r0.05                0.5065      nan   0.506   0.506  0.505
+    | pubmed_fgc_r0.1                 0.5034      nan   0.502   0.502  0.503
+    | pubmed_fgc_r0.3                 0.5025      nan   0.502   0.503  0.502
+    | pubmed_kron_r0.3                0.5031      nan   0.500   0.500  0.502
+    | pubmed_kron_r0.5                0.5022      nan   0.501   0.502  0.502
+    | pubmed_kron_r0.7                0.5041      nan   0.503   0.504  0.503
+    | pubmed_ugc_r0.3                 0.5102      nan   0.498   0.499  0.508
+    | pubmed_ugc_r0.5                 0.5076      nan   0.502   0.502  0.508
+    | pubmed_ugc_r0.7                 0.5125      nan   0.512   0.512  0.512
+    | 
+    | [manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
+    | 
+    | attacked 10 cells
+2026-10-21 14:09:55  [ok] mia:pubmed:attack  rc=0  0.1 min
+2026-10-21 14:09:55  [run] mia:pubmed:wholeshadow
+2026-10-21 14:09:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:09:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python whole_shadow_mlp.py
+2026-10-21 14:09:55        step-log -> logs/mia_pubmed_wholeshadow.log
+    | wrote results/cora_membership_shadow_compare.csv  (1 cells)
+    | wrote results/pubmed_membership_shadow_compare.csv  (10 cells)
+2026-10-21 14:10:15  [ok] mia:pubmed:wholeshadow  rc=0  0.3 min
+2026-10-21 14:10:15  [run] mia:aggregate
+2026-10-21 14:10:15        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-21 14:10:15        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py
+2026-10-21 14:10:15        step-log -> logs/mia_aggregate.log
+    | loaded 10 attacked cells, 11 boxes
+    | 
+    | CSVs:
+    |   results/pubmed_membership_summary.csv   10 rows
+    |   results/pubmed_membership_detailed.csv   70 rows
+    | 
+    | figures:
+    |   results/figures/pubmed_membership_by_method.png
+    | 
+    | writeup:
+    | Traceback (most recent call last):
+    |   File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack/step05_aggregate.py", line 237, in <module>
+    |     main()
+    |   File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack/step05_aggregate.py", line 225, in main
+    |     md = markdown(attacks, boxes, figs)
+    |   File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack/step05_aggregate.py", line 186, in markdown
+    |     L.append(f"| {method} | {rv} | {bx.get('k_train','')} | "
+    | ValueError: Unknown format code 'f' for object of type 'str'
+2026-10-21 14:10:18  [FAIL] mia:aggregate  rc=1  0.0 min
+[membership] step05_aggregate.py failed (rc=1); fix and re-run to resume

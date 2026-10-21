@@ -1,0 +1,77 @@
+{
+  "pipeline": "kron_leakage",
+  "steps": [
+    {
+      "step": "step01_reduce",
+      "summary": "Kron-reduced 3 (dataset, r) settings by Schur complement, eliminating the lowest-degree interior nodes",
+      "timestamp": "2026-10-21 06:02:00",
+      "inputs": [
+        "attack/data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "artifacts/reduced/kron_cora_r0.3.npz",
+        "artifacts/reduced/kron_cora_r0.5.npz",
+        "artifacts/reduced/kron_cora_r0.7.npz",
+        "results/step01_reduction.json"
+      ],
+      "numbers": {
+        "settings": 3,
+        "cora_0.3_k": 1896,
+        "cora_0.5_k": 1354,
+        "cora_0.7_k": 812
+      },
+      "notes": "r is the fraction of nodes REMOVED; the boundary set keeps the highest-degree n*(1-r) nodes, one per connected component minimum. Kept nodes are ORIGINAL nodes with their own features and labels, so nothing is aggregated. Reduced edge weights are Schur-complement conductances; on these tree-like citation graphs the reduction is sparser than the original (leaf pruning dominates fill-in). max|L_red @ 1| ~ 1e-14 confirms the reduced matrix is a valid Laplacian, as the paper proves."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built 4 KRON black boxes across 3 reduction ratios plus no-reduction controls",
+      "timestamp": "2026-10-21 06:04:02",
+      "inputs": [
+        "artifacts/reduced/kron_*.npz"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole.npy",
+        "artifacts/posteriors/cora_0.3.npy",
+        "artifacts/posteriors/cora_0.5.npy",
+        "artifacts/posteriors/cora_0.7.npy"
+      ],
+      "numbers": {
+        "boxes": 4,
+        "repeats": 5,
+        "cora_whole": 88.74,
+        "cora_0.3": 86.81,
+        "cora_0.5": 88.0,
+        "cora_0.7": 85.22
+      },
+      "notes": "No published accuracy exists for Kron reduction on any dataset -- the paper is spectral/resistive on electrical networks -- so this stage reports rather than gates. Each box trains on the reduced graph and is evaluated on the original graph, so the only difference from its control is the training graph. Classifier is the UGC benchmark's, which already consumes edge weights."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-10-21 06:04:35",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "attack/data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "attack/data/pred/cora_gkron_pred.pkl"
+      ],
+      "numbers": {
+        "g_cora": {
+          "n_known": 270,
+          "n_nodes": 2708,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6284,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 1433,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        }
+      },
+      "notes": "g mirrors the target's hyperparameters but is graph-free and runs on the original features. The adversary cannot tell a reduced box from the control. Pair seed 1 matches the GCond, FGC, UGC and GOREN benchmarks, so all five attack identical pairs."
+    }
+  ]
+}

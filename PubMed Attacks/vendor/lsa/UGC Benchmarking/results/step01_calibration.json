@@ -1,0 +1,76 @@
+{
+  "alpha": {
+    "cora": 0.19,
+    "citeseer": 0.26,
+    "chameleon": 0.2,
+    "squirrel": 0.2,
+    "pubmed": 0.2
+  },
+  "ratio_means": "percent of nodes REMOVED",
+  "probes": [
+    {
+      "dataset": "cora",
+      "ratio": 30,
+      "alpha": 0.19,
+      "target_k": 1896,
+      "bin_width": 0.00185394287109375,
+      "achieved_ratio": 0.2983751846381093,
+      "calibration_error": 0.0016248153618906858,
+      "calibration_converged": false,
+      "calibration_iters": 80,
+      "shipped": null,
+      "k": 1900,
+      "trainable_supernodes": 1313,
+      "max_supernode_size": 6,
+      "mean_supernode_size": 1.4252631664276123,
+      "singleton_supernodes": 1293,
+      "coarse_edges": 5510,
+      "augmented_dim": 4141,
+      "seconds": 10.8
+    },
+    {
+      "dataset": "cora",
+      "ratio": 50,
+      "alpha": 0.19,
+      "target_k": 1354,
+      "bin_width": 0.0041713714599609375,
+      "achieved_ratio": 0.4992614475627769,
+      "calibration_error": 0.0007385524372230945,
+      "calibration_converged": false,
+      "calibration_iters": 80,
+      "shipped": {
+        "bin_width": 0.004,
+        "k": 1398,
+        "achieved_ratio": 0.48375184638109303
+      },
+      "k": 1356,
+      "trainable_supernodes": 1006,
+      "max_supernode_size": 9,
+      "mean_supernode_size": 1.997050166130066,
+      "singleton_supernodes": 676,
+      "coarse_edges": 5507,
+      "augmented_dim": 4141,
+      "seconds": 11.6
+    },
+    {
+      "dataset": "cora",
+      "ratio": 70,
+      "alpha": 0.19,
+      "target_k": 812,
+      "bin_width": 0.009775000777111648,
+      "achieved_ratio": 0.7019940915805022,
+      "calibration_error": 0.001994091580502233,
+      "calibration_converged": false,
+      "calibration_iters": 80,
+      "shipped": null,
+      "k": 807,
+      "trainable_supernodes": 673,
+      "max_supernode_size": 14,
+      "mean_supernode_size": 3.355638265609741,
+      "singleton_supernodes": 265,
+      "coarse_edges": 5355,
+      "augmented_dim": 4141,
+      "seconds": 10.3
+    }
+  ]
+}

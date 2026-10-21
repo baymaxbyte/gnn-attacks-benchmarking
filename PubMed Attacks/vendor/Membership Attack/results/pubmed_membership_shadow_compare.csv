@@ -1,0 +1,11 @@
+dataset,method,ratio,variant,cell,shadow_coarsened_cell,shadow_mlp_coarsened_auc,coarsened_std,shadow_whole_cell,shadow_mlp_whole_auc,whole_std,delta_whole_minus_coarsened
+pubmed,control,,,pubmed_control_whole,cora_control_whole,0.5034,0.0016,cora_control_whole,0.5034,0.0016,0.0
+pubmed,kron,0.3,,pubmed_kron_r0.3,cora_kron_r0.3,,,cora_control_whole,0.4989,0.0026,
+pubmed,kron,0.5,,pubmed_kron_r0.5,cora_kron_r0.5,,,cora_control_whole,0.499,0.0019,
+pubmed,kron,0.7,,pubmed_kron_r0.7,cora_kron_r0.7,,,cora_control_whole,0.4956,0.005,
+pubmed,ugc,0.3,,pubmed_ugc_r0.3,cora_ugc_r0.3,,,cora_control_whole,0.515,0.0023,
+pubmed,ugc,0.5,,pubmed_ugc_r0.5,cora_ugc_r0.5,,,cora_control_whole,0.5061,0.0029,
+pubmed,ugc,0.7,,pubmed_ugc_r0.7,cora_ugc_r0.7,,,cora_control_whole,0.5053,0.0037,
+pubmed,fgc,0.05,,pubmed_fgc_r0.05,cora_fgc_r0.05,,,cora_control_whole,0.4997,0.0009,
+pubmed,fgc,0.1,,pubmed_fgc_r0.1,cora_fgc_r0.1,,,cora_control_whole,0.5029,0.0007,
+pubmed,fgc,0.3,,pubmed_fgc_r0.3,cora_fgc_r0.3,,,cora_control_whole,0.5008,0.001,

@@ -1,0 +1,90 @@
+{
+  "pipeline": "fgc_leakage",
+  "steps": [
+    {
+      "step": "step01_coarsen",
+      "summary": "FGC-with-sparsity coarsenings for 3 (dataset, r) settings; beta selected per setting from the notebook grid",
+      "timestamp": "2026-10-20 19:07:15",
+      "inputs": [
+        "data/dataset/original/ind.{cora,citeseer}.*",
+        "kumar23a.pdf (Table 4 targets)",
+        "Node_classification_FGC_with_sparsity.ipynb (solver, beta grid)"
+      ],
+      "outputs": [
+        "artifacts/coarsened/fgc_cora_r0.3.npz",
+        "artifacts/coarsened/fgc_cora_r0.1.npz",
+        "artifacts/coarsened/fgc_cora_r0.05.npz"
+      ],
+      "numbers": {
+        "settings": 3,
+        "beta_candidates": 5,
+        "cora_0.3_beta": 0.001,
+        "cora_0.1_beta": 0.001,
+        "cora_0.05_beta": 0.001
+      },
+      "notes": "lam=0.001 alpha=1 gamma=0.001 from the notebook driver that calls get_accuracy; the paper's Appendix B values are scale-incompatible with this solver's step. beta unpublished, selected per setting."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built and validated 4 FGC black boxes; 2/4 inside gate, largest Mode A deviation 11.28 points",
+      "timestamp": "2026-10-20 19:07:32",
+      "inputs": [
+        "artifacts/coarsened/*.npz",
+        "data/dataset/original/ind.{cora,citeseer}.*",
+        "kumar23a.pdf (Table 4, Table 6)"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole_orig.npy",
+        "artifacts/posteriors/cora_0.3_orig.npy",
+        "artifacts/posteriors/cora_0.3_lift.npy",
+        "artifacts/posteriors/cora_0.1_orig.npy",
+        "artifacts/posteriors/cora_0.1_lift.npy",
+        "artifacts/posteriors/cora_0.05_orig.npy",
+        "artifacts/posteriors/cora_0.05_lift.npy"
+      ],
+      "numbers": {
+        "boxes": 4,
+        "endpoints": 7,
+        "repeats": 10,
+        "gate_failures": 2,
+        "max_mode_a_deviation": 11.28,
+        "cora_whole_modeA": 97.01,
+        "cora_0.3_modeA": 85.51,
+        "cora_0.1_modeA": 81.35,
+        "cora_0.05_modeA": 68.73,
+        "cora_0.3_modeB": 58.7,
+        "cora_0.1_modeB": 46.05,
+        "cora_0.05_modeB": 33.75
+      },
+      "notes": "Accuracy is in-sample over all n nodes, reproducing the paper's protocol. Served with model.eval(); the notebook never calls it and therefore predicts with dropout active."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 1 datasets and built 4 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-10-20 19:08:01",
+      "inputs": [
+        "artifacts/posteriors/*_orig.npy",
+        "data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "attack/data/pred/cora_gfgc_pred.pkl"
+      ],
+      "numbers": {
+        "g_cora": {
+          "n_known": 270,
+          "n_nodes": 2708,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6231,
+          "graphfree_pairs_checked": 11,
+          "hidden": 64,
+          "epochs": 60,
+          "lr": 0.01,
+          "weight_decay": 0.0001,
+          "dropout": 0.5
+        }
+      },
+      "notes": "g mirrors the FGC target (hidden 64, 60 epochs, lr 0.01, wd 0.0001) but is graph-free, per the link-stealing paper. Adversary holds ORIGINAL uncoarsened attributes and a random 10% of labels. Pair seed 1 matches the GCond benchmark, so both benchmarks attack identical pairs with identical splits."
+    }
+  ]
+}

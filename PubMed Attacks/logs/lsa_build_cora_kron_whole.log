@@ -1,0 +1,14 @@
+
+==============================================================================
+2026-10-21 15:39:26  lsa:kron:ds:cora_whole
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_kronbb_whole_pred.pkl --reference_pred cora_gkron_pred.pkl --name cora_kron_whole --seed 1
+==============================================================================
+dataset=cora  nodes=2708
+  f <- cora_kronbb_whole_pred.pkl
+  g <- cora_gkron_pred.pkl
+  linked pairs: 5278  (from 10556 directed entries)
+  unlinked pairs: 5278  (0.0s)
+  all  :  10556 records  -> data/attack_dataset/cora_kron_whole_attack_all.json
+  train:   5278 records  -> data/attack_dataset/cora_kron_whole_attack_train.json
+  test :   5278 records  -> data/attack_dataset/cora_kron_whole_attack_test.json
+  train_fraction=0.5  (paper: 0.5)

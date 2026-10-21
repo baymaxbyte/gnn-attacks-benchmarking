@@ -1,0 +1,2 @@
+dataset,method,ratio,variant,cell,shadow_coarsened_cell,shadow_mlp_coarsened_auc,coarsened_std,shadow_whole_cell,shadow_mlp_whole_auc,whole_std,delta_whole_minus_coarsened
+cora,control,,,cora_control_whole,citeseer_control_whole,,,citeseer_control_whole,,,

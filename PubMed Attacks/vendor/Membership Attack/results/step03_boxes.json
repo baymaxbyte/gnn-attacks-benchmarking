@@ -1,0 +1,339 @@
+{
+  "target_seeds": [
+    0,
+    1,
+    2
+  ],
+  "boxes": [
+    {
+      "tag": "cora_control_whole",
+      "seed": 0,
+      "member_acc": 95.75,
+      "nonmember_acc": 87.82,
+      "acc_gap": 7.93,
+      "k_train": 2166,
+      "serve": "plain",
+      "seconds": 10.8
+    },
+    {
+      "tag": "cora_control_whole",
+      "seed": 1,
+      "member_acc": 95.34,
+      "nonmember_acc": 88.38,
+      "acc_gap": 6.96,
+      "k_train": 2166,
+      "serve": "plain",
+      "seconds": 10.9
+    },
+    {
+      "tag": "cora_control_whole",
+      "seed": 2,
+      "member_acc": 95.75,
+      "nonmember_acc": 88.01,
+      "acc_gap": 7.75,
+      "k_train": 2166,
+      "serve": "plain",
+      "seconds": 10.9
+    },
+    {
+      "tag": "pubmed_control_whole",
+      "seed": 0,
+      "member_acc": 88.82,
+      "nonmember_acc": 87.95,
+      "acc_gap": 0.87,
+      "k_train": 15774,
+      "serve": "plain",
+      "seconds": 62.4
+    },
+    {
+      "tag": "pubmed_control_whole",
+      "seed": 1,
+      "member_acc": 88.86,
+      "nonmember_acc": 88.03,
+      "acc_gap": 0.83,
+      "k_train": 15774,
+      "serve": "plain",
+      "seconds": 62.7
+    },
+    {
+      "tag": "pubmed_control_whole",
+      "seed": 2,
+      "member_acc": 88.56,
+      "nonmember_acc": 87.67,
+      "acc_gap": 0.88,
+      "k_train": 15774,
+      "serve": "plain",
+      "seconds": 62.8
+    },
+    {
+      "tag": "pubmed_fgc_r0.05",
+      "seed": 0,
+      "member_acc": 73.09,
+      "nonmember_acc": 71.95,
+      "acc_gap": 1.14,
+      "k_train": 438,
+      "serve": "plain",
+      "seconds": 13.9
+    },
+    {
+      "tag": "pubmed_fgc_r0.05",
+      "seed": 1,
+      "member_acc": 72.82,
+      "nonmember_acc": 71.75,
+      "acc_gap": 1.07,
+      "k_train": 438,
+      "serve": "plain",
+      "seconds": 13.0
+    },
+    {
+      "tag": "pubmed_fgc_r0.05",
+      "seed": 2,
+      "member_acc": 73.93,
+      "nonmember_acc": 72.89,
+      "acc_gap": 1.04,
+      "k_train": 438,
+      "serve": "plain",
+      "seconds": 15.0
+    },
+    {
+      "tag": "pubmed_fgc_r0.1",
+      "seed": 0,
+      "member_acc": 81.77,
+      "nonmember_acc": 81.13,
+      "acc_gap": 0.64,
+      "k_train": 1030,
+      "serve": "plain",
+      "seconds": 20.8
+    },
+    {
+      "tag": "pubmed_fgc_r0.1",
+      "seed": 1,
+      "member_acc": 81.37,
+      "nonmember_acc": 80.62,
+      "acc_gap": 0.74,
+      "k_train": 1030,
+      "serve": "plain",
+      "seconds": 17.2
+    },
+    {
+      "tag": "pubmed_fgc_r0.1",
+      "seed": 2,
+      "member_acc": 81.65,
+      "nonmember_acc": 81.18,
+      "acc_gap": 0.47,
+      "k_train": 1030,
+      "serve": "plain",
+      "seconds": 18.5
+    },
+    {
+      "tag": "pubmed_fgc_r0.3",
+      "seed": 0,
+      "member_acc": 84.5,
+      "nonmember_acc": 84.35,
+      "acc_gap": 0.15,
+      "k_train": 4131,
+      "serve": "plain",
+      "seconds": 33.6
+    },
+    {
+      "tag": "pubmed_fgc_r0.3",
+      "seed": 1,
+      "member_acc": 84.6,
+      "nonmember_acc": 84.58,
+      "acc_gap": 0.02,
+      "k_train": 4131,
+      "serve": "plain",
+      "seconds": 31.3
+    },
+    {
+      "tag": "pubmed_fgc_r0.3",
+      "seed": 2,
+      "member_acc": 84.48,
+      "nonmember_acc": 84.2,
+      "acc_gap": 0.28,
+      "k_train": 4131,
+      "serve": "plain",
+      "seconds": 40.4
+    },
+    {
+      "tag": "pubmed_kron_r0.3",
+      "seed": 0,
+      "member_acc": 88.23,
+      "nonmember_acc": 87.65,
+      "acc_gap": 0.58,
+      "k_train": 11042,
+      "serve": "plain",
+      "seconds": 51.4
+    },
+    {
+      "tag": "pubmed_kron_r0.3",
+      "seed": 1,
+      "member_acc": 88.17,
+      "nonmember_acc": 87.62,
+      "acc_gap": 0.55,
+      "k_train": 11042,
+      "serve": "plain",
+      "seconds": 46.5
+    },
+    {
+      "tag": "pubmed_kron_r0.3",
+      "seed": 2,
+      "member_acc": 88.23,
+      "nonmember_acc": 87.47,
+      "acc_gap": 0.76,
+      "k_train": 11042,
+      "serve": "plain",
+      "seconds": 49.3
+    },
+    {
+      "tag": "pubmed_kron_r0.5",
+      "seed": 0,
+      "member_acc": 87.44,
+      "nonmember_acc": 87.01,
+      "acc_gap": 0.42,
+      "k_train": 7887,
+      "serve": "plain",
+      "seconds": 35.4
+    },
+    {
+      "tag": "pubmed_kron_r0.5",
+      "seed": 1,
+      "member_acc": 87.33,
+      "nonmember_acc": 86.91,
+      "acc_gap": 0.41,
+      "k_train": 7887,
+      "serve": "plain",
+      "seconds": 35.2
+    },
+    {
+      "tag": "pubmed_kron_r0.5",
+      "seed": 2,
+      "member_acc": 87.38,
+      "nonmember_acc": 86.86,
+      "acc_gap": 0.52,
+      "k_train": 7887,
+      "serve": "plain",
+      "seconds": 35.4
+    },
+    {
+      "tag": "pubmed_kron_r0.7",
+      "seed": 0,
+      "member_acc": 86.24,
+      "nonmember_acc": 86.66,
+      "acc_gap": -0.42,
+      "k_train": 4732,
+      "serve": "plain",
+      "seconds": 34.8
+    },
+    {
+      "tag": "pubmed_kron_r0.7",
+      "seed": 1,
+      "member_acc": 86.25,
+      "nonmember_acc": 86.69,
+      "acc_gap": -0.44,
+      "k_train": 4732,
+      "serve": "plain",
+      "seconds": 26.2
+    },
+    {
+      "tag": "pubmed_kron_r0.7",
+      "seed": 2,
+      "member_acc": 86.43,
+      "nonmember_acc": 86.96,
+      "acc_gap": -0.54,
+      "k_train": 4732,
+      "serve": "plain",
+      "seconds": 26.3
+    },
+    {
+      "tag": "pubmed_ugc_r0.3",
+      "seed": 0,
+      "member_acc": 88.34,
+      "nonmember_acc": 86.28,
+      "acc_gap": 2.06,
+      "k_train": 11058,
+      "serve": "ugc_aug",
+      "seconds": 280.1
+    },
+    {
+      "tag": "pubmed_ugc_r0.3",
+      "seed": 1,
+      "member_acc": 88.23,
+      "nonmember_acc": 86.56,
+      "acc_gap": 1.67,
+      "k_train": 11058,
+      "serve": "ugc_aug",
+      "seconds": 280.9
+    },
+    {
+      "tag": "pubmed_ugc_r0.3",
+      "seed": 2,
+      "member_acc": 88.32,
+      "nonmember_acc": 85.95,
+      "acc_gap": 2.37,
+      "k_train": 11058,
+      "serve": "ugc_aug",
+      "seconds": 280.5
+    },
+    {
+      "tag": "pubmed_ugc_r0.5",
+      "seed": 0,
+      "member_acc": 86.7,
+      "nonmember_acc": 85.65,
+      "acc_gap": 1.05,
+      "k_train": 7902,
+      "serve": "ugc_aug",
+      "seconds": 213.3
+    },
+    {
+      "tag": "pubmed_ugc_r0.5",
+      "seed": 1,
+      "member_acc": 86.51,
+      "nonmember_acc": 85.82,
+      "acc_gap": 0.69,
+      "k_train": 7902,
+      "serve": "ugc_aug",
+      "seconds": 210.9
+    },
+    {
+      "tag": "pubmed_ugc_r0.5",
+      "seed": 2,
+      "member_acc": 86.48,
+      "nonmember_acc": 85.04,
+      "acc_gap": 1.45,
+      "k_train": 7902,
+      "serve": "ugc_aug",
+      "seconds": 211.5
+    },
+    {
+      "tag": "pubmed_ugc_r0.7",
+      "seed": 0,
+      "member_acc": 85.48,
+      "nonmember_acc": 84.73,
+      "acc_gap": 0.74,
+      "k_train": 4701,
+      "serve": "ugc_aug",
+      "seconds": 136.8
+    },
+    {
+      "tag": "pubmed_ugc_r0.7",
+      "seed": 1,
+      "member_acc": 85.48,
+      "nonmember_acc": 84.63,
+      "acc_gap": 0.85,
+      "k_train": 4701,
+      "serve": "ugc_aug",
+      "seconds": 133.5
+    },
+    {
+      "tag": "pubmed_ugc_r0.7",
+      "seed": 2,
+      "member_acc": 85.48,
+      "nonmember_acc": 84.83,
+      "acc_gap": 0.65,
+      "k_train": 4701,
+      "serve": "ugc_aug",
+      "seconds": 128.6
+    }
+  ]
+}

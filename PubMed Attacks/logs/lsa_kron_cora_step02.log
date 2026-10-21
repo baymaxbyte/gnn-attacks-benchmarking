@@ -1,0 +1,33 @@
+
+==============================================================================
+2026-10-21 06:02:00  lsa:kron:cora:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+building 4 black boxes x 5 runs, 7 workers, CPU
+
+held-out test accuracy (60/20/20, best-validation weights, evaluated on the ORIGINAL graph)
+box                   k   edges   w_mean |       test acc     val    sec
+--------------------------------------------------------------------------
+cora_whole         2708       -        - |  88.74+/- 0.25   87.01  117.6
+cora_0.3           1896    4328    0.994 |  86.81+/- 1.27   86.72   98.6
+cora_0.5           1354    3616    0.936 |  88.00+/- 0.54   86.35   86.3
+cora_0.7            812    3373    0.678 |  85.22+/- 0.64   84.65   75.4
+
+reduction effect (each ratio vs its own un-reduced control)
+setting            control   reduced  reduced - control
+--------------------------------------------------------
+cora_r0.3           88.74     86.81              -1.93
+cora_r0.5           88.74     88.00              -0.74
+cora_r0.7           88.74     85.22              -3.52
+
+served posteriors
+endpoint                shape  distinct   of n  mean max p     acc
+--------------------------------------------------------------------
+cora_whole          (2708, 7)      2581  95.3%      0.9180   88.70
+cora_0.3            (2708, 7)      2588  95.6%      0.9011   86.48
+cora_0.5            (2708, 7)      2589  95.6%      0.8620   88.70
+cora_0.7            (2708, 7)      2588  95.6%      0.8268   84.63
+
+[manifest] recorded step step02_blackbox: Built 4 KRON black boxes across 3 reduction ratios plus no-reduction controls
+
+total 2.0 min

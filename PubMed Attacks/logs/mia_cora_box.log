@@ -1,0 +1,14 @@
+
+==============================================================================
+2026-10-21 11:37:40  mia:cora:box
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only cora --methods control
+==============================================================================
+1 cells, 3 box trainings to run (3 seeds each), 7 workers
+
+cell                          k_tr      serve  mem acc  non acc     gap
+----------------------------------------------------------------------------
+cora_control_whole            2166      plain   95.61%   88.07%  +7.54
+
+[manifest] recorded step step03_blackbox: Trained 3 boxes (1 cells x 3 seeds) and served posteriors on the original graph
+
+total 0.2 min

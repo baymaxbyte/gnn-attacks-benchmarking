@@ -1,0 +1,23 @@
+
+==============================================================================
+2026-10-21 11:37:55  mia:pubmed:split
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_split.py --only pubmed
+==============================================================================
+membership split: uniform-random 20% non-members, seed 42
+
+=== cora ===
+  members / non-members : 2166 / 542  (20.015%)
+  edges (orig -> V_in)  : 5278 -> 3485
+  isolated inside V_in  : 97
+  mean degree (orig)    : members 3.95  non-members 3.69  (close = degree-representative)
+  wrote artifacts/splits/cora_split.npz
+
+=== pubmed ===
+  members / non-members : 15774 / 3943  (19.998%)
+  edges (orig -> V_in)  : 44324 -> 28294
+  isolated inside V_in  : 1750
+  mean degree (orig)    : members 4.49  non-members 4.51  (close = degree-representative)
+  wrote artifacts/splits/pubmed_split.npz
+
+
+[manifest] recorded step step01_split: Built uniform-random 20% member/non-member split for 2 datasets (seed 42)

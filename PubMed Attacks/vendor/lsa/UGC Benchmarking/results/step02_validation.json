@@ -1,0 +1,189 @@
+{
+  "repeats": 5,
+  "gate_tolerance": 2.0,
+  "canonical_seed": 0,
+  "alpha": {
+    "cora": 0.19,
+    "citeseer": 0.26,
+    "chameleon": 0.2,
+    "squirrel": 0.2,
+    "pubmed": 0.2
+  },
+  "boxes": [
+    {
+      "dataset": "cora",
+      "ratio": null,
+      "alpha": 0.19,
+      "k": null,
+      "bin_width": null,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.66666666666666,
+      "test_acc_std": 0.33945005147821505,
+      "test_acc_runs": [
+        88.3333,
+        89.2593,
+        88.7037,
+        88.3333,
+        88.7037
+      ],
+      "best_val_mean": 86.7527687549591,
+      "paper_mean": null,
+      "delta_vs_paper": null,
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_whole.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2582,
+        "mean_max_posterior": 0.9162326455116272,
+        "canonical_test_acc": 88.33333333333333
+      },
+      "seconds": 197.9
+    },
+    {
+      "dataset": "cora",
+      "ratio": 30,
+      "alpha": 0.19,
+      "k": 1896,
+      "bin_width": 0.00185394287109375,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.74074074074073,
+      "test_acc_std": 0.6040557937148163,
+      "test_acc_runs": [
+        86.2963,
+        87.7778,
+        87.037,
+        86.1111,
+        86.4815
+      ],
+      "best_val_mean": 83.91143918037415,
+      "paper_mean": 86.3,
+      "delta_vs_paper": 0.4407407407407362,
+      "coarse": {
+        "k": 1900,
+        "coarse_edges": 5510,
+        "achieved_ratio": 0.2983751846381093,
+        "trainable_supernodes": 1313,
+        "max_supernode_size": 6,
+        "mean_supernode_size": 1.4252631664276123,
+        "singleton_supernodes": 1293
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_30.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2584,
+        "mean_max_posterior": 0.9063326716423035,
+        "canonical_test_acc": 86.29629629629629
+      },
+      "seconds": 169.8
+    },
+    {
+      "dataset": "cora",
+      "ratio": 50,
+      "alpha": 0.19,
+      "k": 1354,
+      "bin_width": 0.0041713714599609375,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.37037037037037,
+      "test_acc_std": 0.2511974067824195,
+      "test_acc_runs": [
+        86.4815,
+        86.6667,
+        85.9259,
+        86.4815,
+        86.2963
+      ],
+      "best_val_mean": 84.28044199943542,
+      "paper_mean": 86.3,
+      "delta_vs_paper": 0.07037037037036953,
+      "coarse": {
+        "k": 1356,
+        "coarse_edges": 5507,
+        "achieved_ratio": 0.4992614475627769,
+        "trainable_supernodes": 1006,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.997050166130066,
+        "singleton_supernodes": 676
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_50.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2580,
+        "mean_max_posterior": 0.9104776382446289,
+        "canonical_test_acc": 86.48148148148148
+      },
+      "seconds": 148.0
+    },
+    {
+      "dataset": "cora",
+      "ratio": 70,
+      "alpha": 0.19,
+      "k": 812,
+      "bin_width": 0.009775000777111648,
+      "feature_dim_augmented": 4141,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 80.25925925925927,
+      "test_acc_std": 0.5925925925925932,
+      "test_acc_runs": [
+        79.6296,
+        79.6296,
+        80.7407,
+        80.1852,
+        81.1111
+      ],
+      "best_val_mean": 78.15498113632202,
+      "paper_mean": 84.63,
+      "delta_vs_paper": -4.370740740740729,
+      "coarse": {
+        "k": 807,
+        "coarse_edges": 5355,
+        "achieved_ratio": 0.7019940915805022,
+        "trainable_supernodes": 673,
+        "max_supernode_size": 14,
+        "mean_supernode_size": 3.355638265609741,
+        "singleton_supernodes": 265
+      },
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_70.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2579,
+        "mean_max_posterior": 0.8902528285980225,
+        "canonical_test_acc": 79.62962962962963
+      },
+      "seconds": 125.7
+    }
+  ]
+}
