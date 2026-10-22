@@ -92,6 +92,18 @@ def run_lsa_method(method, prog, runs, stop_on_fail=True):
 
     R.banner(f"LSA  {method}  ({spec['dir']})  settings={spec['settings']}")
 
+    # GCOND's step02/step03 import the external GCond package (utils.py, models/)
+    # in-process -- ogb, deeprobust, torch_sparse, torchvision -- which live only
+    # in the GCond venv, not the pipeline venv. Run gcond's recipe steps under
+    # GCOND_PYTHON; every other method's steps are self-contained and run under
+    # the pipeline python. (step01_condense already shells out to GCOND_PYTHON for
+    # the condensation itself; this covers the in-process step02/step03.)
+    recipe_py = C.PYTHON
+    if method == "gcond":
+        recipe_py = (os.environ.get("GCOND_PYTHON")
+                     or os.path.join(os.environ.get("GCOND_HOME", ""),
+                                     ".venv", "bin", "python3"))
+
     # --- 1. build pubmed boxes + reference g + published posteriors (scoped pubmed)
     env_pub = R.build_env(scope_datasets=["pubmed"])
     for suffix, script in lsa_recipe(method):
@@ -103,7 +115,7 @@ def run_lsa_method(method, prog, runs, stop_on_fail=True):
             R.log(f"  [warn] {script} not found in {spec['dir']}; skipping")
             prog.mark(key, "missing_script")
             continue
-        rc, dt = R.run_cmd([C.PYTHON, script], bench, env_pub, key)
+        rc, dt = R.run_cmd([recipe_py, script], bench, env_pub, key)
         if rc != 0:
             prog.mark(key, "failed", rc=rc)
             if stop_on_fail:
@@ -123,7 +135,7 @@ def run_lsa_method(method, prog, runs, stop_on_fail=True):
                 continue
             if not os.path.exists(os.path.join(bench, script)):
                 continue
-            rc, dt = R.run_cmd([C.PYTHON, script], bench, env_cora, key)
+            rc, dt = R.run_cmd([recipe_py, script], bench, env_cora, key)
             if rc != 0:
                 prog.mark(key, "failed", rc=rc)
                 if stop_on_fail:
