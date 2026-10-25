@@ -1,0 +1,39 @@
+Namespace(gpu_id=0, dataset='pubmed', dis_metric='ours', epochs=600, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=1.0, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+adj_syn: (60, 60) feat_syn: torch.Size([60, 500])
+Epoch 0, loss_avg: 0.6168372392654419
+Epoch 50, loss_avg: 0.0714119761261999
+Epoch 100, loss_avg: 0.04574896167560071
+Epoch 150, loss_avg: 0.03471437298420844
+Epoch 200, loss_avg: 0.029383492427102156
+Epoch 250, loss_avg: 0.027055870952943966
+Epoch 300, loss_avg: 0.025077557213845688
+Epoch 350, loss_avg: 0.024601870429764947
+Epoch 400, loss_avg: 0.023148174358340892
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.1932 accuracy= 0.9833
+Test set results: loss= 0.6426 accuracy= 0.7580
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.6014 accuracy= 0.9833
+Test set results: loss= 0.9055 accuracy= 0.7540
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.8747 accuracy= 0.9833
+Test set results: loss= 1.0133 accuracy= 0.7410
+Train/Test Mean Accuracy: [array([0.98333333, 0.751     ]), array([0.        , 0.00725718])]
+Epoch 450, loss_avg: 0.02204765669656668
+Epoch 500, loss_avg: 0.022020511597593852
+Epoch 550, loss_avg: 0.021468936054694448
+Epoch 600, loss_avg: 0.020942765519882053
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.1893 accuracy= 0.9833
+Test set results: loss= 0.6710 accuracy= 0.7690
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.1868 accuracy= 0.9833
+Test set results: loss= 0.6254 accuracy= 0.7910
+[saved] saved_repro/{adj,feat,label}_pubmed_1.0_1.pt  adj=(60, 60) feat=(60, 500)
+Train set results: loss= 0.2287 accuracy= 0.9833
+Test set results: loss= 0.6799 accuracy= 0.7860
+Train/Test Mean Accuracy: [array([0.98333333, 0.782     ]), array([0.       , 0.0094163])]
+
+===== STDERR =====

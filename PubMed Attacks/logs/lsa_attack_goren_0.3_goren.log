@@ -1,0 +1,144 @@
+
+==============================================================================
+2026-10-21 20:09:03  lsa:goren:attack:0.3_goren
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.3_goren --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.3_goren_wholeshadow --link_prediction --quiet
+==============================================================================
+target=pubmed_goren_0.3_goren  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+shadow=cora_goren_whole  (its attack dataset is used unsplit)
+attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+
+====================================================================
+Attack-0   K = (x,x,x)
+====================================================================
+  selected metric : correlation
+  AUC             : 0.8700
+  K-means (K=2)   : precision=0.7088  recall=0.9498  f1=0.8118
+
+====================================================================
+Attack-1   K = (x,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8155 +/- 0.0075
+  accuracy        : 0.7740 +/- 0.0056
+  precision/recall/f1 : 0.7177 / 0.9033 / 0.7998
+
+====================================================================
+Attack-2   K = (Y,x,x)
+====================================================================
+  selected metric : target_correlation
+  AUC             : 0.8700
+  K-means (K=2)   : precision=0.7088  recall=0.9498  f1=0.8118
+
+====================================================================
+Attack-3   K = (x,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    features=24  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 24
+  AUC             : 0.9173 +/- 0.0004
+  accuracy        : 0.8459 +/- 0.0012
+  precision/recall/f1 : 0.8482 / 0.8427 / 0.8454
+
+====================================================================
+Attack-4   K = (x,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8943 +/- 0.0023
+  accuracy        : 0.8130 +/- 0.0013
+  precision/recall/f1 : 0.7807 / 0.8706 / 0.8232
+
+====================================================================
+Attack-5   K = (Y,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9119 +/- 0.0041
+  accuracy        : 0.8219 +/- 0.0046
+  precision/recall/f1 : 0.7737 / 0.9101 / 0.8363
+
+====================================================================
+Attack-6   K = (Y,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    features=56  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 56
+  AUC             : 0.9564 +/- 0.0003
+  accuracy        : 0.8924 +/- 0.0014
+  precision/recall/f1 : 0.8905 / 0.8950 / 0.8927
+
+====================================================================
+Attack-7   K = (Y,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9434 +/- 0.0016
+  accuracy        : 0.8579 +/- 0.0015
+  precision/recall/f1 : 0.8127 / 0.9303 / 0.8675
+
+====================================================================
+Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+====================================================================
+    partial graph: 5000 edges over 5929 nodes
+  features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+  AUC             : 0.6329 +/- 0.0000
+  precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+
+====================================================================
+SUMMARY   target=pubmed_goren_0.3_goren   shadow=cora_goren_whole
+====================================================================
+  attack   K=(F,A*,D)    AUC       std      runs  
+  Attack-0  (x,x,x)       0.8700    -        1     
+  Attack-1  (x,x,Y)       0.8155    0.0075   5     
+  Attack-2  (Y,x,x)       0.8700    -        1     
+  Attack-3  (x,Y,x)       0.9173    0.0004   5     
+  Attack-4  (x,Y,Y)       0.8943    0.0023   5     
+  Attack-5  (Y,x,Y)       0.9119    0.0041   5     
+  Attack-6  (Y,Y,x)       0.9564    0.0003   5     
+  Attack-7  (Y,Y,Y)       0.9434    0.0016   5     
+  link-pred (baseline)    0.6329    0.0000   5     
+
+  8/8 attacks beat the link-prediction baseline
+
+[saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow/pubmed_goren_0.3_goren__cora_goren_whole__goren_E_0.3_goren_wholeshadow.json

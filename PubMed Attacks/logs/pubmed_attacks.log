@@ -571,3 +571,561 @@
 2026-10-21 16:20:14  ==============================================================================
 2026-10-21 16:20:14  RUN COMPLETE (re-run the same command to resume anything unfinished)
 2026-10-21 16:20:14  ==============================================================================
+2026-10-21 18:29:21  ==============================================================================
+2026-10-21 18:29:21  PubMed attacks: end-to-end run
+2026-10-21 18:29:21  ==============================================================================
+2026-10-21 18:29:21  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 18:29:21  only=both  runs=5  skip_data=False
+2026-10-21 18:29:21  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 18:29:21  [data] skipped
+2026-10-21 18:29:21  LSA methods to run: ['goren', 'gcond']
+2026-10-21 18:29:21  ==============================================================================
+2026-10-21 18:29:21  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-21 18:29:21  ==============================================================================
+2026-10-21 18:29:21  [run] lsa:goren:step01
+2026-10-21 18:29:21        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 18:29:21        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 18:29:21        step-log -> logs/lsa_goren_step01.log
+2026-10-21 18:29:22  [FAIL] lsa:goren:step01  rc=1  0.0 min
+2026-10-21 18:51:32  ==============================================================================
+2026-10-21 18:51:32  PubMed attacks: end-to-end run
+2026-10-21 18:51:32  ==============================================================================
+2026-10-21 18:51:32  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 18:51:32  only=both  runs=5  skip_data=False
+2026-10-21 18:51:32  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 18:51:32  [data] skipped
+2026-10-21 18:51:32  LSA methods to run: ['goren', 'gcond']
+2026-10-21 18:51:32  ==============================================================================
+2026-10-21 18:51:32  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-21 18:51:32  ==============================================================================
+2026-10-21 18:51:32  [run] lsa:goren:step01
+2026-10-21 18:51:32        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 18:51:32        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 18:51:32        step-log -> logs/lsa_goren_step01.log
+2026-10-21 18:52:14  [ok] lsa:goren:step01  rc=0  0.7 min
+2026-10-21 18:52:14  [run] lsa:goren:step02a_weights
+2026-10-21 18:52:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 18:52:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+2026-10-21 18:52:14        step-log -> logs/lsa_goren_step02a_weights.log
+2026-10-21 19:07:01  ==============================================================================
+2026-10-21 19:07:01  PubMed attacks: end-to-end run
+2026-10-21 19:07:01  ==============================================================================
+2026-10-21 19:07:01  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 19:07:01  only=both  runs=5  skip_data=False
+2026-10-21 19:07:01  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 19:07:01  [data] skipped
+2026-10-21 19:07:01  LSA methods to run: ['goren', 'gcond']
+2026-10-21 19:07:01  ==============================================================================
+2026-10-21 19:07:01  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-21 19:07:01  ==============================================================================
+2026-10-21 19:07:01    [skip] lsa:goren:step01 (progress)
+2026-10-21 19:07:01  [run] lsa:goren:step02a_weights
+2026-10-21 19:07:01        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:07:01        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+2026-10-21 19:07:01        step-log -> logs/lsa_goren_step02a_weights.log
+2026-10-21 19:42:53  [ok] lsa:goren:step02a_weights  rc=0  35.9 min
+2026-10-21 19:42:53  [run] lsa:goren:step02
+2026-10-21 19:42:53        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:42:53        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 19:42:53        step-log -> logs/lsa_goren_step02.log
+2026-10-21 19:54:51  [ok] lsa:goren:step02  rc=0  12.0 min
+2026-10-21 19:54:51  [run] lsa:goren:step03
+2026-10-21 19:54:51        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:54:51        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 19:54:51        step-log -> logs/lsa_goren_step03.log
+2026-10-21 19:56:14  [ok] lsa:goren:step03  rc=0  1.4 min
+2026-10-21 19:56:14    [LSA goren] cora pred pkls missing -> building cora boxes
+2026-10-21 19:56:14  [run] lsa:goren:cora:step01
+2026-10-21 19:56:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:56:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+2026-10-21 19:56:14        step-log -> logs/lsa_goren_cora_step01.log
+2026-10-21 19:56:28  [ok] lsa:goren:cora:step01  rc=0  0.2 min
+2026-10-21 19:56:28  [run] lsa:goren:cora:step02a_weights
+2026-10-21 19:56:28        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:56:28        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+2026-10-21 19:56:28        step-log -> logs/lsa_goren_cora_step02a_weights.log
+2026-10-21 19:56:48  [ok] lsa:goren:cora:step02a_weights  rc=0  0.3 min
+2026-10-21 19:56:48  [run] lsa:goren:cora:step02
+2026-10-21 19:56:48        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:56:48        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 19:56:48        step-log -> logs/lsa_goren_cora_step02.log
+2026-10-21 19:58:55  [ok] lsa:goren:cora:step02  rc=0  2.1 min
+2026-10-21 19:58:55  [run] lsa:goren:cora:step03
+2026-10-21 19:58:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking
+2026-10-21 19:58:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+2026-10-21 19:58:55        step-log -> logs/lsa_goren_cora_step03.log
+2026-10-21 19:59:48  [ok] lsa:goren:cora:step03  rc=0  0.9 min
+2026-10-21 19:59:48    [cached] attack_dataset cora_goren_whole
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_whole
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.3_bl
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.3_goren
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.5_bl
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.5_goren
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.7_bl
+2026-10-21 19:59:48    [cached] attack_dataset pubmed_goren_0.7_goren
+2026-10-21 19:59:48  [run] lsa:goren:attack:whole
+2026-10-21 19:59:48        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 19:59:48        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_whole --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_whole_wholeshadow --link_prediction --quiet
+2026-10-21 19:59:48        step-log -> logs/lsa_attack_goren_whole.log
+2026-10-21 20:04:26  [ok] lsa:goren:attack:whole  rc=0  4.6 min
+2026-10-21 20:04:26  [run] lsa:goren:attack:0.3_bl
+2026-10-21 20:04:26        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:04:26        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.3_bl --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.3_bl_wholeshadow --link_prediction --quiet
+2026-10-21 20:04:26        step-log -> logs/lsa_attack_goren_0.3_bl.log
+2026-10-21 20:09:03  [ok] lsa:goren:attack:0.3_bl  rc=0  4.6 min
+2026-10-21 20:09:03  [run] lsa:goren:attack:0.3_goren
+2026-10-21 20:09:03        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:09:03        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.3_goren --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.3_goren_wholeshadow --link_prediction --quiet
+2026-10-21 20:09:03        step-log -> logs/lsa_attack_goren_0.3_goren.log
+2026-10-21 20:13:39  [ok] lsa:goren:attack:0.3_goren  rc=0  4.6 min
+2026-10-21 20:13:39  [run] lsa:goren:attack:0.5_bl
+2026-10-21 20:13:39        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:13:39        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.5_bl --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.5_bl_wholeshadow --link_prediction --quiet
+2026-10-21 20:13:39        step-log -> logs/lsa_attack_goren_0.5_bl.log
+2026-10-21 20:18:14  [ok] lsa:goren:attack:0.5_bl  rc=0  4.6 min
+2026-10-21 20:18:14  [run] lsa:goren:attack:0.5_goren
+2026-10-21 20:18:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:18:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.5_goren --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.5_goren_wholeshadow --link_prediction --quiet
+2026-10-21 20:18:14        step-log -> logs/lsa_attack_goren_0.5_goren.log
+2026-10-21 20:22:55  [ok] lsa:goren:attack:0.5_goren  rc=0  4.7 min
+2026-10-21 20:22:55  [run] lsa:goren:attack:0.7_bl
+2026-10-21 20:22:55        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:22:55        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.7_bl --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.7_bl_wholeshadow --link_prediction --quiet
+2026-10-21 20:22:55        step-log -> logs/lsa_attack_goren_0.7_bl.log
+2026-10-21 20:27:32  [ok] lsa:goren:attack:0.7_bl  rc=0  4.6 min
+2026-10-21 20:27:32  [run] lsa:goren:attack:0.7_goren
+2026-10-21 20:27:32        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 20:27:32        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.7_goren --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.7_goren_wholeshadow --link_prediction --quiet
+2026-10-21 20:27:32        step-log -> logs/lsa_attack_goren_0.7_goren.log
+2026-10-21 20:32:11  [ok] lsa:goren:attack:0.7_goren  rc=0  4.6 min
+2026-10-21 20:32:11    [cleanup] removed 42 attack_dataset files for goren
+2026-10-21 20:32:11  [LSA goren] complete
+2026-10-21 20:32:11  ==============================================================================
+2026-10-21 20:32:11  LSA  gcond  (GCOND Benchmarking)  settings=['whole', '0.25', '0.5', '1.0']
+2026-10-21 20:32:11  ==============================================================================
+2026-10-21 20:32:11  [run] lsa:gcond:step01
+2026-10-21 20:32:11        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-21 20:32:11        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+2026-10-21 20:32:11        step-log -> logs/lsa_gcond_step01.log
+2026-10-21 20:32:15  [FAIL] lsa:gcond:step01  rc=1  0.1 min
+2026-10-21 21:07:06  ==============================================================================
+2026-10-21 21:07:06  PubMed attacks: end-to-end run
+2026-10-21 21:07:06  ==============================================================================
+2026-10-21 21:07:06  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 21:07:06  only=both  runs=5  skip_data=False
+2026-10-21 21:07:06  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 21:07:06  [data] skipped
+2026-10-21 21:07:06  LSA methods to run: ['goren', 'gcond']
+2026-10-21 21:07:06  ==============================================================================
+2026-10-21 21:07:06  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-21 21:07:06  ==============================================================================
+2026-10-21 21:07:06    [skip] lsa:goren:step01 (progress)
+2026-10-21 21:07:06    [skip] lsa:goren:step02a_weights (progress)
+2026-10-21 21:07:06    [skip] lsa:goren:step02 (progress)
+2026-10-21 21:07:06    [skip] lsa:goren:step03 (progress)
+2026-10-21 21:07:06  [run] lsa:goren:ds:cora_whole
+2026-10-21 21:07:06        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:06        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_gorenbb_whole_pred.pkl --reference_pred cora_ggoren_pred.pkl --name cora_goren_whole --seed 1
+2026-10-21 21:07:06        step-log -> logs/lsa_build_cora_goren_whole.log
+2026-10-21 21:07:12  [ok] lsa:goren:ds:cora_whole  rc=0  0.1 min
+2026-10-21 21:07:12  [run] lsa:goren:ds:pubmed_whole
+2026-10-21 21:07:12        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:12        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_whole_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_whole --seed 1 --max_pos 10000
+2026-10-21 21:07:12        step-log -> logs/lsa_build_pubmed_goren_whole.log
+2026-10-21 21:07:20  [ok] lsa:goren:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 21:07:20  [run] lsa:goren:ds:pubmed_0.3_bl
+2026-10-21 21:07:20        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:20        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_bl --seed 1 --max_pos 10000
+2026-10-21 21:07:20        step-log -> logs/lsa_build_pubmed_goren_0.3_bl.log
+2026-10-21 21:07:27  [ok] lsa:goren:ds:pubmed_0.3_bl  rc=0  0.1 min
+2026-10-21 21:07:27  [run] lsa:goren:ds:pubmed_0.3_goren
+2026-10-21 21:07:27        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:27        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_goren --seed 1 --max_pos 10000
+2026-10-21 21:07:27        step-log -> logs/lsa_build_pubmed_goren_0.3_goren.log
+2026-10-21 21:07:35  [ok] lsa:goren:ds:pubmed_0.3_goren  rc=0  0.1 min
+2026-10-21 21:07:35  [run] lsa:goren:ds:pubmed_0.5_bl
+2026-10-21 21:07:35        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:35        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_bl --seed 1 --max_pos 10000
+2026-10-21 21:07:35        step-log -> logs/lsa_build_pubmed_goren_0.5_bl.log
+2026-10-21 21:07:42  [ok] lsa:goren:ds:pubmed_0.5_bl  rc=0  0.1 min
+2026-10-21 21:07:42  [run] lsa:goren:ds:pubmed_0.5_goren
+2026-10-21 21:07:42        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:42        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_goren --seed 1 --max_pos 10000
+2026-10-21 21:07:42        step-log -> logs/lsa_build_pubmed_goren_0.5_goren.log
+2026-10-21 21:07:50  [ok] lsa:goren:ds:pubmed_0.5_goren  rc=0  0.1 min
+2026-10-21 21:07:50  [run] lsa:goren:ds:pubmed_0.7_bl
+2026-10-21 21:07:50        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:50        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_bl --seed 1 --max_pos 10000
+2026-10-21 21:07:50        step-log -> logs/lsa_build_pubmed_goren_0.7_bl.log
+2026-10-21 21:07:57  [ok] lsa:goren:ds:pubmed_0.7_bl  rc=0  0.1 min
+2026-10-21 21:07:57  [run] lsa:goren:ds:pubmed_0.7_goren
+2026-10-21 21:07:57        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:07:57        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_goren --seed 1 --max_pos 10000
+2026-10-21 21:07:57        step-log -> logs/lsa_build_pubmed_goren_0.7_goren.log
+2026-10-21 21:08:05  [ok] lsa:goren:ds:pubmed_0.7_goren  rc=0  0.1 min
+2026-10-21 21:08:05    [skip] attack goren/whole (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.3_bl (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.3_goren (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.5_bl (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.5_goren (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.7_bl (exists)
+2026-10-21 21:08:05    [skip] attack goren/0.7_goren (exists)
+2026-10-21 21:08:05    [cleanup] removed 24 attack_dataset files for goren
+2026-10-21 21:08:05  [LSA goren] complete
+2026-10-21 21:08:05  ==============================================================================
+2026-10-21 21:08:05  LSA  gcond  (GCOND Benchmarking)  settings=['whole', '0.25', '0.5', '1.0']
+2026-10-21 21:08:05  ==============================================================================
+2026-10-21 21:08:05  [run] lsa:gcond:step01
+2026-10-21 21:08:05        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-21 21:08:05        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+2026-10-21 21:08:05        step-log -> logs/lsa_gcond_step01.log
+2026-10-21 21:19:16  ==============================================================================
+2026-10-21 21:19:16  PubMed attacks: end-to-end run
+2026-10-21 21:19:16  ==============================================================================
+2026-10-21 21:19:16  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-21 21:19:16  only=both  runs=5  skip_data=False
+2026-10-21 21:19:16  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-21 21:19:16  [data] skipped
+2026-10-21 21:19:16  LSA methods to run: ['goren', 'gcond']
+2026-10-21 21:19:16  ==============================================================================
+2026-10-21 21:19:16  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-21 21:19:16  ==============================================================================
+2026-10-21 21:19:16    [skip] lsa:goren:step01 (progress)
+2026-10-21 21:19:16    [skip] lsa:goren:step02a_weights (progress)
+2026-10-21 21:19:16    [skip] lsa:goren:step02 (progress)
+2026-10-21 21:19:16    [skip] lsa:goren:step03 (progress)
+2026-10-21 21:19:16  [run] lsa:goren:ds:cora_whole
+2026-10-21 21:19:16        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:16        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_gorenbb_whole_pred.pkl --reference_pred cora_ggoren_pred.pkl --name cora_goren_whole --seed 1
+2026-10-21 21:19:16        step-log -> logs/lsa_build_cora_goren_whole.log
+2026-10-21 21:19:23  [ok] lsa:goren:ds:cora_whole  rc=0  0.1 min
+2026-10-21 21:19:23  [run] lsa:goren:ds:pubmed_whole
+2026-10-21 21:19:23        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:23        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_whole_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_whole --seed 1 --max_pos 10000
+2026-10-21 21:19:23        step-log -> logs/lsa_build_pubmed_goren_whole.log
+2026-10-21 21:19:30  [ok] lsa:goren:ds:pubmed_whole  rc=0  0.1 min
+2026-10-21 21:19:30  [run] lsa:goren:ds:pubmed_0.3_bl
+2026-10-21 21:19:30        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:30        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_bl --seed 1 --max_pos 10000
+2026-10-21 21:19:30        step-log -> logs/lsa_build_pubmed_goren_0.3_bl.log
+2026-10-21 21:19:38  [ok] lsa:goren:ds:pubmed_0.3_bl  rc=0  0.1 min
+2026-10-21 21:19:38  [run] lsa:goren:ds:pubmed_0.3_goren
+2026-10-21 21:19:38        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:38        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_goren --seed 1 --max_pos 10000
+2026-10-21 21:19:38        step-log -> logs/lsa_build_pubmed_goren_0.3_goren.log
+2026-10-21 21:19:45  [ok] lsa:goren:ds:pubmed_0.3_goren  rc=0  0.1 min
+2026-10-21 21:19:45  [run] lsa:goren:ds:pubmed_0.5_bl
+2026-10-21 21:19:45        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:45        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_bl --seed 1 --max_pos 10000
+2026-10-21 21:19:45        step-log -> logs/lsa_build_pubmed_goren_0.5_bl.log
+2026-10-21 21:19:53  [ok] lsa:goren:ds:pubmed_0.5_bl  rc=0  0.1 min
+2026-10-21 21:19:53  [run] lsa:goren:ds:pubmed_0.5_goren
+2026-10-21 21:19:53        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:19:53        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_goren --seed 1 --max_pos 10000
+2026-10-21 21:19:53        step-log -> logs/lsa_build_pubmed_goren_0.5_goren.log
+2026-10-21 21:20:01  [ok] lsa:goren:ds:pubmed_0.5_goren  rc=0  0.1 min
+2026-10-21 21:20:01  [run] lsa:goren:ds:pubmed_0.7_bl
+2026-10-21 21:20:01        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:20:01        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_bl --seed 1 --max_pos 10000
+2026-10-21 21:20:01        step-log -> logs/lsa_build_pubmed_goren_0.7_bl.log
+2026-10-21 21:20:08  [ok] lsa:goren:ds:pubmed_0.7_bl  rc=0  0.1 min
+2026-10-21 21:20:08  [run] lsa:goren:ds:pubmed_0.7_goren
+2026-10-21 21:20:08        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-21 21:20:08        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_goren --seed 1 --max_pos 10000
+2026-10-21 21:20:08        step-log -> logs/lsa_build_pubmed_goren_0.7_goren.log
+2026-10-21 21:20:16  [ok] lsa:goren:ds:pubmed_0.7_goren  rc=0  0.1 min
+2026-10-21 21:20:16    [skip] attack goren/whole (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.3_bl (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.3_goren (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.5_bl (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.5_goren (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.7_bl (exists)
+2026-10-21 21:20:16    [skip] attack goren/0.7_goren (exists)
+2026-10-21 21:20:16    [cleanup] removed 24 attack_dataset files for goren
+2026-10-21 21:20:16  [LSA goren] complete
+2026-10-21 21:20:16  ==============================================================================
+2026-10-21 21:20:16  LSA  gcond  (GCOND Benchmarking)  settings=['whole', '0.25', '0.5', '1.0']
+2026-10-21 21:20:16  ==============================================================================
+2026-10-21 21:20:16  [run] lsa:gcond:step01
+2026-10-21 21:20:16        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-21 21:20:16        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+2026-10-21 21:20:16        step-log -> logs/lsa_gcond_step01.log
+2026-10-21 21:35:37  [ok] lsa:gcond:step01  rc=0  15.3 min
+2026-10-21 21:35:37  [run] lsa:gcond:step02
+2026-10-21 21:35:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-21 21:35:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+2026-10-21 21:35:37        step-log -> logs/lsa_gcond_step02.log
+2026-10-21 21:35:39  [FAIL] lsa:gcond:step02  rc=1  0.0 min
+2026-10-22 05:18:00  ==============================================================================
+2026-10-22 05:18:00  PubMed attacks: end-to-end run
+2026-10-22 05:18:00  ==============================================================================
+2026-10-22 05:18:00  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-22 05:18:00  only=both  runs=5  skip_data=False
+2026-10-22 05:18:00  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-22 05:18:00  [data] skipped
+2026-10-22 05:18:00  LSA methods to run: ['goren', 'gcond']
+2026-10-22 05:18:00  ==============================================================================
+2026-10-22 05:18:00  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-22 05:18:00  ==============================================================================
+2026-10-22 05:18:00    [skip] lsa:goren:step01 (progress)
+2026-10-22 05:18:00    [skip] lsa:goren:step02a_weights (progress)
+2026-10-22 05:18:00    [skip] lsa:goren:step02 (progress)
+2026-10-22 05:18:00    [skip] lsa:goren:step03 (progress)
+2026-10-22 05:18:00  [run] lsa:goren:ds:cora_whole
+2026-10-22 05:18:00        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:00        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_gorenbb_whole_pred.pkl --reference_pred cora_ggoren_pred.pkl --name cora_goren_whole --seed 1
+2026-10-22 05:18:00        step-log -> logs/lsa_build_cora_goren_whole.log
+2026-10-22 05:18:07  [ok] lsa:goren:ds:cora_whole  rc=0  0.1 min
+2026-10-22 05:18:07  [run] lsa:goren:ds:pubmed_whole
+2026-10-22 05:18:07        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:07        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_whole_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_whole --seed 1 --max_pos 10000
+2026-10-22 05:18:07        step-log -> logs/lsa_build_pubmed_goren_whole.log
+2026-10-22 05:18:14  [ok] lsa:goren:ds:pubmed_whole  rc=0  0.1 min
+2026-10-22 05:18:14  [run] lsa:goren:ds:pubmed_0.3_bl
+2026-10-22 05:18:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_bl --seed 1 --max_pos 10000
+2026-10-22 05:18:14        step-log -> logs/lsa_build_pubmed_goren_0.3_bl.log
+2026-10-22 05:18:22  [ok] lsa:goren:ds:pubmed_0.3_bl  rc=0  0.1 min
+2026-10-22 05:18:22  [run] lsa:goren:ds:pubmed_0.3_goren
+2026-10-22 05:18:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_goren --seed 1 --max_pos 10000
+2026-10-22 05:18:22        step-log -> logs/lsa_build_pubmed_goren_0.3_goren.log
+2026-10-22 05:18:29  [ok] lsa:goren:ds:pubmed_0.3_goren  rc=0  0.1 min
+2026-10-22 05:18:29  [run] lsa:goren:ds:pubmed_0.5_bl
+2026-10-22 05:18:29        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:29        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_bl --seed 1 --max_pos 10000
+2026-10-22 05:18:29        step-log -> logs/lsa_build_pubmed_goren_0.5_bl.log
+2026-10-22 05:18:37  [ok] lsa:goren:ds:pubmed_0.5_bl  rc=0  0.1 min
+2026-10-22 05:18:37  [run] lsa:goren:ds:pubmed_0.5_goren
+2026-10-22 05:18:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_goren --seed 1 --max_pos 10000
+2026-10-22 05:18:37        step-log -> logs/lsa_build_pubmed_goren_0.5_goren.log
+2026-10-22 05:18:45  [ok] lsa:goren:ds:pubmed_0.5_goren  rc=0  0.1 min
+2026-10-22 05:18:45  [run] lsa:goren:ds:pubmed_0.7_bl
+2026-10-22 05:18:45        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:45        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_bl --seed 1 --max_pos 10000
+2026-10-22 05:18:45        step-log -> logs/lsa_build_pubmed_goren_0.7_bl.log
+2026-10-22 05:18:52  [ok] lsa:goren:ds:pubmed_0.7_bl  rc=0  0.1 min
+2026-10-22 05:18:52  [run] lsa:goren:ds:pubmed_0.7_goren
+2026-10-22 05:18:52        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 05:18:52        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_goren --seed 1 --max_pos 10000
+2026-10-22 05:18:52        step-log -> logs/lsa_build_pubmed_goren_0.7_goren.log
+2026-10-22 05:19:00  [ok] lsa:goren:ds:pubmed_0.7_goren  rc=0  0.1 min
+2026-10-22 05:19:00    [skip] attack goren/whole (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.3_bl (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.3_goren (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.5_bl (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.5_goren (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.7_bl (exists)
+2026-10-22 05:19:00    [skip] attack goren/0.7_goren (exists)
+2026-10-22 05:19:00    [cleanup] removed 24 attack_dataset files for goren
+2026-10-22 05:19:00  [LSA goren] complete
+2026-10-22 05:19:00  ==============================================================================
+2026-10-22 05:19:00  LSA  gcond  (GCOND Benchmarking)  settings=['whole', '0.25', '0.5', '1.0']
+2026-10-22 05:19:00  ==============================================================================
+2026-10-22 05:19:00    [skip] lsa:gcond:step01 (progress)
+2026-10-22 05:19:00  [run] lsa:gcond:step02
+2026-10-22 05:19:00        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-22 05:19:00        cmd=/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step02_blackbox.py
+2026-10-22 05:19:00        step-log -> logs/lsa_gcond_step02.log
+2026-10-22 05:31:38  [ok] lsa:gcond:step02  rc=0  12.6 min
+2026-10-22 05:31:38  [run] lsa:gcond:step03
+2026-10-22 05:31:38        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-22 05:31:38        cmd=/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step03_attacker.py
+2026-10-22 05:31:38        step-log -> logs/lsa_gcond_step03.log
+2026-10-22 05:32:24  [ok] lsa:gcond:step03  rc=0  0.8 min
+2026-10-22 05:32:24    [LSA gcond] cora pred pkls missing -> building cora boxes
+2026-10-22 05:32:24  [run] lsa:gcond:cora:step01
+2026-10-22 05:32:24        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-22 05:32:24        cmd=/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step01_condense.py
+2026-10-22 05:32:24        step-log -> logs/lsa_gcond_cora_step01.log
+2026-10-22 06:34:41  [ok] lsa:gcond:cora:step01  rc=0  62.3 min
+2026-10-22 06:34:41  [run] lsa:gcond:cora:step02
+2026-10-22 06:34:41        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-22 06:34:41        cmd=/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step02_blackbox.py
+2026-10-22 06:34:41        step-log -> logs/lsa_gcond_cora_step02.log
+2026-10-22 06:37:06  [ok] lsa:gcond:cora:step02  rc=0  2.4 min
+2026-10-22 06:37:06  [run] lsa:gcond:cora:step03
+2026-10-22 06:37:06        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking
+2026-10-22 06:37:06        cmd=/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step03_attacker.py
+2026-10-22 06:37:06        step-log -> logs/lsa_gcond_cora_step03.log
+2026-10-22 06:37:39  [ok] lsa:gcond:cora:step03  rc=0  0.5 min
+2026-10-22 06:37:39    [cached] attack_dataset cora_gc_whole
+2026-10-22 06:37:39    [cached] attack_dataset pubmed_gc_whole
+2026-10-22 06:37:39    [cached] attack_dataset pubmed_gc_0.25
+2026-10-22 06:37:39    [cached] attack_dataset pubmed_gc_0.5
+2026-10-22 06:37:39    [cached] attack_dataset pubmed_gc_1.0
+2026-10-22 06:37:39  [run] lsa:gcond:attack:whole
+2026-10-22 06:37:39        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 06:37:39        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_gc_whole --shadow cora_gc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/attacks_wholeshadow --runs 5 --tag gc_E_whole_wholeshadow --link_prediction --quiet
+2026-10-22 06:37:39        step-log -> logs/lsa_attack_gcond_whole.log
+2026-10-22 06:42:20  [ok] lsa:gcond:attack:whole  rc=0  4.7 min
+2026-10-22 06:42:20  [run] lsa:gcond:attack:0.25
+2026-10-22 06:42:20        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 06:42:20        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_gc_0.25 --shadow cora_gc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/attacks_wholeshadow --runs 5 --tag gc_E_0.25_wholeshadow --link_prediction --quiet
+2026-10-22 06:42:20        step-log -> logs/lsa_attack_gcond_0.25.log
+2026-10-22 06:46:59  [ok] lsa:gcond:attack:0.25  rc=0  4.7 min
+2026-10-22 06:46:59  [run] lsa:gcond:attack:0.5
+2026-10-22 06:46:59        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 06:46:59        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_gc_0.5 --shadow cora_gc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/attacks_wholeshadow --runs 5 --tag gc_E_0.5_wholeshadow --link_prediction --quiet
+2026-10-22 06:46:59        step-log -> logs/lsa_attack_gcond_0.5.log
+2026-10-22 06:51:38  [ok] lsa:gcond:attack:0.5  rc=0  4.6 min
+2026-10-22 06:51:38  [run] lsa:gcond:attack:1.0
+2026-10-22 06:51:38        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 06:51:38        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_gc_1.0 --shadow cora_gc_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/results/attacks_wholeshadow --runs 5 --tag gc_E_1.0_wholeshadow --link_prediction --quiet
+2026-10-22 06:51:38        step-log -> logs/lsa_attack_gcond_1.0.log
+2026-10-22 06:56:17  [ok] lsa:gcond:attack:1.0  rc=0  4.7 min
+2026-10-22 06:56:18    [cleanup] removed 24 attack_dataset files for gcond
+2026-10-22 06:56:18  [LSA gcond] complete
+2026-10-22 06:56:18  membership methods to run: ['control', 'goren', 'gcond']
+2026-10-22 06:56:18  ==============================================================================
+2026-10-22 06:56:18  MEMBERSHIP  methods=['control', 'goren', 'gcond']  (shadow = whole cora)
+2026-10-22 06:56:18  ==============================================================================
+2026-10-22 06:56:18    [membership] cora_control_whole posteriors present (shadow ready)
+2026-10-22 06:56:18    [skip] mia:pubmed:split (progress)
+2026-10-22 06:56:18  [run] mia:pubmed:reduce
+2026-10-22 06:56:18        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-22 06:56:18        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,goren,gcond
+2026-10-22 06:56:18        step-log -> logs/mia_pubmed_reduce.log
+2026-10-22 06:56:20  [FAIL] mia:pubmed:reduce  rc=1  0.0 min
+2026-10-22 07:15:00  ==============================================================================
+2026-10-22 07:15:00  PubMed attacks: end-to-end run
+2026-10-22 07:15:00  ==============================================================================
+2026-10-22 07:15:00  python=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python
+2026-10-22 07:15:00  only=both  runs=5  skip_data=False
+2026-10-22 07:15:00  UGC alpha(pubmed)=0.2  (only invented hyperparameter)
+2026-10-22 07:15:00  [data] skipped
+2026-10-22 07:15:00  LSA methods to run: ['goren', 'gcond']
+2026-10-22 07:15:00  ==============================================================================
+2026-10-22 07:15:00  LSA  goren  (GOREN Benchmarking)  settings=['whole', '0.3_bl', '0.3_goren', '0.5_bl', '0.5_goren', '0.7_bl', '0.7_goren']
+2026-10-22 07:15:00  ==============================================================================
+2026-10-22 07:15:00    [skip] lsa:goren:step01 (progress)
+2026-10-22 07:15:00    [skip] lsa:goren:step02a_weights (progress)
+2026-10-22 07:15:00    [skip] lsa:goren:step02 (progress)
+2026-10-22 07:15:00    [skip] lsa:goren:step03 (progress)
+2026-10-22 07:15:00  [run] lsa:goren:ds:cora_whole
+2026-10-22 07:15:00        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:00        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_gorenbb_whole_pred.pkl --reference_pred cora_ggoren_pred.pkl --name cora_goren_whole --seed 1
+2026-10-22 07:15:00        step-log -> logs/lsa_build_cora_goren_whole.log
+2026-10-22 07:15:07  [ok] lsa:goren:ds:cora_whole  rc=0  0.1 min
+2026-10-22 07:15:07  [run] lsa:goren:ds:pubmed_whole
+2026-10-22 07:15:07        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:07        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_whole_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_whole --seed 1 --max_pos 10000
+2026-10-22 07:15:07        step-log -> logs/lsa_build_pubmed_goren_whole.log
+2026-10-22 07:15:15  [ok] lsa:goren:ds:pubmed_whole  rc=0  0.1 min
+2026-10-22 07:15:15  [run] lsa:goren:ds:pubmed_0.3_bl
+2026-10-22 07:15:15        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:15        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_bl --seed 1 --max_pos 10000
+2026-10-22 07:15:15        step-log -> logs/lsa_build_pubmed_goren_0.3_bl.log
+2026-10-22 07:15:22  [ok] lsa:goren:ds:pubmed_0.3_bl  rc=0  0.1 min
+2026-10-22 07:15:22  [run] lsa:goren:ds:pubmed_0.3_goren
+2026-10-22 07:15:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.3_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.3_goren --seed 1 --max_pos 10000
+2026-10-22 07:15:22        step-log -> logs/lsa_build_pubmed_goren_0.3_goren.log
+2026-10-22 07:15:30  [ok] lsa:goren:ds:pubmed_0.3_goren  rc=0  0.1 min
+2026-10-22 07:15:30  [run] lsa:goren:ds:pubmed_0.5_bl
+2026-10-22 07:15:30        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:30        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_bl --seed 1 --max_pos 10000
+2026-10-22 07:15:30        step-log -> logs/lsa_build_pubmed_goren_0.5_bl.log
+2026-10-22 07:15:37  [ok] lsa:goren:ds:pubmed_0.5_bl  rc=0  0.1 min
+2026-10-22 07:15:37  [run] lsa:goren:ds:pubmed_0.5_goren
+2026-10-22 07:15:37        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:37        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.5_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.5_goren --seed 1 --max_pos 10000
+2026-10-22 07:15:37        step-log -> logs/lsa_build_pubmed_goren_0.5_goren.log
+2026-10-22 07:15:45  [ok] lsa:goren:ds:pubmed_0.5_goren  rc=0  0.1 min
+2026-10-22 07:15:45  [run] lsa:goren:ds:pubmed_0.7_bl
+2026-10-22 07:15:45        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:45        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_bl_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_bl --seed 1 --max_pos 10000
+2026-10-22 07:15:45        step-log -> logs/lsa_build_pubmed_goren_0.7_bl.log
+2026-10-22 07:15:53  [ok] lsa:goren:ds:pubmed_0.7_bl  rc=0  0.1 min
+2026-10-22 07:15:53  [run] lsa:goren:ds:pubmed_0.7_goren
+2026-10-22 07:15:53        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/attack
+2026-10-22 07:15:53        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gorenbb_0.7_goren_pred.pkl --reference_pred pubmed_ggoren_pred.pkl --name pubmed_goren_0.7_goren --seed 1 --max_pos 10000
+2026-10-22 07:15:53        step-log -> logs/lsa_build_pubmed_goren_0.7_goren.log
+2026-10-22 07:16:00  [ok] lsa:goren:ds:pubmed_0.7_goren  rc=0  0.1 min
+2026-10-22 07:16:00    [skip] attack goren/whole (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.3_bl (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.3_goren (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.5_bl (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.5_goren (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.7_bl (exists)
+2026-10-22 07:16:00    [skip] attack goren/0.7_goren (exists)
+2026-10-22 07:16:00    [cleanup] removed 24 attack_dataset files for goren
+2026-10-22 07:16:00  [LSA goren] complete
+2026-10-22 07:16:00  ==============================================================================
+2026-10-22 07:16:00  LSA  gcond  (GCOND Benchmarking)  settings=['whole', '0.25', '0.5', '1.0']
+2026-10-22 07:16:00  ==============================================================================
+2026-10-22 07:16:00    [skip] lsa:gcond:step01 (progress)
+2026-10-22 07:16:00    [skip] lsa:gcond:step02 (progress)
+2026-10-22 07:16:00    [skip] lsa:gcond:step03 (progress)
+2026-10-22 07:16:00  [run] lsa:gcond:ds:cora_whole
+2026-10-22 07:16:00        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 07:16:00        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset cora --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred cora_gcondbb_whole_pred.pkl --reference_pred cora_g_pred.pkl --name cora_gc_whole --seed 1
+2026-10-22 07:16:00        step-log -> logs/lsa_build_cora_gc_whole.log
+2026-10-22 07:16:07  [ok] lsa:gcond:ds:cora_whole  rc=0  0.1 min
+2026-10-22 07:16:07  [run] lsa:gcond:ds:pubmed_whole
+2026-10-22 07:16:07        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 07:16:07        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gcondbb_whole_pred.pkl --reference_pred pubmed_g_pred.pkl --name pubmed_gc_whole --seed 1 --max_pos 10000
+2026-10-22 07:16:07        step-log -> logs/lsa_build_pubmed_gc_whole.log
+2026-10-22 07:16:14  [ok] lsa:gcond:ds:pubmed_whole  rc=0  0.1 min
+2026-10-22 07:16:14  [run] lsa:gcond:ds:pubmed_0.25
+2026-10-22 07:16:14        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 07:16:14        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gcondbb_0.25_pred.pkl --reference_pred pubmed_g_pred.pkl --name pubmed_gc_0.25 --seed 1 --max_pos 10000
+2026-10-22 07:16:14        step-log -> logs/lsa_build_pubmed_gc_0.25.log
+2026-10-22 07:16:22  [ok] lsa:gcond:ds:pubmed_0.25  rc=0  0.1 min
+2026-10-22 07:16:22  [run] lsa:gcond:ds:pubmed_0.5
+2026-10-22 07:16:22        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 07:16:22        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gcondbb_0.5_pred.pkl --reference_pred pubmed_g_pred.pkl --name pubmed_gc_0.5 --seed 1 --max_pos 10000
+2026-10-22 07:16:22        step-log -> logs/lsa_build_pubmed_gc_0.5.log
+2026-10-22 07:16:29  [ok] lsa:gcond:ds:pubmed_0.5  rc=0  0.1 min
+2026-10-22 07:16:29  [run] lsa:gcond:ds:pubmed_1.0
+2026-10-22 07:16:29        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/attack
+2026-10-22 07:16:29        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gcondbb_1.0_pred.pkl --reference_pred pubmed_g_pred.pkl --name pubmed_gc_1.0 --seed 1 --max_pos 10000
+2026-10-22 07:16:29        step-log -> logs/lsa_build_pubmed_gc_1.0.log
+2026-10-22 07:16:37  [ok] lsa:gcond:ds:pubmed_1.0  rc=0  0.1 min
+2026-10-22 07:16:37    [skip] attack gcond/whole (exists)
+2026-10-22 07:16:37    [skip] attack gcond/0.25 (exists)
+2026-10-22 07:16:37    [skip] attack gcond/0.5 (exists)
+2026-10-22 07:16:37    [skip] attack gcond/1.0 (exists)
+2026-10-22 07:16:38    [cleanup] removed 15 attack_dataset files for gcond
+2026-10-22 07:16:38  [LSA gcond] complete
+2026-10-22 07:16:38  membership methods to run: ['control', 'goren', 'gcond']
+2026-10-22 07:16:38  ==============================================================================
+2026-10-22 07:16:38  MEMBERSHIP  methods=['control', 'goren', 'gcond']  (shadow = whole cora)
+2026-10-22 07:16:38  ==============================================================================
+2026-10-22 07:16:38    [membership] cora_control_whole posteriors present (shadow ready)
+2026-10-22 07:16:38    [skip] mia:pubmed:split (progress)
+2026-10-22 07:16:38  [run] mia:pubmed:reduce
+2026-10-22 07:16:38        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-22 07:16:38        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,goren,gcond
+2026-10-22 07:16:38        step-log -> logs/mia_pubmed_reduce.log
+2026-10-25 00:32:58  [ok] mia:pubmed:reduce  rc=0  3916.3 min
+2026-10-25 00:32:58  [run] mia:pubmed:box
+2026-10-25 00:32:58        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-25 00:32:58        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_blackbox.py --only pubmed --methods control,goren,gcond
+2026-10-25 00:32:58        step-log -> logs/mia_pubmed_box.log
+2026-10-25 00:39:32  [ok] mia:pubmed:box  rc=0  6.6 min
+2026-10-25 00:39:32  [run] mia:pubmed:attack
+2026-10-25 00:39:32        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-25 00:39:32        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,goren,gcond
+2026-10-25 00:39:32        step-log -> logs/mia_pubmed_attack.log
+2026-10-25 00:39:50  [ok] mia:pubmed:attack  rc=0  0.3 min
+2026-10-25 00:39:50  [run] mia:pubmed:wholeshadow
+2026-10-25 00:39:50        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-25 00:39:50        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python whole_shadow_mlp.py
+2026-10-25 00:39:50        step-log -> logs/mia_pubmed_wholeshadow.log
+2026-10-25 00:40:25  [ok] mia:pubmed:wholeshadow  rc=0  0.6 min
+2026-10-25 00:40:25  [run] mia:aggregate
+2026-10-25 00:40:25        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack
+2026-10-25 00:40:25        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py --no_markdown
+2026-10-25 00:40:25        step-log -> logs/mia_aggregate.log
+2026-10-25 00:40:26  [ok] mia:aggregate  rc=0  0.0 min
+2026-10-25 00:40:26  [membership] complete
+2026-10-25 00:40:26  [run] aggregate_collect
+2026-10-25 00:40:26        cwd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks
+2026-10-25 00:40:26        cmd=/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python aggregate.py
+2026-10-25 00:40:26        step-log -> logs/aggregate.log
+2026-10-25 00:40:26  [ok] aggregate_collect  rc=0  0.0 min
+2026-10-25 00:40:26  ==============================================================================
+2026-10-25 00:40:26  RUN COMPLETE (re-run the same command to resume anything unfinished)
+2026-10-25 00:40:26  ==============================================================================

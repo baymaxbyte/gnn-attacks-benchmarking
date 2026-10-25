@@ -1,0 +1,88 @@
+
+==============================================================================
+2026-10-21 19:54:51  lsa:goren:step03
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step03_attacker.py
+==============================================================================
+==============================================================================
+reference model g -- graph-free, hidden 64, 500 epochs, original features
+==============================================================================
+
+pubmed:
+  adversary knows 1971 of 19717 labels (10%, seed=123); 500 original feature columns
+  g accuracy: 1.0000 on its known labels, 0.8179 on the rest   (graph-free verified on 3 duplicate-feature pairs)
+  [saved] data/pred/pubmed_ggoren_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+publishing black-box posteriors to the attack code
+==============================================================================
+  [saved] data/pred/pubmed_gorenbb_whole_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.3_bl_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.3_goren_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.5_bl_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.5_goren_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.7_bl_pred.pkl  shape=(19717, 3)
+  [saved] data/pred/pubmed_gorenbb_0.7_goren_pred.pkl  shape=(19717, 3)
+
+==============================================================================
+attack datasets -- ORIGINAL edges, equal non-edges, random 50/50 split
+==============================================================================
+
+>>> attack dataset pubmed_goren_whole
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_whole_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_whole_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_whole_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_goren_0.3_bl
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.3_bl_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.3_bl_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.3_bl_attack_test.json
+    7.5s
+
+>>> attack dataset pubmed_goren_0.3_goren
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.3_goren_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.3_goren_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.3_goren_attack_test.json
+    7.7s
+
+>>> attack dataset pubmed_goren_0.5_bl
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.5_bl_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.5_bl_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.5_bl_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_goren_0.5_goren
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.5_goren_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.5_goren_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.5_goren_attack_test.json
+    7.7s
+
+>>> attack dataset pubmed_goren_0.7_bl
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.7_bl_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.7_bl_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.7_bl_attack_test.json
+    7.6s
+
+>>> attack dataset pubmed_goren_0.7_goren
+    linked pairs: 44324  (from 88648 directed entries)
+    unlinked pairs: 10000  (0.0s)
+    all  :  20000 records  -> data/attack_dataset/pubmed_goren_0.7_goren_attack_all.json
+    train:  10000 records  -> data/attack_dataset/pubmed_goren_0.7_goren_attack_train.json
+    test :  10000 records  -> data/attack_dataset/pubmed_goren_0.7_goren_attack_test.json
+    7.5s
+
+[manifest] recorded step step03_attacker: Trained the adversary's reference model g for 1 datasets and built 7 attack datasets on ORIGINAL edges
+
+total 1.4 min

@@ -1,0 +1,590 @@
+{
+  "repeats": 5,
+  "canonical_seed": 0,
+  "boxes": [
+    {
+      "dataset": "pubmed",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 88.26781638346438,
+      "test_acc_std": 0.12067336802810413,
+      "test_acc_runs": [
+        88.3084,
+        88.4352,
+        88.1562,
+        88.1055,
+        88.3338
+      ],
+      "best_val_mean": 87.1703851222992,
+      "tag": "pubmed_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_whole.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19712,
+        "mean_max_posterior": 0.8630027770996094,
+        "canonical_test_acc": 88.30839462338321
+      },
+      "seconds": 713.7
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 13802,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 87.90261222419477,
+      "test_acc_std": 0.13610355429874527,
+      "test_acc_runs": [
+        88.1309,
+        87.7251,
+        87.8773,
+        87.9533,
+        87.8265
+      ],
+      "best_val_mean": 86.7799186706543,
+      "coarse": {
+        "trainable_supernodes": 9170,
+        "coarse_edges": 33562,
+        "max_supernode_size": 48,
+        "mean_supernode_size": 1.4285610781046225,
+        "edge_weight_mean": 1.2082116603851318,
+        "edge_weight_max": 48.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "pubmed_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.3_bl.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19711,
+        "mean_max_posterior": 0.8601346015930176,
+        "canonical_test_acc": 88.13086482373828
+      },
+      "seconds": 577.9
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 13802,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 87.88232310423534,
+      "test_acc_std": 0.051727309293353396,
+      "test_acc_runs": [
+        87.9533,
+        87.8519,
+        87.9026,
+        87.8012,
+        87.9026
+      ],
+      "best_val_mean": 87.19066977500916,
+      "coarse": {
+        "trainable_supernodes": 9170,
+        "coarse_edges": 33562,
+        "max_supernode_size": 48,
+        "mean_supernode_size": 1.4285610781046225,
+        "edge_weight_mean": 0.6632852554321289,
+        "edge_weight_max": 11.585541725158691,
+        "edge_weight_zeros": 37186
+      },
+      "tag": "pubmed_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.3_goren.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19712,
+        "mean_max_posterior": 0.8601413369178772,
+        "canonical_test_acc": 87.95333502409332
+      },
+      "seconds": 575.8
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 9859,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 87.17220390565559,
+      "test_acc_std": 0.07923154629375191,
+      "test_acc_runs": [
+        87.2179,
+        87.0657,
+        87.1671,
+        87.2939,
+        87.1164
+      ],
+      "best_val_mean": 86.48580193519592,
+      "coarse": {
+        "trainable_supernodes": 7137,
+        "coarse_edges": 28488,
+        "max_supernode_size": 48,
+        "mean_supernode_size": 1.9998985698346687,
+        "edge_weight_mean": 1.4143147468566895,
+        "edge_weight_max": 48.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "pubmed_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.5_bl.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19711,
+        "mean_max_posterior": 0.8578274250030518,
+        "canonical_test_acc": 87.21785442556428
+      },
+      "seconds": 498.9
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 9859,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 87.61856454476286,
+      "test_acc_std": 0.10068188303971028,
+      "test_acc_runs": [
+        87.649,
+        87.5222,
+        87.649,
+        87.7758,
+        87.4968
+      ],
+      "best_val_mean": 87.25152134895325,
+      "coarse": {
+        "trainable_supernodes": 7137,
+        "coarse_edges": 28488,
+        "max_supernode_size": 48,
+        "mean_supernode_size": 1.9998985698346687,
+        "edge_weight_mean": 0.3803110420703888,
+        "edge_weight_max": 6.928263187408447,
+        "edge_weight_zeros": 29862
+      },
+      "tag": "pubmed_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.5_goren.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19711,
+        "mean_max_posterior": 0.8483543395996094,
+        "canonical_test_acc": 87.648998224702
+      },
+      "seconds": 519.9
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 5917,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 86.58889170682221,
+      "test_acc_std": 0.10807646843856648,
+      "test_acc_runs": [
+        86.6599,
+        86.457,
+        86.5331,
+        86.7613,
+        86.5331
+      ],
+      "best_val_mean": 85.57302236557007,
+      "coarse": {
+        "trainable_supernodes": 5098,
+        "coarse_edges": 24031,
+        "max_supernode_size": 64,
+        "mean_supernode_size": 3.33226297110022,
+        "edge_weight_mean": 1.6722567081451416,
+        "edge_weight_max": 64.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "pubmed_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.7_bl.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19711,
+        "mean_max_posterior": 0.8549879193305969,
+        "canonical_test_acc": 86.65990362668019
+      },
+      "seconds": 458.5
+    },
+    {
+      "dataset": "pubmed",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 5917,
+      "split": {
+        "scheme": "paper",
+        "train": 11830,
+        "val": 3944,
+        "test": 3943
+      },
+      "test_acc_mean": 87.2837940654324,
+      "test_acc_std": 0.06335275676792379,
+      "test_acc_runs": [
+        87.2686,
+        87.3447,
+        87.3193,
+        87.3193,
+        87.1671
+      ],
+      "best_val_mean": 85.92292189598083,
+      "coarse": {
+        "trainable_supernodes": 5098,
+        "coarse_edges": 24031,
+        "max_supernode_size": 64,
+        "mean_supernode_size": 3.33226297110022,
+        "edge_weight_mean": 0.1925038993358612,
+        "edge_weight_max": 4.366454124450684,
+        "edge_weight_zeros": 32738
+      },
+      "tag": "pubmed_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/pubmed_0.7_goren.npy",
+        "shape": [
+          19717,
+          3
+        ],
+        "distinct_rows": 19712,
+        "mean_max_posterior": 0.8487787842750549,
+        "canonical_test_acc": 87.26857722546283
+      },
+      "seconds": 470.3
+    },
+    {
+      "dataset": "cora",
+      "r": null,
+      "variant": "bl",
+      "k": null,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 88.74074074074073,
+      "test_acc_std": 0.2456759103966977,
+      "test_acc_runs": [
+        88.7037,
+        89.0741,
+        88.8889,
+        88.7037,
+        88.3333
+      ],
+      "best_val_mean": 87.01107025146484,
+      "tag": "cora_whole",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_whole.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2581,
+        "mean_max_posterior": 0.917997419834137,
+        "canonical_test_acc": 88.70370370370371
+      },
+      "seconds": 123.3
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "variant": "bl",
+      "k": 1896,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.96296296296296,
+      "test_acc_std": 1.3435820109049676,
+      "test_acc_runs": [
+        84.6296,
+        88.7037,
+        86.6667,
+        87.2222,
+        87.5926
+      ],
+      "best_val_mean": 87.01107025146484,
+      "coarse": {
+        "trainable_supernodes": 1280,
+        "coarse_edges": 3890,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.4282700421940928,
+        "edge_weight_mean": 1.103598952293396,
+        "edge_weight_max": 10.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.3_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.3_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2582,
+        "mean_max_posterior": 0.9300628900527954,
+        "canonical_test_acc": 84.62962962962963
+      },
+      "seconds": 102.9
+    },
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "variant": "goren",
+      "k": 1896,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.11111111111111,
+      "test_acc_std": 0.6372092790401935,
+      "test_acc_runs": [
+        87.7778,
+        87.4074,
+        85.9259,
+        87.4074,
+        87.037
+      ],
+      "best_val_mean": 87.15867161750793,
+      "coarse": {
+        "trainable_supernodes": 1280,
+        "coarse_edges": 3890,
+        "max_supernode_size": 9,
+        "mean_supernode_size": 1.4282700421940928,
+        "edge_weight_mean": 0.9002982378005981,
+        "edge_weight_max": 3.828986644744873,
+        "edge_weight_zeros": 1350
+      },
+      "tag": "cora_0.3_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.3_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2586,
+        "mean_max_posterior": 0.8970359563827515,
+        "canonical_test_acc": 87.77777777777777
+      },
+      "seconds": 103.0
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "variant": "bl",
+      "k": 1354,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.18518518518518,
+      "test_acc_std": 0.9325687638529019,
+      "test_acc_runs": [
+        86.4815,
+        86.2963,
+        87.4074,
+        88.8889,
+        86.8519
+      ],
+      "best_val_mean": 87.26937174797058,
+      "coarse": {
+        "trainable_supernodes": 1050,
+        "coarse_edges": 2905,
+        "max_supernode_size": 12,
+        "mean_supernode_size": 2.0,
+        "edge_weight_mean": 1.3187607526779175,
+        "edge_weight_max": 15.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.5_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.5_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2581,
+        "mean_max_posterior": 0.9132530689239502,
+        "canonical_test_acc": 86.48148148148148
+      },
+      "seconds": 89.4
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "variant": "goren",
+      "k": 1354,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 86.48148148148148,
+      "test_acc_std": 0.9658077637337249,
+      "test_acc_runs": [
+        85.3704,
+        85.7407,
+        86.1111,
+        87.2222,
+        87.963
+      ],
+      "best_val_mean": 86.42066478729248,
+      "coarse": {
+        "trainable_supernodes": 1050,
+        "coarse_edges": 2905,
+        "max_supernode_size": 12,
+        "mean_supernode_size": 2.0,
+        "edge_weight_mean": 0.7400513887405396,
+        "edge_weight_max": 2.5220489501953125,
+        "edge_weight_zeros": 850
+      },
+      "tag": "cora_0.5_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.5_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2580,
+        "mean_max_posterior": 0.9279152154922485,
+        "canonical_test_acc": 85.37037037037038
+      },
+      "seconds": 89.9
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "variant": "bl",
+      "k": 813,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.81481481481481,
+      "test_acc_std": 0.7351641941214542,
+      "test_acc_runs": [
+        87.7778,
+        86.4815,
+        88.7037,
+        88.1481,
+        87.963
+      ],
+      "best_val_mean": 85.90406060218811,
+      "coarse": {
+        "trainable_supernodes": 724,
+        "coarse_edges": 1950,
+        "max_supernode_size": 39,
+        "mean_supernode_size": 3.3308733087330875,
+        "edge_weight_mean": 1.6389743089675903,
+        "edge_weight_max": 23.0,
+        "edge_weight_zeros": 0
+      },
+      "tag": "cora_0.7_bl",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.7_bl.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2585,
+        "mean_max_posterior": 0.8998015522956848,
+        "canonical_test_acc": 87.77777777777777
+      },
+      "seconds": 73.5
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "variant": "goren",
+      "k": 813,
+      "split": {
+        "scheme": "paper",
+        "train": 1626,
+        "val": 542,
+        "test": 540
+      },
+      "test_acc_mean": 87.88888888888889,
+      "test_acc_std": 0.5315814849780501,
+      "test_acc_runs": [
+        87.963,
+        87.4074,
+        87.2222,
+        88.1481,
+        88.7037
+      ],
+      "best_val_mean": 85.64575552940369,
+      "coarse": {
+        "trainable_supernodes": 724,
+        "coarse_edges": 1950,
+        "max_supernode_size": 39,
+        "mean_supernode_size": 3.3308733087330875,
+        "edge_weight_mean": 0.6618737578392029,
+        "edge_weight_max": 3.2710118293762207,
+        "edge_weight_zeros": 1190
+      },
+      "tag": "cora_0.7_goren",
+      "posteriors": {
+        "path": "artifacts/posteriors/cora_0.7_goren.npy",
+        "shape": [
+          2708,
+          7
+        ],
+        "distinct_rows": 2586,
+        "mean_max_posterior": 0.9050348997116089,
+        "canonical_test_acc": 87.96296296296296
+      },
+      "seconds": 75.9
+    }
+  ]
+}

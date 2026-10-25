@@ -1,0 +1,59 @@
+
+==============================================================================
+2026-10-21 20:32:11  lsa:gcond:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+==============================================================================
+
+>>> condensing cora r=0.25
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=cora --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/externals/GCond-main/train_gcond_transduct.py", line 7, in <module>
+    from utils import *
+  File "/home/ec2-user/SageMaker/externals/GCond-main/utils.py", line 361, in <module>
+    from torchvision import datasets, transforms
+  File "/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torchvision/__init__.py", line 8, in <module>
+    from torchvision import (
+  File "/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torchvision/_meta_registrations.py", line 164, in <module>
+    def meta_nms(dets, scores, iou_threshold):
+  File "/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch/library.py", line 1069, in register
+    use_lib._register_fake(
+  File "/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch/library.py", line 219, in _register_fake
+    handle = entry.fake_impl.register(
+  File "/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch/_library/fake_impl.py", line 50, in register
+    if torch._C._dispatch_has_kernel_for_dispatch_key(self.qualname, "Meta"):
+RuntimeError: operator torchvision::nms does not exist
+
+condensation FAILED for cora_0.25_1; see /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/logs/step01_condense_cora_0.25_1.log
+
+==============================================================================
+2026-10-21 21:08:05  lsa:gcond:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+==============================================================================
+
+>>> condensing cora r=0.25
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=cora --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+
+==============================================================================
+2026-10-21 21:20:16  lsa:gcond:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_condense.py
+==============================================================================
+
+>>> condensing pubmed r=0.25
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=pubmed --r=0.25 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 4.4 min   synthetic nodes=15
+    (GCond's own internal eval: test=0.7840 +-0.0022)
+
+>>> condensing pubmed r=0.5
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=pubmed --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 4.4 min   synthetic nodes=30
+    (GCond's own internal eval: test=0.7777 +-0.0057)
+
+>>> condensing pubmed r=1.0
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=pubmed --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 6.5 min   synthetic nodes=60
+    (GCond's own internal eval: test=0.7820 +-0.0094)
+
+[manifest] recorded step 01_condense_gcond: Re-ran GCond condensation for 3 (dataset, r) pairs using the authors' run_main.sh hyperparameters
+
+total 15.3 min

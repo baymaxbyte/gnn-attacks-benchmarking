@@ -1,0 +1,89 @@
+{
+  "method": "variation_neighborhoods",
+  "K": 10,
+  "ratio_means": "fraction of nodes REMOVED",
+  "split": {
+    "scheme": "paper",
+    "seed": 0
+  },
+  "settings": [
+    {
+      "dataset": "cora",
+      "r": 0.3,
+      "n": 2708,
+      "target_k": 1896,
+      "k": 1896,
+      "coarse_edges": 3890,
+      "achieved_ratio": 0.2998522895125554,
+      "trainable_supernodes": 1280,
+      "max_supernode_size": 9,
+      "mean_supernode_size": 1.4282700421940928,
+      "singleton_supernodes": 1401,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": false,
+        "dataset": "cora",
+        "r": "0.3",
+        "n": "2708",
+        "k": "1896",
+        "achieved_ratio": "0.299852",
+        "used": "1896",
+        "max_size": "9",
+        "orthonormal": "True",
+        "seconds": "0.98"
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.5,
+      "n": 2708,
+      "target_k": 1354,
+      "k": 1354,
+      "coarse_edges": 2905,
+      "achieved_ratio": 0.5,
+      "trainable_supernodes": 1050,
+      "max_supernode_size": 12,
+      "mean_supernode_size": 2.0,
+      "singleton_supernodes": 571,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": false,
+        "dataset": "cora",
+        "r": "0.5",
+        "n": "2708",
+        "k": "1354",
+        "achieved_ratio": "0.500000",
+        "used": "1354",
+        "max_size": "12",
+        "orthonormal": "True",
+        "seconds": "1.00"
+      }
+    },
+    {
+      "dataset": "cora",
+      "r": 0.7,
+      "n": 2708,
+      "target_k": 812,
+      "k": 813,
+      "coarse_edges": 1950,
+      "achieved_ratio": 0.6997784342688331,
+      "trainable_supernodes": 724,
+      "max_supernode_size": 39,
+      "mean_supernode_size": 3.3308733087330875,
+      "singleton_supernodes": 41,
+      "empty_supernodes": 0,
+      "worker": {
+        "cached": false,
+        "dataset": "cora",
+        "r": "0.7",
+        "n": "2708",
+        "k": "813",
+        "achieved_ratio": "0.699778",
+        "used": "813",
+        "max_size": "39",
+        "orthonormal": "True",
+        "seconds": "1.34"
+      }
+    }
+  ]
+}

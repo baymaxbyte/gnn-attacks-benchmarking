@@ -1,0 +1,17 @@
+
+==============================================================================
+2026-10-21 19:56:28  lsa:goren:cora:step02a_weights
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+==============================================================================
+GOREN weight learning, 3 settings, n_bottomk=40, 400 epochs
+
+setting               k und.edges | quad base quad goren     d% |  EE base  EE goren  EE reduction |  sec
+--------------------------------------------------------------------------------------------------------
+cora_r0.3          1896      3890 |   0.01071    0.01057    +1% |   0.2282    0.4332        -89.8% |    9
+cora_r0.5          1354      2905 |   0.04255    0.01049   +75% |   0.6672    0.1506        +77.4% |    5
+cora_r0.7           813      1950 |   0.17650    0.02389   +86% |   3.0853    0.3313        +89.3% |    3
+
+Eigenerror reduction: 3/6 settings improved, mean -126.8%
+
+[manifest] recorded step step02a_goren_weights: Trained GOREN's GIN for 3 settings; 3/6 improved Eigenerror, mean -126.8%
+total 0.3 min

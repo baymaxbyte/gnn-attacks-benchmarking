@@ -1,0 +1,49 @@
+Namespace(gpu_id=0, dataset='pubmed', dis_metric='ours', epochs=600, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=0.25, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+adj_syn: (15, 15) feat_syn: torch.Size([15, 500])
+Epoch 0, loss_avg: 1.1317664702733359
+Epoch 50, loss_avg: 0.05042234866025088
+Epoch 100, loss_avg: 0.03228167916137086
+Epoch 150, loss_avg: 0.027785468143462184
+Epoch 200, loss_avg: 0.026141236312934763
+Epoch 250, loss_avg: 0.02467088602067164
+Epoch 300, loss_avg: 0.023341544674227898
+Epoch 350, loss_avg: 0.022815946091878057
+Epoch 400, loss_avg: 0.0222688185688989
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1587 accuracy= 0.9833
+Test set results: loss= 0.6338 accuracy= 0.7820
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1554 accuracy= 0.9833
+Test set results: loss= 0.6480 accuracy= 0.7770
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1568 accuracy= 0.9833
+Test set results: loss= 0.6238 accuracy= 0.7850
+Train/Test Mean Accuracy: [array([0.98333333, 0.78133333]), array([0.        , 0.00329983])]
+Epoch 450, loss_avg: 0.021521300025245927
+Epoch 500, loss_avg: 0.02124003323042202
+Epoch 550, loss_avg: 0.020893948575785318
+Epoch 600, loss_avg: 0.02084761917641653
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1914 accuracy= 0.9833
+Test set results: loss= 0.6679 accuracy= 0.7850
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1662 accuracy= 0.9833
+Test set results: loss= 0.6401 accuracy= 0.7810
+[saved] saved_repro/{adj,feat,label}_pubmed_0.25_1.pt  adj=(15, 15) feat=(15, 500)
+Train set results: loss= 0.1865 accuracy= 0.9833
+Test set results: loss= 0.6640 accuracy= 0.7860
+Train/Test Mean Accuracy: [array([0.98333333, 0.784     ]), array([0.        , 0.00216025])]
+
+===== STDERR =====
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.x
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.tx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.allx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.y
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.ty
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.ally
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.graph
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.pubmed.test.index
+Processing...
+Done!

@@ -1,0 +1,49 @@
+Namespace(gpu_id=0, dataset='cora', dis_metric='ours', epochs=600, nlayers=2, hidden=256, lr_adj=0.0001, lr_feat=0.0001, lr_model=0.01, weight_decay=0.0, dropout=0.0, normalize_features=True, keep_ratio=1.0, reduction_rate=0.25, seed=1, alpha=0, debug=0, sgc=1, inner=0, outer=20, save=1, one_step=0)
+size of adj_train: (140, 140)
+#edges in adj_train: 42.0
+adj_syn: (35, 35) feat_syn: torch.Size([35, 1433])
+Epoch 0, loss_avg: 2.429251779828753
+Epoch 50, loss_avg: 0.39601608999917226
+Epoch 100, loss_avg: 0.17750587301707213
+Epoch 150, loss_avg: 0.16296821378124138
+Epoch 200, loss_avg: 0.155161474705853
+Epoch 250, loss_avg: 0.15396341398293925
+Epoch 300, loss_avg: 0.15246282132611655
+Epoch 350, loss_avg: 0.15141948545305642
+Epoch 400, loss_avg: 0.15024424629830488
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.6733 accuracy= 0.9286
+Test set results: loss= 1.2331 accuracy= 0.8140
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.6581 accuracy= 0.9429
+Test set results: loss= 1.2311 accuracy= 0.8010
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.5250 accuracy= 0.9143
+Test set results: loss= 1.0101 accuracy= 0.8070
+Train/Test Mean Accuracy: [array([0.92857143, 0.80733333]), array([0.01166424, 0.00531246])]
+Epoch 450, loss_avg: 0.1498979985675112
+Epoch 500, loss_avg: 0.14974021481292996
+Epoch 550, loss_avg: 0.14890689407400623
+Epoch 600, loss_avg: 0.14726916704364512
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.6143 accuracy= 0.9429
+Test set results: loss= 1.1815 accuracy= 0.8130
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.5734 accuracy= 0.9429
+Test set results: loss= 1.1231 accuracy= 0.8170
+[saved] saved_repro/{adj,feat,label}_cora_0.25_1.pt  adj=(35, 35) feat=(35, 1433)
+Train set results: loss= 0.5521 accuracy= 0.9357
+Test set results: loss= 1.1120 accuracy= 0.8090
+Train/Test Mean Accuracy: [array([0.94047619, 0.813     ]), array([0.00336718, 0.00326599])]
+
+===== STDERR =====
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.x
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.tx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.allx
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.y
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ty
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.ally
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.graph
+Downloading https://github.com/kimiyoung/planetoid/raw/master/data/ind.cora.test.index
+Processing...
+Done!

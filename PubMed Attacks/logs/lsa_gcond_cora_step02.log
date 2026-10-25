@@ -1,0 +1,96 @@
+
+==============================================================================
+2026-10-22 06:34:41  lsa:gcond:cora:step02
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step02_blackbox.py
+==============================================================================
+
+==========================================================================
+B0  cora  setting=whole
+==========================================================================
+size of adj_train: (140, 140)
+#edges in adj_train: 42.0
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/deeprobust/graph/utils.py:356: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:653.)
+  return torch.sparse.FloatTensor(sparseconcat.t(),sparsedata,torch.Size(sparse_mx.shape))
+    run 1/10  test acc = 0.8130
+    run 2/10  test acc = 0.8080
+    run 3/10  test acc = 0.8080
+    run 4/10  test acc = 0.8120
+    run 5/10  test acc = 0.8110
+    run 6/10  test acc = 0.8130
+    run 7/10  test acc = 0.8060
+    run 8/10  test acc = 0.8140
+    run 9/10  test acc = 0.8110
+    run 10/10  test acc = 0.8130
+  [saved] attack/data/pred/cora_gcondbb_whole_pred.pkl  shape=(2708, 7)
+  -> ours 81.09 +-0.25   paper 81.2 +-0.2   delta -0.11
+
+==========================================================================
+B1  cora  setting=0.25
+==========================================================================
+size of adj_train: (140, 140)
+#edges in adj_train: 42.0
+    run 1/10  test acc = 0.8010
+    run 2/10  test acc = 0.8170
+    run 3/10  test acc = 0.8130
+    run 4/10  test acc = 0.8000
+    run 5/10  test acc = 0.7950
+    run 6/10  test acc = 0.8190
+    run 7/10  test acc = 0.8050
+    run 8/10  test acc = 0.8190
+    run 9/10  test acc = 0.8010
+    run 10/10  test acc = 0.8000
+  [saved] attack/data/pred/cora_gcondbb_0.25_pred.pkl  shape=(2708, 7)
+  -> ours 80.70 +-0.86   paper 79.8 +-1.3   delta +0.90
+
+==========================================================================
+B2  cora  setting=0.5
+==========================================================================
+size of adj_train: (140, 140)
+#edges in adj_train: 42.0
+    run 1/10  test acc = 0.8040
+    run 2/10  test acc = 0.7990
+    run 3/10  test acc = 0.8050
+    run 4/10  test acc = 0.8000
+    run 5/10  test acc = 0.8150
+    run 6/10  test acc = 0.8170
+    run 7/10  test acc = 0.8150
+    run 8/10  test acc = 0.8170
+    run 9/10  test acc = 0.8090
+    run 10/10  test acc = 0.7960
+  [saved] attack/data/pred/cora_gcondbb_0.5_pred.pkl  shape=(2708, 7)
+  -> ours 80.77 +-0.76   paper 80.1 +-0.6   delta +0.67
+
+==========================================================================
+B3  cora  setting=1.0
+==========================================================================
+size of adj_train: (140, 140)
+#edges in adj_train: 42.0
+    run 1/10  test acc = 0.8090
+    run 2/10  test acc = 0.8050
+    run 3/10  test acc = 0.8000
+    run 4/10  test acc = 0.8030
+    run 5/10  test acc = 0.8070
+    run 6/10  test acc = 0.8140
+    run 7/10  test acc = 0.8000
+    run 8/10  test acc = 0.8110
+    run 9/10  test acc = 0.8110
+    run 10/10  test acc = 0.8000
+  [saved] attack/data/pred/cora_gcondbb_1.0_pred.pkl  shape=(2708, 7)
+  -> ours 80.60 +-0.49   paper 79.3 +-0.3   delta +1.30
+
+==========================================================================
+VALIDATION GATE vs GCond Table 2
+==========================================================================
+  box  dataset   setting  paper r  train nodes  ours             paper         delta   
+  -------------------------------------------------------------------------------------
+  B0   cora      whole    100%     2708         81.09 +-0.25     81.2 +-0.2    -0.11   
+  B1   cora      0.25     1.3%     35           80.70 +-0.86     79.8 +-1.3    +0.90   
+  B2   cora      0.5      2.6%     70           80.77 +-0.76     80.1 +-0.6    +0.67   
+  B3   cora      1.0      5.2%     140          80.60 +-0.49     79.3 +-0.3    +1.30   
+
+  largest absolute deviation from the paper: 1.30 points
+
+[saved] results/step02_validation.json
+
+[manifest] recorded step 02_blackbox_gcond: Built and validated 4 GCond black boxes against Table 2; largest deviation 1.30 points
+total 2.4 min

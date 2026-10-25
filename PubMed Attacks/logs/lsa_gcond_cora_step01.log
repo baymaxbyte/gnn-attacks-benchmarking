@@ -1,0 +1,20 @@
+
+==============================================================================
+2026-10-22 05:32:24  lsa:gcond:cora:step01
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step01_condense.py
+==============================================================================
+  [cached] cora_0.25_1
+
+>>> condensing cora r=0.5
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=cora --r=0.5 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 15.6 min   synthetic nodes=70
+    (GCond's own internal eval: test=0.8177 +-0.0034)
+
+>>> condensing cora r=1.0
+    /home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python -W ignore -u train_gcond_transduct.py --dataset=cora --r=1.0 --save=1 --nlayers=2 --sgc=1 --lr_feat=1e-4 --lr_adj=1e-4 --seed=1 --epochs=600
+    done in 46.7 min   synthetic nodes=140
+    (GCond's own internal eval: test=0.8140 +-0.0059)
+
+[manifest] recorded step 01_condense_gcond: Re-ran GCond condensation for 3 (dataset, r) pairs using the authors' run_main.sh hyperparameters
+
+total 62.3 min

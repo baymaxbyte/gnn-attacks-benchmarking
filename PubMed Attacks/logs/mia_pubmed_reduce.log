@@ -62,3 +62,136 @@ reducing V_in: methods=['control', 'kron', 'ugc', 'fgc']  datasets=['pubmed']
 
 [manifest] recorded step step02_reduce: Reduced V_in into 10 training graphs across 4 methods and 1 datasets
 total 144.4 min
+
+==============================================================================
+2026-10-22 06:56:18  mia:pubmed:reduce
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,goren,gcond
+==============================================================================
+reducing V_in: methods=['control', 'goren', 'gcond']  datasets=['pubmed']
+
+=== pubmed  V_in 15774 nodes ===
+  [cached] pubmed_control_whole
+GOREN coarsening worker failed:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack/reductions/_goren_worker.py", line 57, in <module>
+    main()
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/Membership Attack/reductions/_goren_worker.py", line 34, in main
+    from graph_coarsening import coarsening_utils as cu
+ModuleNotFoundError: No module named 'graph_coarsening'
+
+
+==============================================================================
+2026-10-22 07:16:38  mia:pubmed:reduce
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_reduce.py --only pubmed --methods control,goren,gcond
+==============================================================================
+reducing V_in: methods=['control', 'goren', 'gcond']  datasets=['pubmed']
+
+=== pubmed  V_in 15774 nodes ===
+  [cached] pubmed_control_whole
+  pubmed_goren_r0.3_bl       k=11042 feat_dim=  500 E= 20179 train=11042 w[1,35]                plain      [12.1s]
+    [goren] epoch    0/400  loss 42.708191
+    [goren] epoch   50/400  loss 0.053708
+    [goren] epoch  100/400  loss 0.053800
+    [goren] epoch  150/400  loss 0.053806
+    [goren] epoch  200/400  loss 0.053802
+    [goren] epoch  250/400  loss 0.053797
+    [goren] epoch  300/400  loss 0.053792
+    [goren] epoch  350/400  loss 0.053783
+    [goren] epoch  399/400  loss 0.053760
+  pubmed_goren_r0.3_goren    k=11042 feat_dim=  500 E= 20179 train=11042 w[0,12]                plain      [400.0s]
+  pubmed_goren_r0.5_bl       k= 7887 feat_dim=  500 E= 16434 train= 7887 w[1,35]                plain      [12.3s]
+    [goren] epoch    0/400  loss 41.314060
+    [goren] epoch   50/400  loss 0.056778
+    [goren] epoch  100/400  loss 0.053705
+    [goren] epoch  150/400  loss 0.045258
+    [goren] epoch  200/400  loss 0.040694
+    [goren] epoch  250/400  loss 0.039491
+    [goren] epoch  300/400  loss 0.040419
+    [goren] epoch  350/400  loss 0.037009
+    [goren] epoch  399/400  loss 0.035039
+  pubmed_goren_r0.5_goren    k= 7887 feat_dim=  500 E= 16434 train= 7887 w[0,2.58]              plain      [248.7s]
+  pubmed_goren_r0.7_bl       k= 4733 feat_dim=  500 E= 10560 train= 4733 w[1,84]                plain      [14.5s]
+    [goren] epoch    0/400  loss 923.507019
+    [goren] epoch   50/400  loss 0.059348
+    [goren] epoch  100/400  loss 0.059412
+    [goren] epoch  150/400  loss 0.059406
+    [goren] epoch  200/400  loss 0.057145
+    [goren] epoch  250/400  loss 0.059455
+    [goren] epoch  300/400  loss 0.059455
+    [goren] epoch  350/400  loss 0.059455
+    [goren] epoch  399/400  loss 0.059455
+  pubmed_goren_r0.7_goren    k= 4733 feat_dim=  500 E= 10560 train= 4733 w[0,17.8]              plain      [158.3s]
+size of adj_train: (15774, 15774)
+#edges in adj_train: 56588.0
+adj_syn: (205, 205) feat_syn: torch.Size([205, 500])
+[gcond] condensing: n=15774 reduction_rate=0.013 epochs=600  (GCond prints 'Epoch {it}' every 50)
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/deeprobust/graph/utils.py:356: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:653.)
+  return torch.sparse.FloatTensor(sparseconcat.t(),sparsedata,torch.Size(sparse_mx.shape))
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch_geometric/deprecation.py:26: UserWarning: 'data.NeighborSampler' is deprecated, use 'loader.NeighborSampler' instead
+  warnings.warn(out)
+Epoch 0, loss_avg: 0.3292105297247569
+Epoch 50, loss_avg: 0.055607535488386525
+Epoch 100, loss_avg: 0.05270588995691156
+Epoch 150, loss_avg: 0.05111728193777319
+Epoch 200, loss_avg: 0.049572175017358146
+Epoch 250, loss_avg: 0.047799726115343714
+Epoch 300, loss_avg: 0.047259401283626754
+Epoch 350, loss_avg: 0.047193377155942885
+Epoch 400, loss_avg: 0.046671453210006326
+Epoch 450, loss_avg: 0.045673220506139825
+Epoch 500, loss_avg: 0.04596426725740683
+Epoch 550, loss_avg: 0.045936669811862625
+Epoch 600, loss_avg: 0.048086270605661834
+GCOND_OK k=205 d=500 adj=(205, 205) nnz=41550
+  pubmed_gcond_r0.013        k=  205 feat_dim=  500 E= 20775 train=  205 w[0.000103,0.991]      plain_norm [10134.5s]
+size of adj_train: (15774, 15774)
+#edges in adj_train: 56588.0
+adj_syn: (410, 410) feat_syn: torch.Size([410, 500])
+[gcond] condensing: n=15774 reduction_rate=0.026 epochs=600  (GCond prints 'Epoch {it}' every 50)
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/deeprobust/graph/utils.py:356: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:653.)
+  return torch.sparse.FloatTensor(sparseconcat.t(),sparsedata,torch.Size(sparse_mx.shape))
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch_geometric/deprecation.py:26: UserWarning: 'data.NeighborSampler' is deprecated, use 'loader.NeighborSampler' instead
+  warnings.warn(out)
+Epoch 0, loss_avg: 0.30123520692189537
+Epoch 50, loss_avg: 0.05363680792818566
+Epoch 100, loss_avg: 0.05151305690890182
+Epoch 150, loss_avg: 0.0501309780886587
+Epoch 200, loss_avg: 0.04930380782291184
+Epoch 250, loss_avg: 0.0473946255044519
+Epoch 300, loss_avg: 0.047436151557185176
+Epoch 350, loss_avg: 0.047993787490951643
+Epoch 400, loss_avg: 0.04746659875642991
+Epoch 450, loss_avg: 0.04638649500524516
+Epoch 500, loss_avg: 0.04700948838711785
+Epoch 550, loss_avg: 0.04706535768598444
+Epoch 600, loss_avg: 0.04915041949076731
+GCOND_OK k=410 d=500 adj=(410, 410) nnz=163762
+  pubmed_gcond_r0.026        k=  410 feat_dim=  500 E= 81881 train=  410 w[0.0001,0.999]        plain_norm [45137.4s]
+size of adj_train: (15774, 15774)
+#edges in adj_train: 56588.0
+adj_syn: (820, 820) feat_syn: torch.Size([820, 500])
+[gcond] condensing: n=15774 reduction_rate=0.052 epochs=600  (GCond prints 'Epoch {it}' every 50)
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/deeprobust/graph/utils.py:356: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:653.)
+  return torch.sparse.FloatTensor(sparseconcat.t(),sparsedata,torch.Size(sparse_mx.shape))
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/torch_geometric/deprecation.py:26: UserWarning: 'data.NeighborSampler' is deprecated, use 'loader.NeighborSampler' instead
+  warnings.warn(out)
+Epoch 0, loss_avg: 0.2891681800285975
+Epoch 50, loss_avg: 0.054567172534809985
+Epoch 100, loss_avg: 0.05167057936054741
+Epoch 150, loss_avg: 0.05045707879764441
+Epoch 200, loss_avg: 0.04945387687665613
+Epoch 250, loss_avg: 0.04767504802042124
+Epoch 300, loss_avg: 0.04738004664991586
+Epoch 350, loss_avg: 0.04791710654748629
+Epoch 400, loss_avg: 0.04741784372040846
+Epoch 450, loss_avg: 0.046606833484404676
+Epoch 500, loss_avg: 0.04737105945139005
+Epoch 550, loss_avg: 0.04708368614356377
+Epoch 600, loss_avg: 0.049622033047625004
+GCOND_OK k=820 d=500 adj=(820, 820) nnz=643432
+  pubmed_gcond_r0.052        k=  820 feat_dim=  500 E=321716 train=  820 w[0.0001,0.999]        plain_norm [178859.5s]
+
+
+[manifest] recorded step step02_reduce: Reduced V_in into 9 training graphs across 3 methods and 1 datasets
+total 3916.3 min

@@ -1,0 +1,144 @@
+
+==============================================================================
+2026-10-21 20:13:39  lsa:goren:attack:0.5_bl
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python run_attack.py --attack all --dataset pubmed_goren_0.5_bl --shadow cora_goren_whole --attack_dataset_path data/attack_dataset/ --result_path /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow --runs 5 --tag goren_E_0.5_bl_wholeshadow --link_prediction --quiet
+==============================================================================
+target=pubmed_goren_0.5_bl  attack training = 10000 pairs, testing = 10000 pairs (5000 linked / 5000 unlinked), train_fraction=0.5
+shadow=cora_goren_whole  (its attack dataset is used unsplit)
+attack model = MLP with 3 hidden layers x 32, 50 epochs, lr=0.001, runs=5, resplit_per_run=False
+
+====================================================================
+Attack-0   K = (x,x,x)
+====================================================================
+  selected metric : correlation
+  AUC             : 0.8594
+  K-means (K=2)   : precision=0.7096  recall=0.9392  f1=0.8084
+
+====================================================================
+Attack-1   K = (x,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8120 +/- 0.0077
+  accuracy        : 0.7676 +/- 0.0093
+  precision/recall/f1 : 0.7183 / 0.8804 / 0.7910
+
+====================================================================
+Attack-2   K = (Y,x,x)
+====================================================================
+  selected metric : target_correlation
+  AUC             : 0.8594
+  K-means (K=2)   : precision=0.7096  recall=0.9392  f1=0.8084
+
+====================================================================
+Attack-3   K = (x,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f   [Table 3]
+    features=24  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 24
+  AUC             : 0.9140 +/- 0.0012
+  accuracy        : 0.8391 +/- 0.0019
+  precision/recall/f1 : 0.8404 / 0.8375 / 0.8388
+
+====================================================================
+Attack-4   K = (x,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f   [Table 3]
+    features=12  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 12
+  AUC             : 0.8868 +/- 0.0018
+  accuracy        : 0.8090 +/- 0.0025
+  precision/recall/f1 : 0.7751 / 0.8712 / 0.8201
+
+====================================================================
+Attack-5   K = (Y,x,Y)
+====================================================================
+  training data   : 10556 pairs  [shadow_all]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=10556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9077 +/- 0.0042
+  accuracy        : 0.8147 +/- 0.0045
+  precision/recall/f1 : 0.7712 / 0.8952 / 0.8285
+
+====================================================================
+Attack-6   K = (Y,Y,x)
+====================================================================
+  training data   : 10000 pairs  [target_train]
+  feature groups  : d_f,psi_f,psi_e_f,d_g,psi_g,psi_e_g,d_F   [Table 3 minus psi_F, to match Table 10]
+    features=56  train=10000  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 56
+  AUC             : 0.9552 +/- 0.0003
+  accuracy        : 0.8893 +/- 0.0008
+  precision/recall/f1 : 0.8861 / 0.8934 / 0.8898
+
+====================================================================
+Attack-7   K = (Y,Y,Y)
+====================================================================
+  training data   : 20556 pairs  [shadow_all + target_train]
+  feature groups  : d_f,psi_e_f,d_g,psi_e_g,d_F   [Table 3]
+    features=32  train=20556  test=10000
+    run 1/5
+    run 2/5
+    run 3/5
+    run 4/5
+    run 5/5
+  features        : 32
+  AUC             : 0.9404 +/- 0.0020
+  accuracy        : 0.8554 +/- 0.0015
+  precision/recall/f1 : 0.8110 / 0.9267 / 0.8650
+
+====================================================================
+Link prediction baseline   [common neighbour, Jaccard, preferential attachment]
+====================================================================
+    partial graph: 5000 edges over 5929 nodes
+  features        : 3 (common_neighbour, jaccard_index, preferential_attachment)
+  AUC             : 0.6329 +/- 0.0000
+  precision/recall/f1 : 0.5000 / 1.0000 / 0.6667
+
+====================================================================
+SUMMARY   target=pubmed_goren_0.5_bl   shadow=cora_goren_whole
+====================================================================
+  attack   K=(F,A*,D)    AUC       std      runs  
+  Attack-0  (x,x,x)       0.8594    -        1     
+  Attack-1  (x,x,Y)       0.8120    0.0077   5     
+  Attack-2  (Y,x,x)       0.8594    -        1     
+  Attack-3  (x,Y,x)       0.9140    0.0012   5     
+  Attack-4  (x,Y,Y)       0.8868    0.0018   5     
+  Attack-5  (Y,x,Y)       0.9077    0.0042   5     
+  Attack-6  (Y,Y,x)       0.9552    0.0003   5     
+  Attack-7  (Y,Y,Y)       0.9404    0.0020   5     
+  link-pred (baseline)    0.6329    0.0000   5     
+
+  8/8 attacks beat the link-prediction baseline
+
+[saved] /home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GOREN Benchmarking/results/attacks_wholeshadow/pubmed_goren_0.5_bl__cora_goren_whole__goren_E_0.5_bl_wholeshadow.json

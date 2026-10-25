@@ -67,3 +67,26 @@ pubmed_ugc_r0.7                 0.5125   0.5053   0.512   0.512  0.512
 [manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
 
 attacked 10 cells
+
+==============================================================================
+2026-10-25 00:39:32  mia:pubmed:attack
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step04_attack.py --only pubmed --methods control,goren,gcond
+==============================================================================
+attacking 10 cells
+
+cell                          best thr   shadow    conf entropy   loss
+----------------------------------------------------------------------------
+pubmed_control_whole            0.5043   0.5034   0.498   0.499  0.502
+pubmed_gcond_r0.013             0.5015   0.5014   0.496   0.496  0.501
+pubmed_gcond_r0.026             0.5028   0.4993   0.501   0.501  0.502
+pubmed_gcond_r0.052             0.5034   0.5012   0.499   0.499  0.502
+pubmed_goren_r0.3_bl            0.5053   0.5045   0.498   0.499  0.502
+pubmed_goren_r0.3_goren         0.5031   0.5015   0.501   0.501  0.503
+pubmed_goren_r0.5_bl            0.5033   0.5016   0.498   0.499  0.502
+pubmed_goren_r0.5_goren         0.5052   0.5012   0.503   0.503  0.505
+pubmed_goren_r0.7_bl            0.5020   0.4995   0.501   0.501  0.501
+pubmed_goren_r0.7_goren         0.5054   0.4963   0.505   0.505  0.505
+
+[manifest] recorded step step04_attack: Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each
+
+attacked 10 cells

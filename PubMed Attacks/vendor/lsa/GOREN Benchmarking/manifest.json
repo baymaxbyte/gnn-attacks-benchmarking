@@ -1,0 +1,108 @@
+{
+  "pipeline": "goren_leakage",
+  "steps": [
+    {
+      "step": "step01_coarsen",
+      "summary": "Loukas variation_neighborhoods coarsenings for 3 (dataset, r) settings, supplying the coarse topology GOREN relearns weights on",
+      "timestamp": "2026-10-21 19:56:28",
+      "inputs": [
+        "attack/data/dataset/original/ind.{cora,citeseer}.*",
+        "variation_neighborhoods via graph_coarsening (GOREN repo)"
+      ],
+      "outputs": [
+        "artifacts/coarsened/goren_cora_ratio0.3.npz",
+        "artifacts/coarsened/goren_cora_ratio0.5.npz",
+        "artifacts/coarsened/goren_cora_ratio0.7.npz",
+        "results/step01_coarsening.json"
+      ],
+      "numbers": {
+        "settings": 3,
+        "cora_0.3_k": 1896,
+        "cora_0.5_k": 1354,
+        "cora_0.7_k": 813
+      },
+      "notes": "r is the fraction of nodes REMOVED. Baseline edge weights are A_c = C A C^T; GOREN replaces these in step 02. Cora and Citeseer are disconnected, so the variation cost divides by (nc-1) and emits divide-by-zero warnings on singleton subgraphs; the coarsening is unaffected and hits its target ratio."
+    },
+    {
+      "step": "step02_blackbox",
+      "summary": "Built 7 GOREN black boxes: bl and goren edge weights across 3 ratios plus no-coarsening controls",
+      "timestamp": "2026-10-21 19:58:55",
+      "inputs": [
+        "artifacts/coarsened/*.npz",
+        "artifacts/coarsened/goren_w_*.npy"
+      ],
+      "outputs": [
+        "results/step02_validation.json",
+        "artifacts/posteriors/cora_whole.npy",
+        "artifacts/posteriors/cora_0.3_bl.npy",
+        "artifacts/posteriors/cora_0.3_goren.npy",
+        "artifacts/posteriors/cora_0.5_bl.npy",
+        "artifacts/posteriors/cora_0.5_goren.npy",
+        "artifacts/posteriors/cora_0.7_bl.npy",
+        "artifacts/posteriors/cora_0.7_goren.npy"
+      ],
+      "numbers": {
+        "boxes": 7,
+        "repeats": 5,
+        "cora_whole": 88.74,
+        "cora_0.3_bl": 86.96,
+        "cora_0.3_goren": 87.11,
+        "cora_0.5_bl": 87.19,
+        "cora_0.5_goren": 86.48,
+        "cora_0.7_bl": 87.81,
+        "cora_0.7_goren": 87.89
+      },
+      "notes": "No published accuracy exists for GOREN on any dataset -- the paper evaluates only spectrally -- so this stage reports rather than gates. bl and goren differ in exactly one vector, the coarse edge weights. Classifier is the UGC benchmark's, which already consumes edge weights."
+    },
+    {
+      "step": "step02a_goren_weights",
+      "summary": "Trained GOREN's GIN for 3 settings; 3/6 improved Eigenerror, mean -126.8%",
+      "timestamp": "2026-10-21 19:56:47",
+      "inputs": [
+        "artifacts/coarsened/goren_*.npz"
+      ],
+      "outputs": [
+        "artifacts/coarsened/goren_w_cora_r0.3.npy",
+        "artifacts/coarsened/goren_w_cora_r0.5.npy",
+        "artifacts/coarsened/goren_w_cora_r0.7.npy",
+        "results/step02a_goren_weights.json"
+      ],
+      "numbers": {
+        "pubmed_0.3_eigenerror_reduction": -7.292,
+        "pubmed_0.5_eigenerror_reduction": -1.4605,
+        "pubmed_0.7_eigenerror_reduction": 0.3779,
+        "cora_0.3_eigenerror_reduction": -0.898,
+        "cora_0.5_eigenerror_reduction": 0.7742,
+        "cora_0.7_eigenerror_reduction": 0.8926
+      },
+      "notes": "Loss follows the authors' loss_util.quaratic_loss: diagonal only, bottom-k eigenvectors, rayleigh-normalised, 1/|s| projection."
+    },
+    {
+      "step": "step03_attacker",
+      "summary": "Trained the adversary's reference model g for 1 datasets and built 7 attack datasets on ORIGINAL edges",
+      "timestamp": "2026-10-21 19:59:47",
+      "inputs": [
+        "artifacts/posteriors/*.npy",
+        "attack/data/dataset/original/ind.{cora,citeseer}.*"
+      ],
+      "outputs": [
+        "attack/data/pred/cora_ggoren_pred.pkl"
+      ],
+      "numbers": {
+        "g_cora": {
+          "n_known": 270,
+          "n_nodes": 2708,
+          "acc_known": 1.0,
+          "acc_heldout": 0.6284,
+          "graphfree_pairs_checked": 11,
+          "input_dim": 1433,
+          "hidden": 64,
+          "epochs": 500,
+          "lr": 0.003,
+          "weight_decay": 0.0005
+        }
+      },
+      "notes": "g mirrors the target's hyperparameters but is graph-free and runs on the original features. The adversary cannot tell a bl box from a goren box. Pair seed 1 matches the GCond, FGC and UGC benchmarks, so all four attack identical pairs."
+    }
+  ]
+}

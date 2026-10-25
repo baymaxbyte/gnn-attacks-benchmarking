@@ -1,0 +1,117 @@
+
+==============================================================================
+2026-10-21 21:35:37  lsa:gcond:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+
+==========================================================================
+B0  pubmed  setting=whole
+==========================================================================
+Traceback (most recent call last):
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/step02_blackbox.py", line 124, in <module>
+    main()
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/step02_blackbox.py", line 46, in main
+    bb = GCondBlackBox(dataset, setting, device=args.device)
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/blackbox_gcond.py", line 53, in __init__
+    self.gutils, self.GCN = _import_gcond()
+  File "/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/vendor/lsa/GCOND Benchmarking/blackbox_gcond.py", line 40, in _import_gcond
+    import utils as gutils
+  File "/home/ec2-user/SageMaker/externals/GCond-main/utils.py", line 6, in <module>
+    from ogb.nodeproppred import PygNodePropPredDataset, Evaluator
+ModuleNotFoundError: No module named 'ogb'
+
+==============================================================================
+2026-10-22 05:19:00  lsa:gcond:step02
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/bin/python step02_blackbox.py
+==============================================================================
+
+==========================================================================
+B0  pubmed  setting=whole
+==========================================================================
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+/home/ec2-user/SageMaker/externals/GCond-main/.venv/lib/python3.10/site-packages/deeprobust/graph/utils.py:356: UserWarning: torch.sparse.SparseTensor(indices, values, shape, *, device=) is deprecated.  Please use torch.sparse_coo_tensor(indices, values, shape, dtype=, device=). (Triggered internally at /pytorch/torch/csrc/utils/tensor_new.cpp:653.)
+  return torch.sparse.FloatTensor(sparseconcat.t(),sparsedata,torch.Size(sparse_mx.shape))
+    run 1/10  test acc = 0.7840
+    run 2/10  test acc = 0.7940
+    run 3/10  test acc = 0.8000
+    run 4/10  test acc = 0.7940
+    run 5/10  test acc = 0.7930
+    run 6/10  test acc = 0.7810
+    run 7/10  test acc = 0.7910
+    run 8/10  test acc = 0.7760
+    run 9/10  test acc = 0.7910
+    run 10/10  test acc = 0.7920
+  [saved] attack/data/pred/pubmed_gcondbb_whole_pred.pkl  shape=(19717, 3)
+  -> ours 78.96 +-0.68   paper n/a   delta n/a
+
+==========================================================================
+B1  pubmed  setting=0.25
+==========================================================================
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+    run 1/10  test acc = 0.7820
+    run 2/10  test acc = 0.7840
+    run 3/10  test acc = 0.7810
+    run 4/10  test acc = 0.7770
+    run 5/10  test acc = 0.7830
+    run 6/10  test acc = 0.7800
+    run 7/10  test acc = 0.7870
+    run 8/10  test acc = 0.7800
+    run 9/10  test acc = 0.7810
+    run 10/10  test acc = 0.7820
+  [saved] attack/data/pred/pubmed_gcondbb_0.25_pred.pkl  shape=(19717, 3)
+  -> ours 78.17 +-0.25   paper n/a   delta n/a
+
+==========================================================================
+B2  pubmed  setting=0.5
+==========================================================================
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+    run 1/10  test acc = 0.7760
+    run 2/10  test acc = 0.7730
+    run 3/10  test acc = 0.7760
+    run 4/10  test acc = 0.7690
+    run 5/10  test acc = 0.7640
+    run 6/10  test acc = 0.7810
+    run 7/10  test acc = 0.7690
+    run 8/10  test acc = 0.7730
+    run 9/10  test acc = 0.7750
+    run 10/10  test acc = 0.7690
+  [saved] attack/data/pred/pubmed_gcondbb_0.5_pred.pkl  shape=(19717, 3)
+  -> ours 77.25 +-0.46   paper n/a   delta n/a
+
+==========================================================================
+B3  pubmed  setting=1.0
+==========================================================================
+size of adj_train: (60, 60)
+#edges in adj_train: 0.0
+    run 1/10  test acc = 0.7630
+    run 2/10  test acc = 0.7400
+    run 3/10  test acc = 0.7610
+    run 4/10  test acc = 0.7630
+    run 5/10  test acc = 0.7630
+    run 6/10  test acc = 0.7580
+    run 7/10  test acc = 0.7500
+    run 8/10  test acc = 0.7630
+    run 9/10  test acc = 0.7450
+    run 10/10  test acc = 0.7640
+  [saved] attack/data/pred/pubmed_gcondbb_1.0_pred.pkl  shape=(19717, 3)
+  -> ours 75.70 +-0.83   paper n/a   delta n/a
+
+==========================================================================
+VALIDATION GATE vs GCond Table 2
+==========================================================================
+  box  dataset   setting  paper r  train nodes  ours             paper         delta   
+  -------------------------------------------------------------------------------------
+  B0   pubmed    whole    n/a      19717        78.96 +-0.68     n/a           n/a     
+  B1   pubmed    0.25     n/a      15           78.17 +-0.25     n/a           n/a     
+  B2   pubmed    0.5      n/a      30           77.25 +-0.46     n/a           n/a     
+  B3   pubmed    1.0      n/a      60           75.70 +-0.83     n/a           n/a     
+
+  largest absolute deviation from the paper: 0.00 points
+
+[saved] results/step02_validation.json
+
+[manifest] recorded step 02_blackbox_gcond: Built and validated 4 GCond black boxes against Table 2; largest deviation 0.00 points
+total 12.6 min

@@ -1,0 +1,17 @@
+
+==============================================================================
+2026-10-21 19:56:14  lsa:goren:cora:step01
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step01_coarsen.py
+==============================================================================
+Loukas 'variation_neighborhoods' coarsening, K=10, 3 settings
+coarsening interpreter: /home/ec2-user/SageMaker/externals/goren-cvenv/bin/python
+
+dataset       r      n      k  ratio*   used  train.  maxsz  meansz  c_edges  orthon    sec
+--------------------------------------------------------------------------------------------------------
+cora        0.3   2708   1896  0.2999   1896    1280      9    1.43     3890    True   0.98
+cora        0.5   2708   1354  0.5000   1354    1050     12    2.00     2905    True   1.00
+cora        0.7   2708    813  0.6998    813     724     39    3.33     1950    True   1.34
+
+[manifest] recorded step step01_coarsen: Loukas variation_neighborhoods coarsenings for 3 (dataset, r) settings, supplying the coarse topology GOREN relearns weights on
+
+total 0.2 min

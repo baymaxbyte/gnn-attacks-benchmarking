@@ -1,0 +1,26 @@
+
+==============================================================================
+2026-10-21 18:52:14  lsa:goren:step02a_weights
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+==============================================================================
+GOREN weight learning, 3 settings, n_bottomk=40, 400 epochs
+
+setting               k und.edges | quad base quad goren     d% |  EE base  EE goren  EE reduction |  sec
+--------------------------------------------------------------------------------------------------------
+
+==============================================================================
+2026-10-21 19:07:01  lsa:goren:step02a_weights
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02a_goren_weights.py
+==============================================================================
+GOREN weight learning, 3 settings, n_bottomk=40, 400 epochs
+
+setting               k und.edges | quad base quad goren     d% |  EE base  EE goren  EE reduction |  sec
+--------------------------------------------------------------------------------------------------------
+pubmed_r0.3         13802     33562 |   0.00259    0.00756  -192% |   0.1100    0.9120       -729.2% | 1200
+pubmed_r0.5          9859     28488 |   0.01180    0.00634   +46% |   0.3620    0.8906       -146.0% |  626
+pubmed_r0.7          5917     24031 |   0.03094    0.01163   +62% |   1.4011    0.8716        +37.8% |  322
+
+Eigenerror reduction: 1/3 settings improved, mean -279.2%
+
+[manifest] recorded step step02a_goren_weights: Trained GOREN's GIN for 3 settings; 1/3 improved Eigenerror, mean -279.2%
+total 35.8 min

@@ -1,0 +1,39 @@
+
+==============================================================================
+2026-10-21 19:42:53  lsa:goren:step02
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step02_blackbox.py
+==============================================================================
+building 7 black boxes x 5 runs, 7 workers, CPU
+
+held-out test accuracy (60/20/20, best-validation weights)
+box                         k   w_mean  w_zeros |       test acc     val |  EE reduction
+--------------------------------------------------------------------------------------------
+pubmed_whole            19717        -        - |  88.27+/- 0.12   87.17 |             -
+pubmed_0.3_bl           13802    1.208        0 |  87.90+/- 0.14   86.78 |             -
+pubmed_0.3_goren        13802    0.663    37186 |  87.88+/- 0.05   87.19 |       -729.2%
+pubmed_0.5_bl            9859    1.414        0 |  87.17+/- 0.08   86.49 |             -
+pubmed_0.5_goren         9859    0.380    29862 |  87.62+/- 0.10   87.25 |       -146.0%
+pubmed_0.7_bl            5917    1.672        0 |  86.59+/- 0.11   85.57 |             -
+pubmed_0.7_goren         5917    0.193    32738 |  87.28+/- 0.06   85.92 |        +37.8%
+
+bl vs goren, the paired comparison
+setting                  bl acc      goren acc  goren - bl |  EE reduction
+------------------------------------------------------------------------------
+pubmed_r0.3         87.90+/- 0.14  87.88+/- 0.05       -0.02 |       -729.2%
+pubmed_r0.5         87.17+/- 0.08  87.62+/- 0.10       +0.45 |       -146.0%
+pubmed_r0.7         86.59+/- 0.11  87.28+/- 0.06       +0.69 |        +37.8%
+
+served posteriors
+endpoint                      shape  distinct   of n  mean max p     acc
+--------------------------------------------------------------------------
+pubmed_whole             (19717, 3)     19712 100.0%      0.8630   88.31
+pubmed_0.3_bl            (19717, 3)     19711 100.0%      0.8601   88.13
+pubmed_0.3_goren         (19717, 3)     19712 100.0%      0.8601   87.95
+pubmed_0.5_bl            (19717, 3)     19711 100.0%      0.8578   87.22
+pubmed_0.5_goren         (19717, 3)     19711 100.0%      0.8484   87.65
+pubmed_0.7_bl            (19717, 3)     19711 100.0%      0.8550   86.66
+pubmed_0.7_goren         (19717, 3)     19712 100.0%      0.8488   87.27
+
+[manifest] recorded step step02_blackbox: Built 7 GOREN black boxes: bl and goren edge weights across 3 ratios plus no-coarsening controls
+
+total 11.9 min

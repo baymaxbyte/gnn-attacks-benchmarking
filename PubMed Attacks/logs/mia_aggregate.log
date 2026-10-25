@@ -66,3 +66,18 @@ figures:
   results/figures/pubmed_membership_by_method.png
 
 [manifest] recorded step step05_aggregate: Compiled 2 CSVs, 1 figures from 10 attacked cells
+
+==============================================================================
+2026-10-25 00:40:25  mia:aggregate
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python step05_aggregate.py --no_markdown
+==============================================================================
+loaded 19 attacked cells, 20 boxes
+
+CSVs:
+  results/pubmed_membership_summary.csv   19 rows
+  results/pubmed_membership_detailed.csv   133 rows
+
+figures:
+  results/figures/pubmed_membership_by_method.png
+
+[manifest] recorded step step05_aggregate: Compiled 2 CSVs, 1 figures from 19 attacked cells

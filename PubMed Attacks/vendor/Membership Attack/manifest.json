@@ -21,102 +21,97 @@
     },
     {
       "step": "step02_reduce",
-      "summary": "Reduced V_in into 10 training graphs across 4 methods and 1 datasets",
-      "timestamp": "2026-10-21 14:02:23",
+      "summary": "Reduced V_in into 9 training graphs across 3 methods and 1 datasets",
+      "timestamp": "2026-10-25 00:32:57",
       "inputs": [
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
-        "artifacts/reduced/pubmed_control_whole.npz",
-        "artifacts/reduced/pubmed_kron_r0.3.npz",
-        "artifacts/reduced/pubmed_kron_r0.5.npz",
-        "artifacts/reduced/pubmed_kron_r0.7.npz",
-        "artifacts/reduced/pubmed_ugc_r0.3.npz",
-        "artifacts/reduced/pubmed_ugc_r0.5.npz",
-        "artifacts/reduced/pubmed_ugc_r0.7.npz",
-        "artifacts/reduced/pubmed_fgc_r0.3.npz",
-        "artifacts/reduced/pubmed_fgc_r0.1.npz",
-        "artifacts/reduced/pubmed_fgc_r0.05.npz"
+        "artifacts/reduced/pubmed_goren_r0.3_bl.npz",
+        "artifacts/reduced/pubmed_goren_r0.3_goren.npz",
+        "artifacts/reduced/pubmed_goren_r0.5_bl.npz",
+        "artifacts/reduced/pubmed_goren_r0.5_goren.npz",
+        "artifacts/reduced/pubmed_goren_r0.7_bl.npz",
+        "artifacts/reduced/pubmed_goren_r0.7_goren.npz",
+        "artifacts/reduced/pubmed_gcond_r0.013.npz",
+        "artifacts/reduced/pubmed_gcond_r0.026.npz",
+        "artifacts/reduced/pubmed_gcond_r0.052.npz"
       ],
       "numbers": {
-        "pubmed_control_whole": 15774,
-        "pubmed_kron_r0.3": 11042,
-        "pubmed_kron_r0.5": 7887,
-        "pubmed_kron_r0.7": 4732,
-        "pubmed_ugc_r0.3": 11058,
-        "pubmed_ugc_r0.5": 7902,
-        "pubmed_ugc_r0.7": 4701,
-        "pubmed_fgc_r0.3": 4732,
-        "pubmed_fgc_r0.1": 1577,
-        "pubmed_fgc_r0.05": 788
+        "pubmed_goren_r0.3_bl": 11042,
+        "pubmed_goren_r0.3_goren": 11042,
+        "pubmed_goren_r0.5_bl": 7887,
+        "pubmed_goren_r0.5_goren": 7887,
+        "pubmed_goren_r0.7_bl": 4733,
+        "pubmed_goren_r0.7_goren": 4733,
+        "pubmed_gcond_r0.013": 205,
+        "pubmed_gcond_r0.026": 410,
+        "pubmed_gcond_r0.052": 820
       },
       "notes": "One reduced graph per cell; step03 trains 3 boxes on each. control=V_in un-reduced; GCond condenses to synthetic nodes (serve on row-normalised features); UGC augments features with the V_in adjacency (serve augments to V_in width); GOREN has bl and goren edge-weight variants."
     },
     {
       "step": "step03_blackbox",
-      "summary": "Trained 30 boxes (10 cells x 3 seeds) and served posteriors on the original graph",
-      "timestamp": "2026-10-21 14:09:51",
+      "summary": "Trained 27 boxes (9 cells x 3 seeds) and served posteriors on the original graph",
+      "timestamp": "2026-10-25 00:39:31",
       "inputs": [
         "artifacts/reduced/*.npz",
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
-        "artifacts/posteriors/pubmed_control_whole_seed0.npy",
-        "artifacts/posteriors/pubmed_control_whole_seed1.npy",
-        "artifacts/posteriors/pubmed_control_whole_seed2.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.05_seed0.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.05_seed1.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.05_seed2.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.1_seed0.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.1_seed1.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.1_seed2.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.3_seed0.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.3_seed1.npy",
-        "artifacts/posteriors/pubmed_fgc_r0.3_seed2.npy",
-        "artifacts/posteriors/pubmed_kron_r0.3_seed0.npy",
-        "artifacts/posteriors/pubmed_kron_r0.3_seed1.npy",
-        "artifacts/posteriors/pubmed_kron_r0.3_seed2.npy",
-        "artifacts/posteriors/pubmed_kron_r0.5_seed0.npy",
-        "artifacts/posteriors/pubmed_kron_r0.5_seed1.npy",
-        "artifacts/posteriors/pubmed_kron_r0.5_seed2.npy",
-        "artifacts/posteriors/pubmed_kron_r0.7_seed0.npy",
-        "artifacts/posteriors/pubmed_kron_r0.7_seed1.npy",
-        "artifacts/posteriors/pubmed_kron_r0.7_seed2.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.3_seed0.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.3_seed1.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.3_seed2.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.5_seed0.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.5_seed1.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.5_seed2.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.7_seed0.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.7_seed1.npy",
-        "artifacts/posteriors/pubmed_ugc_r0.7_seed2.npy"
+        "artifacts/posteriors/pubmed_gcond_r0.013_seed0.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.013_seed1.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.013_seed2.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.026_seed0.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.026_seed1.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.026_seed2.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.052_seed0.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.052_seed1.npy",
+        "artifacts/posteriors/pubmed_gcond_r0.052_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_bl_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_bl_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_bl_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_goren_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_goren_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.3_goren_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_bl_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_bl_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_bl_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_goren_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_goren_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.5_goren_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_bl_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_bl_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_bl_seed2.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_goren_seed0.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_goren_seed1.npy",
+        "artifacts/posteriors/pubmed_goren_r0.7_goren_seed2.npy"
       ],
       "numbers": {
-        "boxes": 30,
-        "cells": 10
+        "boxes": 27,
+        "cells": 9
       },
       "notes": "Uniform 3-layer GCN across all methods, trained on the reduced graph and served on the original graph. member_acc/nonmember_acc gap is a leakage sanity signal (members typically higher)."
     },
     {
       "step": "step04_attack",
       "summary": "Ran threshold + cross-dataset shadow membership attacks against 10 cells, 3 seeds each",
-      "timestamp": "2026-10-21 16:20:13",
+      "timestamp": "2026-10-25 00:39:50",
       "inputs": [
         "artifacts/posteriors/*.npy",
         "artifacts/splits/*_split.npz"
       ],
       "outputs": [
         "results/attacks/pubmed_control_whole.json",
-        "results/attacks/pubmed_fgc_r0.05.json",
-        "results/attacks/pubmed_fgc_r0.1.json",
-        "results/attacks/pubmed_fgc_r0.3.json",
-        "results/attacks/pubmed_kron_r0.3.json",
-        "results/attacks/pubmed_kron_r0.5.json",
-        "results/attacks/pubmed_kron_r0.7.json",
-        "results/attacks/pubmed_ugc_r0.3.json",
-        "results/attacks/pubmed_ugc_r0.5.json",
-        "results/attacks/pubmed_ugc_r0.7.json"
+        "results/attacks/pubmed_gcond_r0.013.json",
+        "results/attacks/pubmed_gcond_r0.026.json",
+        "results/attacks/pubmed_gcond_r0.052.json",
+        "results/attacks/pubmed_goren_r0.3_bl.json",
+        "results/attacks/pubmed_goren_r0.3_goren.json",
+        "results/attacks/pubmed_goren_r0.5_bl.json",
+        "results/attacks/pubmed_goren_r0.5_goren.json",
+        "results/attacks/pubmed_goren_r0.7_bl.json",
+        "results/attacks/pubmed_goren_r0.7_goren.json"
       ],
       "numbers": {
         "cells": 10
@@ -125,8 +120,8 @@
     },
     {
       "step": "step05_aggregate",
-      "summary": "Compiled 2 CSVs, 1 figures from 10 attacked cells",
-      "timestamp": "2026-10-21 16:20:14",
+      "summary": "Compiled 2 CSVs, 1 figures from 19 attacked cells",
+      "timestamp": "2026-10-25 00:40:26",
       "inputs": [
         "results/attacks/*.json",
         "results/step03_boxes.json"
@@ -137,7 +132,7 @@
         "results/figures/pubmed_membership_by_method.png"
       ],
       "numbers": {
-        "cells": 10
+        "cells": 19
       },
       "notes": "Membership AUC per method/ratio vs the no-reduction control."
     }

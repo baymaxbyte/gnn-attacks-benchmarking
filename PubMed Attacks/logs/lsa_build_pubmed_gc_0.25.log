@@ -1,0 +1,15 @@
+
+==============================================================================
+2026-10-22 07:16:14  lsa:gcond:ds:pubmed_0.25
+/home/ec2-user/SageMaker/pubmed_repo/PubMed Attacks/.venv/bin/python partial_graph_generation.py --dataset pubmed --datapath data/dataset/original/ --prediction_path data/pred/ --saving_path data/attack_dataset/ --target_pred pubmed_gcondbb_0.25_pred.pkl --reference_pred pubmed_g_pred.pkl --name pubmed_gc_0.25 --seed 1 --max_pos 10000
+==============================================================================
+dataset=pubmed  nodes=19717
+  f <- pubmed_gcondbb_0.25_pred.pkl
+  g <- pubmed_g_pred.pkl
+  linked pairs: 44324  (from 88648 directed entries)
+  subsampled positives to 10000 (--max_pos 10000)
+  unlinked pairs: 10000  (0.0s)
+  all  :  20000 records  -> data/attack_dataset/pubmed_gc_0.25_attack_all.json
+  train:  10000 records  -> data/attack_dataset/pubmed_gc_0.25_attack_train.json
+  test :  10000 records  -> data/attack_dataset/pubmed_gc_0.25_attack_test.json
+  train_fraction=0.5  (paper: 0.5)
