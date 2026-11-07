@@ -1,0 +1,19 @@
+dataset,attack,auc_base,auc_grid_n3,auc_grid_n5,auc_grid_n6
+cora,Attack-0 if a.isdigit() else a,0.9202,0.8936,0.8884,0.8861
+cora,Attack-1 if a.isdigit() else a,0.9185,0.8849,0.8782,0.8766
+cora,Attack-2 if a.isdigit() else a,0.9202,0.8936,0.8884,0.8861
+cora,Attack-3 if a.isdigit() else a,0.9293,0.9394,0.9379,0.9370
+cora,Attack-4 if a.isdigit() else a,0.8996,0.9031,0.8999,0.8990
+cora,Attack-5 if a.isdigit() else a,0.9390,0.9288,0.9248,0.9241
+cora,Attack-6 if a.isdigit() else a,0.9448,0.9522,0.9509,0.9502
+cora,Attack-7 if a.isdigit() else a,0.9379,0.9405,0.9375,0.9370
+cora,link_pred if a.isdigit() else a,0.6329,0.6329,0.6329,0.6329
+citeseer,Attack-0 if a.isdigit() else a,0.9535,0.9121,0.9118,0.9107
+citeseer,Attack-1 if a.isdigit() else a,0.9270,0.9277,0.9294,0.9292
+citeseer,Attack-2 if a.isdigit() else a,0.9535,0.9121,0.9118,0.9107
+citeseer,Attack-3 if a.isdigit() else a,0.9613,0.9532,0.9523,0.9517
+citeseer,Attack-4 if a.isdigit() else a,0.9462,0.9410,0.9430,0.9420
+citeseer,Attack-5 if a.isdigit() else a,0.9533,0.9608,0.9612,0.9610
+citeseer,Attack-6 if a.isdigit() else a,0.9748,0.9755,0.9751,0.9745
+citeseer,Attack-7 if a.isdigit() else a,0.9648,0.9702,0.9712,0.9705
+citeseer,link_pred if a.isdigit() else a,0.6130,0.6130,0.6130,0.6130
