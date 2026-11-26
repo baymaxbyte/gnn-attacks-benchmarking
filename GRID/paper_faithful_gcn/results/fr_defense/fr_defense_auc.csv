@@ -1,0 +1,9 @@
+dataset,attack,no_defense,grid,fisher_rao,delta_grid,delta_fr
+cora,Attack-0,0.9410,0.9049,0.7930,-0.0361,-0.1479
+cora,Attack-1,0.9494,0.8697,0.7697,-0.0797,-0.1798
+cora,Attack-6,0.9558,0.9522,0.9208,-0.0036,-0.0350
+cora,link_pred,0.6329,0.6329,0.6329,+0.0000,+0.0000
+citeseer,Attack-0,0.9656,0.9060,0.8413,-0.0596,-0.1244
+citeseer,Attack-1,0.9722,0.8858,0.8186,-0.0864,-0.1536
+citeseer,Attack-6,0.9788,0.9726,0.9633,-0.0062,-0.0155
+citeseer,link_pred,0.6130,0.6130,0.6130,+0.0000,+0.0000

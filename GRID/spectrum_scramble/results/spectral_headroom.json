@@ -1,0 +1,114 @@
+[
+  {
+    "dataset": "cora",
+    "r": 0.1,
+    "mode": "spectral",
+    "divergence": 0.18181818181818182,
+    "overlap": 0.8003039321533791
+  },
+  {
+    "dataset": "cora",
+    "r": 0.1,
+    "mode": "random",
+    "divergence": 0.18181818181818182,
+    "overlap": 0.5609566314509495
+  },
+  {
+    "dataset": "cora",
+    "r": 0.3,
+    "mode": "spectral",
+    "divergence": 0.4615384615384615,
+    "overlap": 0.7987700123039214
+  },
+  {
+    "dataset": "cora",
+    "r": 0.3,
+    "mode": "random",
+    "divergence": 0.4615384615384615,
+    "overlap": 0.21026671577570713
+  },
+  {
+    "dataset": "cora",
+    "r": 0.5,
+    "mode": "spectral",
+    "divergence": 0.6666666666666666,
+    "overlap": 0.6852106805476477
+  },
+  {
+    "dataset": "cora",
+    "r": 0.5,
+    "mode": "random",
+    "divergence": 0.6666666666666666,
+    "overlap": 0.11178346730488767
+  },
+  {
+    "dataset": "cora",
+    "r": 0.7,
+    "mode": "spectral",
+    "divergence": 0.8235294117647058,
+    "overlap": 0.5138528989922853
+  },
+  {
+    "dataset": "cora",
+    "r": 0.7,
+    "mode": "random",
+    "divergence": 0.8235294117647058,
+    "overlap": 0.052753531697655696
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.1,
+    "mode": "spectral",
+    "divergence": 0.18181818181818182,
+    "overlap": 0.633383612574183
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.1,
+    "mode": "random",
+    "divergence": 0.18181818181818182,
+    "overlap": 0.4987913177568378
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.3,
+    "mode": "spectral",
+    "divergence": 0.4615384615384615,
+    "overlap": 0.5163491626793087
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.3,
+    "mode": "random",
+    "divergence": 0.4615384615384615,
+    "overlap": 0.19647537624344869
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.5,
+    "mode": "spectral",
+    "divergence": 0.6666666666666666,
+    "overlap": 0.6620844393161055
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.5,
+    "mode": "random",
+    "divergence": 0.6666666666666666,
+    "overlap": 0.08856113795652998
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.7,
+    "mode": "spectral",
+    "divergence": 0.8235294117647058,
+    "overlap": 0.36477393563919086
+  },
+  {
+    "dataset": "citeseer",
+    "r": 0.7,
+    "mode": "random",
+    "divergence": 0.8235294117647058,
+    "overlap": 0.049933062988906124
+  }
+]

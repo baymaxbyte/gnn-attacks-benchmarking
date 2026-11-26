@@ -1,0 +1,13 @@
+eval,dataset,attack,baseline_auc,funnel_auc,drop
+random,cora,Attack-0,0.9254,0.8725,-0.0529
+random,cora,Attack-1,0.9319,0.8755,-0.0564
+random,cora,Attack-6,0.9540,0.9218,-0.0322
+random,citeseer,Attack-0,0.9144,0.8538,-0.0606
+random,citeseer,Attack-1,0.9271,0.8556,-0.0715
+random,citeseer,Attack-6,0.9645,0.9372,-0.0274
+near3,cora,Attack-0,0.7196,0.6638,-0.0558
+near3,cora,Attack-1,0.7454,0.6684,-0.0770
+near3,cora,Attack-6,0.8112,0.7687,-0.0424
+near3,citeseer,Attack-0,0.6601,0.5770,-0.0831
+near3,citeseer,Attack-1,0.7007,0.5846,-0.1161
+near3,citeseer,Attack-6,0.8238,0.7769,-0.0469
