@@ -32,7 +32,7 @@ ATTACK = os.path.join(GRIDROOT, "attack")
 DATAP = os.path.join(ATTACK, "data", "dataset", "original") + os.sep
 PRED = os.path.join(ATTACK, "data", "pred")
 sys.path.insert(0, ATTACK)
-from lsa.data import load_data_original
+from lsa.data import load_data_original, load_data
 
 # ---- black box == blackbox_kron.py (the consistent classifier) ----
 HIDDEN, DROPOUT, LR, WD, EPOCHS = 64, 0.5, 0.003, 5e-4, 500
@@ -43,6 +43,18 @@ torch.set_num_threads(4)
 
 def load(ds):
     adj, feat, *rest = load_data_original(DATAP, ds)
+    labels = np.asarray(rest[2]).argmax(1).astype(np.int64)
+    A = sp.csr_matrix(adj); A.data[:] = 1.0; A = A.maximum(A.T).tolil(); A.setdiag(0)
+    A = sp.csr_matrix(A); A.eliminate_zeros()
+    X = np.asarray(feat.todense(), dtype=np.float32)
+    return A, X, labels, int(labels.max()) + 1
+
+
+def load_any(ds):
+    """Like load() but via lsa.data.load_data, which also handles the .npz
+    datasets (squirrel/chameleon) in addition to Planetoid (cora/citeseer).
+    Same post-processing: binary symmetric adjacency, no self-loops, dense X."""
+    adj, feat, *rest = load_data(DATAP, ds)
     labels = np.asarray(rest[2]).argmax(1).astype(np.int64)
     A = sp.csr_matrix(adj); A.data[:] = 1.0; A = A.maximum(A.T).tolil(); A.setdiag(0)
     A = sp.csr_matrix(A); A.eliminate_zeros()

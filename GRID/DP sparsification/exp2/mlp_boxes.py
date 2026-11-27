@@ -36,7 +36,7 @@ class MLP(torch.nn.Module):
 
 
 def build(ds, seed=0):
-    A, X, labels, C = M.load(ds); n, d = X.shape
+    A, X, labels, C = M.load_any(ds); n, d = X.shape
     mtr, mva, mte = M.split_6020(labels, C)
     Xo = torch.tensor(X); yt = torch.from_numpy(labels)
     tm, vm = torch.from_numpy(mtr), torch.from_numpy(mva)
@@ -61,5 +61,7 @@ def build(ds, seed=0):
 
 
 if __name__ == "__main__":
-    for ds in ["cora", "citeseer"]:
+    import sys
+    datasets = sys.argv[1:] if len(sys.argv) > 1 else ["cora", "citeseer"]
+    for ds in datasets:
         build(ds)

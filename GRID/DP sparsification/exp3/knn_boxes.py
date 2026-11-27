@@ -49,7 +49,7 @@ def knn_graph(X, k=K):
 
 
 def build(ds, seed=0):
-    A, X, labels, C = M.load(ds); n, d = X.shape
+    A, X, labels, C = M.load_any(ds); n, d = X.shape
     mtr, mva, mte = M.split_6020(labels, C)
     Aknn = knn_graph(X)
     # diagnostics: KNN-graph homophily + overlap with the real graph
@@ -70,5 +70,7 @@ def build(ds, seed=0):
 
 
 if __name__ == "__main__":
-    for ds in ["cora", "citeseer"]:
+    import sys
+    datasets = sys.argv[1:] or ["cora", "citeseer"]
+    for ds in datasets:
         build(ds)

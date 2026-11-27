@@ -36,18 +36,28 @@ UGC = _load("ugc_solver", os.path.join(BENCH, "UGC benchmarking", "ugc_solver.py
 KRON = _load("kron_reduce", os.path.join(BENCH, "KRON Benchmarking", "kron_reduce.py"))
 
 EPS = [8.0, 4.0]
-UGC_ALPHA = {"cora": 0.19, "citeseer": 0.26}
+# UGC heterophily factor alpha, per dataset (authors' values, UGC paper Table 6).
+UGC_ALPHA = {"cora": 0.19, "citeseer": 0.26, "squirrel": 0.20, "chameleon": 0.20}
+# MCC (alpha,beta,gamma), per (dataset, ratio). cora/citeseer grid-searched on the
+# original graph; squirrel/chameleon val-selected (see mcc_hp_select.py).
 MCC_HP = {("cora", 0.3): (0.1, 100., 100.), ("cora", 0.1): (10., 100., 0.1),
-          ("citeseer", 0.3): (100., 1., 0.001), ("citeseer", 0.1): (100., 100., 0.01)}
+          ("citeseer", 0.3): (100., 1., 0.001), ("citeseer", 0.1): (100., 100., 0.01),
+          ("squirrel", 0.3): (10., 100., 0.1), ("squirrel", 0.1): (100., 100., 0.01),
+          ("chameleon", 0.3): (10., 100., 0.1), ("chameleon", 0.1): (100., 1., 0.001)}
+MCC_DEFAULT = (0.1, 100., 100.)   # fallback for any untuned (dataset, ratio)
 RATIOS = {"mcc": [0.3, 0.1], "fgc": [0.3, 0.1, 0.05], "kron": [0.3, 0.5, 0.7], "ugc": [0.3, 0.5, 0.7]}
 torch.set_num_threads(4)
+
+
+def mcc_hp(ds, r):
+    return MCC_HP.get((ds, r), MCC_DEFAULT)
 
 
 def coarse_box(ds, method, r, Adp, X, y, C, mtr, mva, mte):
     n, d = X.shape
     Xo = torch.tensor(X); eidp = M._ei(Adp); ewdp = torch.ones(eidp.shape[1])
     if method == "mcc":
-        al, be, ga = MCC_HP[(ds, r)]
+        al, be, ga = mcc_hp(ds, r)
         Cmat, Ad = M.mcc_coarsen(Adp, r, al, be, ga)
         Xc, eic, ewc, Yc, keep = M.build_coarse(Cmat, Ad, X, y, mtr, C)
         serveX, din = Xo, d
@@ -65,7 +75,7 @@ def coarse_box(ds, method, r, Adp, X, y, C, mtr, mva, mte):
         keep = torch.from_numpy(mtr[kept])
         serveX, din = Xo, d
     elif method == "ugc":
-        al = UGC_ALPHA[ds]
+        al = UGC_ALPHA.get(ds, 0.20)
         Xaug = UGC.augment(torch.tensor(X), Adp, al)
         bw = UGC.find_bin_width(Xaug, r)["bin_width"]
         assign = UGC.partition(UGC.hashed_values(Xaug), bw)
@@ -79,14 +89,18 @@ def coarse_box(ds, method, r, Adp, X, y, C, mtr, mva, mte):
 
 
 def main():
-    only = sys.argv[1:] if len(sys.argv) > 1 else ["mcc", "fgc", "kron", "ugc"]
-    for ds in ["cora", "citeseer"]:
-        A, X, y, C = M.load(ds); n = A.shape[0]
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--datasets", nargs="+", default=["cora", "citeseer"])
+    ap.add_argument("--methods", nargs="+", default=["mcc", "fgc", "kron", "ugc"])
+    a = ap.parse_args()
+    for ds in a.datasets:
+        A, X, y, C = M.load_any(ds); n = A.shape[0]
         mtr, mva, mte = M.split_6020(y, C)
         for eps in EPS:
             Adp, _, _ = dp_sparsify(A, eps)
             print(f"\n[{ds}] eps={eps}: A_dp edges={int(Adp.nnz//2)}", flush=True)
-            for method in only:
+            for method in a.methods:
                 for r in RATIOS[method]:
                     try:
                         post, acc, k, ksn, ce = coarse_box(ds, method, r, Adp, X, y, C, mtr, mva, mte)

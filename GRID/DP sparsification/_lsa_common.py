@@ -29,6 +29,25 @@ import mcc_boxes as M
 DIRS = {"cora": "citeseer", "citeseer": "cora"}
 ATT = [str(i) for i in range(8)]
 
+# ---- per-dataset attack config (generalises exp1/2/3 to any dataset) ----
+# family/shadow pairing: each dataset's shadow is its same-family partner.
+FAMILY = {"cora": "citeseer", "citeseer": "cora",
+          "squirrel": "chameleon", "chameleon": "squirrel"}
+# graph-free reference posterior that exists for each dataset (method-agnostic).
+REF = {"cora": "gmcc", "citeseer": "gmcc", "squirrel": "gkron", "chameleon": "gkron"}
+# positive-pair cap for partial_graph_generation (0 = uncapped). The dense
+# heterophilous graphs have ~30k-200k edges, so we cap them like exp2.
+MAXPOS = {"cora": 0, "citeseer": 0, "squirrel": 10000, "chameleon": 10000}
+
+
+def attack_config(datasets):
+    """Build (dirs, ref_stem, max_pos) for run_leakage from a dataset list.
+    dirs pairs each dataset with its same-family shadow; ref/max_pos are per
+    dataset (so cora/citeseer and squirrel/chameleon can run in one call)."""
+    dirs = {ds: FAMILY[ds] for ds in datasets}
+    max_pos = {ds: MAXPOS.get(ds, 0) for ds in datasets}
+    return dirs, (lambda ds: f"{ds}_{REF[ds]}"), max_pos
+
 
 def _sh(cmd):
     p = subprocess.run(cmd, cwd=ATTACK, capture_output=True, text=True)
@@ -46,10 +65,13 @@ def grid_perturb(ds, stem):
     print(f"  [grid] {stem} label_changes={st['label_changes']} adj {st['adj_before']:.3f}->{st['adj_after']:.3f}", flush=True)
 
 
-def _pgg(ds, target_pred, ref_pred, name):
-    _sh([PY, "partial_graph_generation.py", "--dataset", ds, "--datapath", "data/dataset/original/",
-         "--prediction_path", "data/pred/", "--saving_path", "data/attack_dataset/",
-         "--target_pred", target_pred, "--reference_pred", ref_pred, "--name", name, "--seed", "1"])
+def _pgg(ds, target_pred, ref_pred, name, max_pos=0):
+    cmd = [PY, "partial_graph_generation.py", "--dataset", ds, "--datapath", "data/dataset/original/",
+           "--prediction_path", "data/pred/", "--saving_path", "data/attack_dataset/",
+           "--target_pred", target_pred, "--reference_pred", ref_pred, "--name", name, "--seed", "1"]
+    if max_pos:
+        cmd += ["--max_pos", str(max_pos)]
+    _sh(cmd)
 
 
 def _run_attack(target, shadow, tag, res_dir, runs):
@@ -72,30 +94,34 @@ def _parse(p):
 _ACC = {}
 def box_acc(ds, stem):
     if (ds, stem) not in _ACC:
-        _, _, labels, Cn = M.load(ds)
+        _, _, labels, Cn = M.load_any(ds)
         _, _, mte = M.split_6020(labels, Cn)
         post = np.asarray(pickle.load(open(os.path.join(PRED, f"{stem}_pred.pkl"), "rb")), float)
         _ACC[(ds, stem)] = float((post.argmax(1)[mte] == labels[mte]).mean())
     return _ACC[(ds, stem)]
 
 
-def run_leakage(method, settings, target_stem, ref_stem, res_dir, runs=3, setting_col="setting", grid=True):
+def run_leakage(method, settings, target_stem, ref_stem, res_dir, runs=3, setting_col="setting", grid=True, dirs=None, max_pos=0):
     """method: tag for attack_dataset naming/cleanup. settings: list of labels.
     target_stem(ds,s)->pkl stem (no _pred.pkl). ref_stem(ds)->reference g stem.
-    grid=False -> baseline attack AUC only (no GRID defense)."""
+    grid=False -> baseline attack AUC only (no GRID defense).
+    dirs: {target_ds: shadow_ds} map; defaults to the cora<->citeseer DIRS.
+    max_pos: int applied to every dataset, or {ds: int} for per-dataset caps."""
+    dirs = dirs or DIRS
+    mp = (lambda ds: max_pos.get(ds, 0)) if isinstance(max_pos, dict) else (lambda ds: max_pos)
     os.makedirs(res_dir, exist_ok=True)
     if grid:
-        for ds in DIRS:
+        for ds in dirs:
             for s in settings:
                 grid_perturb(ds, target_stem(ds, s))
-    for ds in DIRS:
+    for ds in dirs:
         for s in settings:
             ts = target_stem(ds, s); rs = ref_stem(ds)
-            _pgg(ds, f"{ts}_pred.pkl", f"{rs}_pred.pkl", f"{ds}_{method}_{s}")
+            _pgg(ds, f"{ts}_pred.pkl", f"{rs}_pred.pkl", f"{ds}_{method}_{s}", max_pos=mp(ds))
             if grid:
-                _pgg(ds, f"{ts}_grid_pred.pkl", f"{rs}_pred.pkl", f"{ds}_{method}_{s}_grid")
+                _pgg(ds, f"{ts}_grid_pred.pkl", f"{rs}_pred.pkl", f"{ds}_{method}_{s}_grid", max_pos=mp(ds))
     res = {}
-    for ds, shadow in DIRS.items():
+    for ds, shadow in dirs.items():
         for s in settings:
             res[(ds, s, "base")] = _parse(_run_attack(f"{ds}_{method}_{s}", f"{shadow}_{method}_{s}", f"{ds}_{s}_base", res_dir, runs))
             if grid:
@@ -107,7 +133,7 @@ def run_leakage(method, settings, target_stem, ref_stem, res_dir, runs=3, settin
             f.write(f"dataset,{setting_col},blackbox_acc,attack,auc_no_defense,auc_grid,delta\n")
         else:
             f.write(f"dataset,{setting_col},blackbox_acc,attack,auc\n")
-        for ds in DIRS:
+        for ds in dirs:
             for s in settings:
                 b = res[(ds, s, "base")]
                 acc = box_acc(ds, target_stem(ds, s))
